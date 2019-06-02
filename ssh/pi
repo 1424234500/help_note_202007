@@ -1,0 +1,1 @@
+sshpass -p "qwer" ssh pi@192.168.0.11 

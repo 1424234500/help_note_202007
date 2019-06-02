@@ -1,0 +1,7 @@
+#ssh root@39.107.26.100
+ssh walker@39.106.111.11
+#sshpass -p "xxxx" ssh walker@39.106.111.11 
+
+#ssh-keygen -t rsa 
+######ss客户端公钥发送个服务端 追加到服务端对应用户的  ~/.ssh/authorized_keys
+#ssh walker@39.106.111.11  'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_rsa.pub 

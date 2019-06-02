@@ -1,0 +1,109 @@
+#!/bin/bash  
+###########################################
+#do
+#一些常用简单功能脚本
+#./do commit <help>
+###########################################
+source constant.sh
+source tools.sh
+source do_git.sh
+source do_renames.sh
+source do_dirfile.sh
+source do_clean.sh
+
+source do_start_software.sh
+
+##-----------------------------------------
+
+#打包 walker-socket项目并 部署上传
+function socket(){
+    now=`pwd -LP`
+    cd ~/work_my/walker/walker-socket
+    mvn clean package -Dmaven.test.skip=true
+    cd release
+    . deploy.sh $@
+}
+function core(){
+    now=`pwd -LP`
+    cd ~/work_my/walker/walker-core
+    mvn clean package -Dmaven.test.skip=true
+    cd release
+    . deploy.sh $@
+}
+function web(){
+    now=`pwd -LP`
+    cd ~/work_my/walker/walker-web
+    mvn clean package -Dmaven.test.skip=true
+    cd release
+    . deploy.sh $@
+}
+function ali(){
+    . ~/help/ssh/ali39
+}
+
+function stop(){
+    echo 'stop'
+}
+function start(){
+    do_start_sftware_start $@
+}
+function rename(){
+    renames_rename $@
+}
+function showdir(){
+    dirfile_init $@
+}
+# 转变c sh文件为unix模式crlf -> lf
+function turn(){
+    find $_help -type f | grep -v .git | grep '^.*\(\(\.c\)\|\(\.sh\)\)$' | xargs dos2unix
+}
+function clean(){
+    cleanjava $@
+    cleanpython $@
+}
+function cleanjava(){
+    clean_cleanJava $@
+}
+function cleanpython(){
+    clean_clean $@
+}
+
+function do_main(){ 
+    echo
+    toolsShow $@
+    ##########################do something yourself
+    do_init $@
+    ##########################
+    toolsLineLong 
+    echo
+}
+
+function do_init(){  
+    method=$1
+    if [[ "$method" != "" ]]
+    then 
+        rootParams=($@)   
+        params=(${rootParams[@]:1}) 
+        toolsShowMethod $method "${params[*]}"
+        #echo ${params[@]}
+        $method ${params[@]}
+    else
+        echo 'eg:'
+        echo './do test "params of test"'
+    fi
+}
+
+
+function show(){  
+    echo '$0'">>"$0
+    echo '$*'">>"$*
+    echo '$@'">>"$@    
+    echo '$#'">>"$# 
+    echo '$$'">>"$$ 
+}
+
+
+ 
+#start
+do_main $@
+

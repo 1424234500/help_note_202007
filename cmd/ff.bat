@@ -1,0 +1,1 @@
+ffmpeg -f dshow -i video="Integrated Camera" -s 800x600  -f flv rtmp://39.107.26.100:1935/myapp/test1

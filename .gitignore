@@ -1,0 +1,15 @@
+.idea
+.settings
+build
+classes
+target
+
+*.bak
+*.class
+*.log
+*.pyc
+*.o
+*.apk
+*.db
+*.~sql
+*.out
