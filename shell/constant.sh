@@ -52,6 +52,7 @@ git_AngularApp=$_root'/workspace/AngularApp'
 git_local_dirs=($git_help_note $git_walker $git_cc)
 #git_local_dirs=($git_help_note $git_walker $git_BaseSSM $git_cc $git_GraphicsTools $git_AngularApp)
 # $git_base 
+#http://github.com/1424234500/help_note.git
 #git@github.com:1424234500/walker.git
 # remote urls
 git_remote_help_note='git@github.com:1424234500/help_note.git'     #-> E:/ help_note   
