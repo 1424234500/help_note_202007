@@ -39,33 +39,7 @@ function push(){
 function update(){ 
 #    git_exefun 'git_add_commit_pull' $1 
     do_project_exefun 'git_add_commit_pull' $1 
-}
-function git_exefun(){ 
-    #echo $#
-    arg1=$2
-    fun=$1
-    if [ "$#" = "2" ]   #commit help
-    then
-        if [ "$arg1" = "help" ]   
-        then
-            $fun $git_help_note
-        elif [ "$arg1" = "base" ]
-        then
-            # $fun $git_base
-            $fun $git_BaseSSM
-        elif [ "$arg1" = "cc" ]
-        then
-            $fun $git_cc
-        fi
-    else
-        $fun $git_help_note
-        # $fun $git_base
-        $fun $git_BaseSSM
-        $fun $git_cc
-        $fun $git_GraphicsTools
-        $fun $git_AngularApp
-    fi 
-}
+} 
 function git_add_commit_pull(){
     echo 'update add/commt/pull: '$1
     cd $1
@@ -110,11 +84,19 @@ function git_clone(){
     do
         remoteUrl=${git_remote_urls[$i]}
         localDir=${git_local_dirs[$i]}
-        echo ''$localDir' <- '$remoteUrl 
-        cd $localDir
-        echo 'git clone '$remoteUrl
-        echo 'git clone '$remoteUrl >> $git_log
-        git clone $remoteUrl
+		localDirParent=${localDir%/*}
+		[ ! -d ${localDirParent} ] && mkdir -p ${localDirParent}
+		echo "${localDirParent} <- ${localDir} <- ${remoteUrl} "
+		
+		if [ -f ${localDir} ];then
+			echo "${localDir} have exists 已存在 "
+		else
+			echo "开始 begin clone"
+			cd $localDirParent
+			echo 'git clone '$remoteUrl
+			echo 'git clone '$remoteUrl >> $git_log
+			git clone $remoteUrl
+		fi
     done
 
 }

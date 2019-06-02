@@ -41,13 +41,13 @@ toolsMakefile $server_python_socket_log
 
 # local filedirs
 git_help_note=$_root'/help_note'
-git_walker=$_root'/workspace_my/walker'
-git_base=$_root'/workspace_my/base'
-git_BaseSSM=$_root'/workspace_my/BaseSSM'
-git_cc_old=$_root'/workspace_my/cc_old'
+git_walker=$_root'/workspace/walker'
+git_base=$_root'/workspace/base'
+git_BaseSSM=$_root'/workspace/BaseSSM'
+git_cc_old=$_root'/workspace/cc_old'
 git_cc=$_root'/workspace_android/cc'
-git_GraphicsTools=$_root'/workspace_my/GraphicsTools'
-git_AngularApp=$_root'/workspace_my/AngularApp'
+git_GraphicsTools=$_root'/workspace/GraphicsTools'
+git_AngularApp=$_root'/workspace/AngularApp'
 
 git_local_dirs=($git_help_note $git_walker)
 #git_local_dirs=($git_help_note $git_walker $git_BaseSSM $git_cc $git_GraphicsTools $git_AngularApp)

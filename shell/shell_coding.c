@@ -119,7 +119,7 @@ cmd=$exe' keys '$key" | awk -OFS'\"' '"'{print $1}'"'"
      mkdir "$myPath"
     fi 
     [ ! -d ${var} ] && mkdir -p ${var} #若不存在则创建文件夹
-    [ ! -d ${var##*/} ] && mkdir -p ${var##*/} #若不存在则创建文件夹
+    [ ! -d ${var##*/} ] && mkdir -p ${var##*/} #若不存在父级则创建文件夹
     [ ! -f ${var} ] && touch ${var} #若不存在则创建文件夹
     # 这里的-f参数判断$myFile是否存在 是否为文件
     if [ ! -f "$myFile" ]; then
