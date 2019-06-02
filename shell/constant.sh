@@ -54,14 +54,14 @@ git_local_dirs=($git_help_note $git_walker $git_cc)
 # $git_base 
 
 # remote urls
-git_remote_help_note='https://github.com/1424234500/help_note.git'     #-> E:/ help_note   
-git_remote_base='https://github.com/1424234500/base.git'           #-> E:/ workspqce_my/ * 
-git_remote_BaseSSM='https://github.com/1424234500/BaseSSM.git'
-git_remote_walker='https://github.com/1424234500/walker.git'
-git_remote_cc_old='https://github.com/1424234500/cc_old.git'
-git_remote_cc='https://github.com/1424234500/cc.git'
-git_remote_GraphicsTools='https://github.com/1424234500/GraphicsTools.git'
-git_remote_AngularApp='https://github.com/1424234500/AngularApp.git'
+git_remote_help_note='http://github.com/1424234500/help_note.git'     #-> E:/ help_note   
+git_remote_base='http://github.com/1424234500/base.git'           #-> E:/ workspqce_my/ * 
+git_remote_BaseSSM='http://github.com/1424234500/BaseSSM.git'
+git_remote_walker='http://github.com/1424234500/walker.git'
+git_remote_cc_old='http://github.com/1424234500/cc_old.git'
+git_remote_cc='http://github.com/1424234500/cc.git'
+git_remote_GraphicsTools='http://github.com/1424234500/GraphicsTools.git'
+git_remote_AngularApp='http://github.com/1424234500/AngularApp.git'
 
 git_remote_urls=($git_remote_help_note $git_remote_walker $git_remote_cc)
 #git_remote_urls=($git_remote_help_note $git_remote_walker $git_remote_BaseSSM $git_remote_cc $git_remote_GraphicsTools $git_remote_AngularApp)
