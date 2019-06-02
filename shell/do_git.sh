@@ -88,7 +88,7 @@ function git_clone(){
 		[ ! -d ${localDirParent} ] && mkdir -p ${localDirParent}
 		echo "${localDirParent} <- ${localDir} <- ${remoteUrl} "
 		
-		if [ -f ${localDir} ];then
+		if [ -d ${localDir} ];then
 			echo "${localDir} have exists 已存在 "
 		else
 			echo "开始 begin clone"

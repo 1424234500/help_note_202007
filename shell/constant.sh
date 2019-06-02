@@ -45,11 +45,11 @@ git_walker=$_root'/workspace/walker'
 git_base=$_root'/workspace/base'
 git_BaseSSM=$_root'/workspace/BaseSSM'
 git_cc_old=$_root'/workspace/cc_old'
-git_cc=$_root'/workspace_android/cc'
+git_cc=$_root'/workspace/cc'
 git_GraphicsTools=$_root'/workspace/GraphicsTools'
 git_AngularApp=$_root'/workspace/AngularApp'
 
-git_local_dirs=($git_help_note $git_walker)
+git_local_dirs=($git_help_note $git_walker $git_cc)
 #git_local_dirs=($git_help_note $git_walker $git_BaseSSM $git_cc $git_GraphicsTools $git_AngularApp)
 # $git_base 
 
@@ -63,7 +63,7 @@ git_remote_cc='https://github.com/1424234500/cc.git'
 git_remote_GraphicsTools='https://github.com/1424234500/GraphicsTools.git'
 git_remote_AngularApp='https://github.com/1424234500/AngularApp.git'
 
-git_remote_urls=($git_remote_help_note $git_remote_walker)
+git_remote_urls=($git_remote_help_note $git_remote_walker $git_remote_cc)
 #git_remote_urls=($git_remote_help_note $git_remote_walker $git_remote_BaseSSM $git_remote_cc $git_remote_GraphicsTools $git_remote_AngularApp)
 # $git_remote_base 
 

@@ -1,9 +1,23 @@
-.idea
-.settings
 build
-classes
 target
+release
+log
 
+
+captures
+
+
+.idea
+.gradle
+
+
+.settings
+
+
+local.properties
+
+
+*.jar
 *.bak
 *.class
 *.log

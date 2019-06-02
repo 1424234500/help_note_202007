@@ -1,12 +1,4 @@
-github cmd / shell  git-bash
-https://github.com/1424234500/help_note.git		-> E:/ help_note	
-https://github.com/1424234500/base.git			-> E:/ workspqce_my/ * 
-https://github.com/1424234500/BaseSSM.git
-https://github.com/1424234500/walker.git
-https://github.com/1424234500/cc.git
-https://github.com/1424234500/GraphicsTools.git 
-
-
+github cmd / shell  git-bash  
 
 Git中从远程的分支获取最新的版本到本地有这样2个命令：
 1. git fetch：相当于是从远程获取最新版本到本地，不会自动merge 
@@ -78,42 +70,7 @@ git remote add origin https://github.com/1424234500/BaseSSM.git
 像分支的命名一样，远端仓库的别名是强制的 —— 就像“master”，
 没有特别意义，但它广为使用， 因为 git init 默认用它；
 “origin”经常被用作远端仓库别名，就
-因为 git clone 默认用它作为克隆自的链接的别名。
-随便什么都可以。
-
-git remote rm 删除现存的某个别名 
-//git fetch <远程主机名> <分支名>  更新 同步  clone 下载项目
-将你的仓库与远端仓库同步，提取所有它独有的数据到本地分支以合并或者怎样。
-//git pull origin master  下载并合并fetch and merge 
-#Push your local version repertory to your github where is at the web / internet
-//git push -u origin master 推送上传
-git push [alias] [branch]，就会将你的 [branch] 分支推送成为 [alias] 远端上的 [branch] 分支。 
-
-
-使用 //本地仓库
-git add 添加需要追踪的新文件和待提交的更改， 然后使用 
-git status 和 
-git diff [version commit name branch name] 查看有何改动， 最后用 
-git commit 将你的快照记录。
-这就是你要用的基本流程，绝大部分时候都是这样的 
-
-#Add   添加文件到缓存
-git add .<all>  	/  directory	/	file
-git add -A
-#看看我们的项目的当前状态。
-git status <-s>
-#显示已写入缓存与已修改但尚未写入缓存的改动的区别
-git diff <--cached> <HEAD> <-STAT>
-
-#Commit to local <cache> ! version repertory with some info / about 
-git commit -m "commit log about"
-#缓存并提交每个改动（不含新文件） 通常直接从硬盘删除文件，然后执行 
-//git commit -am "info" 会简单些。 它会自动将删除的文件从索引中移除。
-
-#取消缓存已缓存的内容
-git reset HEAD 
-
-
+因为 git clone 默认用它作为克隆自的链接的别名。 
 //分支
 git branch (branchname) 
 来创建分支， 使用 
@@ -188,27 +145,14 @@ git log --after="2018-4-09 17:37:42" --before="2022-11-06 17:45:42" --name-statu
 --abbrev-commit ：仅显示 SHA-1 的前几个字符，而非所有的 40 个字符
 --left-right:每个提交是在哪个分支上,左箭头 < 表示是 branchA 的，右箭头 > 表示是 branchB的
 ... : 并集关系，两个分支共同的修改记录
-
-
-
-
+ 
 当你试图推送到某个以被更新的远端分支时，会出现下面这种情况：
 
 RT ! [rejected] master -> master (fetch first)
 在push远程服务器的时候发现出现此错误；原因是没有同步远程的master
 需要先同步一下
 a.--> git pull origin master
-b.--> git push origin master
-
-
-
-忽略文件夹
-项目文件夹中，会发现生成了一个”.gitignore”文件，打开看，如下 
-
-
-
-
-
+b.--> git push origin master 
  
 
 方法一 通过命令直接修改远程地址
@@ -221,9 +165,6 @@ git remote set-url origin http://192.168.100.235:9797/john/git_test.git
 git remote 查看所有远程仓库， git remote xxx 查看指定远程仓库地址
 git remote rm origin
 git remote add origin http://192.168.100.235:9797/john/git_test.git
-
-
-
 
 //github ssh免密码登录 
 ssh-keygen -t rsa # 一直回车下去，不输入密码 生成密钥
@@ -255,24 +196,18 @@ cat .gitconfig
 //修改提交邮箱
 如果只需要最近一次提交，那么很简单直接使用 git commit --amend 就可以搞定
 git commit --amend --author="NewAuthor <NewEmail@address.com>"
-
 //git 编码
 # 提交时转换为LF，检出时转换为CRLF
 git config --global core.autocrlf true
 
 # 提交时转换为LF，检出时不转换
 git config --global core.autocrlf input
-
 # 提交检出均不转换
 git config --global core.autocrlf false
-
-
 # 拒绝提交包含混合换行符的文件
 git config --global core.safecrlf true
-
 # 允许提交包含混合换行符的文件
 git config --global core.safecrlf false
-
 # 提交包含混合换行符的文件时给出警告
 git config --global core.safecrlf warn
 // 转码
@@ -301,5 +236,42 @@ git reset --hard 3915130
 Unlink of file 'pro/WEB-INF/lib/DSPClient-1.0.2018092600.jar' failed. Should I t 
 ry again? (y/n) 
 y
+
+
+
+//sourcetree跳过登陆
+安装之后，转到用户本地文件夹下的 SourceTree 目录，没有则新建
+%LocalAppData%\Atlassian\SourceTree\
+新建 accounts.json 文件
+%LocalAppData%\Atlassian\SourceTree\accounts.json
+输入以下内容保存即可
+[
+  {
+    "$id": "1",
+    "$type": "SourceTree.Api.Host.Identity.Model.IdentityAccount, SourceTree.Api.Host.Identity",
+    "Authenticate": true,
+    "HostInstance": {
+      "$id": "2",
+      "$type": "SourceTree.Host.Atlassianaccount.AtlassianAccountInstance, SourceTree.Host.AtlassianAccount",
+      "Host": {
+        "$id": "3",
+        "$type": "SourceTree.Host.Atlassianaccount.AtlassianAccountHost, SourceTree.Host.AtlassianAccount",
+        "Id": "atlassian account"
+      },
+      "BaseUrl": "https://id.atlassian.com/"
+    },
+    "Credentials": {
+      "$id": "4",
+      "$type": "SourceTree.Model.BasicAuthCredentials, SourceTree.Api.Account",
+      "Username": "",
+      "Email": null
+    },
+    "IsDefault": false
+  }
+]
+
+现在再打开 SourceTree，直接显示主窗口了
+
+
 
 
