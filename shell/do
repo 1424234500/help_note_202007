@@ -18,21 +18,23 @@ source do_start_software.sh
 #打包 walker-socket项目并 部署上传
 function socket(){
     now=`pwd -LP`
-    cd ~/work_my/walker/walker-socket
+    cd ~/work/walker/walker-socket
     mvn clean package -Dmaven.test.skip=true
     cd release
     ./deploy.sh $@
+    cp /home/walker/e/workspace/walker/walker-socket/release/walker-socket-0.0.1-SNAPSHOT.jar /home/walker/e/workspace/dd/app/libs/
 }
 function core(){
     now=`pwd -LP`
-    cd ~/work_my/walker/walker-core
+    cd ~/work/walker/walker-core
     mvn clean package -Dmaven.test.skip=true
     cd release
     ./deploy.sh $@
+    cp /home/walker/e/workspace/walker/walker-core/release/walker-core-0.0.1-SNAPSHOT.jar /home/walker/e/workspace/dd/app/libs/
 }
 function web(){
     now=`pwd -LP`
-    cd ~/work_my/walker/walker-web
+    cd ~/work/walker/walker-web
     mvn clean package -Dmaven.test.skip=true
     cd release
     ./deploy.sh $@
