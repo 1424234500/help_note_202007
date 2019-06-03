@@ -21,25 +21,30 @@ function socket(){
     cd ~/work_my/walker/walker-socket
     mvn clean package -Dmaven.test.skip=true
     cd release
-    . deploy.sh $@
+    ./deploy.sh $@
 }
 function core(){
     now=`pwd -LP`
     cd ~/work_my/walker/walker-core
     mvn clean package -Dmaven.test.skip=true
     cd release
-    . deploy.sh $@
+    ./deploy.sh $@
 }
 function web(){
     now=`pwd -LP`
     cd ~/work_my/walker/walker-web
     mvn clean package -Dmaven.test.skip=true
     cd release
-    . deploy.sh $@
+    ./deploy.sh $@
 }
 function ali(){
-    . ~/help/ssh/ali39
+    ~/help/ssh/ali39
 }
+function android(){
+    nohup /home/walker/software/android-studio/bin/studio.sh >/dev/null &
+}
+
+
 
 function stop(){
     echo 'stop'

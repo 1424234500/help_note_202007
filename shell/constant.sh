@@ -46,10 +46,11 @@ git_base=$_root'/workspace/base'
 git_BaseSSM=$_root'/workspace/BaseSSM'
 git_cc_old=$_root'/workspace/cc_old'
 git_cc=$_root'/workspace/cc'
+git_dd=$_root'/workspace/dd'
 git_GraphicsTools=$_root'/workspace/GraphicsTools'
 git_AngularApp=$_root'/workspace/AngularApp'
 
-git_local_dirs=($git_help_note $git_walker $git_cc)
+git_local_dirs=($git_help_note $git_walker $git_dd)
 #git_local_dirs=($git_help_note $git_walker $git_BaseSSM $git_cc $git_GraphicsTools $git_AngularApp)
 # $git_base 
 #http://github.com/1424234500/help_note.git
@@ -61,10 +62,11 @@ git_remote_BaseSSM='git@github.com:1424234500/BaseSSM.git'
 git_remote_walker='git@github.com:1424234500/walker.git'
 git_remote_cc_old='git@github.com:1424234500/cc_old.git'
 git_remote_cc='git@github.com:1424234500/cc.git'
+git_remote_dd='git@github.com:1424234500/dd.git'
 git_remote_GraphicsTools='git@github.com:1424234500/GraphicsTools.git'
 git_remote_AngularApp='git@github.com:1424234500/AngularApp.git'
 
-git_remote_urls=($git_remote_help_note $git_remote_walker $git_remote_cc)
+git_remote_urls=($git_remote_help_note $git_remote_walker $git_remote_dd)
 #git_remote_urls=($git_remote_help_note $git_remote_walker $git_remote_BaseSSM $git_remote_cc $git_remote_GraphicsTools $git_remote_AngularApp)
 # $git_remote_base 
 
