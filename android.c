@@ -22,6 +22,12 @@
 参考文档： http://developer.android.com/tools/device.html
 
 
+//android studio
+自动下载sdk gradle api
+Warning: License for package Android SDK Build-Tools 28.0.2 not accepted.
+./android-sdk-linux-down/tools/bin/sdkmanager --licenses //执行这句才是关键，它会提示你去允许认证
+
+
 
 
  的APK后缀名改为.rar或则 .zip，并解压，得到其中的额
