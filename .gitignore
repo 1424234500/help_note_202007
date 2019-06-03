@@ -2,7 +2,7 @@ build
 target
 release
 log
-
+gradle
 
 captures
 
