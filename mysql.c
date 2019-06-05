@@ -37,6 +37,7 @@ CREATE DATABASE IF NOT EXISTS walker default charset utf8 COLLATE utf8_general_c
 drop database walker;
 USE walker;
 
+//建表 查表 描述
 CREATE TABLE  IF NOT EXISTS  test (id VARCHAR(20), name CHAR(10));
 drop table test;
 SHOW TABLES;
