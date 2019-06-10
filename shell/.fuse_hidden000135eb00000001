@@ -3760,3 +3760,668 @@ Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
 	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
 	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
 	... 9 more
+2019-06-10 19:01:35,323 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:01:35,323 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:01:40,328 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:01:40,328 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:01:45,329 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:01:45,330 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:01:50,334 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:01:50,335 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:01:55,338 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:01:55,339 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:02:00,343 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:02:00,344 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:02:05,347 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:02:05,348 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:02:10,352 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:02:10,353 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:02:15,401 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:02:15,402 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:02:20,406 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:02:20,406 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:02:25,408 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:02:25,408 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:02:30,412 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:02:30,413 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:02:35,416 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:02:35,417 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:02:40,421 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:02:40,422 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:02:45,426 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:02:45,426 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:02:50,427 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:02:50,428 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:02:55,431 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:02:55,432 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:03:00,436 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:03:00,436 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:03:05,440 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:03:05,441 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:03:10,445 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:03:10,445 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:03:15,449 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:03:15,450 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:03:20,454 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:03:20,454 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:03:25,458 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:03:25,459 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:03:30,463 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:03:30,464 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:03:35,464 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:03:35,465 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:03:40,466 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:03:40,466 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:03:45,470 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:03:45,471 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:03:50,473 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:03:50,473 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:03:55,519 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:03:55,520 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:04:00,524 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:04:00,525 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:04:05,528 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:04:05,529 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:04:10,533 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:04:10,534 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:04:15,540 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:04:15,540 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:04:20,541 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:04:20,541 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
+2019-06-10 19:04:25,542 [DubboRegistryFailedRetryTimer-thread-1] INFO  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:369) -  [DUBBO] Retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, dubbo version: 2.5.7, current host: 192.168.103.93
+2019-06-10 19:04:25,542 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:380) -  [DUBBO] Failed to retry subscribe {admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=*=[com.alibaba.dubbo.governance.sync.RegistryServerSync@4e97961c]}, waiting for again, cause: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!, dubbo version: 2.5.7, current host: 192.168.103.93
+com.alibaba.dubbo.rpc.RpcException: Failed to subscribe admin://192.168.103.93?category=providers,consumers,routers,configurators&check=false&classifier=*&enabled=*&group=*&interface=*&version=* to zookeeper zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=dubbo-admin&check=false&dubbo=2.5.7&file=false&interface=com.alibaba.dubbo.registry.RegistryService&pid=2217&timestamp=1560127781417, cause: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:185)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:377)
+	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:70)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.IllegalStateException: Zookeeper is not connected yet!
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkClientWrapper.createPersistent(ZkClientWrapper.java:82)
+	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:45)
+	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:47)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:149)
+	... 9 more
