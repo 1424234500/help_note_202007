@@ -21,6 +21,8 @@ local.properties
 *.bak
 *.class
 *.log
+*.log.*
+*.rdb
 *.pyc
 *.o
 *.apk
