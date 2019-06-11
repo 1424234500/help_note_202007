@@ -3670,3 +3670,5 @@ Traceback (most recent call last):
   File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
     self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
 ** (gedit:2173): WARNING **: 20:23:19.480: Error querying file info: Error when getting information for file “/home/walker/.gitconfig.lock”: 没有那个文件或目录
+
+** (gedit:2173): WARNING **: 20:23:41.603: Error querying file info: Error when getting information for file “/home/walker/.gitconfig.lock”: 没有那个文件或目录
