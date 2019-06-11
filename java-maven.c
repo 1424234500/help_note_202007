@@ -16,11 +16,12 @@ vim apache-maven-3.6.0/conf/settings.xml
 PATH=PATH:/home/walker/software/apache-maven-3.6.0/bin
 
 
-配置eclipse
+配置eclipse idea
 1.配置模板 下载local  让可以使用模板创建项目
 archetype-catalog.xml
-2.配置文件源Maven-User Settings-Global Settings 让使用新的配置文件 源
+2.配置文件源Maven-User Settings-Global Settings 让使用新的配置文件 源 统一 配置文件
 /home/walker/software/apache-maven-3.6.0/conf/settings.xml
+
 
 
 

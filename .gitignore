@@ -17,6 +17,7 @@ captures
 local.properties
 
 
+*.fuse_.*
 *.jar
 *.bak
 *.class

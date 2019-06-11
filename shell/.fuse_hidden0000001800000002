@@ -3121,3 +3121,551 @@ Memory pressure relief: Total: res = 15081472/15081472/0, res+swap = 11022336/11
 2188:M 10 Jun 2019 19:35:21.459 * Background saving terminated with success
 Memory pressure relief: Total: res = 15826944/15794176/-32768, res+swap = 11739136/11739136/0
 2019-06-10 19:43:28.691:INFO:oejs.session:Stop Help Server: node0 Stopped scavenging
+
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
