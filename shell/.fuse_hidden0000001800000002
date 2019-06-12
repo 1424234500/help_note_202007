@@ -3801,3 +3801,4 @@ Traceback (most recent call last):
   File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
     self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
 AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+** (gedit:2173): WARNING **: 20:00:01.819: Error querying file info: Error when getting information for file “/home/walker/.gitconfig.lock”: 没有那个文件或目录
