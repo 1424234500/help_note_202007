@@ -1,4 +1,18 @@
 
+//打包
+android studio
+build
+generate
+/home/walker/e/help_note/apk.jks
+walker
+1234qwer
+
+//usb调试失败
+取消instant Run的第一个勾
+//vivo安装失败
+gradle.properties
+android.injected.testOnly = false
+
 
 
 ;/adb
