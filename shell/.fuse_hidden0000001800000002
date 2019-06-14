@@ -4709,3 +4709,37 @@ Traceback (most recent call last):
 20201:C 13 Jun 2019 17:40:21.251 * DB saved on disk
 20201:C 13 Jun 2019 17:40:21.252 * RDB: 0 MB of memory used by copy-on-write
 2188:M 13 Jun 2019 17:40:21.341 * Background saving terminated with success
+2188:M 14 Jun 2019 10:14:04.217 * 1 changes in 3600 seconds. Saving...
+2188:M 14 Jun 2019 10:14:04.235 * Background saving started by pid 3710
+3710:C 14 Jun 2019 10:14:04.899 * DB saved on disk
+3710:C 14 Jun 2019 10:14:04.904 * RDB: 0 MB of memory used by copy-on-write
+2188:M 14 Jun 2019 10:14:04.936 * Background saving terminated with success
+2188:M 14 Jun 2019 10:24:55.473 * 100 changes in 300 seconds. Saving...
+2188:M 14 Jun 2019 10:24:55.491 * Background saving started by pid 4399
+4399:C 14 Jun 2019 10:24:55.777 * DB saved on disk
+4399:C 14 Jun 2019 10:24:55.777 * RDB: 0 MB of memory used by copy-on-write
+2188:M 14 Jun 2019 10:24:55.792 * Background saving terminated with success
+2188:M 14 Jun 2019 10:51:22.806 * 100 changes in 300 seconds. Saving...
+2188:M 14 Jun 2019 10:51:22.806 * Background saving started by pid 5410
+5410:C 14 Jun 2019 10:51:23.089 * DB saved on disk
+5410:C 14 Jun 2019 10:51:23.092 * RDB: 0 MB of memory used by copy-on-write
+2188:M 14 Jun 2019 10:51:23.119 * Background saving terminated with success
+2188:M 14 Jun 2019 10:56:24.081 * 100 changes in 300 seconds. Saving...
+2188:M 14 Jun 2019 10:56:24.176 * Background saving started by pid 6052
+6052:C 14 Jun 2019 10:56:24.584 * DB saved on disk
+
+** (gedit:2173): WARNING **: 10:56:24.585: Error querying file info: Error when getting information for file “/home/walker/shell/temp-6052.rdb”: 没有那个文件或目录
+6052:C 14 Jun 2019 10:56:24.586 * RDB: 0 MB of memory used by copy-on-write
+2188:M 14 Jun 2019 10:56:24.678 * Background saving terminated with success
+2188:M 14 Jun 2019 12:59:44.751 * 1 changes in 3600 seconds. Saving...
+2188:M 14 Jun 2019 12:59:44.813 * Background saving started by pid 8840
+8840:C 14 Jun 2019 12:59:46.063 * DB saved on disk
+8840:C 14 Jun 2019 12:59:46.065 * RDB: 0 MB of memory used by copy-on-write
+2188:M 14 Jun 2019 12:59:46.124 * Background saving terminated with success
+2188:M 14 Jun 2019 13:59:47.038 * 1 changes in 3600 seconds. Saving...
+2188:M 14 Jun 2019 13:59:47.070 * Background saving started by pid 10366
+10366:C 14 Jun 2019 13:59:47.364 * DB saved on disk
+10366:C 14 Jun 2019 13:59:47.365 * RDB: 0 MB of memory used by copy-on-write
+2188:M 14 Jun 2019 13:59:47.371 * Background saving terminated with success
+
+** (gedit:2173): WARNING **: 14:41:13.508: Error querying file info: Error when getting information for file “/home/walker/.gitconfig.lock”: 没有那个文件或目录
