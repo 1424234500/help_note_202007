@@ -21,7 +21,8 @@ PATH=PATH:/home/walker/software/apache-maven-3.6.0/bin
 archetype-catalog.xml
 2.配置文件源Maven-User Settings-Global Settings 让使用新的配置文件 源 统一 配置文件
 /home/walker/software/apache-maven-3.6.0/conf/settings.xml
-
+配置外置maven
+配置仓库存储地址
 
 
 
