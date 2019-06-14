@@ -4743,3 +4743,19 @@ Traceback (most recent call last):
 2188:M 14 Jun 2019 13:59:47.371 * Background saving terminated with success
 
 ** (gedit:2173): WARNING **: 14:41:13.508: Error querying file info: Error when getting information for file “/home/walker/.gitconfig.lock”: 没有那个文件或目录
+2188:M 14 Jun 2019 14:47:47.936 * 100 changes in 300 seconds. Saving...
+2188:M 14 Jun 2019 14:47:47.991 * Background saving started by pid 12054
+12054:C 14 Jun 2019 14:47:48.803 * DB saved on disk
+12054:C 14 Jun 2019 14:47:48.803 * RDB: 0 MB of memory used by copy-on-write
+2188:M 14 Jun 2019 14:47:48.900 * Background saving terminated with success
+
+** (gedit:2173): WARNING **: 15:04:43.402: Error querying file info: Error when getting information for file “/home/walker/.gitconfig.lock”: 没有那个文件或目录
+2188:M 14 Jun 2019 15:47:49.085 * 1 changes in 3600 seconds. Saving...
+2188:M 14 Jun 2019 15:47:49.132 * Background saving started by pid 14182
+14182:C 14 Jun 2019 15:47:49.353 * DB saved on disk
+14182:C 14 Jun 2019 15:47:49.354 * RDB: 0 MB of memory used by copy-on-write
+2188:M 14 Jun 2019 15:47:49.433 * Background saving terminated with success
+
+** (gedit:2173): WARNING **: 16:45:07.939: Error querying file info: Error when getting information for file “/home/walker/.gitconfig.lock”: 没有那个文件或目录
+
+** (gedit:2173): WARNING **: 17:49:18.117: Error querying file info: Error when getting information for file “/home/walker/.gitconfig.lock”: 没有那个文件或目录
