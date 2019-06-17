@@ -56,27 +56,19 @@ subscribe chat                    //订阅一个chat主题的消息
 PSUBSCRIBE *                      //订阅所有消息
 
 #########数据结构
+key的存活时间：
+无论什么时候，只要有可能就利用key超时的优势。一个很好的例子就是储存一些诸如临时认证key之类的东西。当你去查找一个授权key时——以OAUTH为例——通常会得到一个超时时间。
+这样在设置key的时候，设成同样的超时时间，Redis就会自动为你清除。
 
-//string
-set name "runoob"
-get name
+关系型数据库的redis
+1: 把表名转换为key前缀 如, tag:
+2: 第2段放置用于区分区key的字段--对应mysql中的主键的列名,如userid
+3: 第3段放置主键值,如2,3,4...., a , b ,c
+4: 第4段,写要存储的列名
+例：user:userid:9:username
 
-//hash 对象
-hmset user:1 username runoob password runoob points 200
-#hgetall user:1
 
-//list
-lpush [lpush key valus...]  类似于压栈操作，将元素放入头部
-lpushx [lpushx key valus]:只能插入已经存在的key,且一次只能插入一次
-rpush  [rpush key valus...]  将元素push在list的尾部
-lrange runoob 0 10 查询
 
-//set 不重复
-sadd key member
-#smembers runoob
-//zset(sorted set：有序集合)
-zadd key score member 
-#zrangebyscore runoob 0 1000
 
  
 1	del key
