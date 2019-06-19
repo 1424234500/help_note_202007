@@ -40,6 +40,13 @@ df -h   #磁盘
     #去掉控制台颜色代码##########
     edjfl | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]####g"
  
+ 要求： 归删除/var/svn/svnbackup目录下创建时间为7天之前，并且文件以new开头的的所有文件或文件夹； 
+示例： find /var/svn/svnbackup -name "new_*" -mtime -7 -exec rm -rf {} \;
+find ./ * -mtime 0 
+附注：
+      -mtime -7 表示七天之前;
+      -mtime +7 表示七天之内;
+      -mtime 0  表示1天之内;
 
 ## 安装ubuntu后操作记录
 
