@@ -170,13 +170,32 @@ bin/zkCli.sh -server 127.0.0.1:2181  #测试
 注意防火墙
 
 //tomcat
+wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.42/bin/apache-tomcat-8.5.42.tar.gz
+tar -xvf apache-tomcat-8.5.42.tar.gz
+#配置端口
+vim conf/server.xml
+<Connector port="8090" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+
+#配置mannager ip控制
+<Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="d+\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
+#配置角色 后台管理权限
+vim conf/tomcat-users.xml
+  <role rolename="tomcat"/>
+  <user username="walker" password="qwer" roles="tomcat"/>
+
+
 //监控中心
 下载 dubbo-admin-2.5.7.war
 
 放入 tomcat/webapps/
 dubbo-admin-2.5.7/WEB-INF/dubbo.properties 修改地址 默认本机
     dubbo.registry.address=zookeeper://127.0.0.1:2181
-    
+修改日志存放路径
+vim ~/software/tomcat7/webapps/dubbo-admin-2.5.7/WEB-INF/log4j.xml 
+
 tomcat/bin/startup.sh 启动tomcat
 http://127.0.0.1:8080/dubbo-admin-2.5.7/
 root/root
