@@ -16,11 +16,11 @@ function do_start_sftware_start(){
 
     local arr=( 
     '/home/walker/software/eclipse/eclipse'
-    '/home/walker/software/tomcat7/bin/startup.sh'
+#    '/home/walker/software/apache-tomcat-8.5.40/bin/startup.sh'
 #    'do update'
     'gedit'
     '/home/walker/software/redis-5.0.3/src/redis-server'
-    '/home/walker/software/smartgit/bin/smartgit.sh' 
+#    '/home/walker/software/smartgit/bin/smartgit.sh' 
      )
      
     out 'start linux software '${#arr[@]}

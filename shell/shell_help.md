@@ -709,6 +709,7 @@ netstat
     scp命令传输上传下载文件 
     ####上传文件
     scp -p xxx.gz icbcmon@122.1.2.3:/approot/
+    scp -p xxx.jar walker@39.106.111.11:/home/walker/
     ####下载 文件<夹>  到/root
     scp <-r> root@43.224.34.73:/home/lk /root
     -1  强制scp命令使用协议ssh1  
