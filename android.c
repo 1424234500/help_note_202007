@@ -1,4 +1,11 @@
 
+//发送给000图片
+{"TD":1561229247028,"ST":"","SF":"223.104.212.120:51077","DATA":{"STA":"","TEXT":"qq_pic_merged_1561203417527.jpg","ID":"2211203162800_xxOpsI","FILE":"k_999777605.jpg","TYPE":"FILE"},"TO":"000","FROM":{"PWD":""},"WS":0,"TYPE":"message","TR":1561229246981,"TC":1561229246306}
+
+
+
+
+
 //打包
 android studio
 build

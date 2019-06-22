@@ -7052,3 +7052,735 @@ org.eclipse.m2e.logback.configuration: Initializing logback
 (Eclipse:2361): Gtk-WARNING **: 22:04:19.684: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
 
 (Eclipse:2361): Gtk-WARNING **: 22:04:19.684: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/home/walker/.m2/repository/com/thoughtworks/xstream/xstream/1.3.1/xstream-1.3.1.jar) to field java.util.Properties.defaults
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+
+(Eclipse:2361): Gtk-WARNING **: 22:42:23.719: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 22:42:23.720: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 22:42:23.720: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 22:42:23.720: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 22:42:23.720: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 22:42:23.720: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 22:42:23.720: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 22:42:23.720: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+2283:M 22 Jun 2019 22:47:00.017 * 100 changes in 300 seconds. Saving...
+2283:M 22 Jun 2019 22:47:00.017 * Background saving started by pid 4584
+4584:C 22 Jun 2019 22:47:00.189 * DB saved on disk
+4584:C 22 Jun 2019 22:47:00.190 * RDB: 0 MB of memory used by copy-on-write
+2283:M 22 Jun 2019 22:47:00.217 * Background saving terminated with success
+2283:M 22 Jun 2019 22:53:48.950 * 100 changes in 300 seconds. Saving...
+2283:M 22 Jun 2019 22:53:48.967 * Background saving started by pid 5259
+5259:C 22 Jun 2019 22:53:49.374 * DB saved on disk
+5259:C 22 Jun 2019 22:53:49.375 * RDB: 0 MB of memory used by copy-on-write
+2283:M 22 Jun 2019 22:53:49.469 * Background saving terminated with success
+2283:M 22 Jun 2019 23:10:00.045 * 100 changes in 300 seconds. Saving...
+2283:M 22 Jun 2019 23:10:00.045 * Background saving started by pid 5591
+5591:C 22 Jun 2019 23:10:00.201 * DB saved on disk
+5591:C 22 Jun 2019 23:10:00.203 * RDB: 0 MB of memory used by copy-on-write
+2283:M 22 Jun 2019 23:10:00.246 * Background saving terminated with success
+2283:M 22 Jun 2019 23:17:02.536 * 100 changes in 300 seconds. Saving...
+2283:M 22 Jun 2019 23:17:02.537 * Background saving started by pid 5630
+5630:C 22 Jun 2019 23:17:02.690 * DB saved on disk
+5630:C 22 Jun 2019 23:17:02.691 * RDB: 0 MB of memory used by copy-on-write
+2283:M 22 Jun 2019 23:17:02.737 * Background saving terminated with success
+2283:M 22 Jun 2019 23:22:22.411 * 100 changes in 300 seconds. Saving...
+2283:M 22 Jun 2019 23:22:22.412 * Background saving started by pid 5868
+5868:C 22 Jun 2019 23:22:22.751 * DB saved on disk
+5868:C 22 Jun 2019 23:22:22.752 * RDB: 0 MB of memory used by copy-on-write
+2283:M 22 Jun 2019 23:22:22.812 * Background saving terminated with success
+2283:M 22 Jun 2019 23:34:00.087 * 100 changes in 300 seconds. Saving...
+2283:M 22 Jun 2019 23:34:00.088 * Background saving started by pid 6348
+6348:C 22 Jun 2019 23:34:00.347 * DB saved on disk
+6348:C 22 Jun 2019 23:34:00.349 * RDB: 0 MB of memory used by copy-on-write
+2283:M 22 Jun 2019 23:34:00.389 * Background saving terminated with success
+2283:M 22 Jun 2019 23:54:00.085 * 100 changes in 300 seconds. Saving...
+2283:M 22 Jun 2019 23:54:00.086 * Background saving started by pid 7538
+7538:C 22 Jun 2019 23:54:00.310 * DB saved on disk
+7538:C 22 Jun 2019 23:54:00.312 * RDB: 0 MB of memory used by copy-on-write
+2283:M 22 Jun 2019 23:54:00.387 * Background saving terminated with success
+/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py:21: PyGIWarning: WebKit was imported without specifying a version first. Use gi.require_version('WebKit', '3.0') before import to ensure that the right version gets loaded.
+  from gi.repository import Gdk, Gtk, Gedit, GObject, WebKit
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 113, in do_activate
+    self.addMarkdownPreviewTab()
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 139, in addMarkdownPreviewTab
+    panel.add_item(self.scrolledWindow, "MarkdownPreview", _("Markdown Preview"), image)
+AttributeError: 'Stack' object has no attribute 'add_item'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError2283:M 23 Jun 2019 00:04:00.012 * 100 changes in 300 seconds. Saving...
+2283:M 23 Jun 2019 00:04:00.012 * Background saving started by pid 8196
+8196:C 23 Jun 2019 00:04:00.302 * DB saved on disk
+8196:C 23 Jun 2019 00:04:00.302 * RDB: 0 MB of memory used by copy-on-write
+2283:M 23 Jun 2019 00:04:00.312 * Background saving terminated with success
+[8330:8330:0623/000512.097558:ERROR:sandbox_linux.cc(364)] InitializeSandbox() called with multiple threads in process gpu-process.
+正在现有的浏览器会话中打开。
+Memory pressure relief: Total: res = 18862080/18829312/-32768, res+swap = 14700544/14700544/0
+Memory pressure relief: Total: res = 18231296/18231296/0, res+swap = 14073856/14073856/0
+Memory pressure relief: Total: res = 18231296/18231296/0, res+swap = 14082048/14082048/0
+Memory pressure relief: Total: res = 18108416/18108416/0, res+swap = 13959168/13959168/0
+
+(Eclipse:2361): Gtk-WARNING **: 00:11:29.710: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 00:11:29.722: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 00:11:29.723: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 00:11:29.723: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+Memory pressure relief: Total: res = 17588224/17575936/-12288, res+swap = 13422592/13422592/0
+2283:M 23 Jun 2019 00:15:00.089 * 100 changes in 300 seconds. Saving...
+2283:M 23 Jun 2019 00:15:00.090 * Background saving started by pid 8833
+8833:C 23 Jun 2019 00:15:00.477 * DB saved on disk
+8833:C 23 Jun 2019 00:15:00.478 * RDB: 0 MB of memory used by copy-on-write
+2283:M 23 Jun 2019 00:15:00.491 * Background saving terminated with success
+2019-06-23 00:18:52.801:INFO::Start Help Server: Logging initialized @8148642ms to org.eclipse.jetty.util.log.StdErrLog
+2019-06-23 00:18:53.387:INFO:oejs.session:Start Help Server: DefaultSessionIdManager workerName=node0
+2019-06-23 00:18:53.387:INFO:oejs.session:Start Help Server: No SessionScavenger set, using defaults
+2019-06-23 00:18:53.389:INFO:oejs.session:Start Help Server: node0 Scavenging every 660000ms
+Memory pressure relief: Total: res = 18964480/18448384/-516096, res+swap = 14819328/14819328/0
+Memory pressure relief: Total: res = 18100224/18100224/0, res+swap = 13946880/13946880/0
+Memory pressure relief: Total: res = 17956864/17956864/0, res+swap = 13811712/13811712/0
+Memory pressure relief: Total: res = 17952768/17952768/0, res+swap = 13811712/13811712/0
+Memory pressure relief: Total: res = 17948672/17948672/0, res+swap = 13811712/13811712/0
+Memory pressure relief: Total: res = 17944576/17944576/0, res+swap = 13815808/13815808/0
+Memory pressure relief: Total: res = 17936384/17936384/0, res+swap = 13811712/13811712/0
+Memory pressure relief: Total: res = 17936384/17936384/0, res+swap = 13819904/13819904/0
+Memory pressure relief: Total: res = 17932288/17932288/0, res+swap = 13819904/13819904/0
+Memory pressure relief: Total: res = 17920000/17920000/0, res+swap = 13811712/13811712/0
+Memory pressure relief: Total: res = 17920000/17920000/0, res+swap = 13819904/13819904/0
+Memory pressure relief: Total: res = 17903616/17903616/0, res+swap = 13811712/13811712/0
+Memory pressure relief: Total: res = 17899520/17899520/0, res+swap = 13811712/13811712/0
+
+(Eclipse:2361): Gtk-WARNING **: 00:42:30.383: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 00:42:30.384: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 00:42:30.384: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 00:42:30.384: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+正在现有的浏览器会话中打开。
+Memory pressure relief: Total: res = 18403328/18378752/-24576, res+swap = 14249984/14249984/0
+Memory pressure relief: Total: res = 18034688/18034688/0, res+swap = 13881344/13881344/0
+正在现有的浏览器会话中打开。
+Memory pressure relief: Total: res = 18317312/18284544/-32768, res+swap = 14163968/14163968/0
+Memory pressure relief: Total: res = 18124800/18124800/0, res+swap = 13979648/13979648/0
+Memory pressure relief: Total: res = 18059264/18059264/0, res+swap = 13918208/13918208/0
+Memory pressure relief: Total: res = 18059264/18059264/0, res+swap = 13922304/13922304/0
+Memory pressure relief: Total: res = 18059264/18059264/0, res+swap = 13930496/13930496/0
+Memory pressure relief: Total: res = 18042880/18042880/0, res+swap = 13918208/13918208/0
+Memory pressure relief: Total: res = 18042880/18042880/0, res+swap = 13922304/13922304/0
+Memory pressure relief: Total: res = 18042880/18042880/0, res+swap = 13930496/13930496/0
+Memory pressure relief: Total: res = 18026496/18026496/0, res+swap = 13922304/13922304/0
+2283:M 23 Jun 2019 01:15:01.070 * 1 changes in 3600 seconds. Saving...
+2283:M 23 Jun 2019 01:15:01.070 * Background saving started by pid 10599
+10599:C 23 Jun 2019 01:15:01.335 * DB saved on disk
+10599:C 23 Jun 2019 01:15:01.336 * RDB: 0 MB of memory used by copy-on-write
+2283:M 23 Jun 2019 01:15:01.371 * Background saving terminated with success
+Memory pressure relief: Total: res = 18329600/18292736/-36864, res+swap = 14176256/14176256/0
+Memory pressure relief: Total: res = 18132992/18132992/0, res+swap = 13983744/13983744/0
+Memory pressure relief: Total: res = 18071552/18071552/0, res+swap = 13926400/13926400/0
+Memory pressure relief: Total: res = 18071552/18071552/0, res+swap = 13930496/13930496/0
+Memory pressure relief: Total: res = 18059264/18059264/0, res+swap = 13922304/13922304/0
+Memory pressure relief: Total: res = 18059264/18059264/0, res+swap = 13930496/13930496/0
+Memory pressure relief: Total: res = 18059264/18059264/0, res+swap = 13934592/13934592/0
+Memory pressure relief: Total: res = 18055168/18055168/0, res+swap = 13938688/13938688/0
+Memory pressure relief: Total: res = 18038784/18038784/0, res+swap = 13926400/13926400/0
+Memory pressure relief: Total: res = 18481152/18468864/-12288, res+swap = 14327808/14327808/0
+Memory pressure relief: Total: res = 18087936/18087936/0, res+swap = 13938688/13938688/0
+Memory pressure relief: Total: res = 18087936/18087936/0, res+swap = 13946880/13946880/0
+Memory pressure relief: Total: res = 18071552/18071552/0, res+swap = 13934592/13934592/0
+Memory pressure relief: Total: res = 18071552/18071552/0, res+swap = 13938688/13938688/0
+Memory pressure relief: Total: res = 18071552/18071552/0, res+swap = 13946880/13946880/0
+Memory pressure relief: Total: res = 18055168/18055168/0, res+swap = 13934592/13934592/0
+Memory pressure relief: Total: res = 18051072/18051072/0, res+swap = 13938688/13938688/0
+Memory pressure relief: Total: res = 18051072/18051072/0, res+swap = 13942784/13942784/0
+Memory pressure relief: Total: res = 18042880/18042880/0, res+swap = 13938688/13938688/0
+Memory pressure relief: Total: res = 18042880/18042880/0, res+swap = 13946880/13946880/0
+Memory pressure relief: Total: res = 18030592/18030592/0, res+swap = 13942784/13942784/0
+Memory pressure relief: Total: res = 18022400/18022400/0, res+swap = 13934592/13934592/0
+Memory pressure relief: Total: res = 18022400/18022400/0, res+swap = 13942784/13942784/0
+Memory pressure relief: Total: res = 18014208/18014208/0, res+swap = 13942784/13942784/0
+Memory pressure relief: Total: res = 18006016/18006016/0, res+swap = 13934592/13934592/0
+Memory pressure relief: Total: res = 18006016/18006016/0, res+swap = 13942784/13942784/0
+Memory pressure relief: Total: res = 18006016/18006016/0, res+swap = 13950976/13950976/0
+Memory pressure relief: Total: res = 17989632/17989632/0, res+swap = 13938688/13938688/0
+Memory pressure relief: Total: res = 17989632/17989632/0, res+swap = 13942784/13942784/0
+Memory pressure relief: Total: res = 17989632/17989632/0, res+swap = 13950976/13950976/0
+Memory pressure relief: Total: res = 17973248/17973248/0, res+swap = 13938688/13938688/0
+Memory pressure relief: Total: res = 17973248/17670144/-303104, res+swap = 13946880/13946880/0
+Memory pressure relief: Total: res = 17608704/17604608/-4096, res+swap = 13582336/13582336/0
+Memory pressure relief: Total: res = 17600512/17604608/4096, res+swap = 13578240/13578240/0
+Memory pressure relief: Total: res = 17604608/17604608/0, res+swap = 13578240/13578240/0
+Memory pressure relief: Total: res = 17600512/17600512/0, res+swap = 13574144/13574144/0
+Memory pressure relief: Total: res = 17588224/17592320/4096, res+swap = 13565952/13565952/0
+Memory pressure relief: Total: res = 17592320/17592320/0, res+swap = 13570048/13570048/0
+Memory pressure relief: Total: res = 17592320/17592320/0, res+swap = 13570048/13570048/0
+Memory pressure relief: Total: res = 17588224/17592320/4096, res+swap = 13574144/13574144/0
+Memory pressure relief: Total: res = 17588224/17588224/0, res+swap = 13570048/13570048/0
+[13177:13177:0623/021354.220835:ERROR:sandbox_linux.cc(364)] InitializeSandbox() called with multiple threads in process gpu-process.
+正在现有的浏览器会话中打开。
+Memory pressure relief: Total: res = 17588224/17588224/0, res+swap = 13574144/13574144/0
+Memory pressure relief: Total: res = 17580032/17580032/0, res+swap = 13570048/13570048/0
+Memory pressure relief: Total: res = 17969152/17891328/-77824, res+swap = 13824000/13824000/0
+
+(Eclipse:2361): Gtk-WARNING **: 02:15:07.390: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 02:15:07.390: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 02:15:07.390: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 02:15:07.391: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+Memory pressure relief: Total: res = 18333696/18337792/4096, res+swap = 14196736/14196736/0
+[13432:13432:0623/021557.143296:ERROR:sandbox_linux.cc(364)] InitializeSandbox() called with multiple threads in process gpu-process.
+正在现有的浏览器会话中打开。
+Memory pressure relief: Total: res = 17928192/17928192/0, res+swap = 13783040/13783040/0
+Memory pressure relief: Total: res = 17928192/17780736/-147456, res+swap = 13787136/13787136/0
+Memory pressure relief: Total: res = 17764352/17768448/4096, res+swap = 13627392/13627392/0
+Memory pressure relief: Total: res = 17768448/17768448/0, res+swap = 13627392/13627392/0
+Memory pressure relief: Total: res = 17768448/17768448/0, res+swap = 13627392/13627392/0
+Memory pressure relief: Total: res = 17760256/17764352/4096, res+swap = 13623296/13623296/0
+Memory pressure relief: Total: res = 17764352/17764352/0, res+swap = 13627392/13627392/0
+Memory pressure relief: Total: res = 17764352/17764352/0, res+swap = 13631488/13631488/0
+Memory pressure relief: Total: res = 17760256/17760256/0, res+swap = 13627392/13627392/0
+Memory pressure relief: Total: res = 17760256/17760256/0, res+swap = 13635584/13635584/0
+Memory pressure relief: Total: res = 17760256/17760256/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17756160/17756160/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17756160/17756160/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17756160/17756160/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17739776/17739776/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17739776/17739776/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17723392/17723392/0, res+swap = 13631488/13631488/0
+Memory pressure relief: Total: res = 17723392/17727488/4096, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17727488/17727488/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17727488/17727488/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17711104/17711104/0, res+swap = 13635584/13635584/0
+Memory pressure relief: Total: res = 17711104/17711104/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17711104/17711104/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17698816/17698816/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17698816/17698816/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17698816/17698816/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17686528/17686528/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17686528/17686528/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17682432/17682432/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17674240/17674240/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17670144/17670144/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17670144/17670144/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17661952/17661952/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17661952/17661952/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17661952/17661952/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17641472/17641472/0, res+swap = 13635584/13635584/0
+Memory pressure relief: Total: res = 17641472/17641472/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17633280/17633280/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17625088/17625088/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17625088/17625088/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17625088/17625088/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17608704/17608704/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17608704/17608704/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17608704/17608704/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17592320/17592320/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17592320/17592320/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17592320/17592320/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17575936/17575936/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17575936/17575936/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17575936/17575936/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17555456/17555456/0, res+swap = 13635584/13635584/0
+Memory pressure relief: Total: res = 17555456/17555456/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17555456/17555456/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17547264/17547264/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17543168/17543168/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17543168/17543168/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17530880/17530880/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17530880/17530880/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17784832/17784832/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17780736/17780736/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17772544/17772544/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17772544/17772544/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17764352/17764352/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17764352/17764352/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17764352/17764352/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17752064/17752064/0, res+swap = 13647872/13647872/0
+: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+Memory pressure relief: Total: res = 17752064/17752064/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17752064/17752064/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17735680/17735680/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17735680/17735680/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17735680/17735680/0, res+swap = 13660160/13660160/0
+Memory pressure relief: Total: res = 17715200/17715200/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17711104/17711104/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17711104/17711104/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17694720/17694720/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17694720/17694720/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17694720/17694720/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17678336/17678336/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17678336/17678336/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17670144/17670144/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17661952/17661952/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17661952/17661952/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17661952/17661952/0, res+swap = 13660160/13660160/0
+Memory pressure relief: Total: res = 17641472/17641472/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17641472/17641472/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17641472/17641472/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17625088/17625088/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17625088/17625088/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17625088/17625088/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17608704/17608704/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17608704/17608704/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17608704/17608704/0, res+swap = 13664256/13664256/0
+Memory pressure relief: Total: res = 17584128/17584128/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17580032/17580032/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17580032/17580032/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17567744/17567744/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17567744/17567744/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17567744/17567744/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17551360/17551360/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17551360/17551360/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17539072/17539072/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17530880/17530880/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17530880/17530880/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17801216/17801216/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17784832/17784832/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17784832/17784832/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17772544/17772544/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17768448/17768448/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17768448/17768448/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17768448/17768448/0, res+swap = 13660160/13660160/0
+Memory pressure relief: Total: res = 17747968/17747968/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17747968/17747968/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17747968/17747968/0, res+swap = 13660160/13660160/0
+Memory pressure relief: Total: res = 17727488/17727488/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17727488/17727488/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17727488/17727488/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17711104/17711104/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17711104/17711104/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17711104/17711104/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17690624/17690624/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17690624/17690624/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17682432/17682432/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17682432/17682432/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17682432/17682432/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17682432/17682432/0, res+swap = 13660160/13660160/0
+Memory pressure relief: Total: res = 17666048/17666048/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17666048/17666048/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17666048/17666048/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17653760/17653760/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17653760/17653760/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17653760/17653760/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17641472/17641472/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17633280/17633280/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17633280/17633280/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17616896/17616896/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17612800/17612800/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17612800/17612800/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17600512/17600512/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17600512/17600512/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17600512/17600512/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17584128/17584128/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17584128/17584128/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17567744/17567744/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17563648/17563648/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17563648/17563648/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17563648/17563648/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17547264/17547264/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17547264/17547264/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17547264/17547264/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17530880/17530880/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17801216/17801216/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17801216/17801216/0, res+swap = 13660160/13660160/0
+Memory pressure relief: Total: res = 17784832/17784832/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17784832/17784832/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17784832/17784832/0, res+swap = 13660160/13660160/0
+Memory pressure relief: Total: res = 17764352/17764352/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17760256/17760256/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17760256/17760256/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17747968/17747968/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17747968/17747968/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17747968/17747968/0, res+swap = 13660160/13660160/0
+Memory pressure relief: Total: res = 17727488/17727488/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17727488/17727488/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17719296/17719296/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17711104/17711104/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17711104/17711104/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17711104/17711104/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17694720/17694720/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17694720/17694720/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17694720/17694720/0, res+swap = 13660160/13660160/0
+Memory pressure relief: Total: res = 17674240/17674240/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17674240/17674240/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17674240/17674240/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17661952/17661952/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17661952/17661952/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17661952/17661952/0, res+swap = 13660160/13660160/0
+Memory pressure relief: Total: res = 17641472/17641472/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17637376/17637376/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17637376/17637376/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17620992/17620992/0, res+swap = 13639680/13639680/0
+Memory pressure relief: Total: res = 17620992/17620992/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17620992/17620992/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17604608/17604608/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17604608/17604608/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17596416/17596416/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17584128/17584128/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17584128/17584128/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17584128/17584128/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17567744/17567744/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17567744/17567744/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17567744/17567744/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17559552/17559552/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17559552/17559552/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17559552/17559552/0, res+swap = 13660160/13660160/0
+Memory pressure relief: Total: res = 17543168/17543168/0, res+swap = 13647872/13647872/0
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+Memory pressure relief: Total: res = 17543168/17543168/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17543168/17543168/0, res+swap = 13660160/13660160/0
+Memory pressure relief: Total: res = 17522688/17522688/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17784832/17788928/4096, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17788928/17788928/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17776640/17776640/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17776640/17776640/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17776640/17776640/0, res+swap = 13660160/13660160/0
+Memory pressure relief: Total: res = 17756160/17756160/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17747968/17747968/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17743872/17743872/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17739776/17739776/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17739776/17739776/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17739776/17739776/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17723392/17723392/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17715200/17715200/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17715200/17715200/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17702912/17702912/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17702912/17702912/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17702912/17702912/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17690624/17690624/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17690624/17690624/0, res+swap = 13651968/13651968/0
+Memory pressure relief: Total: res = 17690624/17690624/0, res+swap = 13660160/13660160/0
+Memory pressure relief: Total: res = 17670144/17670144/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17666048/17666048/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17666048/17666048/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17649664/17649664/0, res+swap = 13643776/13643776/0
+Memory pressure relief: Total: res = 17649664/17649664/0, res+swap = 13647872/13647872/0
+Memory pressure relief: Total: res = 17649664/17649664/0, res+swap = 13656064/13656064/0
+Memory pressure relief: Total: res = 17633280/17633280/0, res+swap = 13647872/13647872/0
