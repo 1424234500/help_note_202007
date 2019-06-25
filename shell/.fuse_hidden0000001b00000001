@@ -9262,3 +9262,1011 @@ Memory pressure relief: Total: res = 18038784/18038784/0, res+swap = 14123008/14
 Memory pressure relief: Total: res = 18022400/18022400/0, res+swap = 14106624/14106624/0
 Memory pressure relief: Total: res = 18022400/18022400/0, res+swap = 14114816/14114816/0
 Memory pressure relief: Total: res = 18014208/18014208/0, res+swap = 14110720/14110720/0
+Memory pressure relief: Total: res = 18006016/18006016/0, res+swap = 14110720/14110720/0
+Memory pressure relief: Total: res = 18006016/18006016/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18006016/18006016/0, res+swap = 14123008/14123008/0
+Memory pressure relief: Total: res = 17993728/17993728/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 17993728/17993728/0, res+swap = 14118912/14118912/0
+Memory pressure relief: Total: res = 17993728/17993728/0, res+swap = 14123008/14123008/0
+Memory pressure relief: Total: res = 18247680/18247680/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18239488/18239488/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18231296/18231296/0, res+swap = 14106624/14106624/0
+Memory pressure relief: Total: res = 18227200/18231296/4096, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18231296/18231296/0, res+swap = 14127104/14127104/0
+Memory pressure relief: Total: res = 18231296/18231296/0, res+swap = 14127104/14127104/0
+Memory pressure relief: Total: res = 18219008/18219008/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18219008/18219008/0, res+swap = 14123008/14123008/0
+Memory pressure relief: Total: res = 18202624/18202624/0, res+swap = 14110720/14110720/0
+Memory pressure relief: Total: res = 18198528/18198528/0, res+swap = 14110720/14110720/0
+Memory pressure relief: Total: res = 18198528/18198528/0, res+swap = 14118912/14118912/0
+Memory pressure relief: Total: res = 18198528/18198528/0, res+swap = 14123008/14123008/0
+Memory pressure relief: Total: res = 18182144/18182144/0, res+swap = 14110720/14110720/0
+Memory pressure relief: Total: res = 18182144/18182144/0, res+swap = 14123008/14123008/0
+Memory pressure relief: Total: res = 18182144/18182144/0, res+swap = 14127104/14127104/0
+Memory pressure relief: Total: res = 18161664/18161664/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18161664/18161664/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18161664/18161664/0, res+swap = 14123008/14123008/0
+Memory pressure relief: Total: res = 18141184/18141184/0, res+swap = 14110720/14110720/0
+Memory pressure relief: Total: res = 18137088/18137088/0, res+swap = 14106624/14106624/0
+Memory pressure relief: Total: res = 18137088/18137088/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18128896/18128896/0, res+swap = 14118912/14118912/0
+Memory pressure relief: Total: res = 18116608/18116608/0, res+swap = 14110720/14110720/0
+Memory pressure relief: Total: res = 18116608/18116608/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18108416/18108416/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18100224/18100224/0, res+swap = 14110720/14110720/0
+Memory pressure relief: Total: res = 18100224/18100224/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18096128/18096128/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18096128/18096128/0, res+swap = 14118912/14118912/0
+Memory pressure relief: Total: res = 18083840/18083840/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18079744/18079744/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18079744/18079744/0, res+swap = 14118912/14118912/0
+Memory pressure relief: Total: res = 18079744/18079744/0, res+swap = 14127104/14127104/0
+Memory pressure relief: Total: res = 18059264/18059264/0, res+swap = 14110720/14110720/0
+Memory pressure relief: Total: res = 18059264/18059264/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18059264/18059264/0, res+swap = 14123008/14123008/0
+Memory pressure relief: Total: res = 18042880/18042880/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18042880/18042880/0, res+swap = 14114816/14114816/0
+Memory pressure relief: Total: res = 18042880/18042880/0, res+swap = 14127104/14127104/0
+
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+    self.actionGroup1.set_sensitive(self.window.get_active_document() != None)
+AttributeError: 'MarkdownPreviewPlugin' object has no attribute 'actionGroup1'
+Traceback (most recent call last):
+  File "/home/walker/.local/share/gedit/plugins/markdown-preview/__init__.py", line 128, in do_update_state
+Memory pressure relief: Total: res = 17977344/17977344/0, res+swap = 14082048/14082048/0
+Memory pressure relief: Total: res = 17977344/17977344/0, res+swap = 14082048/14082048/0
+Memory pressure relief: Total: res = 17977344/17977344/0, res+swap = 14086144/14086144/0
+Memory pressure relief: Total: res = 17965056/17965056/0, res+swap = 14077952/14077952/0
+Memory pressure relief: Total: res = 17960960/17960960/0, res+swap = 14082048/14082048/0
+Memory pressure relief: Total: res = 17960960/17960960/0, res+swap = 14086144/14086144/0
+Memory pressure relief: Total: res = 17948672/17948672/0, res+swap = 14077952/14077952/0
+Memory pressure relief: Total: res = 17948672/17948672/0, res+swap = 14086144/14086144/0
+Memory pressure relief: Total: res = 17948672/17948672/0, res+swap = 14094336/14094336/0
+Memory pressure relief: Total: res = 18198528/18198528/0, res+swap = 14082048/14082048/0
+Memory pressure relief: Total: res = 18190336/18190336/0, res+swap = 14077952/14077952/0
+Memory pressure relief: Total: res = 18186240/18186240/0, res+swap = 14077952/14077952/0
+Memory pressure relief: Total: res = 18182144/18182144/0, res+swap = 14082048/14082048/0
+Memory pressure relief: Total: res = 18182144/18182144/0, res+swap = 14082048/14082048/0
+Memory pressure relief: Total: res = 18182144/18182144/0, res+swap = 14090240/14090240/0
+Memory pressure relief: Total: res = 18739200/18726912/-12288, res+swap = 14614528/14614528/0
+Memory pressure relief: Total: res = 18296832/18296832/0, res+swap = 14180352/14180352/0
+Memory pressure relief: Total: res = 18296832/18296832/0, res+swap = 14188544/14188544/0
+Memory pressure relief: Total: res = 18583552/18558976/-24576, res+swap = 14467072/14467072/0
+
+(Eclipse:2361): Gtk-WARNING **: 10:02:33.231: Negative content width -12 (allocation 1, extents 6x7) while allocating gadget (node button, owner GtkButton)
+
+(Eclipse:2361): Gtk-WARNING **: 10:02:33.231: Negative content height -10 (allocation 1, extents 5x6) while allocating gadget (node button, owner GtkButton)
+
+(Eclipse:2361): Gtk-WARNING **: 10:02:33.232: Negative content width -11 (allocation 1, extents 6x6) while allocating gadget (node button, owner GtkButton)
+
+(Eclipse:2361): Gtk-WARNING **: 10:02:33.232: Negative content height -10 (allocation 1, extents 5x6) while allocating gadget (node button, owner GtkButton)
+*** BUG ***
+In pixman_region32_init_rect: Invalid rectangle passed
+Set a breakpoint on '_pixman_log_error' to debug
+
+*** BUG ***
+In pixman_region32_init_rect: Invalid rectangle passed
+Set a breakpoint on '_pixman_log_error' to debug
+
+
+(Eclipse:2361): Gtk-WARNING **: 10:02:33.235: gtk_widget_size_allocate(): attempt to allocate widget with width 12 and height -13
+
+(Eclipse:2361): Gtk-CRITICAL **: 10:02:33.235: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkScrollbar
+*** BUG ***
+In pixman_region32_init_rect: Invalid rectangle passed
+Set a breakpoint on '_pixman_log_error' to debug
+
+*** BUG ***
+In pixman_region32_init_rect: Invalid rectangle passed
+Set a breakpoint on '_pixman_log_error' to debug
+
+*** BUG ***
+In pixman_region32_init_rect: Invalid rectangle passed
+Set a breakpoint on '_pixman_log_error' to debug
+
+Memory pressure relief: Total: res = 18743296/18735104/-8192, res+swap = 14622720/14622720/0
+Memory pressure relief: Total: res = 18329600/18329600/0, res+swap = 14213120/14213120/0
+Memory pressure relief: Total: res = 18321408/18325504/4096, res+swap = 14213120/14213120/0
+Memory pressure relief: Total: res = 18325504/18325504/0, res+swap = 14217216/14217216/0
+Memory pressure relief: Total: res = 18325504/18325504/0, res+swap = 14225408/14225408/0
+Memory pressure relief: Total: res = 18309120/18309120/0, res+swap = 14217216/14217216/0
+Memory pressure relief: Total: res = 18739200/18710528/-28672, res+swap = 14614528/14614528/0
+Memory pressure relief: Total: res = 18776064/18755584/-20480, res+swap = 14651392/14651392/0
+Memory pressure relief: Total: res = 18690048/18665472/-24576, res+swap = 14573568/14573568/0
+Memory pressure relief: Total: res = 18546688/18530304/-16384, res+swap = 14422016/14422016/0
+Memory pressure relief: Total: res = 18771968/18751488/-20480, res+swap = 14659584/14659584/0
+Memory pressure relief: Total: res = 18800640/18784256/-16384, res+swap = 14708736/14708736/0
+Memory pressure relief: Total: res = 18829312/18800640/-28672, res+swap = 14704640/14704640/0
+Memory pressure relief: Total: res = 18485248/18485248/0, res+swap = 14368768/14368768/0
+Memory pressure relief: Total: res = 18468864/18468864/0, res+swap = 14356480/14356480/0
+Memory pressure relief: Total: res = 18468864/18468864/0, res+swap = 14356480/14356480/0
+Memory pressure relief: Total: res = 18444288/18444288/0, res+swap = 14340096/14340096/0
+Memory pressure relief: Total: res = 18681856/18653184/-28672, res+swap = 14557184/14557184/0
+Memory pressure relief: Total: res = 18493440/18493440/0, res+swap = 14368768/14368768/0
+Memory pressure relief: Total: res = 18432000/18436096/4096, res+swap = 14319616/14319616/0
+Memory pressure relief: Total: res = 18636800/18616320/-20480, res+swap = 14516224/14516224/0
+Memory pressure relief: Total: res = 18415616/18231296/-184320, res+swap = 14295040/14295040/0
+Memory pressure relief: Total: res = 19005440/18792448/-212992, res+swap = 14893056/14893056/0
+Memory pressure relief: Total: res = 18812928/18763776/-49152, res+swap = 14692352/14692352/0
+Memory pressure relief: Total: res = 18911232/18821120/-90112, res+swap = 14786560/14786560/0
+Memory pressure relief: Total: res = 19038208/18907136/-131072, res+swap = 14921728/14921728/0
+Memory pressure relief: Total: res = 18980864/18821120/-159744, res+swap = 14856192/14856192/0
+Memory pressure relief: Total: res = 18501632/18427904/-73728, res+swap = 14376960/14376960/0
+Memory pressure relief: Total: res = 18325504/18325504/0, res+swap = 14200832/14200832/0
+Memory pressure relief: Total: res = 19050496/18857984/-192512, res+swap = 14925824/14925824/0
+Memory pressure relief: Total: res = 18862080/18849792/-12288, res+swap = 14737408/14737408/0
+[11945:11945:0625/101926.671038:ERROR:sandbox_linux.cc(364)] InitializeSandbox() called with multiple threads in process gpu-process.
+Memory pressure relief: Total: res = 18460672/18366464/-94208, res+swap = 14336000/14336000/0
+正在现有的浏览器会话中打开。
+Memory pressure relief: Total: res = 18358272/18362368/4096, res+swap = 14233600/14233600/0
+Memory pressure relief: Total: res = 18354176/18362368/8192, res+swap = 14233600/14233600/0
+Memory pressure relief: Total: res = 18354176/18362368/8192, res+swap = 14233600/14233600/0
+Memory pressure relief: Total: res = 18354176/18362368/8192, res+swap = 14233600/14233600/0
+Memory pressure relief: Total: res = 18354176/18362368/8192, res+swap = 14233600/14233600/0
+Memory pressure relief: Total: res = 18350080/18354176/4096, res+swap = 14229504/14229504/0
+Memory pressure relief: Total: res = 18350080/18362368/12288, res+swap = 14229504/14229504/0
+[12462:12462:0625/102355.052888:ERROR:sandbox_linux.cc(364)] InitializeSandbox() called with multiple threads in process gpu-process.
+正在现有的浏览器会话中打开。
+Memory pressure relief: Total: res = 18354176/18358272/4096, res+swap = 14233600/14233600/0
+Memory pressure relief: Total: res = 18358272/18358272/0, res+swap = 14233600/14233600/0
+Memory pressure relief: Total: res = 18358272/18358272/0, res+swap = 14233600/14233600/0
+Memory pressure relief: Total: res = 18354176/18358272/4096, res+swap = 14233600/14233600/0
+Memory pressure relief: Total: res = 18358272/18358272/0, res+swap = 14233600/14233600/0
+Memory pressure relief: Total: res = 18358272/18358272/0, res+swap = 14233600/14233600/0
+Memory pressure relief: Total: res = 18354176/18358272/4096, res+swap = 14233600/14233600/0
+
+(Eclipse:2361): Gtk-WARNING **: 10:35:24.855: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 10:35:24.855: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 10:35:24.855: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 10:35:24.855: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+[13775:13775:0625/110222.548512:ERROR:sandbox_linux.cc(364)] InitializeSandbox() called with multiple threads in process gpu-process.
+正在现有的浏览器会话中打开。
+Memory pressure relief: Total: res = 19951616/19554304/-397312, res+swap = 15826944/15826944/0
+Memory pressure relief: Total: res = 19308544/19308544/0, res+swap = 15187968/15187968/0
+Memory pressure relief: Total: res = 19308544/19308544/0, res+swap = 15192064/15192064/0
+Memory pressure relief: Total: res = 19214336/19214336/0, res+swap = 15101952/15101952/0
+Memory pressure relief: Total: res = 19210240/19210240/0, res+swap = 15106048/15106048/0
+Memory pressure relief: Total: res = 19206144/19206144/0, res+swap = 15110144/15110144/0
+Memory pressure relief: Total: res = 19193856/19193856/0, res+swap = 15097856/15097856/0
+Memory pressure relief: Total: res = 19193856/19193856/0, res+swap = 15106048/15106048/0
+Memory pressure relief: Total: res = 19189760/19189760/0, res+swap = 15110144/15110144/0
+Memory pressure relief: Total: res = 19177472/19177472/0, res+swap = 15097856/15097856/0
+Memory pressure relief: Total: res = 19177472/19177472/0, res+swap = 15106048/15106048/0
+Memory pressure relief: Total: res = 19165184/19165184/0, res+swap = 15101952/15101952/0
+Memory pressure relief: Total: res = 19161088/19161088/0, res+swap = 15101952/15101952/0
+Memory pressure relief: Total: res = 19161088/19161088/0, res+swap = 15106048/15106048/0
+Memory pressure relief: Total: res = 19161088/19161088/0, res+swap = 15110144/15110144/0
+Memory pressure relief: Total: res = 19148800/19148800/0, res+swap = 15101952/15101952/0
+Memory pressure relief: Total: res = 19148800/19148800/0, res+swap = 15110144/15110144/0
+Memory pressure relief: Total: res = 19144704/19144704/0, res+swap = 15110144/15110144/0
+Memory pressure relief: Total: res = 19132416/19132416/0, res+swap = 15101952/15101952/0
+Memory pressure relief: Total: res = 19132416/19132416/0, res+swap = 15110144/15110144/0
+Memory pressure relief: Total: res = 19128320/19128320/0, res+swap = 15114240/15114240/0
+Memory pressure relief: Total: res = 19111936/19111936/0, res+swap = 15097856/15097856/0
+Memory pressure relief: Total: res = 19111936/19111936/0, res+swap = 15106048/15106048/0
+Memory pressure relief: Total: res = 19107840/19107840/0, res+swap = 15110144/15110144/0
+Memory pressure relief: Total: res = 19095552/19095552/0, res+swap = 15101952/15101952/0
+Memory pressure relief: Total: res = 19091456/19091456/0, res+swap = 15101952/15101952/0
+Memory pressure relief: Total: res = 19087360/19087360/0, res+swap = 15106048/15106048/0
+Memory pressure relief: Total: res = 19079168/19079168/0, res+swap = 15101952/15101952/0
+Memory pressure relief: Total: res = 19079168/19079168/0, res+swap = 15106048/15106048/0
+Memory pressure relief: Total: res = 19075072/19075072/0, res+swap = 15110144/15110144/0
+Memory pressure relief: Total: res = 19062784/19062784/0, res+swap = 15101952/15101952/0
+Memory pressure relief: Total: res = 19058688/19058688/0, res+swap = 15106048/15106048/0
+Memory pressure relief: Total: res = 19046400/19046400/0, res+swap = 15097856/15097856/0
+Memory pressure relief: Total: res = 19046400/19046400/0, res+swap = 15101952/15101952/0
+Memory pressure relief: Total: res = 19046400/19046400/0, res+swap = 15110144/15110144/0
+Memory pressure relief: Total: res = 19042304/19042304/0, res+swap = 15110144/15110144/0
+Memory pressure relief: Total: res = 19025920/19025920/0, res+swap = 15097856/15097856/0
+Memory pressure relief: Total: res = 12357632/12357632/0, res+swap = 12177408/12177408/0
+Memory pressure relief: Total: res = 12353536/12353536/0, res+swap = 12181504/12181504/0
+Memory pressure relief: Total: res = 12341248/12341248/0, res+swap = 12169216/12169216/0
+Memory pressure relief: Total: res = 12341248/12341248/0, res+swap = 12177408/12177408/0
+Memory pressure relief: Total: res = 12279808/10481664/-1798144, res+swap = 12128256/12128256/0
+Memory pressure relief: Total: res = 8314880/8314880/0, res+swap = 8159232/8159232/0
+Memory pressure relief: Total: res = 8314880/8314880/0, res+swap = 8159232/8159232/0
+Memory pressure relief: Total: res = 8941568/8921088/-20480, res+swap = 8564736/8564736/0
+Memory pressure relief: Total: res = 8757248/8757248/0, res+swap = 8376320/8376320/0
+Memory pressure relief: Total: res = 8757248/8757248/0, res+swap = 8376320/8376320/0
+Memory pressure relief: Total: res = 8667136/8667136/0, res+swap = 8290304/8290304/0
+Memory pressure relief: Total: res = 8667136/8667136/0, res+swap = 8298496/8298496/0
+Memory pressure relief: Total: res = 8667136/8667136/0, res+swap = 8302592/8302592/0
+Memory pressure relief: Total: res = 8650752/8650752/0, res+swap = 8290304/8290304/0
+Memory pressure relief: Total: res = 8650752/8650752/0, res+swap = 8298496/8298496/0
+Memory pressure relief: Total: res = 8650752/8650752/0, res+swap = 8302592/8302592/0
+Memory pressure relief: Total: res = 8650752/8650752/0, res+swap = 8302592/8302592/0
+Memory pressure relief: Total: res = 8638464/8638464/0, res+swap = 8298496/8298496/0
+Memory pressure relief: Total: res = 8638464/8638464/0, res+swap = 8306688/8306688/0
+Memory pressure relief: Total: res = 8634368/8634368/0, res+swap = 8302592/8302592/0
+Memory pressure relief: Total: res = 8626176/8626176/0, res+swap = 8298496/8298496/0
+Memory pressure relief: Total: res = 8626176/8626176/0, res+swap = 8302592/8302592/0
+Memory pressure relief: Total: res = 8622080/8622080/0, res+swap = 8302592/8302592/0
+Memory pressure relief: Total: res = 8609792/8609792/0, res+swap = 8298496/8298496/0
+Memory pressure relief: Total: res = 8556544/8581120/24576, res+swap = 8273920/8273920/0
+Memory pressure relief: Total: res = 8577024/8577024/0, res+swap = 8282112/8282112/0
+Memory pressure relief: Total: res = 8572928/8572928/0, res+swap = 8282112/8282112/0
+Memory pressure relief: Total: res = 8568832/8568832/0, res+swap = 8278016/8278016/0
+Memory pressure relief: Total: res = 8568832/8568832/0, res+swap = 8282112/8282112/0
+Memory pressure relief: Total: res = 8564736/8564736/0, res+swap = 8282112/8282112/0
+Memory pressure relief: Total: res = 8564736/8564736/0, res+swap = 8286208/8286208/0
+Memory pressure relief: Total: res = 8548352/8548352/0, res+swap = 8273920/8273920/0
+Memory pressure relief: Total: res = 8548352/8548352/0, res+swap = 8282112/8282112/0
+Memory pressure relief: Total: res = 8548352/8548352/0, res+swap = 8290304/8290304/0
+Memory pressure relief: Total: res = 8544256/8544256/0, res+swap = 8286208/8286208/0
+Memory pressure relief: Total: res = 8544256/8544256/0, res+swap = 8290304/8290304/0
+Memory pressure relief: Total: res = 8536064/8536064/0, res+swap = 8290304/8290304/0
+Memory pressure relief: Total: res = 8531968/8544256/12288, res+swap = 8302592/8302592/0
+Memory pressure relief: Total: res = 8536064/8536064/0, res+swap = 8298496/8298496/0
+Memory pressure relief: Total: res = 8536064/8536064/0, res+swap = 8306688/8306688/0
+Memory pressure relief: Total: res = 8531968/8531968/0, res+swap = 8306688/8306688/0
+Memory pressure relief: Total: res = 8523776/8523776/0, res+swap = 8298496/8298496/0
+Memory pressure relief: Total: res = 8523776/8523776/0, res+swap = 8306688/8306688/0
+Memory pressure relief: Total: res = 9150464/9142272/-8192, res+swap = 8777728/8777728/0
+Memory pressure relief: Total: res = 8671232/8671232/0, res+swap = 8298496/8298496/0
+Memory pressure relief: Total: res = 8667136/8667136/0, res+swap = 8302592/8302592/0
+Memory pressure relief: Total: res = 8757248/8744960/-12288, res+swap = 8384512/8384512/0
+
+(Eclipse:2361): Gtk-WARNING **: 13:29:14.033: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 13:29:14.075: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 13:29:14.084: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:2361): Gtk-WARNING **: 13:29:14.111: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+Memory pressure relief: Total: res = 9080832/9076736/-4096, res+swap = 8720384/8720384/0
+
+** (gedit:2272): WARNING **: 13:29:27.615: Error querying file info: Error when getting information for file “/home/walker/.gitconfig.lock”: 没有那个文件或目录
+Memory pressure relief: Total: res = 8441856/8208384/-233472, res+swap = 8085504/8085504/0
+Memory pressure relief: Total: res = 8192000/8183808/-8192, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8179712/8183808/4096, res+swap = 7827456/7827456/0
+Memory pressure relief: Total: res = 8183808/8183808/0, res+swap = 7827456/7827456/0
+Memory pressure relief: Total: res = 8175616/8179712/4096, res+swap = 7823360/7823360/0
+Memory pressure relief: Total: res = 8175616/8179712/4096, res+swap = 7823360/7823360/0
+Memory pressure relief: Total: res = 8179712/8179712/0, res+swap = 7823360/7823360/0
+Memory pressure relief: Total: res = 8179712/8179712/0, res+swap = 7823360/7823360/0
+Memory pressure relief: Total: res = 8175616/8179712/4096, res+swap = 7823360/7823360/0
+Memory pressure relief: Total: res = 8179712/8179712/0, res+swap = 7823360/7823360/0
+Memory pressure relief: Total: res = 8179712/8179712/0, res+swap = 7827456/7827456/0
+Memory pressure relief: Total: res = 8175616/8179712/4096, res+swap = 7831552/7831552/0
+Memory pressure relief: Total: res = 8175616/8175616/0, res+swap = 7831552/7831552/0
+Memory pressure relief: Total: res = 8175616/8175616/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8171520/8171520/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8171520/8171520/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8171520/8171520/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8155136/8155136/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8155136/8155136/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8138752/8138752/0, res+swap = 7831552/7831552/0
+Memory pressure relief: Total: res = 8138752/8142848/4096, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8142848/8142848/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8142848/8142848/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8122368/8122368/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8122368/8122368/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8122368/8122368/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8105984/8105984/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8105984/8105984/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8105984/8105984/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8089600/8089600/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8089600/8089600/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8089600/8089600/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8073216/8073216/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8065024/8065024/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8065024/8065024/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8056832/8056832/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8056832/8056832/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8056832/8056832/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8044544/8044544/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8044544/8044544/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8028160/8028160/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8024064/8024064/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8024064/8024064/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8024064/8024064/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8007680/8007680/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8007680/8007680/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8007680/8007680/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 7991296/7991296/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 7991296/7991296/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 7991296/7991296/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 7974912/7974912/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 7974912/7974912/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 7974912/7974912/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 7954432/7954432/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 7950336/7950336/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 7950336/7950336/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8204288/8204288/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8204288/8204288/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8204288/8204288/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8192000/8192000/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8192000/8192000/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8183808/8183808/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8179712/8179712/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8179712/8179712/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8179712/8179712/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8163328/8163328/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8163328/8163328/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8163328/8163328/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8151040/8151040/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8142848/8142848/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8142848/8142848/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8130560/8130560/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8130560/8130560/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8130560/8130560/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8114176/8114176/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8114176/8114176/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8114176/8114176/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8101888/8101888/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8101888/8101888/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8101888/8101888/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8085504/8085504/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8085504/8085504/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8065024/8065024/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8060928/8065024/4096, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8056832/8056832/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8056832/8056832/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8044544/8044544/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8044544/8044544/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8044544/8044544/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8028160/8028160/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8028160/8028160/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8028160/8028160/0, res+swap = 7856128/7856128/0
+Memory pressure relief: Total: res = 8007680/8007680/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8007680/8007680/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8007680/8007680/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 7991296/7991296/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 7983104/7983104/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 7983104/7983104/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 7974912/7974912/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 7974912/7974912/0, res+swap = 7856128/7856128/0
+Memory pressure relief: Total: res = 7974912/7974912/0, res+swap = 7860224/7860224/0
+Memory pressure relief: Total: res = 7950336/7950336/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 7950336/7950336/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8208384/8208384/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8204288/8204288/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8204288/8204288/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8204288/8204288/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8187904/8187904/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8187904/8187904/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8187904/8187904/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8171520/8171520/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8171520/8171520/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8171520/8171520/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8155136/8155136/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8155136/8155136/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8155136/8155136/0, res+swap = 7856128/7856128/0
+Memory pressure relief: Total: res = 8138752/8138752/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8130560/8130560/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8130560/8130560/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8118272/8118272/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8118272/8118272/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8118272/8118272/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8101888/8101888/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8101888/8101888/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8101888/8101888/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8089600/8089600/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8089600/8089600/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8089600/8089600/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8073216/8073216/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8073216/8073216/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8073216/8073216/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8056832/8056832/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8056832/8056832/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8044544/8044544/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8036352/8036352/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8036352/8036352/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8036352/8036352/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8019968/8019968/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8015872/8015872/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8015872/8015872/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8003584/8003584/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8003584/8003584/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8003584/8003584/0, res+swap = 7856128/7856128/0
+Memory pressure relief: Total: res = 7983104/7983104/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 7983104/7983104/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 7966720/7966720/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 7962624/7966720/4096, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 7966720/7966720/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 7966720/7966720/0, res+swap = 7856128/7856128/0
+Memory pressure relief: Total: res = 7946240/7946240/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8216576/8216576/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8216576/8216576/0, res+swap = 7856128/7856128/0
+Memory pressure relief: Total: res = 8196096/8196096/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8196096/8196096/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8196096/8196096/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8179712/8179712/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8179712/8179712/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8179712/8179712/0, res+swap = 7856128/7856128/0
+Memory pressure relief: Total: res = 8159232/8159232/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8151040/8151040/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8151040/8151040/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8142848/8142848/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8142848/8142848/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8142848/8142848/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8126464/8126464/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8126464/8126464/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8114176/8114176/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8101888/8101888/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8101888/8101888/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8097792/8097792/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8089600/8089600/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8089600/8089600/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8089600/8089600/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8073216/8073216/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8073216/8073216/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8073216/8073216/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8052736/8052736/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8052736/8052736/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8052736/8052736/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8036352/8036352/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8028160/8028160/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8028160/8028160/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8019968/8019968/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8019968/8019968/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8019968/8019968/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8003584/8003584/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 7995392/7995392/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 7991296/7991296/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 7983104/7983104/0, res+swap = 7831552/7831552/0
+Memory pressure relief: Total: res = 7983104/7983104/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 7983104/7983104/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 7966720/7966720/0, res+swap = 7831552/7831552/0
+Memory pressure relief: Total: res = 7966720/7966720/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 7966720/7966720/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 7946240/7946240/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 7946240/7946240/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8216576/8216576/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8200192/8200192/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8200192/8200192/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8200192/8200192/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8183808/8183808/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8175616/8175616/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8175616/8175616/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8163328/8163328/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8163328/8163328/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8163328/8163328/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8151040/8151040/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8151040/8151040/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8138752/8138752/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8130560/8130560/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8130560/8130560/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8130560/8130560/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8118272/8118272/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8118272/8118272/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8118272/8118272/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8105984/8105984/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8105984/8105984/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8105984/8105984/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 8089600/8089600/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8089600/8089600/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8089600/8089600/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8077312/8077312/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8069120/8069120/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8069120/8069120/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8069120/8069120/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8069120/8069120/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8069120/8069120/0, res+swap = 7860224/7860224/0
+Memory pressure relief: Total: res = 8040448/8040448/0, res+swap = 7831552/7831552/0
+Memory pressure relief: Total: res = 8040448/8040448/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8032256/8032256/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8024064/8024064/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8024064/8024064/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8024064/8024064/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8007680/8007680/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8007680/8007680/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8007680/8007680/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 7987200/7987200/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 7987200/7987200/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 7987200/7987200/0, res+swap = 7852032/7852032/0
+Memory pressure relief: Total: res = 7966720/7966720/0, res+swap = 7831552/7831552/0
+Memory pressure relief: Total: res = 7966720/7966720/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 7966720/7966720/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 7950336/7950336/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 7942144/7942144/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8212480/8212480/0, res+swap = 7843840/7843840/0
+Memory pressure relief: Total: res = 8200192/8200192/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 8200192/8200192/0, res+swap = 7839744/7839744/0
+Memory pressure relief: Total: res = 8200192/8200192/0, res+swap = 7847936/7847936/0
+Memory pressure relief: Total: res = 8183808/8183808/0, res+swap = 7835648/7835648/0
+Memory pressure relief: Total: res = 11247616/11223040/-24576, res+swap = 10616832/10616832/0
+Memory pressure relief: Total: res = 11223040/11223040/0, res+swap = 10596352/10596352/0
+Memory pressure relief: Total: res = 11223040/11223040/0, res+swap = 10596352/10596352/0
+Memory pressure relief: Total: res = 11223040/11223040/0, res+swap = 10604544/10604544/0
+Memory pressure relief: Total: res = 11223040/11223040/0, res+swap = 10612736/10612736/0
+Memory pressure relief: Total: res = 11202560/11202560/0, res+swap = 10596352/10596352/0
+Memory pressure relief: Total: res = 11202560/11202560/0, res+swap = 10604544/10604544/0
+Memory pressure relief: Total: res = 11202560/11202560/0, res+swap = 10612736/10612736/0
+Memory pressure relief: Total: res = 11186176/11186176/0, res+swap = 10596352/10596352/0
+Memory pressure relief: Total: res = 11186176/11186176/0, res+swap = 10604544/10604544/0
+Memory pressure relief: Total: res = 11186176/11186176/0, res+swap = 10608640/10608640/0
+Memory pressure relief: Total: res = 11075584/11075584/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11075584/11075584/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11067392/11067392/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11059200/11059200/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11051008/11051008/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11051008/11051008/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11046912/11046912/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11046912/11046912/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11046912/11046912/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11030528/11030528/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 11026432/11026432/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11026432/11026432/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11005952/11005952/0, res+swap = 10489856/10489856/0
+Memory pressure relief: Total: res = 11005952/11005952/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11005952/11005952/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10989568/10989568/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10989568/10989568/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10989568/10989568/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10973184/10973184/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10973184/10973184/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10960896/10960896/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10956800/10956800/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10956800/10956800/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10956800/10956800/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10936320/10936320/0, res+swap = 10489856/10489856/0
+Memory pressure relief: Total: res = 10936320/10936320/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10928128/10928128/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10919936/10919936/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10915840/10915840/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10915840/10915840/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10899456/10899456/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10899456/10899456/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10899456/10899456/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10883072/10883072/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10878976/10878976/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10878976/10878976/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10870784/10870784/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10870784/10870784/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11137024/11137024/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 11112448/11112448/0, res+swap = 10489856/10489856/0
+Memory pressure relief: Total: res = 11112448/11112448/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11112448/11112448/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11096064/11096064/0, res+swap = 10489856/10489856/0
+Memory pressure relief: Total: res = 11096064/11096064/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11096064/11096064/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11079680/11079680/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 11079680/11079680/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11079680/11079680/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11067392/11067392/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11067392/11067392/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11059200/11059200/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 11055104/11055104/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11055104/11055104/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11038720/11038720/0, res+swap = 10489856/10489856/0
+Memory pressure relief: Total: res = 11034624/11038720/4096, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11038720/11038720/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11038720/11038720/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11026432/11026432/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11018240/11018240/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11018240/11018240/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11005952/11005952/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 11005952/11005952/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11005952/11005952/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10989568/10989568/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10989568/10989568/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10989568/10989568/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10969088/10969088/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10969088/10969088/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10956800/10956800/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10952704/10952704/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10952704/10952704/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10952704/10952704/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10936320/10936320/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10936320/10936320/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10919936/10919936/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10915840/10915840/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10915840/10915840/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10915840/10915840/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10903552/10903552/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10903552/10903552/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10891264/10891264/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10883072/10883072/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10874880/10874880/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10874880/10874880/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10862592/10862592/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10862592/10862592/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11132928/11132928/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11116544/11116544/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11116544/11116544/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11116544/11116544/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11100160/11100160/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 11100160/11100160/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11100160/11100160/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11079680/11079680/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 11079680/11079680/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11079680/11079680/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11063296/11063296/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 11063296/11063296/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11051008/11051008/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 11051008/11051008/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11042816/11042816/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11042816/11042816/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11026432/11026432/0, res+swap = 10489856/10489856/0
+Memory pressure relief: Total: res = 11026432/11026432/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11026432/11026432/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11010048/11010048/0, res+swap = 10489856/10489856/0
+Memory pressure relief: Total: res = 11010048/11010048/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11010048/11010048/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10993664/10993664/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10993664/10993664/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10981376/10981376/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10973184/10973184/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10973184/10973184/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10973184/10973184/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10956800/10956800/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10956800/10956800/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10956800/10956800/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10948608/10948608/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10948608/10948608/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10948608/10948608/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10936320/10936320/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10936320/10936320/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10919936/10919936/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10915840/10915840/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10915840/10915840/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10915840/10915840/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10895360/10895360/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10895360/10895360/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10895360/10895360/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10883072/10883072/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10874880/10874880/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10874880/10874880/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10866688/10866688/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10858496/10858496/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 11128832/11128832/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11116544/11116544/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11116544/11116544/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11116544/11116544/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11104256/11104256/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11104256/11104256/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11091968/11091968/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11091968/11091968/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11091968/11091968/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11075584/11075584/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11067392/11067392/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11067392/11067392/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11059200/11059200/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11051008/11051008/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11051008/11051008/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11051008/11051008/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11038720/11038720/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11038720/11038720/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11038720/11038720/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 11018240/11018240/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11010048/11010048/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 11010048/11010048/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11001856/11001856/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11001856/11001856/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11001856/11001856/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10985472/10985472/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10985472/10985472/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10985472/10985472/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 10969088/10969088/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10969088/10969088/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10969088/10969088/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 10948608/10948608/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10948608/10948608/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10948608/10948608/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10932224/10932224/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10932224/10932224/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10924032/10924032/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10911744/10911744/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10911744/10911744/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10911744/10911744/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10895360/10895360/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10891264/10891264/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10891264/10891264/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10878976/10878976/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10874880/10874880/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10874880/10874880/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10858496/10858496/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11128832/11128832/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11128832/11128832/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11116544/11116544/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11116544/11116544/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11116544/11116544/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11104256/11104256/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11104256/11104256/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11104256/11104256/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 11087872/11087872/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11087872/11087872/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11087872/11087872/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11071488/11071488/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11071488/11071488/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11059200/11059200/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11055104/11055104/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11055104/11055104/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11055104/11055104/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 11038720/11038720/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11038720/11038720/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11022336/11022336/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 11018240/11022336/4096, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11014144/11014144/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11014144/11014144/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11010048/11010048/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11010048/11010048/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 11010048/11010048/0, res+swap = 10518528/10518528/0
+Memory pressure relief: Total: res = 10985472/10985472/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10985472/10985472/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10985472/10985472/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10969088/10969088/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10969088/10969088/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10960896/10960896/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10952704/10952704/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10952704/10952704/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10952704/10952704/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 10932224/10932224/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10932224/10932224/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10932224/10932224/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10924032/10924032/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10924032/10924032/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10924032/10924032/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10903552/10903552/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10899456/10899456/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10899456/10899456/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10891264/10891264/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10883072/10883072/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10883072/10883072/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10870784/10870784/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10870784/10870784/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10862592/10862592/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10854400/10854400/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 11124736/11124736/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11124736/11124736/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 11104256/11104256/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11104256/11104256/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11104256/11104256/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11087872/11087872/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11087872/11087872/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11087872/11087872/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11071488/11071488/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11071488/11071488/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11055104/11055104/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11051008/11051008/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11051008/11051008/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11051008/11051008/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11038720/11038720/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11038720/11038720/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11038720/11038720/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 11018240/11018240/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11014144/11014144/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11014144/11014144/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10997760/10997760/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10997760/10997760/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10997760/10997760/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10981376/10981376/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10981376/10981376/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10981376/10981376/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10973184/10973184/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10973184/10973184/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10960896/10960896/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10956800/10960896/4096, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10960896/10960896/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10960896/10960896/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10948608/10948608/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10948608/10948608/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10932224/10932224/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10932224/10936320/4096, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10936320/10936320/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 10936320/10936320/0, res+swap = 10518528/10518528/0
+Memory pressure relief: Total: res = 10911744/10911744/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10911744/10911744/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10911744/10911744/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10895360/10895360/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10895360/10895360/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10895360/10895360/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10887168/10887168/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10887168/10887168/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10887168/10887168/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 10866688/10866688/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10866688/10866688/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11137024/11137024/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11120640/11120640/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11120640/11120640/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11120640/11120640/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 11104256/11104256/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11104256/11104256/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11091968/11091968/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11091968/11091968/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11091968/11091968/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11079680/11079680/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11071488/11071488/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11067392/11067392/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11067392/11067392/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11055104/11055104/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11055104/11055104/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11055104/11055104/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11038720/11038720/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11030528/11030528/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 11030528/11030528/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11022336/11022336/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11022336/11022336/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11022336/11022336/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11001856/11001856/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11001856/11001856/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11001856/11001856/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10989568/10989568/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10989568/10989568/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10981376/10981376/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10981376/10981376/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10981376/10981376/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10981376/10981376/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 10960896/10960896/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10960896/10960896/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10948608/10948608/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10940416/10940416/0, res+swap = 10493952/10493952/0
+Memory pressure relief: Total: res = 10940416/10940416/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10940416/10940416/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10924032/10924032/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10924032/10924032/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10915840/10915840/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10903552/10903552/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10899456/10899456/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10899456/10899456/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10887168/10887168/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 10887168/10887168/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10887168/10887168/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 10878976/10878976/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10878976/10878976/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 10878976/10878976/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 10866688/10866688/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11137024/11137024/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11137024/11137024/0, res+swap = 10514432/10514432/0
+Memory pressure relief: Total: res = 11116544/11116544/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11116544/11116544/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11116544/11116544/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11100160/11100160/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11100160/11100160/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11083776/11083776/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11079680/11079680/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11079680/11079680/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11079680/11079680/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11063296/11063296/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11063296/11063296/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11063296/11063296/0, res+swap = 10510336/10510336/0
+Memory pressure relief: Total: res = 11046912/11046912/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11038720/11038720/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11038720/11038720/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11030528/11030528/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 11030528/11030528/0, res+swap = 10506240/10506240/0
+Memory pressure relief: Total: res = 11022336/11022336/0, res+swap = 10498048/10498048/0
+Memory pressure relief: Total: res = 11022336/11022336/0, res+swap = 10502144/10502144/0
+Memory pressure relief: Total: res = 10989568/10989568/0, res+swap = 10473472/10473472/0
+Memory pressure relief: Total: res = 10989568/10989568/0, res+swap = 10481664/10481664/0
+Memory pressure relief: Total: res = 10969088/10969088/0, res+swap = 10469376/10469376/0
+Memory pressure relief: Total: res = 10969088/10969088/0, res+swap = 10473472/10473472/0
+Memory pressure relief: Total: res = 10960896/10960896/0, res+swap = 10469376/10469376/0
+Memory pressure relief: Total: res = 10952704/10952704/0, res+swap = 10469376/10469376/0
+Memory pressure relief: Total: res = 10952704/10952704/0, res+swap = 10469376/10469376/0
+Memory pressure relief: Total: res = 10952704/10952704/0, res+swap = 10477568/10477568/0
+Memory pressure relief: Total: res = 10936320/10936320/0, res+swap = 10469376/10469376/0
+Memory pressure relief: Total: res = 10936320/10936320/0, res+swap = 10473472/10473472/0
+Memory pressure relief: Total: res = 10928128/10928128/0, res+swap = 10465280/10465280/0
+Memory pressure relief: Total: res = 10924032/10924032/0, res+swap = 10473472/10473472/0
+Memory pressure relief: Total: res = 10924032/10924032/0, res+swap = 10481664/10481664/0
+Memory pressure relief: Total: res = 10924032/10924032/0, res+swap = 10481664/10481664/0
+Memory pressure relief: Total: res = 10907648/10907648/0, res+swap = 10469376/10469376/0
+Memory pressure relief: Total: res = 10899456/10899456/0, res+swap = 10469376/10469376/0
+Memory pressure relief: Total: res = 10899456/10899456/0, res+swap = 10473472/10473472/0
+Memory pressure relief: Total: res = 10887168/10887168/0, res+swap = 10465280/10465280/0
+Memory pressure relief: Total: res = 10887168/10887168/0, res+swap = 10469376/10469376/0
+Memory pressure relief: Total: res = 10887168/10887168/0, res+swap = 10477568/10477568/0
+Memory pressure relief: Total: res = 10870784/10870784/0, res+swap = 10469376/10469376/0
+Memory pressure relief: Total: res = 10870784/10870784/0, res+swap = 10473472/10473472/0
+Memory pressure relief: Total: res = 10870784/10870784/0, res+swap = 10477568/10477568/0
+Memory pressure relief: Total: res = 10854400/10854400/0, res+swap = 10469376/10469376/0
+Memory pressure relief: Total: res = 10854400/10854400/0, res+swap = 10477568/10477568/0
+Memory pressure relief: Total: res = 10854400/10854400/0, res+swap = 10477568/10477568/0
+Memory pressure relief: Total: res = 10838016/10838016/0, res+swap = 10469376/10469376/0
+Memory pressure relief: Total: res = 10838016/10838016/0, res+swap = 10477568/10477568/0
+Memory pressure relief: Total: res = 11091968/11091968/0, res+swap = 10469376/10469376/0
+Memory pressure relief: Total: res = 11083776/11083776/0, res+swap = 10465280/10465280/0
+Memory pressure relief: Total: res = 11083776/11083776/0, res+swap = 10473472/10473472/0
+Memory pressure relief: Total: res = 11083776/11083776/0, res+swap = 10477568/10477568/0
+
+** (gedit:2272): WARNING **: 19:23:23.130: Error querying file info: Error when getting information for file “/home/walker/.gitconfig.lock”: 没有那个文件或目录
