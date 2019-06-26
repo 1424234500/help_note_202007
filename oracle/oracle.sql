@@ -4,6 +4,80 @@ sqlplus / as sysdba;
 sqlplus 
 conn scott/tiger
 
+
+sqlplus -S walker/qwer@127.0.0.1@orcl @SQL.sql
+
+
+
+--update user pwd
+create user username identified by password;    --drop user username cascade; --link to all 
+grant dba,connect,resource,EXP_FULL_DATABASE,IMP_FULL_DATABASE to walker;    -- revoke connect, resource from walker;
+--查看所有用户所拥有的角色
+SELECT * FROM DBA_ROLE_PRIVS;
+
+create tablespace 表间名 datafile '数据文件名' size 表空间大小;
+create tablespace data_test datafile 'data_1.ora' size 2000M autoextend on next 200M maxsize 10240M;    --unlimited; 
+ALTER DATABASE DATAFILE 'data_1.ora' AUTOEXTEND ON;--打开自动增长
+ALTER DATABASE DATAFILE 'data_1.ora' AUTOEXTEND ON NEXT 200M ;--每次自动增长200m
+ALTER DATABASE DATAFILE 'data_1.ora' AUTOEXTEND ON NEXT 200M MAXSIZE 1024M;--每次自动增长200m，数据表最大不超过1G
+
+select tablespace_name, sum(bytes) / 1024 / 1024  from dba_free_space  group by tablespace_name;  --查看各表空间空闲情况。
+Select * FROM DBA_DATA_FILES;--查询表空间中数据文件具体位置和文件名
+
+--数据文件路径默认在$ORACLE_HOME/oradata/$SID
+create user username identified by password default tablespace users;
+
+
+1》. connect role(连接角色)
+2》. resource role(资源角色)
+3》. dba role(数据库管理员角色)
+
+ 
+--查看用户和默认表空间的关系
+select username,default_tablespace from dba_users;
+--查看当前用户能访问的表
+select * from user_tables; 
+--Oracle查询用户表
+select * from user_all_tables;
+
+--Oracle查询用户视图
+select * from user_views;
+--查询所有函数和储存过程：
+select * from user_source;
+--查询所有用户：
+select * from all_users;
+--select * from dba_users
+--查看当前用户连接：
+select * from v$Session;
+--查看用户角色
+SELECT * FROM USER_ROLE_PRIVS;
+--查看当前用户权限：
+select * from session_privs;
+--查看所有用户所拥有的角色
+SELECT * FROM DBA_ROLE_PRIVS;
+--查看所有角色
+select * from dba_roles;
+--查看数据库名
+SELECT NAME FROM V$DATABASE;
+
+
+--用户表数
+select count(*) from dba_tables t where t.owner='walker';
+--用户数据量
+SELECT SUM(s.BYTES)/1024/1024 "sizes(MB)" from dba_segments s where s.owner= 'walker';
+
+
+--导入导出文件夹
+create directory backup as '/home/backup';  --drop directory backup;
+grant read,write on directory backup to walker;
+
+--导出数据库
+expdp user1/password@orcl diretory=backup dumpfile=test.dmp schemas=user1;     
+--导入数据库到某用户
+impdp user2/password@orcl diretory=backup dumpfile=test.dmp remap_schema=user1:user2 remap_tablespace=user1:user2;
+
+
+
 ---
 ---oracle
 ---
@@ -56,7 +130,7 @@ alter session set statistics_level=typical; --alter only now session
 --get awr report
 D:\app\product\11.1.0\db_1\RDBMS\ADMIN run awrrpt.sql
 
---plan_table F5
+--plan_table F5 执行计划
 select * from plan_table where statement_id＝'...'
 Description列描述当前的数据库操作，
 Object owner列表示对象所属用户，
@@ -89,33 +163,6 @@ select * from scott.tb_test@DBLINK_NAME;
 
 --unlock 
 alter user scott account unlock; 
-
---show
-select * from dba_users;
-select * from all_users;
-select * from user_users; 
---b.²é¿žóã»§»òœçé«ïµí³èšïþ(ö±œóž³öµžøóã»§»òœçé«µäïµí³èšïþ)£º
-select * from dba_sys_privs;
-select * from user_sys_privs;
---c.²é¿žœçé«(ö»äü²é¿žµçâœóã»§óµóðµäœçé«)ëù°üº¬µäèšïþ
-select * from role_sys_privs;
---d.²é¿žóã»§¶ôïóèšïþ£º
-select * from dba_tab_privs;
-select * from all_tab_privs;
-select * from user_tab_privs;
---show roles
-select * from dba_roles;
---f.²é¿žóã»§»òœçé«ëùóµóðµäœçé«£º
-select * from dba_role_privs; 
-select * from user_role_privs;
---g.²é¿žääð©óã»§óðsysdba»òsysoperïµí³èšïþ(²éñ¯ê±ðèòªïàóšèšïþ)
-select * from v$pwfile_users
---update user pwd
-create user username identified by password;
-create user username identified by password default tablespace users quota 10m on users;
---delete the user
-drop user username;
-drop user username cascade; --link to all 
 
 
 ---
