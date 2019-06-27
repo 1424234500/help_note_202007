@@ -17488,3 +17488,8 @@ Traceback (most recent call last):
 19596:C 27 Jun 2019 20:33:00.621 * DB saved on disk
 19596:C 27 Jun 2019 20:33:00.622 * RDB: 0 MB of memory used by copy-on-write
 2283:M 27 Jun 2019 20:33:00.720 * Background saving terminated with success
+2283:M 27 Jun 2019 21:33:01.042 * 1 changes in 3600 seconds. Saving...
+2283:M 27 Jun 2019 21:33:01.062 * Background saving started by pid 21918
+21918:C 27 Jun 2019 21:33:01.282 * DB saved on disk
+21918:C 27 Jun 2019 21:33:01.283 * RDB: 0 MB of memory used by copy-on-write
+2283:M 27 Jun 2019 21:33:01.363 * Background saving terminated with success
