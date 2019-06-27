@@ -17471,3 +17471,10 @@ Traceback (most recent call last):
 16053:C 27 Jun 2019 19:47:00.356 * DB saved on disk
 16053:C 27 Jun 2019 19:47:00.357 * RDB: 0 MB of memory used by copy-on-write
 2283:M 27 Jun 2019 19:47:00.428 * Background saving terminated with success
+
+** (gedit:2272): WARNING **: 20:06:31.000: Error querying file info: Error when getting information for file “/home/walker/.gitconfig.lock”: 没有那个文件或目录
+2283:M 27 Jun 2019 20:07:00.034 * 100 changes in 300 seconds. Saving...
+2283:M 27 Jun 2019 20:07:00.119 * Background saving started by pid 17611
+17611:C 27 Jun 2019 20:07:00.505 * DB saved on disk
+17611:C 27 Jun 2019 20:07:00.506 * RDB: 0 MB of memory used by copy-on-write
+2283:M 27 Jun 2019 20:07:00.520 * Background saving terminated with success
