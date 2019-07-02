@@ -1,12 +1,20 @@
 //redis 数据库
-
+//安装
 https://github.com/msopentech/redis/releases
 cd redis-5.0.3
 make
 make install PREFIX=.  #选定目录安装生成bin目录  默认/usr/local/bin/
+//测试 依赖tcl
+wget http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz  
+sudo tar -xzvf tcl8.6.1-src.tar.gz
+cd  tcl8.6.1/unix
+sudo ./configure  
+sudo make  
+sudo make install  
+
 
 ./src/redis-server.sh <redis.conf>
-./src/redis-cli <-h host/12.0.0.1> <-p port/6379> <-a password>  <set key value>
+./src/redis-cli <-c 集群模式> <-h host/12.0.0.1> <-p port/6379> <-a password>  <set key value>
 
 //修改配置 redis.conf
     daemonize：如需要在后台运行，把该项的值改为yes
@@ -35,27 +43,88 @@ make install PREFIX=.  #选定目录安装生成bin目录  默认/usr/local/bin/
     vm_pages：设置交换文件的总的page数量
     vm_max_thrrads：设置vm IO同时使用的线程数量
 
-//Redis哨兵模式（sentinel）学习总结及部署记录（主从复制、读写分离、主从切换）
-1）redis cluster集群方案；2）master/slave主从方案；3）哨兵模式来进行主从替换以及故障恢复。
-Sentinel(哨兵)是用于监控redis集群中Master状态的工具，是Redis 的高可用性解决方案，sentinel哨兵模式已经被集成在redis2.4之后的版本中。sentinel是redis高可用的解决方案，sentinel系统可以监视一个或者多个redis master服务，以及这些master服务的所有从服务；当某个master服务下线时，自动将该master下的某个从服务升级为master服务替代已下线的master服务继续处理请求。
+//集群模式 哨兵模式（sentinel） （主从复制、读写分离、主从切换）
+1）redis cluster集群方案;
 
-Sentinel 使用 TCP 端口 26379 （普通 Redis 服务器使用的是 6379 ）
+a.复制redis.conf 修改为 redis_cluster_7000->7005.conf 修改端口  已备份至redis/
+port  7000     #端口7000,7002,7003        
+bind 本机ip     #默认ip为127.0.0.1 需要改为其他节点机器可访问的ip 否则创建集群时无法访问对应的端口，无法创建集群
+daemonize    yes  #redis后台运行
+pidfile  /var/run/redis_7000.pid  #pidfile文件对应7000,7001,7002
+cluster-enabled  yes  #开启集群  把注释#去掉
+cluster-config-file  nodes_7000.conf   #集群的配置  配置文件首次启动自动生成 7000,7001,7002
+cluster-node-timeout  15000     #请求超时  默认15秒，可自行设置
+appendonly  yes           #aof日志开启  有需要就开启，它会每次写操作都记录一条日志　
+
+#启动 至少六个节点
+./src/redis-server redis_cluster_7000.conf 
+./src/redis-server redis_cluster_7001.conf 
+./src/redis-server redis_cluster_7002.conf 
+./src/redis-server redis_cluster_7003.conf 
+./src/redis-server redis_cluster_7004.conf 
+./src/redis-server redis_cluster_7005.conf 
+#启动工具
+#vim utils/create-cluster/create-cluster #设置端口起点为6999 数量
+#cd utils/create-cluster/
+#./create-cluster stop/start
+#确认启动
+ps -elf | grep redis
+
+#新版redis不用 redis-trib.rb   自动设置前三为主master 后三为从slave
+./src/redis-cli --cluster create 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 --cluster-replicas 1
+#测试
+./src/redis-cli -c -p 7000
+set test:clu:3 3
+-> Redirected to slot [6005] located at 127.0.0.1:7001
+OK
+#设置键值 分配到目标redis 设置值    CRC16(key) % 16384
+
+//集群主从相关命令
+#### 集群(cluster)
+CLUSTER INFO 打印集群的信息  
+CLUSTER NODES 列出集群当前已知的全部节点（node）。以及这些节点的相关信息。  
+#### 节点(node)
+CLUSTER MEET <ip> <port> 将 ip 和 port 所指定的节点加入到集群其中。让它成为集群的一份子。  
+CLUSTER FORGET <node_id> 从集群中移除 node_id 指定的节点。  
+CLUSTER REPLICATE <node_id> 将当前节点设置为 node_id 指定的节点的从节点。  
+CLUSTER SAVECONFIG 将节点的配置文件保存到硬盘里面。  
+#### 槽(slot)  
+CLUSTER ADDSLOTS <slot> [slot ...] 将一个或多个槽（slot）指派（assign）给当前节点。  
+CLUSTER DELSLOTS <slot> [slot ...] 移除一个或多个槽对当前节点的指派。  
+CLUSTER FLUSHSLOTS 移除指派给当前节点的全部槽，让当前节点变成一个没有指派不论什么槽的节点
+
+
+2）master/slave主从方案;
+3）哨兵模式来进行主从替换以及故障恢复;    热切主从 defult 26379
 SENTINEL get-master-addr-by-name <master name>获取当前的主服务器IP地址和端口
 SENTINEL slaves <master name>获取所有的Slaves信息
 
+//测试
+./runtest 
 
+
+
+
+//环境状态监控
 info 展示redis状态
 flushall 清空
 redis-cli info | grep role //查看主从
 role:slave
 role:master
 
+关于持久化的几个问题：
+RDB 模式：Redis 在指定的时间间隔上对数据集做快照。RDB 对日常备份和灾备都非常方便，而且对性能没有太大的影响。通常定时，比如每5分钟来做快照，但是使用它还是会丢数据。
+AOF：Redis 服务器端将它收到的所有写操作以追加写方式写入到日志文件中，以便在服务器重启时重新执行。AOF有较强的灵活性，比如每秒刷新，每次写就刷新等；但是，AOF 文件通常比 RDB 文件大。根据不同的写入模式，AOF 通常会比 RDB 慢。
+默认开启 RDB，关闭 AOF。用户可以将两者都关闭，或者将两者都开启。官方不建议单独使用 AOF。如果对数据丢失有一定的容忍度，比如五分钟，则可以使用 RDB；否则，建议两者同时使用。
+
+
+
 //发布订阅模式
 publish chat aaa                  //发布一个chat主题的消息，内容为aaa
 subscribe chat                    //订阅一个chat主题的消息
 PSUBSCRIBE *                      //订阅所有消息
 
-#########数据结构
+//#########数据结构 关系型 非关系型转换
 key的存活时间：
 无论什么时候，只要有可能就利用key超时的优势。一个很好的例子就是储存一些诸如临时认证key之类的东西。当你去查找一个授权key时——以OAUTH为例——通常会得到一个超时时间。
 这样在设置key的时候，设成同样的超时时间，Redis就会自动为你清除。
@@ -68,7 +137,7 @@ key的存活时间：
 例：user:userid:9:username
 
 
-
+//##########基本命令
 
  
 1	del key

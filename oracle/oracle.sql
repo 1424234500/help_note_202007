@@ -25,7 +25,9 @@ select tablespace_name, sum(bytes) / 1024 / 1024  from dba_free_space  group by 
 Select * FROM DBA_DATA_FILES;--查询表空间中数据文件具体位置和文件名
 
 --数据文件路径默认在$ORACLE_HOME/oradata/$SID
-create user username identified by password default tablespace users;
+create user username identified by password default tablespace data_test;
+
+--表空间清理
 
 
 1》. connect role(连接角色)
@@ -61,6 +63,7 @@ select * from dba_roles;
 SELECT NAME FROM V$DATABASE;
 
 
+--用户表空间 数据清理
 --用户表数
 select count(*) from dba_tables t where t.owner='walker';
 --用户数据量
@@ -74,7 +77,7 @@ grant read,write on directory backup to walker;
 --导出数据库
 expdp user1/password@orcl diretory=backup dumpfile=test.dmp schemas=user1;     
 --导入数据库到某用户
-impdp user2/password@orcl diretory=backup dumpfile=test.dmp remap_schema=user1:user2 remap_tablespace=user1:user2;
+impdp user2/password@orcl diretory=backup dumpfile=test.dmp remap_schema=user1:user2 remap_tablespace=user1_space:user2_space;
 
 
 
