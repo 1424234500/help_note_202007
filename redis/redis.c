@@ -79,6 +79,11 @@ set test:clu:3 3
 OK
 #设置键值 分配到目标redis 设置值    CRC16(key) % 16384
 
+#集群清理数据 分别登录每台master
+./src/redis-cli -c -p 7000 flushall
+./src/redis-cli -c -p 7001 flushall
+./src/redis-cli -c -p 7002 flushall
+
 //集群主从相关命令
 #### 集群(cluster)
 CLUSTER INFO 打印集群的信息  
@@ -108,6 +113,7 @@ SENTINEL slaves <master name>获取所有的Slaves信息
 //环境状态监控
 info 展示redis状态
 flushall 清空
+flushdb
 redis-cli info | grep role //查看主从
 role:slave
 role:master
