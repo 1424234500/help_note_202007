@@ -8,7 +8,15 @@ conn scott/tiger
 sqlplus -S walker/qwer@127.0.0.1@orcl @SQL.sql
 
 
+--启动 关闭 监听
+shutdown immediate; --shutdown db now
+startup;     --start db 
+lsnrctl status
+lsnrctl start
+--多实例 多数据库 sid导入
+export ORACLE_SID=ora11g
 
+--用户 表空间 密码 权限
 --update user pwd
 create user username identified by password;    --drop user username cascade; --link to all 
 grant dba,connect,resource,EXP_FULL_DATABASE,IMP_FULL_DATABASE to walker;    -- revoke connect, resource from walker;
@@ -100,6 +108,7 @@ select * from v$session
 where status='active';  
 
 
+--设置进程 会话
 --sysdba lock session process  kill 
 select session_id from v$locked_object;
 select sid, serial#, username, osuser from v$session;-- where sid=783;
@@ -117,8 +126,7 @@ select value from v$parameter where name = 'processes';
 show parameter processes; 
 alter system set processes=500 scope=spfile;
 alter system set sessions=500 scope=spfile;
-shutdown immediate; --shutdown db now
-startup;     --start db 
+
 
 
 ---
