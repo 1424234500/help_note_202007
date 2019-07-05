@@ -27,7 +27,7 @@ function socket(){
 function core(){
     now=`pwd -LP`
     cd ~/work/walker/walker-core
-    mvn clean install -Dmaven.test.skip=true
+    mvn clean package -Dmaven.test.skip=true
     cd release
     ./deploy.sh $@
     cp /home/walker/e/workspace/walker/walker-core/release/walker-core-0.0.1-SNAPSHOT.jar /home/walker/e/workspace/dd/app/libs/
