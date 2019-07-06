@@ -1,7 +1,7 @@
 xuname -a  ####查看系统信息
 cat /proc/version ####正在运行的内核版本。
 cat /etc/issue ####显示的是发行版本信息
-cat /proc/cpuinfo | more/less ####分页查看
+cat /proc/cpuinfo | more ####分页查看
 
 du -sh * #查看文件大小 占用 ls -lth
 df -h   #磁盘
@@ -49,8 +49,9 @@ find ./ * -mtime 0
       -mtime 0  表示1天之内;
 
 ## 安装ubuntu后操作记录
-
-修改环境变量添加ls -lth
+	修改apt源
+	
+	修改环境变量添加ls -lth
     alias ll='ls -alFh'
     
     
@@ -72,6 +73,8 @@ find ./ * -mtime 0
     eclipse
     jdk
     tomcat resin
+	maven
+	idea
     
 
 
@@ -291,19 +294,29 @@ vim /etc/apt/sources.list
 ####for pi
 deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi 
 
-
 ####for pc	
+对比原有配置 找到系统版本
+XXXX='bionic'
 
-deb http://mirrors.aliyun.com/ubuntu/ XXXXXXX main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ XXXXXXX-security main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ XXXXXXX-updates main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ XXXXXXX-proposed main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ XXXXXXX-backports main restricted universe multiverse
-#deb-src http://mirrors.aliyun.com/ubuntu/ XXXXXXX main restricted universe multiverse
-#deb-src http://mirrors.aliyun.com/ubuntu/ XXXXXXX-security main restricted universe multiverse
-#deb-src http://mirrors.aliyun.com/ubuntu/ XXXXXXX-updates main restricted universe multiverse
-#deb-src http://mirrors.aliyun.com/ubuntu/ XXXXXXX-proposed main restricted universe multiverse
-#deb-src http://mirrors.aliyun.com/ubuntu/ XXXXXXX-backports main restricted universe multiverse 
+deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX} main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted universe multiverse
+#deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX} main restricted universe multiverse
+#deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-security main restricted universe multiverse
+#deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-updates main restricted universe multiverse
+#deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-proposed main restricted universe multiverse
+#deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted universe multiverse 
+
+from='/etc/apt/sources.list'
+mv ${from} ${from}.default    
+XXXXX='bionic'
+echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX} main restricted universe multiverse"	>> $from
+echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-security main restricted universe multiverse"	>> $from
+echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-updates main restricted universe multiverse"	>> $from
+echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-proposed main restricted universe multiverse"	>> $from
+echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted universe multiverse"	>> $from
 
 }
 
