@@ -3,7 +3,9 @@
 wget http://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
 tar -xzvf apache-maven-3.6.0-bin.tar.gz
 //默认本地仓库~/.m2/
-//配置maven地址
+//配置maven地址	
+mv apache-maven-3.6.0/conf/settings.xml apache-maven-3.6.0/conf/settings.xml.default
+cp D:\help_note\java-maven-settings.xml apache-maven-3.6.0/conf/settings.xml
 vim apache-maven-3.6.0/conf/settings.xml
 <mirror>
         <id>nexus-aliyun</id>
@@ -13,7 +15,7 @@ vim apache-maven-3.6.0/conf/settings.xml
 </mirror>
 
 //配置环境变量
-PATH=PATH:/home/walker/software/apache-maven-3.6.0/bin
+echo 'PATH=PATH:/home/walker/software/apache-maven-3.6.0/bin' >> /etc/profile
 
 
 配置eclipse idea
