@@ -174,6 +174,10 @@ ORS        输出的记录分隔符，默认为换行符,即处理结果也是�
 
 ####sed
 sed -n '5,10p' obcp-server29.log ####5-10行
+文本行替换
+cat redis_cluster_7000.conf | sed s/7000/7001/ 
+sed s/7000/7002/ redis_cluster_7000.conf
+
 ####find
 find test</> | grep .png #查找当前路径 下 所有文件 深度优先 的 png图片文件
 find test</> -name '.*.png'

@@ -20,6 +20,23 @@ sudo make install
 ./src/redis-server.sh <redis.conf>
 ./src/redis-cli <-c 集群模式> <-h host/12.0.0.1> <-p port/6379> <-a password>  <set key value>
 
+Usage: redis-cli [OPTIONS] [cmd [arg [arg ...]]]
+  -h <hostname>      Server hostname (default: 127.0.0.1).
+  -p <port>          Server port (default: 6379).
+  -s <socket>        Server socket (overrides hostname and port).
+  -a <password>      Password to use when connecting to the server.
+                     You can also use the REDISCLI_AUTH environment
+                     variable to pass this password more safely
+                     (if both are used, this argument takes predecence).
+  -u <uri>           Server URI.
+  -r <repeat>        Execute specified command N times.
+  -i <interval>      When -r is used, waits <interval> seconds per command.
+                     It is possible to specify sub-second times like -i 0.1.
+  -n <db>            Database number.
+  -x                 Read last argument from STDIN.
+  -d <delimiter>     Multi-bulk delimiter in for raw formatting (default: \n).
+  -c                 Enable cluster mode (follow -ASK and -MOVED redirections).
+
 //修改配置 redis.conf
     daemonize：如需要在后台运行，把该项的值改为yes
     pdifile：把pid文件放在/var/run/redis.pid，可以配置到其他地址
@@ -46,41 +63,57 @@ sudo make install
     vm_page_size：设置虚拟内存页的大小
     vm_pages：设置交换文件的总的page数量
     vm_max_thrrads：设置vm IO同时使用的线程数量
-
+    自动存储
+    vim redis.conf
+    #   after 900 sec (15 min) if at least 1 key changed
+    #   after 300 sec (5 min) if at least 10 keys changed
+    #   after 60 sec if at least 10000 keys changed
+    save 1800 1
+    save 600 100000
+    
+    
+    
+    
+    
 //集群模式 哨兵模式（sentinel） （主从复制、读写分离、主从切换）
 1）redis cluster集群方案;
 
 a.复制redis.conf 修改为 redis_cluster_7000->7005.conf 修改端口  已备份至redis/
-port  7000     #端口7000,7002,7003        
-bind 本机ip     #默认ip为127.0.0.1 需要改为其他节点机器可访问的ip 否则创建集群时无法访问对应的端口，无法创建集群
-daemonize    yes  #redis后台运行
-pidfile  /var/run/redis_7000.pid  #pidfile文件对应7000,7001,7002
-cluster-enabled  yes  #开启集群  把注释#去掉
-cluster-config-file  nodes_7000.conf   #集群的配置  配置文件首次启动自动生成 7000,7001,7002
-cluster-node-timeout  15000     #请求超时  默认15秒，可自行设置
-appendonly  yes           #aof日志开启  有需要就开启，它会每次写操作都记录一条日志　
+    port  7000     #端口7000,7002,7003        
+    pidfile  /var/run/redis_7000.pid  #pidfile文件对应7000,7001,7002
+    dbfilename dump_7000.rdb    #持久化文件 隔离
+    cluster-config-file  nodes_7000.conf   #集群的配置  配置文件首次启动自动生成 7000,7001,7002
 
-#启动 至少六个节点
-./src/redis-server redis_cluster_7000.conf 
-./src/redis-server redis_cluster_7001.conf 
-./src/redis-server redis_cluster_7002.conf 
-./src/redis-server redis_cluster_7003.conf 
-./src/redis-server redis_cluster_7004.conf 
-./src/redis-server redis_cluster_7005.conf 
-#启动工具
+    bind 本机ip     #默认ip为127.0.0.1 需要改为其他节点机器可访问的ip 否则创建集群时无法访问对应的端口，无法创建集群
+    daemonize    yes  #redis后台运行
+    cluster-enabled  yes  #开启集群  把注释#去掉
+    cluster-node-timeout  15000     #请求超时  默认15秒，可自行设置
+    appendonly  yes           #aof日志开启  有需要就开启，它会每次写操作都记录一条日志　
+
+
+#关闭
+    ps -elf | grep redis | grep 700 | awk '{print $4}' | xargs kill -9
+#1.启动 至少六个节点
+    ./src/redis-server redis_cluster_7000.conf 
+    ./src/redis-server redis_cluster_7001.conf 
+    ./src/redis-server redis_cluster_7002.conf 
+    ./src/redis-server redis_cluster_7003.conf 
+    ./src/redis-server redis_cluster_7004.conf 
+    ./src/redis-server redis_cluster_7005.conf 
+#2.工具启动
 #vim utils/create-cluster/create-cluster #设置端口起点为6999 数量
 #cd utils/create-cluster/
 #./create-cluster stop/start
 #确认启动
-ps -elf | grep redis
-
+    ps -elf | grep redis | grep 700
 #新版redis不用 redis-trib.rb   自动设置前三为主master 后三为从slave
-./src/redis-cli --cluster create 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 --cluster-replicas 1
+    ./src/redis-cli --cluster create 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 --cluster-replicas 1
 #测试
-./src/redis-cli -c -p 7000
-set test:clu:3 3
--> Redirected to slot [6005] located at 127.0.0.1:7001
-OK
+    ./src/redis-cli -c -p 7000
+    set test:clu:3 3
+        -> Redirected to slot [6005] located at 127.0.0.1:7001
+        OK
+        
 #设置键值 分配到目标redis 设置值    CRC16(key) % 16384
 
 #集群清理数据 分别登录每台master
@@ -90,7 +123,7 @@ OK
 
 //集群主从相关命令
 #### 集群(cluster)
-CLUSTER INFO 打印集群的信息  
+CLUSTER INFO 打印集群的信息    三主三备 slot分配
 CLUSTER NODES 列出集群当前已知的全部节点（node）。以及这些节点的相关信息。  
 #### 节点(node)
 CLUSTER MEET <ip> <port> 将 ip 和 port 所指定的节点加入到集群其中。让它成为集群的一份子。  
@@ -103,10 +136,72 @@ CLUSTER DELSLOTS <slot> [slot ...] 移除一个或多个槽对当前节点的指
 CLUSTER FLUSHSLOTS 移除指派给当前节点的全部槽，让当前节点变成一个没有指派不论什么槽的节点
 
 
+//数据迁移  单对单
+零、aof日志
+    redis-cli -h 202.102.221.12 -a password --pipe < appendonly.aof
+    redis-cli -h 202.102.221.11 -a password config set appendonly no
+一、move
+    move key db 内部数据库db移动
+二、dump + restore    序列化 后 反序列化
+    127.0.0.1:6379> dump key1
+        "\x00\bFederico\x06\x00L\x88\xd4\xb3U/Y\xae"
+    127.0.0.1:6380> restore key1 0 "\x00\bFederico\x06\x00L\x88\xd4\xb3U/Y\xae"
+三、migrate
+  migrate用于在Redis实例间进行数据迁移，实际上migrate命令是将dump、restore、del三个命令进行组合，从而简化了操作流程。migrate命令具有原子性，从Redis 3.0.6版本后已经支持迁移多个键的功能。migrate命令的数据传输直接在源Redis和目标Redis上完成，目标Redis完成restore后会发送OK给源Redis。
+migrate参数：
+    host：目标Redis的IP地址
+    port：目标Redis的端口
+    key|""：Redis 3.0.6 后如果需要迁移多个键，此处为空字符串""
+    destination-db：目标Redis的数据库索引
+    timeout：迁移的超时时间（单位为毫秒）
+    [auth mypassword] 密码 3.0以后
+    copy：如果添加此选项后，迁移后不删除源键。
+    replace：如果添加此选项migrate不管目标Redis是否存在该键都会正常迁移进行数据覆盖
+    keys：如果要删除多个建，填写keys key1 key2 key3
+127.0.0.1:6379> MIGRATE 127.0.0.1 7000 '3' 0 1000 copy replace
+
+命令：redis-cli [-n [0-15]] keys '*' | xargs -I '{}' redis-cli [-n [0-15]] migrate 目标IP 6379 '' [0-15] 10000 COPY REPLACE keys '{}'
+#单key还是批量? 单台模式 127.0.0.1:7000的key取出来 全部 用7000的身份主动导入覆盖到 6379去
+./src/redis-cli -h 127.0.0.1 -p 7000 keys '*' | xargs -I {} ./src/redis-cli -h 127.0.0.1 -p 7000 migrate 127.0.0.1 6379 '' 0 10000  COPY REPLACE keys {}
+# 单key模式
+./src/redis-cli -h 127.0.0.1 -p 7000 keys '*' | xargs -I {} ./src/redis-cli -h 127.0.0.1 -p 7000 migrate 127.0.0.1 6379 {} 0 10000 COPY REPLACE 
+# 高版本批量模式 单台可用 集群不能批量插入跨节点
+不带密码
+./src/redis-cli -h 127.0.0.1 -p 7000 migrate 127.0.0.1 6379 '' 0 10000 COPY REPLACE keys `./src/redis-cli -h 127.0.0.1 -p 7000 keys '*' `
+#带密码
+./src/redis-cli -h 127.0.0.1 -p 7000 migrate 127.0.0.1 6379 '' 0 10000 auth password COPY REPLACE keys `./src/redis-cli -h 127.0.0.1 -p 7000 keys '*' `
+
+#   把集群模式单台 自动读取转移 127.0.0.1:7000的key取出来 全部 用7000的身份主动导入覆盖到 6379去
+./src/redis-cli -c -h 127.0.0.1 -p 7000 keys '*' | xargs -I {} ./src/redis-cli -c -h 127.0.0.1 -p 7000 migrate 127.0.0.1 6379 '' 0 10000 COPY REPLACE keys {}
+
+//数据迁移 集群 单/多 -> 多
+#清理密码 避免异常 注意改回去
+    ./src/redis-cli config set requirepass ""
+#从单台 或者 集群127.0.0.1:6379 导入到集群 127.0.0.1:7000-7005  
+    ./src/redis-cli -c -h  127.0.0.1 -p 7000  --cluster import 127.0.0.1:7000 --cluster-from  127.0.0.1:6379   --cluster-copy --cluster-replace
+
+
+//数据迁移 集群 多 -> 单   集群配置减少到单台 slot 和 数据合并到单台 数据量?
+Redis 集群有16384个哈希槽,CRC16校验后对16384取模5461 5461 5462.集群的每个节点负责一部分hash槽,举个例子,比如当前集群有3个节点,
+    dfa3ed66a30ae179da2a394dc66bdab491c31043 127.0.0.1:7002@17002 myself,master - 0 1562913105000 3 connected 10923-16383
+    cc1ffe732b3d0bf6f6f3da07c264b668af3dc048 127.0.0.1:7001@17001 master - 0 1562913108254 2 connected 5461-10922
+    0f15549cc26f77616932029ee0794686aa4daeaf 127.0.0.1:7000@17000 master - 0 1562913110261 1 connected 0-5460
+
+把B节点上5462个slots移动A节点上
+./src/redis-cli reshard --from cc1ffe732b3d0bf6f6f3da07c264b668af3dc048  --to dfa3ed66a30ae179da2a394dc66bdab491c31043  --slots 5462 --yes 10.10.10.126:7000
+把C节点上的5461个slots移动A节点上
+./redis-trib.rb reshard --from e7005711bc55315caaecbac2774f3c7d87a13c7a    --to 6a85d385b2720fd463eccaf720dc12f495a1baa3  --slots 5461 --yes 10.10.10.126:7000
+
+//哨兵主从切换
 2）master/slave主从方案;
 3）哨兵模式来进行主从替换以及故障恢复;    热切主从 defult 26379
 SENTINEL get-master-addr-by-name <master name>获取当前的主服务器IP地址和端口
 SENTINEL slaves <master name>获取所有的Slaves信息
+
+sentinetl.conf  配置监控节点      自动生成 展示所有从节点  解除哨兵关联!!!  需要关闭所有节点 修改所有配置后 一一重启
+redis.conf  配置slaveof 主节点       自动生成 
+
+
 
 //测试
 ./runtest 
@@ -115,9 +210,14 @@ SENTINEL slaves <master name>获取所有的Slaves信息
 
 
 //环境状态监控
-info 展示redis状态
-flushall 清空
-flushdb
+info 展示redis状态 多数据库信息
+    # Keyspace
+    db0:keys=2,expires=0,avg_ttl=0
+    db2:keys=3,expires=0,avg_ttl=0
+
+save rdb持久化
+flushall 清空 当前数据库redis-cli -n 0-15 
+flushdb 清空所有数据库
 redis-cli info | grep role //查看主从
 role:slave
 role:master
@@ -129,201 +229,4 @@ AOF：Redis 服务器端将它收到的所有写操作以追加写方式写入�
 
 
 
-//发布订阅模式
-publish chat aaa                  //发布一个chat主题的消息，内容为aaa
-subscribe chat                    //订阅一个chat主题的消息
-PSUBSCRIBE *                      //订阅所有消息
-
-//#########数据结构 关系型 非关系型转换
-key的存活时间：
-无论什么时候，只要有可能就利用key超时的优势。一个很好的例子就是储存一些诸如临时认证key之类的东西。当你去查找一个授权key时——以OAUTH为例——通常会得到一个超时时间。
-这样在设置key的时候，设成同样的超时时间，Redis就会自动为你清除。
-
-关系型数据库的redis
-1: 把表名转换为key前缀 如, tag:
-2: 第2段放置用于区分区key的字段--对应mysql中的主键的列名,如userid
-3: 第3段放置主键值,如2,3,4...., a , b ,c
-4: 第4段,写要存储的列名
-例：user:userid:9:username
-
-
-//##########基本命令
-
- 
-1	del key
-该命令用于在 key 存在时删除 key。
-2	dump key 
-序列化给定 key ，并返回被序列化的值。
-3	exists key 
-检查给定 key 是否存在。
-4	expire key seconds
-为给定 key 设置过期时间。
-5	expireat key timestamp 
-expireat 的作用和 expire 类似，都用于为 key 设置过期时间。 不同在于 expireat 命令接受的时间参数是 unix 时间戳(unix timestamp)。
-6	pexpire key milliseconds 
-设置 key 的过期时间以毫秒计。
-7	pexpireat key milliseconds-timestamp 
-设置 key 过期时间的时间戳(unix timestamp) 以毫秒计
-8	keys pattern 
-查找所有符合给定模式( pattern)的 key 。
-9	move key db 
-将当前数据库的 key 移动到给定的数据库 db 当中。
-10	persist key 
-移除 key 的过期时间，key 将持久保持。
-11	pttl key 
-以毫秒为单位返回 key 的剩余的过期时间。
-12	ttl key 
-以秒为单位，返回给定 key 的剩余生存时间(ttl, time to live)。
-13	randomkey 
-从当前数据库中随机返回一个 key 。
-14	rename key newkey 
-修改 key 的名称
-15	renamenx key newkey 
-仅当 newkey 不存在时，将 key 改名为 newkey 。
-16	type key 
-返回 key 所储存的值的类型。
-
-
-1	hdel key field1 [field2] 
-删除一个或多个哈希表字段
-2	hexists key field 
-查看哈希表 key 中，指定的字段是否存在。
-3	hget key field 
-获取存储在哈希表中指定字段的值。
-4	hgetall key 
-获取在哈希表中指定 key 的所有字段和值
-5	hincrby key field increment 
-为哈希表 key 中的指定字段的整数值加上增量 increment 。
-6	hincrbyfloat key field increment 
-为哈希表 key 中的指定字段的浮点数值加上增量 increment 。
-7	hkeys key 
-获取所有哈希表中的字段
-8	hlen key 
-获取哈希表中字段的数量
-9	hmget key field1 [field2] 
-获取所有给定字段的值
-10	hmset key field1 value1 [field2 value2 ] 
-同时将多个 field-value (域-值)对设置到哈希表 key 中。
-11	hset key field value 
-将哈希表 key 中的字段 field 的值设为 value 。
-12	hsetnx key field value 
-只有在字段 field 不存在时，设置哈希表字段的值。
-13	hvals key 
-获取哈希表中所有值
-14	hscan key cursor [match pattern] [count count] 
-迭代哈希表中的键值对。
-
-1	blpop key1 [key2 ] timeout 
-移出并获取列表的第一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。
-2	brpop key1 [key2 ] timeout 
-移出并获取列表的最后一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。
-3	brpoplpush source destination timeout 
-从列表中弹出一个值，将弹出的元素插入到另外一个列表中并返回它； 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。
-4	lindex key index 
-通过索引获取列表中的元素
-5	linsert key before|after pivot value 
-在列表的元素前或者后插入元素
-6	llen key 
-获取列表长度
-7	lpop key 
-移出并获取列表的第一个元素
-8	lpush key value1 [value2] 
-将一个或多个值插入到列表头部
-9	lpushx key value 
-将一个值插入到已存在的列表头部
-10	lrange key start stop 
-获取列表指定范围内的元素
-11	lrem key count value 
-移除列表元素
-12	lset key index value 
-通过索引设置列表元素的值
-13	ltrim key start stop 
-对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。
-14	rpop key 
-移除并获取列表最后一个元素
-15	rpoplpush source destination 
-移除列表的最后一个元素，并将该元素添加到另一个列表并返回
-16	rpush key value1 [value2] 
-在列表中添加一个或多个值
-17	rpushx key value 
-为已存在的列表添加值
-
-//set
-
-1	sadd key member1 [member2] 
-向集合添加一个或多个成员
-2	scard key 
-获取集合的成员数
-3	sdiff key1 [key2] 
-返回给定所有集合的差集
-4	sdiffstore destination key1 [key2] 
-返回给定所有集合的差集并存储在 destination 中
-5	sinter key1 [key2] 
-返回给定所有集合的交集
-6	sinterstore destination key1 [key2] 
-返回给定所有集合的交集并存储在 destination 中
-7	sismember key member 
-判断 member 元素是否是集合 key 的成员
-8	smembers key 
-返回集合中的所有成员
-9	smove source destination member 
-将 member 元素从 source 集合移动到 destination 集合
-10	spop key 
-移除并返回集合中的一个随机元素
-11	srandmember key [count] 
-返回集合中一个或多个随机数
-12	srem key member1 [member2] 
-移除集合中一个或多个成员
-13	sunion key1 [key2] 
-返回所有给定集合的并集
-14	sunionstore destination key1 [key2] 
-所有给定集合的并集存储在 destination 集合中
-15	sscan key cursor [match pattern] [count count] 
-迭代集合中的元素
-
-//zset z轴有序列表
-//以查询键为score  member为值  方便做区间查询 分页
-
-1	zadd key score1 member1 [score2 member2] 
-向有序集合添加一个或多个成员，或者更新已存在成员的分数
-2	zcard key 
-获取有序集合的成员数
-3	zcount key min max 
-计算在有序集合中指定区间分数的成员数
-4	zincrby key increment member 
-有序集合中对指定成员的分数加上增量 increment
-5	zinterstore destination numkeys key [key ...] 
-计算给定的一个或多个有序集的交集并将结果集存储在新的有序集合 key 中
-6	zlexcount key min max 
-在有序集合中计算指定字典区间内成员数量 [附加序列号]
-7	zrange key start stop [withscores] 
-通过索引区间返回有序集合成指定区间内的成员
-    zrange add:kkd 0 -1
-    
-8	zrangebylex key min max [limit offset count] 
-通过字典区间返回有序集合的成员
-9	zrangebyscore key min max [withscores] [limit] 
-通过分数返回有序集合指定区间内的成员
-10	zrank key member 
-返回有序集合中指定成员的索引
-11	zrem key member [member ...] 
-移除有序集合中的一个或多个成员
-12	zremrangebylex key min max 
-移除有序集合中给定的字典区间的所有成员
-13	zremrangebyrank key start stop 
-移除有序集合中给定的排名区间的所有成员
-14	zremrangebyscore key min max 
-移除有序集合中给定的分数区间的所有成员
-15	zrevrange key start stop [withscores] 
-返回有序集中指定区间内的成员，通过索引，分数从高到底
-16	zrevrangebyscore key max min [withscores] 
-返回有序集中指定分数区间内的成员，分数从高到低排序
-17	zrevrank key member 
-返回有序集合中指定成员的排名，有序集成员按分数值递减(从大到小)排序
-18	zscore key member 
-返回有序集中，成员的分数值
-19	zunionstore destination numkeys key [key ...] 
-计算给定的一个或多个有序集的并集，并存储在新的 key 中
-20	zscan key cursor [match pattern] [count count] 
-迭代有序集合中的元素（包括元素成员和元素分值）
 
