@@ -88,11 +88,13 @@ find ./ * -mtime 0
         :%s/foo/bar/g
     esc ?str 查找2 反向  n next  shift+n/N previous
     esc shift + * 查找当前所在单词
+    esc G shift + g 滚动最底部
+    esc gg  滚动最顶部
     esc yw 复制当前到单词结尾
     esc p paste粘贴
     撤销：u
     恢复撤销：Ctrl + r
-    ################################################################################################################eval xargs
+################################################################################################################eval xargs
     st="ls | more"
     `$st`   ####将 | 和 more 看成了参数，而不是将文件按页显示
     eval $st      ####双次解析 一次解析变量 二次 放置执行？ 同js php shell
@@ -427,7 +429,12 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
 ####Linux 网络和监控
 **hostname <–d 显示机器所属域名> <–f 显示完整的主机名和域名> <–i 显示当前机器的ip地址>
 **ping     网络畅通 网络速度
-
+  ping ip <-c 2  只ping两次> <-W 2 超时两秒> 
+**telnet    通过telnet协议连接目标主机，如果telnet连接可以在任一端口上完成即代表着两台主机间的连接良好。
+  telnet ip port 
+  echo " " telnet ip port 无交互式
+  sleep 2 | telnet 192.168.119.166  21
+  
 **ifconfig  查看用户网络配置。它显示当前网络设备配置。对于需要接收或者发送数据错误查找，这个工具极为好
 **iwconfig  是用于无线网卡的 . 你可以用他查看设置基本的Wi-Fi 网络信息,例如 SSID, channel和encryption.包括 接收灵敏度, RTS/CTS 分片大小,重传机制。
 
@@ -446,7 +453,7 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     **nslookup www.*    在 有ip地址时，可以用这个命令来显示主机名，可以找到给定域名的所有ip地址。而你必须连接到互联网才能使用这个命令。
     **traceroute www.*  查看数据包在提交到远程系统或者网站时候所经过的路由器的IP地址、跳数和响应时间。同样你必须链接到互联网才能使用这个命令
     **finger    查看用户信息。显示用户的登录名字、真实名字以及登录终端的名字和登录权限。这是unix一个很老的命令，现在已很少使用了。
-    **telnet    通过telnet协议连接目标主机，如果telnet连接可以在任一端口上完成即代表着两台主机间的连接良好。
+
     ethtool 允许你查看和更改网卡的许多设置（不包括Wi-Fi网卡）。你可以管理许多高级设置，包括tx/rx、校验及网络唤醒功能。下面是一些你可能感兴趣的基本命令：
     ethtool -i 显示一个特定网卡的驱动信息，检查软件兼容性时尤其有用
     ethtool -p 启动一个适配器的指定行为，比如让适配器的LED灯闪烁，以帮助你在多个适配器或接口中标识接口名称

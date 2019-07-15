@@ -311,6 +311,10 @@ from test t ) tt
 where 1=1
 and rn=1;
 
+
+--like instr
+select * from test t where INSTR('唐飞',T.NAME)>0 or t.name like '%aa%'
+
 --with temp table view? 查询完毕直接清除
 with 
 temptable as (select * from test),
