@@ -198,7 +198,7 @@ Redis 集群有16384个哈希槽,CRC16校验后对16384取模5461 5461 5462.集�
 SENTINEL get-master-addr-by-name <master name>获取当前的主服务器IP地址和端口
 SENTINEL slaves <master name>获取所有的Slaves信息
 
-sentinetl.conf  配置监控节点      自动生成 展示所有从节点  解除哨兵关联!!!  需要关闭所有节点 修改所有配置后 一一重启
+sentinetl.conf  配置监控节点 sentinel myid xxxx sentinel monitor mymaster xxx 2      自动生成 展示所有从节点  解除哨兵关联!!!  需要关闭所有节点 修改所有配置后 一一重启
 redis.conf  配置slaveof 主节点       自动生成 
 
 
