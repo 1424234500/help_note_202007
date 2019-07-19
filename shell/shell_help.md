@@ -6,7 +6,6 @@ cat /proc/cpuinfo | more ####分页查看
 du -sh * #查看文件大小 占用 ls -lth
 df -h   #磁盘
 ## 基本命令
-    find ./path -name librtmp.so.1
     whereis 
     which
     ls -lht <l>长信息 <h>size转换 <t>时间排序 <s>size排序 <d> 只显示目录 
@@ -76,7 +75,7 @@ df -h   #磁盘
     esc :set number 显示行号 
     esc :set nu
     esc /str 查找1 正向 支持 * 通配符号
-    esc :{作用范围}s/{目标}/{替换}/{替换标志}
+    esc :{作用范围}s/{目标}/{替换}/{替换标志} g标示每行所有命中 全文替换 不要则只匹配每行第一个命中
         :%s/foo/bar/g
     esc ?str 查找2 反向  n next  shift+n/N previous
     esc shift + * 查找当前所在单词
@@ -116,10 +115,33 @@ ps -elf | cut -c 9-15
 ####文件查找 文本查找 文本格式化 #######################################################################################
 less比more更强大，提供翻页，跳转，查找等命令
 
+
+#####awk --help
+awk [-F|-f|-v] ‘BEGIN{} ####{command1; command2} END{}’ file
+    -F指定分隔符，-f调用脚本，-v定义变量 var=value
+
+    '  '          引用代码块
+    BEGIN   初始化代码块，在对每一行进行处理之前，初始化代码，主要是引用全局变量，设置FS分隔符
+    //          匹配代码块，可以是字符串或正则表达式
+    {}           命令代码块，包含一条或多条命令
+    ；          多条命令使用分号分隔
+    END      结尾代码块，在对每一行进行处理之后再执行的代码块，主要是进行最终计算或输出结尾摘要信息
+    $0          表示整个当前行 
+    $1           每行第一个字段
+    NF          字段数量变量    
+    NR          每行的记录号，多文件记录递增
+    FNR        与NR类似，不过多文件记录不递增，每个文件都从1开始  
+    FS          BEGIN时定义分隔符
+    RS       输入的记录分隔符， 默认为换行符(即文本是按一行一行输入)
+    FILENAME 文件名
+    OFS      输出字段分隔符， 默认也是空格，可以改为制表符等
+    ORS        输出的记录分隔符，默认为换行符,即处理结果也是一行一行输出到屏幕
+    -F'[:#/]'   定义三个分隔符
+    
 ps -lf | awk -Fwalker '{print NR,NF,$1,$NF}' OFS="\t"
-ps -lf | awk -F" " 'NR!=1{print NR,NF,$1,$NF}' OFS="\t" #不要第一行
+ps -lf | awk -F" " 'NR!=1{print NR,NF,$1,$NF,($3>100 ? "yes":"no")}' OFS="\t" #不要第一行
 -F'[ :]'   #' ' || '"' 多分隔符
-----------------------------------------
+----------------------------------------代码段落处理
 ps -lf | awk -F" " '
 BEGIN{before=0;after=0;deta=5000}
 {
@@ -138,48 +160,81 @@ END{printf "Total before:%-8s after:%-8s\n", before, after}
 '
 -----------------------------------
 
-print ($3>100 ? "yes":"no")
 
-一个或多个连续的空格或制表符看做一个定界符，即多个空格看做一个空格
-,代表分隔符OFS输出
+####sed --help
+用法: sed [选项]... {脚本(如果没有其他脚本)} [输入文件]...
+  -n, --quiet, --silent
+                 取消自动打印模式空间
+  -e 脚本, --expression=脚本
+                 添加“脚本”到程序的运行列表
+  -f 脚本文件, --file=脚本文件
+                 添加“脚本文件”到程序的运行列表
+  --follow-symlinks
+                 直接修改文件时跟随软链接
+  -i[SUFFIX], --in-place[=SUFFIX]
+  -i.backup     添加备份文件命名
+                 edit files in place (makes backup if SUFFIX supplied)
+  -l N, --line-length=N
+                 指定“l”命令的换行期望长度
+  --posix
+                 关闭所有 GNU 扩展
+  -E, -r, --regexp-extended
+                 use extended regular expressions in the script
+                 (for portability use POSIX -E).
+  -s, --separate
+                 consider files as separate rather than as a single,
+                 continuous long stream.
+      --sandbox
+                 operate in sandbox mode.
+  -u, --unbuffered
+                 从输入文件读取最少的数据，更频繁的刷新输出
+  -z, --null-data
+                 使用 NUL 字符分隔各行
+      --help     打印帮助并退出
+      --version  输出版本信息并退出
 
-awk [-F|-f|-v] ‘BEGIN{} ####{command1; command2} END{}’ file
--F指定分隔符，-f调用脚本，-v定义变量 var=value
+如果没有 -e, --expression, -f 或 --file 选项，那么第一个非选项参数被视为
+sed脚本。其他非选项参数被视为输入文件，如果没有输入文件，那么程序将从标准
+输入读取数据。
 
-'  '          引用代码块
-BEGIN   初始化代码块，在对每一行进行处理之前，初始化代码，主要是引用全局变量，设置FS分隔符
-//          匹配代码块，可以是字符串或正则表达式
-{}           命令代码块，包含一条或多条命令
-；          多条命令使用分号分隔
-END      结尾代码块，在对每一行进行处理之后再执行的代码块，主要是进行最终计算或输出结尾摘要信息
- 
-$0          表示整个当前行 
-$1           每行第一个字段
-NF          字段数量变量    
-NR          每行的记录号，多文件记录递增
-FNR        与NR类似，不过多文件记录不递增，每个文件都从1开始  
-FS          BEGIN时定义分隔符
-RS       输入的记录分隔符， 默认为换行符(即文本是按一行一行输入)
-FILENAME 文件名
-OFS      输出字段分隔符， 默认也是空格，可以改为制表符等
-ORS        输出的记录分隔符，默认为换行符,即处理结果也是一行一行输出到屏幕
--F'[:#/]'   定义三个分隔符
 
-####sed
 #取出5-10行
 sed -n '5,10p' obcp-server29.log
 #文件行管道替换
-cat redis_cluster_7000.conf | sed s/7000/7001/ 
+cat redis_cluster_7000.conf | sed s/7000/7001/g
 #文件整体替换
-sed -i "s/oldstring/newstring/g" `grep oldstring -rl yourdir`
+sed -i.back "s/oldstring/newstring/g" `grep oldstring -rl yourdir`
 
+#替换输出
 sed s/7000/7002/ redis_cluster_7000.conf
 
 
 #去掉控制台颜色代码##########
 edjfl | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]####g"
 
-####find
+
+####find --help
+    Usage: find [-H] [-L] [-P] [-Olevel] [-D debugopts] [path...] [expression]
+
+    默认路径为当前目录；默认表达式为 -print
+    表达式可能由下列成份组成：操作符、选项、测试表达式以及动作：
+    操作符 (优先级递减；未做任何指定时默认使用 -and):
+          ( EXPR )   ! EXPR   -not EXPR   EXPR1 -a EXPR2   EXPR1 -and EXPR2
+          EXPR1 -o EXPR2   EXPR1 -or EXPR2   EXPR1 , EXPR2
+    位置选项 (总是真): -daystart -follow -regextype
+
+    普通选项 (总是真，在其它表达式前指定):
+          -depth --help -maxdepth LEVELS -mindepth LEVELS -mount -noleaf
+          --version -xdev -ignore_readdir_race -noignore_readdir_race
+    测试(N可以是 +N 或-N 或 N):-amin N -anewer FILE -atime N -cmin  
+          -cnewer 文件 -ctime N -empty -false -fstype 类型 -gid N -group 名称
+          -ilname 匹配模式 -iname 匹配模式 -inum N -ipath 匹配模式 -iregex 匹配模式
+          -links N -lname 匹配模式 -mmin N -mtime N -name 匹配模式 -newer 文件
+          -nouser -nogroup -path PATTERN -perm [-/]MODE -regex PATTERN
+          -readable -writable -executable
+          -wholename PATTERN -size N[bcwkMG] -true -type [bcdpflsD] -uid N
+          -used N -user NAME -xtype [bcdpfls]      -context 文本
+
 find test</> | grep .png #查找当前路径 下 所有文件 深度优先 的 png图片文件
 find test</> -name '.*.png'
 find test -path "./Documents" -prune -o -path "./Desktop" -prune -o -name '.*.png' -o -name '*xml'      #例外 多个文件夹跳过  匹配文件
@@ -206,37 +261,46 @@ find ./ * -mtime 0
       -mtime +7 表示七天之内;
       -mtime 0  表示1天之内;
 
-#### grep  ############
-#关键词前后10行 分页展示
-grep -C 10 -inoe  '.*MccpMgr.*' obcp-server29.log | less 
-grep -one  '.*MccpMgr.*' obcp-server29.log | grep -v '.*DEBUG.*' | less 
-grep -ne  'getUserBean\|device:null' obcp-server29.log | grep -v '.*DEBUG.*'| grep -v '.*INFO.*' | less
-
-grep -one '.*' obcp-server29.log | grep '.*INFO.*' #查看INFO 
-
+#### grep  --help
 grep [OPTIONS]PATTERN [FILE...] 
-PATTERN:是文本字符和正则表达式的元字符组合而成的匹配条件，
-用单引号‘ ’将pattern括起来以避免shell通配的影响，强引用不替换而显示字符本身。" " 双引号，
-字符串中的` ` ,$, \ 等特殊字符会被shell解释替换后，再传递给grep。
-对普通的字符串（没有特殊字符和空格的字符串）也可以不加引号，直接搜索。 
- OPTIONS：（这里给出常用的选项） 
--i 忽略大小写 
--c 显示被匹配到的行数 
--n 输出行号 
--v 反向选择，即找没有搜索字符串的行  #############3
--o 仅显示匹配到的内容   grep -oe<只显示匹配内容><-<C>5 前后五行><-A 5 前><-B 5 后> '.*\[.*\].*' test.sh
--w 匹配单词 
--A # 连同匹配行的下#行一并显示，#代表任意数字 
--B # 连同匹配行的上#行一并显示，#代表任意数字 
--C # 连同匹配行的上下#行一并显示，#代表任意数字 
--R
--r 递归搜索目录或子目录下匹配的字所在文件 可配合find命令 ############### 
-查找所有子文件文本内容包含xxxx 输出概要或者文件列表
-grep 7000 ./* -rl
--E  相当于egrep 支持扩展的正则表达式 
--F  相当于fgrep 不支持正则表达式 
---color对匹配的内容以颜色显示 
--V  显示grep版本 
+    PATTERN:是文本字符和正则表达式的元字符组合而成的匹配条件，
+    用单引号‘ ’将pattern括起来以避免shell通配的影响，强引用不替换而显示字符本身。" " 双引号，
+    字符串中的` ` ,$, \ 等特殊字符会被shell解释替换后，再传递给grep。
+    对普通的字符串（没有特殊字符和空格的字符串）也可以不加引号，直接搜索。 
+     OPTIONS：（这里给出常用的选项） 
+    -i 忽略大小写 
+    -c 显示被匹配到的行数 
+    -n 输出行号 
+    -v 反向选择，即找没有搜索字符串的行  #############3
+    -o 仅显示匹配到的内容   grep -oe<只显示匹配内容><-C 5 前后五行><-A 5 前><-B 5 后> '.*\[.*\].*' test.sh
+    -w 匹配单词 
+    -A # 连同匹配行的下#行一并显示，#代表任意数字 
+    -B # 连同匹配行的上#行一并显示，#代表任意数字 
+    -C # 连同匹配行的上下#行一并显示，#代表任意数字 
+    -l 只显示命中的文件名
+    -E  相当于egrep 支持扩展的正则表达式 
+    -F  相当于fgrep 不支持正则表达式 
+    --color对匹配的内容以颜色显示 
+    -V  显示grep版本 
+    -R
+    -r 递归搜索目录或子目录下匹配的字所在文件 可配合find命令 ############### 
+grep -rl 7000 ./*   #匹配所有文件子目录文件 输出概要或者文件列表
+grep "7000" file1.txt file2.txt file3.txt   #匹配多个文件 
+grep "7000" `find ./ -name "*conf" -o -name "*conf3" `  #匹配 查找出的文件列表  并过滤一个子列表
+
+```
+findfiles=`find ./ -name "*conf" -o -name "*conf3" `    #查找文件列表
+echo ${findfiles} | tr ' ' "\n"
+grep -n "7000" ${findfiles}        #命中展示
+grepfiles=`grep -l "7000" ${findfiles} `       #过滤出文件子列表
+echo ${grepfiles} | tr ' ' "\n"
+sed -i.back "s/7000/7800/g" ${grepfiles}        #替换并备份文件
+
+```
+
+#多关键词前后10行 分页展示
+grep -C 10 -inoe  '.*MccpMgr.*' obcp-server29.log | less 
+grep -ne  'getUserBean\|device:null' obcp-server29.log | grep -v '.*DEBUG.*'| grep -v '.*INFO.*' | less
 
 
 wc -l file #### 统计行数
@@ -338,16 +402,7 @@ deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted univers
 #deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-updates main restricted universe multiverse
 #deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-proposed main restricted universe multiverse
 #deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted universe multiverse 
-
-from='/etc/apt/sources.list'
-mv ${from} ${from}.default    
-XXXXX='bionic'
-echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX} main restricted universe multiverse"	>> $from
-echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-security main restricted universe multiverse"	>> $from
-echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-updates main restricted universe multiverse"	>> $from
-echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-proposed main restricted universe multiverse"	>> $from
-echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted universe multiverse"	>> $from
-
+ 
 }
 
 ####源配置 suse
@@ -804,7 +859,9 @@ netstat
     输入bash即可
 
 ####回响
-####/$ echo -e ${PATH########'\n'}
+####
+echo "aaa bbb\n ccc\tddd" | tr ' ' "\n"     #行列转换echo
+echo -e ${PATH}
     -n 不尾随换行符 文件追加 lf lrlf异常
     -e 启用解释反斜杠的转义功能
     -E 禁用解释反斜杠的转义功能(默认)
@@ -1001,12 +1058,7 @@ rcS.d
 
     make 
     make install
-# aaaa
-## aabb
-"asdfasdf"
-asdf
-a###adfa
-'''asdfa''
+     
 ####openssl安装
     这里需要特别的注意：openssl 版本不能太高，太高有些接口与libRTMP 的接口不一样，会导致libRTMP编译不能通过。我这里安装的是openssl-1.0.1f。
     1、下载地址：http://www.openssl.org/source/ 下一个新版本的OpenSSL，我下的版本是：openssl-1.0.1f
