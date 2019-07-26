@@ -9,8 +9,8 @@
 
 部署socket服务器
 app聊天
-spring定时任务失效
-quartze在线管理
+spring定时任务失效 
+quartze在线管理 集群模式
 
 消息服务器架构
     10台 经过代理 每台保持用户连接 

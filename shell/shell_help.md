@@ -85,7 +85,6 @@ df -h   #磁盘
     eval $st      ####双次解析 一次解析变量 二次 放置执行？ 同js php shell
 #杀死指定规则进程pid获取
 #字符分离数组
-ps -elf | grep 'python' | grep -v 'grep' | awk '{print $4}'
 #截取
 ps -elf | cut -c 9-15 
 #kill
@@ -257,7 +256,11 @@ grep [OPTIONS]PATTERN [FILE...]
     -B # 连同匹配行的上#行一并显示，#代表任意数字 
     -C # 连同匹配行的上下#行一并显示，#代表任意数字 
     -l 只显示命中的文件名
-    -E  相当于egrep 支持扩展的正则表达式 
+    -E  相当于egrep 支持扩展的正则表达式     三种模式正则 grep 转义 \|   \+ 
+#    https://blog.csdn.net/yufenghyc/article/details/51078107
+#抓取ip port 格式化输出并排序
+    cat ips.txt | grep -o "[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\:[0-9]\+" | awk -F':' '{print $1,$2}' OFS="\t" | sort -k 1 -n 
+    
     -F  相当于fgrep 不支持正则表达式 
     --color对匹配的内容以颜色显示 
     -V  显示grep版本 
@@ -686,76 +689,7 @@ netstat
     　　brk : 发送信号。
     　　上表所列命令以外的其他命令都将以字符串的形式发送至 Telnet 服务器。例如，sendabcd 将发送字符串 abcd 至 Telnet 服务器，这样，Telnet 会话窗口中将出现该字符串。
     　　quit
-####ssh scp putty<终端>  依靠ip/端口/用户名密码 远程登录
-    **ssh密钥配置
-        ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
-        参数说明： 
-        -t 加密算法类型，这里是使用rsa算法 
-        -P 指定私钥的密码，不需要可以不指定 
-        -f 指定生成秘钥对保持的位置 
-    >server config  
-        sudo vim /etc/ssh/sshd_config
-            RSAAuthentication yes 
-            PubkeyAuthentication yes 
-            AuthorizedKeysFile %h/.ssh/authorized_keys
-            StrictModes no
-        >create pub and private key
-        ssh-keygen -t rsa   
-        ssh-add ~/.ssh/id_rsa
-        cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-        chmod 644 ~/.ssh/authorized_keys
-        chmod 700 ~/.ssh
-        >restart
-        service ssh restart        
-        service sshd restart   
-        /etc/init.d/ssh restart
-        >check
-        ssh localhost 
-    >client config 自动化ssh密钥免密码
-        ssh-keygen -t rsa 
-        ######ss客户端公钥发送个服务端 追加到服务端对应用户的  ~/.ssh/authorized_keys
-        ssh root@127.23.1.2 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_rsa.pub 
-        ||
-        ssh-copy-id root@127.23.1.2
-        ||
-        scp ~/.ssh/id_rsa.pub icbcmon@122.1.2.3:/approot/id_rsa.pub.new
-        ssh root@127.23.1.2 "cat ~/.ssh/id_rsa.pub.new >> ~/.ssh/authorized_keys"        
-        
-    **ssh 远程登录 和 执行命令
-    ssh username@127.23.1.2 "ls -lth /home/walker | grep hello "        
-    ssh username@127.23.1.2 < fff.sh
-    >ssh file download
-    ssh user@host 'tar cz src' | tar xzv
-    cd && tar czv src | ssh user@host 'tar xz'
-    >port bind and proxy 本地端口:目标主机:目标主机端口"
-    ssh -D 8080 user@host
-    ssh -L 2121:host2:21 host3
-    ssh -L 5900:localhost:5900 host3
-    scp命令传输上传下载文件 
-    ####上传文件
-    scp -p xxx.gz icbcmon@122.1.2.3:/approot/
-    scp -p xxx.jar walker@39.106.111.11:/home/walker/
-    ####下载 文件<夹>  到/root
-    scp <-r> root@43.224.34.73:/home/lk /root
-    -1  强制scp命令使用协议ssh1  
-    -2  强制scp命令使用协议ssh2  
-    -B  使用批处理模式（传输过程中不询问传输口令或短语）  
-    -C  允许压缩。（将-C标志传递给ssh，从而打开压缩功能）  
-    -p 保留原文件的修改时间，访问时间和访问权限。  
-    -q  不显示传输进度条。  
-    -r  递归复制整个目录。  
-    -v 详细方式显示输出。
 
-    ####免密码登录sshpass
-    apt-get install sshpass
-    wget http://sourceforge.net/projects/sshpass/files/sshpass/1.05/sshpass-1.05.tar.gz  
-    tar xvzf sshpass-1.05.tar.gz  
-    ./configure 
-    make  
-    make install
-    sshpass -p "XXX" ssh user@IP
-    ####首次需要ssh 直接登录一次 
-    ####之后才能使用sshpass登录?
 ####mv命令既可以重命名
     for i in `seq -w 10`; do touch stu\_$i\_linux.jpg ; done
     rename \_linux '' *.jpg

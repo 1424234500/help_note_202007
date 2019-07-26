@@ -1,5 +1,16 @@
+//文件配置 /etc/my.cnf
+my.ini 或 my.cnf
+	default_character=utf8
+	[mysqld]
+	long_query_time=2	//慢查询时间定义s 
+	//5.5如下配置
+	show-query-log=on
+	show_uery_log_file="mysql_slow_query.log"
+
 //启动mysql
-d:/mysql/bin/mysqld 
+su mysql
+./mysql/bin/mysqld restart
+service mysqld restart
 
 //登录
 mysql -u root -proot
@@ -19,16 +30,7 @@ mysql < mytest.sql | more
 //变量设置 查看 mysql当前服务进程有效
 show variables like 'max_connections'
 set global max_connections=1000;
-//文件配置 
-my.ini 或 my.cnf
-	default_character=utf8
-	[mysqld]
-	long_query_time=2	//慢查询时间定义s 
-	//5.5如下配置
-	show-query-log=on
-	show_uery_log_file="mysql_slow_query.log"
-	
-	
+
 //数据库 表 show
 select USER(), version(),current_date();
 SHOW DATABASES;
@@ -155,4 +157,13 @@ sum(truncate(index_length/1024/1024, 2)) as '索引容量(MB)'
 from information_schema.tables
 where table_schema='mysql'
 
+
+--ssl 5.7关闭
+show varibles like '%ssl%'
+    have_openssl=YES
+    have_ssl=YES
+
+vim /etc/my.cnf
+    # disable_ssl
+    skip_ssl
 
