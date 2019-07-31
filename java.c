@@ -238,5 +238,12 @@ jdk1.8
 导入tomcat可选定jdk
 
 
+idea部署tomcat web项目
+artifacts
+debug configuration tabs
+tomcat
+add war artifacts
+application context : url !!! /walker-web
+
 
 
