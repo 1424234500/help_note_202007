@@ -8,7 +8,8 @@ cmd路径 \ 反斜杠 linux
 
 %1% 取出第一个参数
 
-
+字符串替换
+@echo off REM 字符串替换 set str=待替换文本信息XXX echo 对“%str%”中的“XXX”进行替换，替换为“YYY” REM 替换str中的XXX为YYY set str2=%str:XXX=YYY% echo - echo 替换后为：%str2% echo - pause
 
 IF /? 帮助文档 命令介绍
 
@@ -269,96 +270,7 @@ mount /dev/hda2 /mnt/hda2 挂载一个叫做hda2的盘 - 确定目录 '/ mnt/hda
 　　mount /dev/sda1 /mnt/usbdisk 挂载一个usb 捷盘或闪存设备 
 　　mount -t smbfs -o username=user,password=pass //WinClient/share /mnt/share 挂载一个网络共享
 磁盘空间
-
-df -h 显示已经挂载的分区列表 
-　　ls -lSr |more 以尺寸大小排列文件和目录 
-　　du -sh dir1 估算目录 'dir1' 已经使用的磁盘空间' 
-　　du -sk * | sort -rn 以容量大小为依据依次显示文件和目录的大小 
-　　rpm -q -a --qf '%10{SIZE}t%{NAME}n' | sort -k1,1n 以大小为依据依次显示已安装的rpm包所使用的空间 (fedora, redhat类系统) 
-　　dpkg-query -W -f='${Installed-Size;10}t${Package}n' | sort -k1,1n 以大小为依据显示已安装的deb包所使用的 空间 (ubuntu, debian类系统)
-2Windows命令
  
-cd 改变当前目录
-dir 显示文件列表
-diskcopy 复制软盘
-format 格式化磁盘
-md 建立子目录
-type 显示文件内容
-rd 删除目录
-ren 改变文件名
-……
-cls 清屏
-正在执行命令的命令提示符
-正在执行命令的命令提示符
-〔适用场合〕 屏幕上太乱了，或是屏幕上出现乱码了，清除屏幕上显示内容但不影响电脑内部任何信息
-〔用法〕 cls+回车
-move 移动文件，改目录名
-〔适用场合〕 移动文件到别的目录
-〔用 法〕 move 文件名 目录[\文件] 移动文件至新目录下
-move 目录 目录名 改目录名
-〔例 子〕 c:\>move c:\autoexec.bat c:\old
-移动autoexec.bat文件至old目录下
-c:\>move c:\config.sys c:\old
-移动config.sys文件至old目录下
-more 分屏显示
-〔适用场合〕 当输出很多一屏显示不下时采用，几乎适合所有命令，尤其是type等命令时很有用。使用more时磁盘不能有写保护，也不适合光驱。
-〔用法〕 命令 | more 分屏显示文件内容
-more < [文件名] 分屏显示文件内容
-〔例 子〕C:\>type msdos.w40 | more
-xcopy 加强版复制
-〔适用场合〕 在进行连同子目录一起拷贝时很有用，在拷贝大量文件时比COPY命令要快得多
-〔用 法〕 xcopy [文件名] [目录] 将指定文件拷贝到指定目录
-xcopy [源目录] [目的目录] 将源目录连子目录拷到目的目录下
-xcopy *.* [目录] /s 将文件与非空子目录拷贝到指定目录
-其它常用参数还有：v 拷贝后校验，会影响速度
-e 与s 相似，但即使子目录是空的也会拷贝
-帮助
-
-〔适用场合〕 当想具体了解DOS命令的使用方法时使用
-〔用 法〕 help 提供所有DOS命令帮助
-help （+DOS命令）提供有关（DOS）命令的帮助
-如果你只大致记得某个命令，可以在提示符后直接输入help命令，然后将出现下面的画面：
-attrib 设置文件属性
-〔适用场合〕想对文件做较特殊的处理时
-〔用法〕 attrib 显示所有文件的属性
-attrib +r或-r [文件名] 设置文件属性是否为只读
-attrib +h或-h [文件名] 设置文件属性是否隐含
-attrib +s或-s [文件名] 设置文件属性是否为系统文件
-attrib +a或-a [文件名] 设置文件属性是否为归档文件
-attrib /s 设置包括子目录的文件在内的文件属性
-〔例 子〕C:\TEST>attrib +r wina20.386
-C:\>attrib +h *.* /s 隐含所有文件
-date 显示及修改日期
-〔适用场合〕 想知道或修改时间和日期
-〔用 法〕 date 显示和改变当前日期
-〔例 子〕C:\>date 09-20-1996 将日期改为1996年9月20日
-C:\>date
-Current date is Tue 08-20-1996
-Enter new date (mm-dd-yy):09-20-1996
-按月-日-年的顺序修改当前日期直接按回车键忽略修改日期
-设置卷标
-
-〔适用场合〕 用来为磁盘做个标记
-〔用 法〕 label 显示磁盘卷标
-label [盘符] [卷标名] 设定指定盘的卷标
-〔例 子〕C:\>label
-Volume in drive C is WANG
-Volume Serial Number is 2116-1DD0
-volume label （11 characters,Enter for none)?
-可以输入卷标，直接回车后
-Delete current volume label (Y/N)?
-按y删除旧卷标，按n不更改
-碎片整理
-
-〔适用场合〕磁盘读写次数很多，或磁盘使用时间很长了，可能需要使用这条命令整理磁盘。磁盘碎片并不是指磁盘坏了，而只是由于多次的拷贝和删除文件后，磁盘使用会很不连贯，致使速度变慢。
-〔用 法〕1. C:\>defrag
-⒉ 选择要整理的磁盘
-⒊ 电脑分析磁盘状况，然后告诉我们磁盘有多少需整理。按Esc键
-⒋ 选择Optimization Method(磁盘优化方法），选择"全部优化"或"仅优化文件"
-⒌ 选择Begin Optimization 开始整理
-⒍ 整理完后，按回车键
-⒎ 按Esc退出。
-调用建立
 
 〔适用场合〕 经常需要输入重复的命令时，有非常大的用处
 〔用 法〕 doskey
