@@ -39,6 +39,16 @@ function web(){
     cd release
     ./deploy.sh $@
 }
+function service(){
+    now=`pwd -LP`
+    cd ~/work/walker/walker-service
+    mvn clean package -Dmaven.test.skip=true
+    cd release
+    ./deploy.sh $@
+}
+
+
+
 function ali(){
     ~/help/ssh/ali39
 }
