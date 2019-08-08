@@ -125,9 +125,10 @@ mvn eclipse:eclipse
 mvn deploy:deploy-file -DgroupId=com -DartifactId=client -Dversion=0.1.0 -Dpackaging=jar -Dfile=d:\client-0.1.0.jar -DrepositoryId=maven-repository-inner -Durl=ftp://xxxxxxx/opt/maven/repository/
 复制代码
 发布第三方Jar到本地库中
-mvn install:install-file -DgroupId=com -DartifactId=client -Dversion=0.1.0 -Dpackaging=jar -Dfile=d:\client-0.1.0.jar
+ 
 -DdownloadSources=true
 -DdownloadJavadocs=true
+才能在其他项目打包时 引用本地项目?!!!!!!!!!!!!!!!!!!!!!!!!
 三，附加
 mvn help:describe
 

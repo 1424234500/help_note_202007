@@ -1,26 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
         
-  <pluginGroups>
-    
-  </pluginGroups>  
-  <proxies>
-    
-  </proxies>  
-  <servers>
+    <pluginGroups>
+
+    </pluginGroups>  
+
+    <proxies>
+
+    </proxies>  
+
+    <servers>
         
-  </servers>  
-  <mirrors>
-    
-	 <mirror>
-        <id>nexus-aliyun</id>
-        <mirrorOf>*</mirrorOf>
-        <name>Nexus aliyun</name>
-        <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-</mirror>  </mirrors>  
-  <profiles>
-        
-  </profiles>  
+    </servers> 
+
+     
+    <mirrors>
+        <mirror>
+            <id>nexus-aliyun</id>
+            <mirrorOf>*</mirrorOf>
+            <name>Nexus aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </mirror> 
+    </mirrors>  
+
+    <profiles>
+        <profile>
+            <id>jdk-1.7</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <jdk>1.7</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>1.7</maven.compiler.source>
+                <maven.compiler.target>1.7</maven.compiler.target>
+                <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
+            </properties>
+
+    <!--Enable snapshots for the built in central repo to direct --> 
+    <!--all requests to nexus via the mirror 
+            <repositories> 
+                <repository> 
+                    <id>central</id> 
+                    <url>http://central</url> 
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </releases> 
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots> 
+                </repository> 
+            </repositories> 
+            <pluginRepositories> 
+                <pluginRepository> 
+                    <id>central</id> 
+                    <url>http://central</url> 
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </releases> 
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots> 
+                </pluginRepository> 
+            </pluginRepositories>
+--> 
+        </profile>
+    </profiles> 
+
 </settings>

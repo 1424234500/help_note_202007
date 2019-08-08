@@ -13,8 +13,10 @@ shutdown immediate; --shutdown db now
 startup;     --start db 
 lsnrctl status
 lsnrctl start
---多实例 多数据库 sid导入
+--多实例 多数据库 sid导入环境变量导入
+export ORACLE_HOME=/app/oracle/product/11.2.0
 export ORACLE_SID=ora11g
+export PATH=$PATH:$ORACLE_HOME/bin
 
 --用户 表空间 密码 权限
 --update user pwd
