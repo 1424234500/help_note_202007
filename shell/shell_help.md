@@ -22,6 +22,7 @@ df -h   #磁盘
 　　     默认bg,fg不带%N时表示对最后一个进程操作!
     
     id  查看当前用户组及其他状态
+    last 查看远程登录记录
 	apt-cache madison python-rpi.gpio	查看安装 的软件版本
     unzip opencv-2.4.13.zip
     

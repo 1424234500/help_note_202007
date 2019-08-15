@@ -246,4 +246,11 @@ add war artifacts
 application context : url !!! /walker-web
 
 
+//反编译 jd-gui 依赖jdk1.7异常 无注册表信息
+java -jar jd-gui.exe
+
+
+
+
+
 
