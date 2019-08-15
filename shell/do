@@ -56,6 +56,10 @@ function android(){
     nohup /home/walker/software/android-studio/bin/studio.sh >/dev/null &
 }
 
+function smart(){
+    cd /home/walker/software/smartgit/bin
+    nohup ./smartgit.sh >/dev/null &
+}
 
 
 function stop(){
