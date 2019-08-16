@@ -30,7 +30,8 @@ mysql < mytest.sql | more
 //变量设置 查看 mysql当前服务进程有效
 show variables like 'max_connections'
 set global max_connections=1000;
-
+--查看中文支持
+show variables like 'character%'; 
 //数据库 表 show
 select USER(), version(),current_date();
 SHOW DATABASES;

@@ -22,7 +22,7 @@ function socket(){
     mvn clean package -Dmaven.test.skip=true
     cd release
     ./deploy.sh $@
-    cp /home/walker/e/workspace/walker/walker-socket/release/walker-socket-0.0.1-SNAPSHOT.jar /home/walker/e/workspace/dd/app/libs/
+    cp /home/walker/e/workspace/walker/walker-socket/release/walker-socket-0.0.1.jar /home/walker/e/workspace/dd/app/libs/
 }
 function core(){
     now=`pwd -LP`
@@ -30,7 +30,7 @@ function core(){
     mvn clean package -Dmaven.test.skip=true
     cd release
     ./deploy.sh $@
-    cp /home/walker/e/workspace/walker/walker-core/release/walker-core-0.0.1-SNAPSHOT.jar /home/walker/e/workspace/dd/app/libs/
+    cp /home/walker/e/workspace/walker/walker-core/release/walker-core-0.0.1.jar /home/walker/e/workspace/dd/app/libs/
 }
 function web(){
     now=`pwd -LP`
@@ -60,6 +60,33 @@ function smart(){
     cd /home/walker/software/smartgit/bin
     nohup ./smartgit.sh >/dev/null &
 }
+
+
+
+
+function redis(){
+    cd /home/walker/software/redis-5.0.3/
+#关闭
+    ps -elf | grep redis | grep 700 | awk '{print $4}' | xargs kill -9
+#1.启动 至少六个节点
+    ./src/redis-server redis_cluster_7000.conf 
+    ./src/redis-server redis_cluster_7001.conf 
+    ./src/redis-server redis_cluster_7002.conf 
+    ./src/redis-server redis_cluster_7003.conf 
+    ./src/redis-server redis_cluster_7004.conf 
+    ./src/redis-server redis_cluster_7005.conf 
+#2.工具启动
+#vim utils/create-cluster/create-cluster #设置端口起点为6999 数量
+#cd utils/create-cluster/
+#./create-cluster stop/start
+#确认启动
+    ps -elf | grep redis | grep 700
+#新版redis不用 redis-trib.rb   自动设置前三为主master 后三为从slave
+    ./src/redis-cli --cluster create 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 --cluster-replicas 1
+#测试
+
+}
+
 
 
 function stop(){

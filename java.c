@@ -241,7 +241,8 @@ jdk1.8
 idea部署tomcat web项目
 artifacts
 __:war exploded 
-　　展开部署(相当于将资源文件进行展开后进行部署)
+　　热部署
+　　不会自动copy配置文件到目录？
 ___:war
 　　发布模式,这是先打成war包,再部署
 debug configuration tabs

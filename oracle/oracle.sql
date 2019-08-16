@@ -448,13 +448,28 @@ end;
 
 select md5('123456') from  dual;
 select greatest('2', '3', 1'') from dual;   --math.max
-
---0.5 -> 1
-select * from round(100 / 200, 4) * 100 || '%' from dual;
 --random
 select  dbms_random.value(1,100) from dual;
---to number
-select 
+
+FLOOR——对给定的数字取整数位
+SQL> select floor(2345.67) from dual;
+FLOOR(2345.67)
+--------------
+2345
+CEIL-- 返回大于或等于给出数字的最小整数
+SQL> select ceil(3.1415927) from dual;
+
+CEIL(3.1415927)
+---------------
+              4
+ROUND——按照指定的精度进行四舍五入
+select * from round(100 / 200, 4) * 100 || '%' from dual;
+------------------
+            3.1416%
+TRUNC——按照指定的精度进行截取一个数
+SQL> select trunc(3.1415926,4) from dual;
+TRUNC(3.1415926,4)
+
 
 
 --time date chat string 
