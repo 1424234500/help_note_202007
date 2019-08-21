@@ -102,9 +102,15 @@ system > const > eq_ref > ref > fulltext > ref_or_null > index_merge > unique_su
 //显示引擎 
 //innorDB		行锁+表锁	事物  
 //<MY>ISAM		表锁		
-//MERGE         合并逻辑表INSERT_METHOD=LAST/FIRST/0不允许插入
+//MERGE         合并逻辑表INSERT_METHOD=LAST/FIRST/0不允许插入 分表
 CREATE TABLE  IF NOT EXISTS  W_MSG (ID VARCHAR(40) primary key, TEXT TEXT) ENGINE=MERGE UNION=(W_MSG_0,W_MSG_1) INSERT_METHOD=LAST DEFAULT CHARSET=utf8;
 ALTER TABLE tbl_name  UNION=(...)
+
+
+--生成sql批量分表
+tt=''; for i in `seq 0 99`; do tt="${tt},msg_entity_${i}"; done ; tt=${tt:1}; str='CREATE TABLE  IF NOT EXISTS  W_MSG (ID VARCHAR(40) primary key, TEXT TEXT) ENGINE=MERGE UNION=( '"${tt}"' ) INSERT_METHOD=LAST DEFAULT CHARSET=utf8 '; echo ${str}
+    
+
 //表锁：开销小 加锁快 不会出现死锁
 //行锁：开销大 加锁慢 会出现死锁 锁定力度小 发生锁冲突概率小
 

@@ -188,6 +188,11 @@ read -p "请输入用户名：" name   #录入name变量
 
     done
     
+
+tt=''; for i in `seq 0 99`; do tt="${tt},msg_entity_${i}"; done ; tt=${tt:1}; str='before '"${tt}"' after '; echo ${str}
+    
+
+
 1. 迭代文件中的每一行
 while read line;
 do
