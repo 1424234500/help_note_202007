@@ -39,8 +39,10 @@ select owner,count(1) cc from dba_tables where 1=1 group by owner order by 2 des
 SELECT s.owner, to_number(SUM(s.BYTES)/1024/1024) MB from dba_segments s where 1=1 group by s.owner order by 2 desc;
 --某用户每个表大小 清理
 SELECT s.owner, s.segment_name,to_number((s.BYTES)/1024/1024) MB from dba_segments s where s.owner='WALKER' order by 3 desc;
-
-
+--查看创建表语句表结构
+SQL> SET LONG 3000
+SQL> SET PAGESIZE 0
+SQL> SELECT DBMS_METADATA.GET_DDL('TABLE','STUDENT') FROM DUAL;
 
 --导入导出文件夹
 create directory backup as '/home/backup';  --drop directory backup;
@@ -207,7 +209,7 @@ alter table tb_a add  foreign key(id ) references tb_b(id);
 --alter table index DML时，会更新索引。因此索引越多，则DML越慢，其需要维护索引。 因此在创建索引及DML需要权衡 index 只对 =  ,like 'key%'有效
 alter table tb_group add( checked varchar(10) default 'true' );
 alter table tb_group rename column checked to newname;
-alter table tb_group modify column_name not null;
+alter table tb_group modify column_name varchar2(340) not null;
 alter table tb_group add unique(user_token);
 Create Index i_deptno_job on emp(deptno,job); —>在emp表的deptno、job列建立索引。
 

@@ -455,6 +455,34 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     ./configure --sbin-path=/usr/local/nginx/nginx --conf-path=/usr/local/nginx/nginx.conf --pid-path=/usr/local/nginx/nginx.pid --with-http_ssl_module --with-pcre=../pcre-8.39 --with-zlib=../zlib-1.2.11  --with-md5=/root --with-http_ssl_module --with-openssl=../openssl-1.0.1c --add-module=../nginx-rtmp-module-master
     make
     make install
+    
+####haproxy socket代理搭建
+    wget http://www.haproxy.org/
+    tar -xzvf haproxy-1.7.8.tar.gz
+    cd  haproxy-1.7.8
+    make TARGET=linux26 #cat /proc/version
+    make install PREFIX=/usr/local/haproxy
+
+    kill启动后
+    ./usr/local/haproxy/sbin/haproxy -f /usr/local/haproxy/conf/haproxy.cnf
+    
+    监控 
+    listen  admin_stats
+        bind 0.0.0.0:8888 
+        mode  http 
+        stats uri   /haproxy
+        stats realm     Global\ statistics 
+        stats auth  admin:admin
+    #监控是否代理目标宕机
+    listen test1
+            bind 0.0.0.0:3306
+            mode tcp
+            #maxconn 4086
+            #log 127.0.0.1 local0 debug
+            server s1 192.168.111.101:3306 check port 3306
+            server s2 192.168.111.102:3306 check port 3306
+    http://192.168.111.100:8888/haproxy
+    
 ####设置DNS
     DNS是用来解析域名用的，平时我们访问网站都是直接输入一个网址，
     而dns把这个网址解析到一个IP。关于dns的概念，如果你很陌生的话，
