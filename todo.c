@@ -6,11 +6,18 @@
 数据库数据通用展示 管理 接口
 权限管理模块
 
+
 //学习资料 文本采集 搜索图形化工具程序
 自动化打包部署问题 idea依赖
 jpa分表插件使用
 
-部署socket服务器
+web sb - 用户登录 session token - 角色权限  - f5 ip分配 
+
+
+service provider 负载
+
+
+socket服务器 分布式部署
 app聊天
 spring定时任务失效 
 quartze在线管理 集群模式

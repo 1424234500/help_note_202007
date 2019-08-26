@@ -16,9 +16,6 @@ service mysqld restart
 mysql -u root -proot
 mysql <-h 127.0.0.1> -u root -ppasswd <-P 3306>
 mysqladmin -u用户名 -p旧密码 password 新密码
-远程登录权限
-GRANT ALL PRIVILEGES ON *.* TO 'walker'@'%' IDENTIFIED BY 'qwer' WITH GRANT OPTION;
-
 //shell调用sql
 mysql -uuser -ppasswd -e "show databases;"
 //shell调用sql文件
@@ -34,9 +31,10 @@ set global max_connections=1000;
 show variables like 'character%'; 
 //数据库 表 show
 select USER(), version(),current_date();
-SHOW DATABASES;
-CREATE DATABASE walker;
+SHOW DATABASES; //创建表 赋予 远程登录权限
 CREATE DATABASE IF NOT EXISTS walker default charset utf8 COLLATE utf8_general_ci;
+GRANT ALL PRIVILEGES ON *.* TO 'walker'@'%' IDENTIFIED BY 'qwer' WITH GRANT OPTION;
+
 drop database walker;
 USE walker;
 
@@ -121,7 +119,6 @@ desc 表名;       // 表信息
 show columns from 表名;       // 表字段 
 describe 表名;       // 表信息 
 show create table 表名;        // 表创建语句 
-show create database 数据库名;        // 显示数据库 信息 
 show table status from 数据库名;        // 数据库状态 
 show tables或show tables from database_name;       // 显示当前数据库中所有表的名称 
 show databases;       // 显示mysql中所有数据库的名称 
