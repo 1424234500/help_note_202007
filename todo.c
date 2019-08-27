@@ -16,6 +16,8 @@ web sb - 用户登录 session token - 角色权限  - f5 ip分配
 
 service provider 负载
 
+redis注册中心
+Prometheus监控服务器群
 
 socket服务器 分布式部署
 app聊天
@@ -58,7 +60,7 @@ java UnSafe 类
 /////////////////////////////////////////////////////
 
 多数据源 
-mysql oracle 分表案例
+//mysql oracle 分表案例
 ////////////////////////////////////////////////////
 性能
 issa pass f5 
@@ -91,9 +93,7 @@ issa pass f5
 //数据库集成 连接池 Redis 缓存 可配置
 //MVC 抽离controller 通用 spring mvc restful
 
-socket 通信 http 临界资源 进程通信
 
-socket 模块 
 实现 中转站 多队列 任务线程数量限制
 
 数据库 及缓存模块

@@ -55,3 +55,67 @@ shutdown transactional
 SQL>shutdown abort; --这个方法是不等待会话结束就直接关闭掉数据库，一般情况下事不推荐使用的。实在关不掉的话，一般也没有什么问题。跟直接KILL进程差不多。
 SQL>startup --shutdown abort以后在启动数据库。
 SQL>startup force; --这个方法是直接关闭掉数据库然后再重启数据库，这个方式也可以达到关闭并重启的目的。
+
+
+
+
+
+D:\oracle\product\11.2.0\dbhome_1\NETWORK\ADMIN\SAMPLE
+
+
+64位oracle安装，安装oracle xe，安装plsql，移动oci32 ，配置 oci dll 
+E:\Oracle\instantclient_10_2
+E:\oracle\instantclient_10_2\oci.dll 
+localhost:1521/xe
+// 中文编码-环境变量
+NLS_LANG
+SIMPLIFIED CHINESE_CHINA.ZHS16GBK
+
+  
+// 端口冲突问题
+begin  
+   dbms_xdb.sethttpport('8081');  
+   dbms_xdb.setftpport('0');  
+end;  
+/   
+
+
+
+dbca  数据库管理
+netca 监听管理
+
+//删除数据库 报错 nt问题
+权限管理员cmd执行dbca即可
+
+//中文乱码问题2
+$ sqlplus / as sysdba;
+select userenv('language') from dual;
+如果是：AMERICAN_AMERICA.WE8MSWIN1252  则需要调整编码格式为：AL32UTF8
+SQL> shutdown immediate;
+SQL> startup mount;
+SQL> alter system enable restricted session;
+SQL> alter system set job_queue_processes=0;
+SQL> alter database open;
+SQL> alter database character set internal_use AL32UTF8;
+SQL> shutdown immediate;
+SQL> startup
+SQL>alter system disable restricted session;
+
+
+ 
+//dblink 跨数据库数据操作
+-- 查看wangyong用户是否具备创建database link 权限
+select * from user_sys_privs where privilege like upper('%DATABASE LINK%') AND USERNAME='WANGYONG';
+-- 给wangyong用户授予创建dblink的权限
+grant create public database link to wangyong; 
+-- 注意一点，如果密码是数字开头，用“”括起来
+create public database link TESTLINK2 connect to WANGYONG identified by "123456" USING 'ORCL21'
+
+create database link xxx----即将建立的dblink名
+  connect to 数据库用户名 identified by "密码"
+  using 'xxx.xxx.xxx.xx-----数据库IP';
+
+select * from tbl_ost_notebook@dblink;
+
+
+
