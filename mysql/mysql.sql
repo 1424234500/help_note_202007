@@ -97,10 +97,42 @@ explain select * from student where id = 12;	//explain sql-select
 system > const > eq_ref > ref > fulltext > ref_or_null > index_merge > unique_subquery > index_subquery > range > index > all
 
 	
-//显示引擎 
-//innorDB		行锁+表锁	事物  
-//<MY>ISAM		表锁		
-//MERGE         合并逻辑表INSERT_METHOD=LAST/FIRST/0不允许插入 分表
+--引擎 
+
+show engines;
+
+mysql的存储引擎包括：MyISAM、InnoDB、BDB、MEMORY、MERGE、EXAMPLE、NDBCluster、ARCHIVE、CSV、BLACKHOLE、FEDERATED等，其中InnoDB和BDB提供事务安全表，其他存储引擎都是非事务安全表。
+
+MyISAM: 表级锁，用户在操作myisam表时，select，update，delete，insert语句都会给表自动加锁，如果加锁以后的表满足insert并发的情况下，可以在表的尾部插入新的数据。也可以通过lock table命令来锁表，这样操作主要是可以模仿事务，但是消耗非常大，一般只在实验演示中使用。
+InnoDB ： 事务和行级锁，是innodb的最大特色。
+事务的ACID属性：atomicity,consistent,isolation,durable。
+并发事务带来的几个问题：更新丢失，脏读，不可重复读，幻读。
+事务隔离级别：未提交读(Read uncommitted)，已提交读(Read committed)，可重复读(Repeatable read)，可序列化(Serializable)
+
+MyISAM引擎是不支持事务的。如果你在使用Spring+Hibernate事务回滚无效。可以联想一下mysql使用的引擎是那种。
+InnoDB存储引擎提供了具有提交、回滚和崩溃恢复能力的事务安全。但是对比Myisam的存储引擎，InnoDB写的处理效率差一些并且会占用更多的磁盘空间以保留数据和索引。
+
+Innordb的功能要比myiasm强大很多，但是innordb的性能要比myisam差很多。
+如果只是做简单的查询，更新，删除，那么用myiasm是最好的选择。
+如果你的数据量是百万级别的，并且没有任何的事务处理，那么用myisam是性能最好的选择。
+Innordb的表的大小更加的大，用myisam可以省很多的硬盘空间。 
+总结：一般来说，MYisam引擎比较常用。
+适合：
+1. 做很多count 的计算。
+2. 插入不平凡，查询非常频繁。
+3.  没有事务
+
+innordb 适合：
+1. 可靠性要求比较高，或者要求事务。
+2. 表更新和查询都相当的频繁，并且表锁定的机会比较大的情况。
+
+MERGE :   类似于视图      合并逻辑表INSERT_METHOD=LAST/FIRST/0不允许插入 分表
+1  每个子表的结构必须一致，主表和子表的结构需要一致，
+2  每个子表的索引在merge表中都会存在，所以在merge表中不能根据该索引进行唯一性检索。 约束没有任何作用
+3  子表需要是MyISAM引擎
+4  REPLACE在merge表中不会工作
+5  AUTO_INCREMENT 不会按照你所期望的方式工作。
+
 CREATE TABLE  IF NOT EXISTS  W_MSG (ID VARCHAR(40) primary key, TEXT TEXT) ENGINE=MERGE UNION=(W_MSG_0,W_MSG_1) INSERT_METHOD=LAST DEFAULT CHARSET=utf8;
 ALTER TABLE tbl_name  UNION=(...)
 
@@ -113,7 +145,6 @@ tt=''; for i in `seq 0 99`; do tt="${tt},msg_entity_${i}"; done ; tt=${tt:1}; st
 //行锁：开销大 加锁慢 会出现死锁 锁定力度小 发生锁冲突概率小
 
 
-show engines;
 
 desc 表名;       // 表信息 
 show columns from 表名;       // 表字段 
@@ -128,7 +159,8 @@ show columns from table_name from database_name;        // 显示表中列名称
 show columns from database_name.table_name;        // 显示表中列名称 
 show grants for user_name@localhost;        // 显示一个用户的权限，显示结果类似于grant 命令 
 show index from table_name;        // 显示表的索引 show status;解释：显示一些系统特定资源的信息，例如，正在运行的线程数量 
-show variables;        // 显示系统变量的名称和值 show privileges;解释：显示服务器所支持的不同权限 
+show variables;        // 显示系统变量的名称和值 
+show privileges //;解释：显示服务器所支持的不同权限 
 show create database database_name ;       // 显示create database 语句是否能够创建指定的数据库 
 show create table table_name;       // 显示create database 语句是否能够创建指定的数据库 
 show engies;        // 显示安装以后可用的存储引擎和默认引擎。 
