@@ -345,6 +345,16 @@ select * from aaa;
 create global temporary table bbb(id number) on commit delete rows;
 insert into bbb values(200);
 
+--多行拼接转一列
+wm_concat
+select wm_concat(colname) from student;
+
+--行列转换
+select name
+,sum(decode(age, '16', num, null)) age16
+,sum(decode(age, '17', num, null)) age17
+,sum(decode(age, '18', num, null)) age18
+from student;
 
 
 ---
