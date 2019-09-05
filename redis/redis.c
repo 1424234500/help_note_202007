@@ -18,7 +18,7 @@ sudo make install
 
 
 ./src/redis-server.sh <redis.conf>
-./src/redis-cli <-c 集群模式> <-h host/12.0.0.1> <-p port/6379> <-a password>  <set key value>
+./src/redis-cli <-c 集群模式> <-h host/12.0.0.1> <-p port/6379> <-a password> <-n 0数据库编号>  <set key value>
 
 Usage: redis-cli [OPTIONS] [cmd [arg [arg ...]]]
   -h <hostname>      Server hostname (default: 127.0.0.1).
