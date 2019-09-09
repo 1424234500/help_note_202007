@@ -312,11 +312,10 @@ group by t2.tid
 
 --every row group one line
 select * from (
-select 
-row_number() over ( partition by t.test order by time desc) rn
-,t.* 
-from test t ) tt
-where 1=1
+    select  row_number() over ( partition by t.test order by time desc) rn
+    ,t.* 
+    from test t
+) tt where 1=1
 and rn=1;
 
 

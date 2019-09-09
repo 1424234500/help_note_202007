@@ -1067,7 +1067,7 @@ Bash
     通常被用于丢弃不需要的输出流
     提供无限的空字符(NULL, ASCII NUL, 0x00)。
     
-##ulimit使用的基本格式为：ulimit [options] [limit]
+##ulimit使用的基本格式为：ulimit -a [options] [limit]
 ##最大设备数限制 too many open files 异常
 具体的options参数含义如下表所示：
 -a 显示当前系统所有的limit资源信息。 
