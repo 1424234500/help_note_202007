@@ -18,7 +18,24 @@ sudo make install
 
 
 ./src/redis-server.sh <redis.conf>
-./src/redis-cli <-c 集群模式> <-h host/12.0.0.1> <-p port/6379> <-a password>  <set key value>
+./src/redis-cli <-c 集群模式> <-h host/12.0.0.1> <-p port/6379> <-a password> <-n 0数据库编号>  <set key value>
+
+Usage: redis-cli [OPTIONS] [cmd [arg [arg ...]]]
+  -h <hostname>      Server hostname (default: 127.0.0.1).
+  -p <port>          Server port (default: 6379).
+  -s <socket>        Server socket (overrides hostname and port).
+  -a <password>      Password to use when connecting to the server.
+                     You can also use the REDISCLI_AUTH environment
+                     variable to pass this password more safely
+                     (if both are used, this argument takes predecence).
+  -u <uri>           Server URI.
+  -r <repeat>        Execute specified command N times.
+  -i <interval>      When -r is used, waits <interval> seconds per command.
+                     It is possible to specify sub-second times like -i 0.1.
+  -n <db>            Database number.
+  -x                 Read last argument from STDIN.
+  -d <delimiter>     Multi-bulk delimiter in for raw formatting (default: \n).
+  -c                 Enable cluster mode (follow -ASK and -MOVED redirections).
 
 Usage: redis-cli [OPTIONS] [cmd [arg [arg ...]]]
   -h <hostname>      Server hostname (default: 127.0.0.1).

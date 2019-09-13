@@ -43,6 +43,7 @@ SELECT s.owner, s.segment_name,to_number((s.BYTES)/1024/1024) MB from dba_segmen
 SQL> SET LONG 3000
 SQL> SET PAGESIZE 0
 SQL> SELECT DBMS_METADATA.GET_DDL('TABLE','STUDENT') FROM DUAL;
+<<<<<<< HEAD
 
 --导入导出文件夹
 create directory backup as '/home/backup';  --drop directory backup;
@@ -54,6 +55,19 @@ expdp user1/password@orcl diretory=backup dumpfile=test.dmp schemas=user1;
 impdp user2/password@orcl diretory=backup dumpfile=test.dmp remap_schema=user1:user2 remap_tablespace=user1_space:user2_space;
 
 
+=======
+
+--导入导出文件夹
+create directory backup as '/home/backup';  --drop directory backup;
+grant read,write on directory backup to walker;
+
+--导出数据库
+expdp user1/password@orcl diretory=backup dumpfile=test.dmp schemas=user1;     
+--导入数据库到某用户
+impdp user2/password@orcl diretory=backup dumpfile=test.dmp remap_schema=user1:user2 remap_tablespace=user1_space:user2_space;
+
+
+>>>>>>> 8e37a724e1ee351edd9304c35e0119e942012d29
 
 --查询表空间中数据文件具体位置和文件名
 Select * FROM DBA_DATA_FILES;
@@ -312,11 +326,10 @@ group by t2.tid
 
 --every row group one line
 select * from (
-select 
-row_number() over ( partition by t.test order by time desc) rn
-,t.* 
-from test t ) tt
-where 1=1
+    select  row_number() over ( partition by t.test order by time desc) rn
+    ,t.* 
+    from test t
+) tt where 1=1
 and rn=1;
 
 
@@ -345,6 +358,16 @@ select * from aaa;
 create global temporary table bbb(id number) on commit delete rows;
 insert into bbb values(200);
 
+--多行拼接转一列
+wm_concat
+select wm_concat(colname) from student;
+
+--行列转换
+select name
+,sum(decode(age, '16', num, null)) age16
+,sum(decode(age, '17', num, null)) age17
+,sum(decode(age, '18', num, null)) age18
+from student;
 
 
 ---

@@ -164,7 +164,6 @@ vi conf/zoo.cfg     #修改 数据路径
 bin/zkServer.sh start #</stop/status>
 bin/zkCli.sh -server 127.0.0.1:2181  #测试
     ls /    4）查看有哪些zookeeper节点； 
-
     ls /daily_orderServer_group（节点名称） 5）查看注册了哪些服务，如图2； 
 
 注意防火墙
