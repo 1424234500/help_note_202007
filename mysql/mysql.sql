@@ -1,13 +1,21 @@
+//文件配置 /etc/my.cnf
+my.ini 或 my.cnf
+	default_character=utf8
+	[mysqld]
+	long_query_time=2	//慢查询时间定义s 
+	//5.5如下配置
+	show-query-log=on
+	show_uery_log_file="mysql_slow_query.log"
+
 //启动mysql
-d:/mysql/bin/mysqld 
+su mysql
+./mysql/bin/mysqld restart
+service mysqld restart
 
 //登录
 mysql -u root -proot
 mysql <-h 127.0.0.1> -u root -ppasswd <-P 3306>
 mysqladmin -u用户名 -p旧密码 password 新密码
-远程登录权限
-GRANT ALL PRIVILEGES ON *.* TO 'walker'@'%' IDENTIFIED BY 'qwer' WITH GRANT OPTION;
-
 //shell调用sql
 mysql -uuser -ppasswd -e "show databases;"
 //shell调用sql文件
@@ -19,21 +27,14 @@ mysql < mytest.sql | more
 //变量设置 查看 mysql当前服务进程有效
 show variables like 'max_connections'
 set global max_connections=1000;
-//文件配置 
-my.ini 或 my.cnf
-	default_character=utf8
-	[mysqld]
-	long_query_time=2	//慢查询时间定义s 
-	//5.5如下配置
-	show-query-log=on
-	show_uery_log_file="mysql_slow_query.log"
-	
-	
+--查看中文支持
+show variables like 'character%'; 
 //数据库 表 show
 select USER(), version(),current_date();
-SHOW DATABASES;
-CREATE DATABASE walker;
+SHOW DATABASES; //创建表 赋予 远程登录权限
 CREATE DATABASE IF NOT EXISTS walker default charset utf8 COLLATE utf8_general_ci;
+GRANT ALL PRIVILEGES ON *.* TO 'walker'@'%' IDENTIFIED BY 'qwer' WITH GRANT OPTION;
+
 drop database walker;
 USE walker;
 
@@ -99,9 +100,15 @@ system > const > eq_ref > ref > fulltext > ref_or_null > index_merge > unique_su
 //显示引擎 
 //innorDB		行锁+表锁	事物  
 //<MY>ISAM		表锁		
-//MERGE         合并逻辑表INSERT_METHOD=LAST/FIRST/0不允许插入
+//MERGE         合并逻辑表INSERT_METHOD=LAST/FIRST/0不允许插入 分表
 CREATE TABLE  IF NOT EXISTS  W_MSG (ID VARCHAR(40) primary key, TEXT TEXT) ENGINE=MERGE UNION=(W_MSG_0,W_MSG_1) INSERT_METHOD=LAST DEFAULT CHARSET=utf8;
 ALTER TABLE tbl_name  UNION=(...)
+
+
+--生成sql批量分表
+tt=''; for i in `seq 0 99`; do tt="${tt},msg_entity_${i}"; done ; tt=${tt:1}; str='CREATE TABLE  IF NOT EXISTS  W_MSG (ID VARCHAR(40) primary key, TEXT TEXT) ENGINE=MERGE UNION=( '"${tt}"' ) INSERT_METHOD=LAST DEFAULT CHARSET=utf8 '; echo ${str}
+    
+
 //表锁：开销小 加锁快 不会出现死锁
 //行锁：开销大 加锁慢 会出现死锁 锁定力度小 发生锁冲突概率小
 
@@ -112,7 +119,6 @@ desc 表名;       // 表信息
 show columns from 表名;       // 表字段 
 describe 表名;       // 表信息 
 show create table 表名;        // 表创建语句 
-show create database 数据库名;        // 显示数据库 信息 
 show table status from 数据库名;        // 数据库状态 
 show tables或show tables from database_name;       // 显示当前数据库中所有表的名称 
 show databases;       // 显示mysql中所有数据库的名称 
@@ -155,4 +161,13 @@ sum(truncate(index_length/1024/1024, 2)) as '索引容量(MB)'
 from information_schema.tables
 where table_schema='mysql'
 
+
+--ssl 5.7关闭
+show varibles like '%ssl%'
+    have_openssl=YES
+    have_ssl=YES
+
+vim /etc/my.cnf
+    # disable_ssl
+    skip_ssl
 

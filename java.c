@@ -238,5 +238,24 @@ jdk1.8
 导入tomcat可选定jdk
 
 
+idea部署tomcat web项目
+artifacts
+__:war exploded 
+　　热部署
+　　不会自动copy配置文件到目录？
+___:war
+　　发布模式,这是先打成war包,再部署
+debug configuration tabs
+tomcat
+add war artifacts
+application context : url !!! /walker-web
+
+
+//反编译 jd-gui 依赖jdk1.7异常 无注册表信息
+java -jar jd-gui.exe
+
+
+
+
 
 

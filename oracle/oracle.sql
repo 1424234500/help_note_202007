@@ -6,34 +6,59 @@ conn scott/tiger
 
 
 sqlplus -S walker/qwer@127.0.0.1@orcl @SQL.sql
+ 
 
-
---启动 关闭 监听
-shutdown immediate; --shutdown db now
-startup;     --start db 
-lsnrctl status
-lsnrctl start
---多实例 多数据库 sid导入
-export ORACLE_SID=ora11g
-
---用户 表空间 密码 权限
+--用户角色
 --update user pwd
 create user username identified by password;    --drop user username cascade; --link to all 
 grant dba,connect,resource,EXP_FULL_DATABASE,IMP_FULL_DATABASE to walker;    -- revoke connect, resource from walker;
 --查看所有用户所拥有的角色
 SELECT * FROM DBA_ROLE_PRIVS;
 
+--表空间
+--创建
 create tablespace 表间名 datafile '数据文件名' size 表空间大小;
-create tablespace data_test datafile 'data_1.ora' size 2000M autoextend on next 200M maxsize 10240M;    --unlimited; 
+create tablespace tablespace_name datafile 'tablespace_name.ora' size 128M autoextend on next 128M maxsize 10240M;    --unlimited; 
+
+--修改
 ALTER DATABASE DATAFILE 'data_1.ora' AUTOEXTEND ON;--打开自动增长
 ALTER DATABASE DATAFILE 'data_1.ora' AUTOEXTEND ON NEXT 200M ;--每次自动增长200m
 ALTER DATABASE DATAFILE 'data_1.ora' AUTOEXTEND ON NEXT 200M MAXSIZE 1024M;--每次自动增长200m，数据表最大不超过1G
+--级联删除文件 
+drop tablespace  tablespace_name  including contents and datafiles cascade constraints;
+--删除表空间却没删除文件的问题 再次复用文件后 级联删除
+create tablespace TEST datafile 'tablespace_name.ora' ;
 
-select tablespace_name, sum(bytes) / 1024 / 1024  from dba_free_space  group by tablespace_name;  --查看各表空间空闲情况。
-Select * FROM DBA_DATA_FILES;--查询表空间中数据文件具体位置和文件名
+
+
+--查看各个表空间占用;
+select tablespace_name, sum(bytes) / 1024 / 1024 MB  from dba_free_space  group by tablespace_name order by 2 desc;  
+--各个用户表数
+select owner,count(1) cc from dba_tables where 1=1 group by owner order by 2 desc;
+--查看各个用户表总大小
+SELECT s.owner, to_number(SUM(s.BYTES)/1024/1024) MB from dba_segments s where 1=1 group by s.owner order by 2 desc;
+--某用户每个表大小 清理
+SELECT s.owner, s.segment_name,to_number((s.BYTES)/1024/1024) MB from dba_segments s where s.owner='WALKER' order by 3 desc;
+--查看创建表语句表结构
+SQL> SET LONG 3000
+SQL> SET PAGESIZE 0
+SQL> SELECT DBMS_METADATA.GET_DDL('TABLE','STUDENT') FROM DUAL;
+
+--导入导出文件夹
+create directory backup as '/home/backup';  --drop directory backup;
+grant read,write on directory backup to walker;
+
+--导出数据库
+expdp user1/password@orcl diretory=backup dumpfile=test.dmp schemas=user1;     
+--导入数据库到某用户
+impdp user2/password@orcl diretory=backup dumpfile=test.dmp remap_schema=user1:user2 remap_tablespace=user1_space:user2_space;
+
+
+
+--查询表空间中数据文件具体位置和文件名
+Select * FROM DBA_DATA_FILES;
 
 --数据文件路径默认在$ORACLE_HOME/oradata/$SID
-create user username identified by password default tablespace data_test;
 
 --表空间清理
 
@@ -69,23 +94,6 @@ SELECT * FROM DBA_ROLE_PRIVS;
 select * from dba_roles;
 --查看数据库名
 SELECT NAME FROM V$DATABASE;
-
-
---用户表空间 数据清理
---用户表数
-select count(*) from dba_tables t where t.owner='walker';
---用户数据量
-SELECT SUM(s.BYTES)/1024/1024 "sizes(MB)" from dba_segments s where s.owner= 'walker';
-
-
---导入导出文件夹
-create directory backup as '/home/backup';  --drop directory backup;
-grant read,write on directory backup to walker;
-
---导出数据库
-expdp user1/password@orcl diretory=backup dumpfile=test.dmp schemas=user1;     
---导入数据库到某用户
-impdp user2/password@orcl diretory=backup dumpfile=test.dmp remap_schema=user1:user2 remap_tablespace=user1_space:user2_space;
 
 
 
@@ -201,7 +209,7 @@ alter table tb_a add  foreign key(id ) references tb_b(id);
 --alter table index DML时，会更新索引。因此索引越多，则DML越慢，其需要维护索引。 因此在创建索引及DML需要权衡 index 只对 =  ,like 'key%'有效
 alter table tb_group add( checked varchar(10) default 'true' );
 alter table tb_group rename column checked to newname;
-alter table tb_group modify column_name not null;
+alter table tb_group modify column_name varchar2(340) not null;
 alter table tb_group add unique(user_token);
 Create Index i_deptno_job on emp(deptno,job); —>在emp表的deptno、job列建立索引。
 
@@ -310,6 +318,10 @@ row_number() over ( partition by t.test order by time desc) rn
 from test t ) tt
 where 1=1
 and rn=1;
+
+
+--like instr
+select * from test t where INSTR('唐飞',T.NAME)>0 or t.name like '%aa%'
 
 --with temp table view? 查询完毕直接清除
 with 
@@ -438,13 +450,28 @@ end;
 
 select md5('123456') from  dual;
 select greatest('2', '3', 1'') from dual;   --math.max
-
---0.5 -> 1
-select * from round(100 / 200, 4) * 100 || '%' from dual;
 --random
 select  dbms_random.value(1,100) from dual;
---to number
-select 
+
+FLOOR——对给定的数字取整数位
+SQL> select floor(2345.67) from dual;
+FLOOR(2345.67)
+--------------
+2345
+CEIL-- 返回大于或等于给出数字的最小整数
+SQL> select ceil(3.1415927) from dual;
+
+CEIL(3.1415927)
+---------------
+              4
+ROUND——按照指定的精度进行四舍五入
+select * from round(100 / 200, 4) * 100 || '%' from dual;
+------------------
+            3.1416%
+TRUNC——按照指定的精度进行截取一个数
+SQL> select trunc(3.1415926,4) from dual;
+TRUNC(3.1415926,4)
+
 
 
 --time date chat string 

@@ -2,11 +2,9 @@ xuname -a  ####查看系统信息
 cat /proc/version ####正在运行的内核版本。
 cat /etc/issue ####显示的是发行版本信息
 cat /proc/cpuinfo | more ####分页查看
-
 du -sh * #查看文件大小 占用 ls -lth
 df -h   #磁盘
 ## 基本命令
-    find / -name librtmp.so.1
     whereis 
     which
     ls -lht <l>长信息 <h>size转换 <t>时间排序 <s>size排序 <d> 只显示目录 
@@ -24,6 +22,7 @@ df -h   #磁盘
 　　     默认bg,fg不带%N时表示对最后一个进程操作!
     
     id  查看当前用户组及其他状态
+    last 查看远程登录记录
 	apt-cache madison python-rpi.gpio	查看安装 的软件版本
     unzip opencv-2.4.13.zip
     
@@ -37,16 +36,7 @@ df -h   #磁盘
     ln     source     dist     #建立硬连接 硬链接不能连接两个不同文件系统上的文件 类似拷贝副本
     chown -R wasup:wasgrp com 修改文件所属用户及组权限
     
-    #去掉控制台颜色代码##########
-    edjfl | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]####g"
  
- 要求： 归删除/var/svn/svnbackup目录下创建时间为7天之前，并且文件以new开头的的所有文件或文件夹； 
-示例： find /var/svn/svnbackup -name "new_*" -mtime -7 -exec rm -rf {} \;
-find ./ * -mtime 0 
-附注：
-      -mtime -7 表示七天之前;
-      -mtime +7 表示七天之内;
-      -mtime 0  表示1天之内;
 
 ## 安装ubuntu后操作记录
 	修改apt源
@@ -62,13 +52,11 @@ find ./ * -mtime 0
     language 配置 input source chinese - pinyin 拖动汉语before english
     配置自动挂载磁盘 结合修改help_note目录git同步
     安装python git 
-
     gedit插件安装 编辑器
     sudo apt-get install gedit-plugins 
     点击应用关闭
     gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
     底座下靠
-
     chrome
     eclipse
     jdk
@@ -78,28 +66,26 @@ find ./ * -mtime 0
     
 
 
-
-
 ## vim 
     esc :set number 显示行号 
     esc :set nu
     esc /str 查找1 正向 支持 * 通配符号
-    esc :{作用范围}s/{目标}/{替换}/{替换标志}
+    esc :{作用范围}s/{目标}/{替换}/{替换标志} g标示每行所有命中 全文替换 不要则只匹配每行第一个命中
         :%s/foo/bar/g
     esc ?str 查找2 反向  n next  shift+n/N previous
     esc shift + * 查找当前所在单词
+    esc G shift + g 滚动最底部
+    esc gg  滚动最顶部
     esc yw 复制当前到单词结尾
     esc p paste粘贴
     撤销：u
     恢复撤销：Ctrl + r
-    ################################################################################################################eval xargs
+################################################################################################################eval xargs
     st="ls | more"
     `$st`   ####将 | 和 more 看成了参数，而不是将文件按页显示
     eval $st      ####双次解析 一次解析变量 二次 放置执行？ 同js php shell
-
 #杀死指定规则进程pid获取
 #字符分离数组
-ps -elf | grep 'python' | grep -v 'grep' | awk '{print $4}'
 #截取
 ps -elf | cut -c 9-15 
 #kill
@@ -107,7 +93,6 @@ ps -elf | cut -c 9-15
     kill -9 25718 25719 25811 25812 依次排在后边
     killall nginx #删除所有依据名字
     ps -elf | grep <-v反转> 'aaa'
-
     xargs的默认命令是echo，空格是默认定界符
     cat test.txt | xargs -n3 ####多行
     cat test.txt | xargs -d'S' ####设定分隔符
@@ -118,15 +103,34 @@ ps -elf | cut -c 9-15
     ->
     cat -p file1.txt -l
     cat -p file2.txt -l
-
 ####文件查找 文本查找 文本格式化 #######################################################################################
-sed awk grep less find
 less比more更强大，提供翻页，跳转，查找等命令
 
+#####awk --help
+awk [-F|-f|-v] ‘BEGIN{} ####{command1; command2} END{}’ file
+    -F指定分隔符，-f调用脚本，-v定义变量 var=value
+    '  '          引用代码块
+    BEGIN   初始化代码块，在对每一行进行处理之前，初始化代码，主要是引用全局变量，设置FS分隔符
+    //          匹配代码块，可以是字符串或正则表达式
+    {}           命令代码块，包含一条或多条命令
+    ；          多条命令使用分号分隔
+    END      结尾代码块，在对每一行进行处理之后再执行的代码块，主要是进行最终计算或输出结尾摘要信息
+    $0          表示整个当前行 
+    $1           每行第一个字段
+    NF          字段数量变量    
+    NR          每行的记录号，多文件记录递增
+    FNR        与NR类似，不过多文件记录不递增，每个文件都从1开始  
+    FS          BEGIN时定义分隔符
+    RS       输入的记录分隔符， 默认为换行符(即文本是按一行一行输入)
+    FILENAME 文件名
+    OFS      输出字段分隔符， 默认也是空格，可以改为制表符等
+    ORS        输出的记录分隔符，默认为换行符,即处理结果也是一行一行输出到屏幕
+    -F'[:#/]'   定义三个分隔符
+    
 ps -lf | awk -Fwalker '{print NR,NF,$1,$NF}' OFS="\t"
-ps -lf | awk -F" " 'NR!=1{print NR,NF,$1,$NF}' OFS="\t" #不要第一行
+ps -lf | awk -F" " 'NR!=1{print NR,NF,$1,$NF,($3>100 ? "yes":"no")}' OFS="\t" #不要第一行
 -F'[ :]'   #' ' || '"' 多分隔符
-----------------------------------------
+----------------------------------------代码段落处理
 ps -lf | awk -F" " '
 BEGIN{before=0;after=0;deta=5000}
 {
@@ -145,74 +149,142 @@ END{printf "Total before:%-8s after:%-8s\n", before, after}
 '
 -----------------------------------
 
-print ($3>100 ? "yes":"no")
+####sed --help
+用法: sed [选项]... {脚本(如果没有其他脚本)} [输入文件]...
+  -n, --quiet, --silent
+                 取消自动打印模式空间
+  -e 脚本, --expression=脚本
+                 添加“脚本”到程序的运行列表
+  -f 脚本文件, --file=脚本文件
+                 添加“脚本文件”到程序的运行列表
+  --follow-symlinks
+                 直接修改文件时跟随软链接
+  -i[SUFFIX], --in-place[=SUFFIX]
+  -i.backup     添加备份文件命名
+                 edit files in place (makes backup if SUFFIX supplied)
+  -l N, --line-length=N
+                 指定“l”命令的换行期望长度
+  --posix
+                 关闭所有 GNU 扩展
+  -E, -r, --regexp-extended
+                 use extended regular expressions in the script
+                 (for portability use POSIX -E).
+  -s, --separate
+                 consider files as separate rather than as a single,
+                 continuous long stream.
+      --sandbox
+                 operate in sandbox mode.
+  -u, --unbuffered
+                 从输入文件读取最少的数据，更频繁的刷新输出
+  -z, --null-data
+                 使用 NUL 字符分隔各行
+      --help     打印帮助并退出
+      --version  输出版本信息并退出
+如果没有 -e, --expression, -f 或 --file 选项，那么第一个非选项参数被视为
+sed脚本。其他非选项参数被视为输入文件，如果没有输入文件，那么程序将从标准
+输入读取数据。
 
-一个或多个连续的空格或制表符看做一个定界符，即多个空格看做一个空格
-,代表分隔符OFS输出
+#取出5-10行
+sed -n '5,10p' obcp-server29.log
+#文件行管道替换
+cat redis_cluster_7000.conf | sed s/7000/7001/g
+#文件整体替换
+sed -i.back "s/oldstring/newstring/g" `grep oldstring -rl yourdir`
+#替换输出
+sed s/7000/7002/ redis_cluster_7000.conf
 
-awk [-F|-f|-v] ‘BEGIN{} ####{command1; command2} END{}’ file
--F指定分隔符，-f调用脚本，-v定义变量 var=value
+#去掉控制台颜色代码##########
+edjfl | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]####g"
 
-'  '          引用代码块
-BEGIN   初始化代码块，在对每一行进行处理之前，初始化代码，主要是引用全局变量，设置FS分隔符
-//          匹配代码块，可以是字符串或正则表达式
-{}           命令代码块，包含一条或多条命令
-；          多条命令使用分号分隔
-END      结尾代码块，在对每一行进行处理之后再执行的代码块，主要是进行最终计算或输出结尾摘要信息
- 
-$0          表示整个当前行 
-$1           每行第一个字段
-NF          字段数量变量    
-NR          每行的记录号，多文件记录递增
-FNR        与NR类似，不过多文件记录不递增，每个文件都从1开始  
-FS          BEGIN时定义分隔符
-RS       输入的记录分隔符， 默认为换行符(即文本是按一行一行输入)
-FILENAME 文件名
-OFS      输出字段分隔符， 默认也是空格，可以改为制表符等
-ORS        输出的记录分隔符，默认为换行符,即处理结果也是一行一行输出到屏幕
--F'[:#/]'   定义三个分隔符
-
-####sed
-sed -n '5,10p' obcp-server29.log ####5-10行
-####find
+####find --help
+    Usage: find [-H] [-L] [-P] [-Olevel] [-D debugopts] [path...] [expression]
+    默认路径为当前目录；默认表达式为 -print
+    表达式可能由下列成份组成：操作符、选项、测试表达式以及动作：
+    操作符 (优先级递减；未做任何指定时默认使用 -and):
+          ( EXPR )   ! EXPR   -not EXPR   EXPR1 -a EXPR2   EXPR1 -and EXPR2
+          EXPR1 -o EXPR2   EXPR1 -or EXPR2   EXPR1 , EXPR2
+    位置选项 (总是真): -daystart -follow -regextype
+    普通选项 (总是真，在其它表达式前指定):
+          -depth --help -maxdepth LEVELS -mindepth LEVELS -mount -noleaf
+          --version -xdev -ignore_readdir_race -noignore_readdir_race
+    测试(N可以是 +N 或-N 或 N):-amin N -anewer FILE -atime N -cmin  
+          -cnewer 文件 -ctime N -empty -false -fstype 类型 -gid N -group 名称
+          -ilname 匹配模式 -iname 匹配模式 -inum N -ipath 匹配模式 -iregex 匹配模式
+          -links N -lname 匹配模式 -mmin N -mtime N -name 匹配模式 -newer 文件
+          -nouser -nogroup -path PATTERN -perm [-/]MODE -regex PATTERN
+          -readable -writable -executable
+          -wholename PATTERN -size N[bcwkMG] -true -type [bcdpflsD] -uid N
+          -used N -user NAME -xtype [bcdpfls]      -context 文本
 find test</> | grep .png #查找当前路径 下 所有文件 深度优先 的 png图片文件
 find test</> -name '.*.png'
-
-#### grep  ############
-#关键词前后10行 分页展示
-grep -C 10 -inoe  '.*MccpMgr.*' obcp-server29.log | less 
-grep -one  '.*MccpMgr.*' obcp-server29.log | grep -v '.*DEBUG.*' | less 
-grep -ne  'getUserBean\|device:null' obcp-server29.log | grep -v '.*DEBUG.*'| grep -v '.*INFO.*' | less
-
-grep -one '.*' obcp-server29.log | grep '.*INFO.*' #查看INFO 
-
+find test -path "./Documents" -prune -o -path "./Desktop" -prune -o -name '.*.png' -o -name '*xml'      #例外 多个文件夹跳过  匹配文件
+    [-o or  -a and  ! not   逻辑运算]
+    [-path "./Desktop"  路径匹配]
+    [-name "*.xml"  名字匹配] 
+    [-iname "*.xMl" 忽略大小写名字匹配]   
+    [-maxdepth 3    深度递归] 
+    [-perm 777  权限] 
+    [-user walker   用户]
+    [-group sunk    用户组]
+    [-size -10k 文件大小少于10k M G +大于]
+    [-mtime -7  -七天前 +七天内 time天 min分 a访问 m修改 c权限改动]
+    [-prune 不递归子目录]
+    [-type f 文件]
+    [-empty 空文件]
+    [-exec rm -rf {} \  文件路径替换操作执行!]
+    
+删除/var/svn/svnbackup目录下创建时间为7天之前，并且文件以new开头的的所有文件或文件夹； 
+find /var/svn/svnbackup -name "new_*" -mtime -7 -exec rm -rf {} \;
+find ./ * -mtime 0 
+附注：
+      -mtime -7 表示七天之前;
+      -mtime +7 表示七天之内;
+      -mtime 0  表示1天之内;
+#### grep  --help
 grep [OPTIONS]PATTERN [FILE...] 
-PATTERN:是文本字符和正则表达式的元字符组合而成的匹配条件，
-用单引号‘ ’将pattern括起来以避免shell通配的影响，强引用不替换而显示字符本身。" " 双引号，
-字符串中的` ` ,$, \ 等特殊字符会被shell解释替换后，再传递给grep。
-对普通的字符串（没有特殊字符和空格的字符串）也可以不加引号，直接搜索。 
- OPTIONS：（这里给出常用的选项） 
--i 忽略大小写 
--c 显示被匹配到的行数 
--n 输出行号 
--v 反向选择，即找没有搜索字符串的行  #############3
--o 仅显示匹配到的内容   grep -oe<只显示匹配内容><-<C>5 前后五行><-A 5 前><-B 5 后> '.*\[.*\].*' test.sh
--w 匹配单词 
--A # 连同匹配行的下#行一并显示，#代表任意数字 
--B # 连同匹配行的上#行一并显示，#代表任意数字 
--C # 连同匹配行的上下#行一并显示，#代表任意数字 
--R
--r 递归搜索目录或子目录下匹配的字所在文件 可配合find命令 ############### 
--E  相当于egrep 支持扩展的正则表达式 
--F  相当于fgrep 不支持正则表达式 
---color对匹配的内容以颜色显示 
--V  显示grep版本 
-
+    PATTERN:是文本字符和正则表达式的元字符组合而成的匹配条件，
+    用单引号‘ ’将pattern括起来以避免shell通配的影响，强引用不替换而显示字符本身。" " 双引号，
+    字符串中的` ` ,$, \ 等特殊字符会被shell解释替换后，再传递给grep。
+    对普通的字符串（没有特殊字符和空格的字符串）也可以不加引号，直接搜索。 
+     OPTIONS：（这里给出常用的选项） 
+    -i 忽略大小写 
+    -c 显示被匹配到的行数 
+    -n 输出行号 
+    -v 反向选择，即找没有搜索字符串的行  #############3
+    -o 仅显示匹配到的内容   grep -oe<只显示匹配内容><-C 5 前后五行><-A 5 前><-B 5 后> '.*\[.*\].*' test.sh
+    -w 匹配单词 
+    -A # 连同匹配行的下#行一并显示，#代表任意数字 
+    -B # 连同匹配行的上#行一并显示，#代表任意数字 
+    -C # 连同匹配行的上下#行一并显示，#代表任意数字 
+    -l 只显示命中的文件名
+    -E  相当于egrep 支持扩展的正则表达式     三种模式正则 grep 转义 \|   \+ 
+#    https://blog.csdn.net/yufenghyc/article/details/51078107
+#抓取ip port 格式化输出并排序
+    cat ips.txt | grep -o "[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\:[0-9]\+" | awk -F':' '{print $1,$2}' OFS="\t" | sort -k 1 -n 
+    
+    -F  相当于fgrep 不支持正则表达式 
+    --color对匹配的内容以颜色显示 
+    -V  显示grep版本 
+    -R
+    -r 递归搜索目录或子目录下匹配的字所在文件 可配合find命令 ############### 
+grep -rl 7000 ./*   #匹配所有文件子目录文件 输出概要或者文件列表
+grep "7000" file1.txt file2.txt file3.txt   #匹配多个文件 
+grep "7000" `find ./ -name "*conf" -o -name "*conf3" `  #匹配 查找出的文件列表  并过滤一个子列表
+```
+findfiles=`find ./ -name "*conf" -o -name "*conf3" `    #查找文件列表
+echo ${findfiles} | tr ' ' "\n"
+grep -n "7000" ${findfiles}        #命中展示
+grepfiles=`grep -l "7000" ${findfiles} `       #过滤出文件子列表
+echo ${grepfiles} | tr ' ' "\n"
+sed -i.back "s/7000/7800/g" ${grepfiles}        #替换并备份文件
+```
+#多关键词前后10行 分页展示
+grep -C 10 -inoe  '.*MccpMgr.*' obcp-server29.log | less 
+grep -ne  'getUserBean\|device:null' obcp-server29.log | grep -v '.*DEBUG.*'| grep -v '.*INFO.*' | less
 
 wc -l file #### 统计行数
 wc -w file #### 统计单词数
 wc -c file #### 统计字符数
-
 ####系统 文件还原 进程
 lsof(list open files)是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口。因为应用程序打开文件的描述符列表提供了大量关于这个应用程序本身的信息，因此通过lsof工具能够查看这个列表对系统监测以及排错将是很有帮助的。
 /proc/1917  某进程动id下的 内存文件配置 还原文件？
@@ -227,7 +299,6 @@ lrwx------ 1 walker walker 64 1月  24 15:36 2 -> /dev/pts/0
 lr-x------ 1 walker walker 64 1月  24 15:36 255 -> /home/walker/e/help_note/shell/pipe_maker.sh* (deleted)
 3.读取 转储目标文件 
 cat /proc/7570/fd/255 > pipe_maker.sh
-
 lsof输出各列信息的意义如下：
 COMMAND：进程的名称 PID：进程标识符
 USER：进程所有者
@@ -247,7 +318,6 @@ lsof -d 4 #显示使用fd为4的进程
 lsof -i #show port tcp
 lsof -i[46] [protocol][@hostname|hostaddr][:service|port]   46 --> IPv4 or IPv6   protocol --> TCP or UDP   hostname --> Internet host name   hostaddr --> IPv4地址   service --> /etc/service中的 service name (可以不止一个)   port --> 端口号 (可以不止一个)
 lsof -i:8091 端口
-
 ####设置时间
 ntpd -s -d  ####自动同步 
 date --s="2014-08-21 12:33:22" ####手动设置
@@ -262,7 +332,6 @@ server asia.pool.ntp.org iburst
 server ntp.nict.jp iburst
 server time.nist.gov iburst
 /etc/init.d/ntp restart    ####重启
-
 
 ####日期date格式化
 date "+%Y-%m-%d"  
@@ -285,19 +354,14 @@ date -d "2019-02-11 13:14:19" +%s #到s级别
 date -d @1549862059 "+%Y-%m-%d"   #反转
 2019-02-11
 
-
 ####源配置
 {
-
 vim /etc/apt/sources.list                                                 
-
 ####for pi
 deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi 
-
 ####for pc	
 对比原有配置 找到系统版本
 XXXX='bionic'
-
 deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX} main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-security main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-updates main restricted universe multiverse
@@ -308,18 +372,8 @@ deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted univers
 #deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-updates main restricted universe multiverse
 #deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-proposed main restricted universe multiverse
 #deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted universe multiverse 
-
-from='/etc/apt/sources.list'
-mv ${from} ${from}.default    
-XXXXX='bionic'
-echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX} main restricted universe multiverse"	>> $from
-echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-security main restricted universe multiverse"	>> $from
-echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-updates main restricted universe multiverse"	>> $from
-echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-proposed main restricted universe multiverse"	>> $from
-echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted universe multiverse"	>> $from
-
+ 
 }
-
 ####源配置 suse
 {
 安装源操作：zypper+ 参数
@@ -330,12 +384,10 @@ echo "deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted u
     modifyrepo, mr 修改指定的安装源。
     refresh, ref 刷新所有安装源。
     clean 清除本地缓存。
-
 zypper ar http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/11.3/repo/oss/suse main
 zypper ar http://download.opensuse.org/distribution/11.3/repo/non-oss/suse/ nonoss
 zypper ar http://download.opensuse.org/update/11.3/suse update
 }
-
 ####zypper
 {
     安装某个软件包
@@ -346,14 +398,12 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     zypper remove emacs +vim 可使用此命令来获取所有可用新包的列表：
     zypper list-updates  类似的，要列出所有所需的包，请使用：
     zypper list-patches
-
     install, in 安装软件包。
     remove, rm 删除软件包。
     verify, ve 检验软件包的依赖关系的完整性。
     update, up 将已经安装的软件包更新到新的版本。
     dist-upgrade, dup 执行整个系统的升级。
     source-install, si 安装源代码软件包和它们的编译依赖。
-
 
 }
 ####apt-get
@@ -368,7 +418,6 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     apt-cache show package  获取包的相关信息，如说明、大小、版本等
     apt-get -f install  修复安装
     apt-get -f -y install  ???
-
     apt-get build-dep package 安装相关的编译环境
     apt-cache depends package 了解使用该包依赖那些包
     apt-cache rdepends package 查看该包被哪些包依赖
@@ -385,7 +434,6 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     apt-get install <<package name>>=<<version>>
     apt-get install open-client=1:6.6p1-2ubuntu1
 ####apt-get install gcc gcc-c++ ####c++编译需要
-
 ############################################################################################网站信息抓取####################################################################################################
 ####whatweb
     apt-get install whatweb
@@ -394,9 +442,7 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     vi /usr/li b/ruby/vendor_ruby/rchardet/universaldetector.rb
     文件第一行加入
     # encoding: US-ASCII
-
     apt-get install nmap  ####渗透测试工具nmap:
-
 ####nginx搭建 rtmp模块 pcre openssl zlib
     http://blog.csdn.net/shuxiaogd/article/details/47662115
     wget http://nginx.org/download/nginx-1.8.0.tar.gz
@@ -409,7 +455,34 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     ./configure --sbin-path=/usr/local/nginx/nginx --conf-path=/usr/local/nginx/nginx.conf --pid-path=/usr/local/nginx/nginx.pid --with-http_ssl_module --with-pcre=../pcre-8.39 --with-zlib=../zlib-1.2.11  --with-md5=/root --with-http_ssl_module --with-openssl=../openssl-1.0.1c --add-module=../nginx-rtmp-module-master
     make
     make install
+    
+####haproxy socket代理搭建
+    wget http://www.haproxy.org/
+    tar -xzvf haproxy-1.7.8.tar.gz
+    cd  haproxy-1.7.8
+    make TARGET=linux26 #cat /proc/version
+    make install PREFIX=/usr/local/haproxy
 
+    kill启动后
+    ./usr/local/haproxy/sbin/haproxy -f /usr/local/haproxy/conf/haproxy.cnf
+    
+    监控 
+    listen  admin_stats
+        bind 0.0.0.0:8888 
+        mode  http 
+        stats uri   /haproxy
+        stats realm     Global\ statistics 
+        stats auth  admin:admin
+    #监控是否代理目标宕机
+    listen test1
+            bind 0.0.0.0:3306
+            mode tcp
+            #maxconn 4086
+            #log 127.0.0.1 local0 debug
+            server s1 192.168.111.101:3306 check port 3306
+            server s2 192.168.111.102:3306 check port 3306
+    http://192.168.111.100:8888/haproxy
+    
 ####设置DNS
     DNS是用来解析域名用的，平时我们访问网站都是直接输入一个网址，
     而dns把这个网址解析到一个IP。关于dns的概念，如果你很陌生的话，
@@ -419,16 +492,18 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     2）每行只能有一个IP，也就是说一个域名不能对应多个IP；
     3）如果有多行中出现相同的域名（前面IP不一样），会按最前面出现的记录来解析。
     
-
 ####Linux 网络和监控
 **hostname <–d 显示机器所属域名> <–f 显示完整的主机名和域名> <–i 显示当前机器的ip地址>
 **ping     网络畅通 网络速度
-
+  ping ip <-c 2  只ping两次> <-W 2 超时两秒> 
+**telnet    通过telnet协议连接目标主机，如果telnet连接可以在任一端口上完成即代表着两台主机间的连接良好。
+  telnet ip port 
+  echo " " telnet ip port 无交互式
+  sleep 2 | telnet 192.168.119.166  21
+  
 **ifconfig  查看用户网络配置。它显示当前网络设备配置。对于需要接收或者发送数据错误查找，这个工具极为好
 **iwconfig  是用于无线网卡的 . 你可以用他查看设置基本的Wi-Fi 网络信息,例如 SSID, channel和encryption.包括 接收灵敏度, RTS/CTS 分片大小,重传机制。
-
     wlp4s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-
     service network start/stop      #服务形式
     ifconfig wlp4s0 up/down    #关闭网络
     iwlist wlp4s0 scan | grep ESSID    #扫描wifi可用
@@ -438,11 +513,9 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     iwconfig wlp4s0 key <wifi-pwd>     #配置密码
     iwconfig wlp4s0 ap auto            #配置自动连接
     ifconfig wlp4s0 192.168.1.120      #配置ip
-
     **nslookup www.*    在 有ip地址时，可以用这个命令来显示主机名，可以找到给定域名的所有ip地址。而你必须连接到互联网才能使用这个命令。
     **traceroute www.*  查看数据包在提交到远程系统或者网站时候所经过的路由器的IP地址、跳数和响应时间。同样你必须链接到互联网才能使用这个命令
     **finger    查看用户信息。显示用户的登录名字、真实名字以及登录终端的名字和登录权限。这是unix一个很老的命令，现在已很少使用了。
-    **telnet    通过telnet协议连接目标主机，如果telnet连接可以在任一端口上完成即代表着两台主机间的连接良好。
     ethtool 允许你查看和更改网卡的许多设置（不包括Wi-Fi网卡）。你可以管理许多高级设置，包括tx/rx、校验及网络唤醒功能。下面是一些你可能感兴趣的基本命令：
     ethtool -i 显示一个特定网卡的驱动信息，检查软件兼容性时尤其有用
     ethtool -p 启动一个适配器的指定行为，比如让适配器的LED灯闪烁，以帮助你在多个适配器或接口中标识接口名称
@@ -454,7 +527,6 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     netstat --tcp  or netstat –t 将会显示TCP连接
     netstat --udp or netstat –u 将会显示UDP连接
     netstat -g 将会显示该主机订阅的所有多播网络。
-
 
 ####Linux系统的进程间通信的方式
     管道(pipe)：管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用(进程的亲缘关系通常是指父子进程关系)。
@@ -471,7 +543,6 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
         <-b -n 1, 非交互模式, 只跑一次>  
         <-u walker, 只看某用户>
     top -b -n 1 -i -c
-
     top - 16:00:00 up 1 day,  7:20,  1 user,  load average: 1.93, 1.48, 0.90  
     #uptime 运行时间 登录用户数量 平均负载 5/10/15分钟
     任务: 285 total,   2 running, 233 sleeping,   0 stopped,   0 zombie 
@@ -487,7 +558,6 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
       754 root      20   0   47136  27848   2384 S  29.4  0.3   3:09.34 /sbin/moun+
       878 message+  20   0   51692   6164   3912 S   5.9  0.1   0:15.43 /usr/bin/d+
     22747 walker    20   0   51360   4004   3388 R   5.9  0.0   0:00.02 top -bn 1 +
-
     PR 进程的调度优先级。这个字段的一些值是’rt’。这意味这这些进程运行在实时态。
     NI 进程的nice值（优先级）。越小的值意味着越高的优先级。
     VIRT 进程使用的虚拟内存。
@@ -503,17 +573,13 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     %MEM 进程使用的可用物理内存百分比。
     TIME+ 任务启动后到现在所使用的全部CPU时间，精确到百分之一秒。
     COMMAND 运行进程所使用的命令。
-
 ####show memory
     free -h
     cat /proc/meminfo  #(free / ps / top)等的组合显示
-
     vmstat <1 sleep> <5 count> 
     procs -----------memory---------- ---swap-- -----io---- --system-- -----cpu-----
-
 ####ps
     ps H -eo user,pid,ppid,tid,time,%cpu --sort=+%cpu   #cpu使用倒序
-
     ps是显示瞬间进程的状态，并不动态连续；如果想对进程进行实时监控应该用top命令
     命令	含义 
        -e	显示所有进程,环境变量
@@ -527,7 +593,6 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
         u	以用户为主的格式来显示程序状况
         au	显示较详细的资讯
         aux	显示所有包含其他使用者的行程
-
         -o c,C,f,g,G    按照指定格式输出
         args：进程名(command)
             c cmd   可执行地简单名称 
@@ -557,7 +622,6 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
             v vsize   总地虚拟内存数量(字节) 
             y priority 内核调度优先级
 
-
 ####sort
     ps | sort
     sort 选项与参数：
@@ -569,29 +633,22 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     -u  ：就是 uniq ，相同的数据中，仅出现一行代表；
     -t  ：分隔符，默认是用 [tab] 键来分隔；
     -k  ：以那个区间 (field) 来进行排序的意思
-
     ps -eo rss,pmem,pcpu,vsize,args |  sort -k 1 -r -n | less
-
         sort命令对ps结果进行排序
         -k 1 :按第一个参数 rss进行排
         -r：逆序
         -n：numeric，按数字来排序
-
     ps --sort=[+|-] key
     按CPU降序排列：ps aux --sort=[-|+]%cpu
-
     pstree  以显示进程信息。它以树的形式显示
     kill -9
     pgrep 会返回所有匹配这个关键词的进程ID。例如，你可以使用以下命令寻找Firefox的PID: pgrep firefox 
     pkill & killall pkill和killall命令可以根据进程的名字杀死一个进程。使用以下任一方法都可以杀死Firefox进程： pkill firefox  killall firefox 
     renice 用来改变进程的nice值。nice值代表进程的优先级。renice 19 pid    -19的nice值是非常高的优先级，相反，19是非常低的优先级。0是默认的优先级。
-
 ####linux性能监控 分析工具 监控 cpu mem netstat 
     apt-get install nmon 
-
     nmon -fT -s 5 -c 20
     nmon -f -T -s 5 -c 20 -m  ~/logs/
-
     -f标记，把nmon收集的数据保存到CSV格式的文件里，以_date_time.nmon方式命名。下面列出一些常用参数，更多可以查看帮助文档。
     -f 以后台方式运行nmon,把收集到的数据保存到csv文件中。 
     -t 包含top的输出------
@@ -600,26 +657,21 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     -c 收集多少次 
     -m 生成目录
     好的 数据报表已经生成，可以下载出来再windows机器上用analyser日志分析工具打开
-
     nmon_analyser.xls excel脚本宏
     https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/Power%20Systems/page/nmon_analyser
     选择文件转换为excel格式 
-
     excel图表展示
-
 
 netstat
     netstat --help
     usage: netstat [-vWeenNcCF] [<Af>] -r         netstat {-V|--version|-h|--help}
            netstat [-vWnNcaeol] [<Socket> ...]
            netstat { [-vWeenNac] -i | [-cnNe] -M | -s [-6tuw] }
-
             -r, --route              显示路由表
             -i, --interfaces         display interface table
             -g, --groups             display multicast group memberships
             -s, --statistics         display networking statistics (like SNMP)
             -M, --masquerade         display masqueraded connections
-
             -v, --verbose            显示详细信息
             -W, --wide               don't truncate IP addresses
             -n, --numeric            不解析名称
@@ -631,20 +683,16 @@ netstat
             -p, --programs           display PID/Program name for sockets
             -o, --timers             display timers
             -c, --continuous         continuous listing
-
             -l, --listening          display listening server sockets
             -a, --all                display all sockets (default: connected)
             -F, --fib                display Forwarding Information Base (default)
             -C, --cache              display routing cache instead of FIB
             -Z, --context            display SELinux security context for sockets
-
       <Socket>={-t|--tcp} {-u|--udp} {-U|--udplite} {-S|--sctp} {-w|--raw}
                {-x|--unix} --ax25 --ipx --netrom
       <AF>=Use '-6|-4' or '-A <af>' or '--<af>'；默认： inet
-
     netstat -ano  所有 包括 udp 
     netstat -antl 所有 tcp
-
 ####telnet 通过 cmd 依靠ip/端口/用户名密码 远程登录
     service openbsd-inetd start  
     /etc/init.d/openbsd-inetd restart 
@@ -671,81 +719,6 @@ netstat
     　　上表所列命令以外的其他命令都将以字符串的形式发送至 Telnet 服务器。例如，sendabcd 将发送字符串 abcd 至 Telnet 服务器，这样，Telnet 会话窗口中将出现该字符串。
     　　quit
 
-####ssh scp putty<终端>  依靠ip/端口/用户名密码 远程登录
-    **ssh密钥配置
-        ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
-        参数说明： 
-        -t 加密算法类型，这里是使用rsa算法 
-        -P 指定私钥的密码，不需要可以不指定 
-        -f 指定生成秘钥对保持的位置 
-    >server config  
-        sudo vim /etc/ssh/sshd_config
-            RSAAuthentication yes 
-            PubkeyAuthentication yes 
-            AuthorizedKeysFile %h/.ssh/authorized_keys
-            StrictModes no
-        >create pub and private key
-        ssh-keygen -t rsa   
-        ssh-add ~/.ssh/id_rsa
-        cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-        chmod 644 ~/.ssh/authorized_keys
-        chmod 700 ~/.ssh
-        >restart
-        service ssh restart        
-        service sshd restart   
-        /etc/init.d/ssh restart
-        >check
-        ssh localhost 
-    >client config 自动化ssh密钥免密码
-        ssh-keygen -t rsa 
-        ######ss客户端公钥发送个服务端 追加到服务端对应用户的  ~/.ssh/authorized_keys
-        ssh root@127.23.1.2 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_rsa.pub 
-        ||
-        ssh-copy-id root@127.23.1.2
-        ||
-        scp ~/.ssh/id_rsa.pub icbcmon@122.1.2.3:/approot/id_rsa.pub.new
-        ssh root@127.23.1.2 "cat ~/.ssh/id_rsa.pub.new >> ~/.ssh/authorized_keys"        
-
-        
-
-    **ssh 远程登录 和 执行命令
-    ssh username@127.23.1.2 "ls -lth /home/walker | grep hello "        
-    ssh username@127.23.1.2 < fff.sh
-    >ssh file download
-    ssh user@host 'tar cz src' | tar xzv
-    cd && tar czv src | ssh user@host 'tar xz'
-    >port bind and proxy 本地端口:目标主机:目标主机端口"
-    ssh -D 8080 user@host
-    ssh -L 2121:host2:21 host3
-    ssh -L 5900:localhost:5900 host3
-
-    scp命令传输上传下载文件 
-    ####上传文件
-    scp -p xxx.gz icbcmon@122.1.2.3:/approot/
-    scp -p xxx.jar walker@39.106.111.11:/home/walker/
-    ####下载 文件<夹>  到/root
-    scp <-r> root@43.224.34.73:/home/lk /root
-    -1  强制scp命令使用协议ssh1  
-    -2  强制scp命令使用协议ssh2  
-    -B  使用批处理模式（传输过程中不询问传输口令或短语）  
-    -C  允许压缩。（将-C标志传递给ssh，从而打开压缩功能）  
-    -p 保留原文件的修改时间，访问时间和访问权限。  
-    -q  不显示传输进度条。  
-    -r  递归复制整个目录。  
-    -v 详细方式显示输出。
-
-
-    ####免密码登录sshpass
-    apt-get install sshpass
-    wget http://sourceforge.net/projects/sshpass/files/sshpass/1.05/sshpass-1.05.tar.gz  
-    tar xvzf sshpass-1.05.tar.gz  
-    ./configure 
-    make  
-    make install
-    sshpass -p "XXX" ssh user@IP
-    ####首次需要ssh 直接登录一次 
-    ####之后才能使用sshpass登录?
-
 ####mv命令既可以重命名
     for i in `seq -w 10`; do touch stu\_$i\_linux.jpg ; done
     rename \_linux '' *.jpg
@@ -759,7 +732,6 @@ netstat
 ####软链接 硬链接
     ln -s source     dist     #建立软连接 快捷方式
     ln     source     dist     #建立硬连接 硬链接不能连接两个不同文件系统上的文件 类似拷贝副本
-
 ####sh ./ bash dash各种语法错误
     原因在于两次执行的不是同一种shell，在用./sample的方式执行的时候，系统会使用脚本首行声明的/bin/bash来解释脚本，而用sh方式执行的时候，系统会调用sh
     ll `which sh`  
@@ -767,9 +739,10 @@ netstat
     ln -s /bin/bash /bin/sh #连接替换sh dash？
     切换bash dash
     输入bash即可
-
 ####回响
-####/$ echo -e ${PATH########'\n'}
+####
+echo "aaa bbb\n ccc\tddd" | tr ' ' "\n"     #行列转换echo
+echo -e ${PATH}
     -n 不尾随换行符 文件追加 lf lrlf异常
     -e 启用解释反斜杠的转义功能
     -E 禁用解释反斜杠的转义功能(默认)
@@ -795,12 +768,9 @@ netstat
     # export CLASSPATH=$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/bin
     export CLASSPATH=$JAVA_HOME/bin   #jdk11 
     PATH=$PATH:$CLASSPATH
-
     source /etc/profile
-
     ####eclipse高版本配置 当path无效
     ln -s /home/walker/software/jdk11 jre
-
 ####防火墙问题
     一、Linux下开启/关闭防火墙命令
     1、永久性生效，重启后不会复原。
@@ -853,18 +823,15 @@ netstat
     tar -xzvf file.tar.Z ####解压tar.Z 
     --exclude FILE  在压缩的过程中，不要将 FILE 打包！
 
-
     将整个 /etc 目录下的文件全部打包成为 /tmp/etc.tar
     tar -cvf /tmp/etc.tar /etc　　　　<==仅打包，不压缩！
     tar -czvf /tmp/etc.tar.gz /etc　　<==打包后，以 gzip 压缩
     tar -cjvf /tmp/etc.tar.bz2 /etc　　<==打包后，以 bzip2 压缩
-
     tar -rvf file.tar test.txt   #追加文件 追加操作只针对没有压缩的tar包才有效
     
     unrar e file.rar ####解压rar 
     zip -r xxx.zip ./*  #当前目录的内容为xxx.zip文件
     unzip file.zip ####解压zip 
-
     ####对于.7z
     支持 7Z,ZIP,Zip64,CAB,RAR,ARJ,GZIP,BZIP2,TAR,CPIO,RPM,ISO,DEB 压缩文件格式
     安装： apt-get install p7zip p7zip-full p7zip-rar
@@ -874,13 +841,11 @@ netstat
     7z e yajiu.7z 将yajiu.7z中的所有文件解压出来，e是解压到当前路径
     7z x yajiu.7z 将yajiu.7z中的所有文件解压出来，x是解压到压缩包命名的目录下
 
-
 ####挂载ntfs磁盘问题
     apt-get install ntfsprogs
     ntfsfix /dev/sda5 
 ####挂载磁盘为虚拟路径
     mount /dev/sda6 /home/e
-
     fdisk -l    #磁盘
     df -h                          # 查看已经挂载的磁盘
     mkfs.ext4 /dev/vdb             # 初始化磁盘
@@ -888,18 +853,14 @@ netstat
     blkid                          # 获取磁盘的uuid和属性，用uuid来进行开机mount
     vim /etc/fstab                 # 开机mount，模板是UUID=********** /home/u01  ntfs  defaults  1 1
     mkfs.ext4 /dev/vdb  #初始化磁盘 格式化？  
-
     unmount /dev/vdb #扩容 取消挂载 重新处理 后 再挂载
     e2fsck -f /dev/vdb   # 诊治数据磁盘，返回磁盘信息
     resize2fs /dev/vdb   # 重置数据磁盘大小
-
 ####启动项
     1.操作系统接管硬件以后，首先读入 /boot 目录下的内核文件
     2.内核文件加载以后，就开始运行第一个程序 /sbin/init，它的作用是初始化系统环境。由于init是第一个运行的程序，它的进程编号（pid）就是1。其他所有进程都从它衍生，都是它的子进程。
-
     注意如果脚本需要用到网络，则NN需设置一个比较大的数字，如99。
     sudo update-rc.d test defaults 95 #优先级配置
-
 ####总启动项 在 /etc/init.d文件夹下是全部的服务程序，将脚本复制或者软连接到/etc/init.d/目录下，
 ls /etc/init.d
 ####各级别启动目录 软连接 init.d目录下的应用 每个rc(1-6).d只链接它自己启动需要的相应的服务程序！
@@ -912,14 +873,12 @@ rc4.d # 4 - 系统保留的
 rc5.d # 5 - X11 （x window)
 rc6.d # 6 - 重新启动
 rcS.d
-
 ####每个级别都会在在对应的目录下有对应的启动文件
     ls /etc/rc3.d/
     初始化操作都在 /etc/init/*.conf文件中完成     */
     cat /etc/init/anacron.conf 
     start on runlevel [2345]
     stop on runlevel [!2345]
-
     #####启动1
     vim /etc/rc.local
     /etc/init.d/test.sh start 
@@ -928,14 +887,11 @@ rcS.d
     #####启动3
     cp test.sh /etc/init.d/
     ln -s /etc/init.d/test.sh /etc/rc3.d/init.d/
-
     vim 启动文件，文件前面务必添加如下三行代码，否侧会提示chkconfig不支持
     #!/bin/sh #告诉系统使用的shell,所以的shell脚本都是这样
     #chkconfig: 35 20 80 #分别代表运行级别，启动优先权，关闭优先权，此行代码必须
     #description: http server #（ 两行都注释掉！！！，此行代码必须
-
     chkconfig --add test.sh
-
 ####用户组问题
     adduser walker 新建用户
     useradd -g root -s /home/walker -m walker
@@ -956,22 +912,15 @@ rcS.d
     输入 root 密码 安装时 设置的是用户密码 而不是root 密码 ununtu 只能调用 root 不能直接 root登录
     输入 passwd root
 
-
 ####编译安装ffmpeg
         http://ffmpeg.org/releases/ffmpeg-2.8.11.tar.gz
     wget -c http://ffmpeg.org/releases/ffmpeg-3.0.tar.bz2 
     tar xvf ffmpeg-3.0.tar.bz2 
     cd ffmpeg-3.0 
     ./configure --host-cppflags=-fPIC --host-cflags=-fPIC --enable-shared 
-
     make 
     make install
-# aaaa
-## aabb
-"asdfasdf"
-asdf
-a###adfa
-'''asdfa''
+     
 ####openssl安装
     这里需要特别的注意：openssl 版本不能太高，太高有些接口与libRTMP 的接口不一样，会导致libRTMP编译不能通过。我这里安装的是openssl-1.0.1f。
     1、下载地址：http://www.openssl.org/source/ 下一个新版本的OpenSSL，我下的版本是：openssl-1.0.1f
@@ -1007,7 +956,6 @@ a###adfa
     ...]# openssl version
     OpenSSL 1.0.1f 6 Jan 2014
 
-
 ####定时任务
 crontab -e #编辑
 crontab -l  #列表 
@@ -1019,7 +967,6 @@ service cron status
 /etc/init.d/cron {start|stop|status|restart|reload|force-reload} ####重启服务
 */4 * * * * /home/pi/project/python/foStart.sh
 0 0 * * * /home/pi/project/python/foRestart.sh
-
 其中排列意思为：
 Bash
     #    m    h    dom    mon    dow    user    command
@@ -1055,8 +1002,6 @@ Bash
     0 4 1 jan * /usr/local/etc/rc.d/lighttpd restart
     #一月一号的4点重启apache
 
-
-
 ####管道 多进程 并发
     1.1. linux后台进程 
     Unix是一个多任务系统，允许多用户同时运行多个程序。shell的元字符&提供了在后台运行不需要键盘输入的程序的方法。输入命令后，其后紧跟&字符，该命令就会被送往到Linux后台执行，而终端又可以继续输入下一个命令了。 
@@ -1070,21 +1015,15 @@ Bash
     1	Standard Output
     2	Standard Error
     每一个文件描述符会对应一个打开文件，同时，不同的文件描述符也可以对应同一个打开文件；同一个文件可以被不同的进程打开，也可以被同一个进程多次打开。
-
     在/proc/PID/fd中，列举了进程PID所拥有的文件描述符，例如
-
     #!/bin/bash
     source /etc/profile;
-
     # $$表示当前进程的PID
     PID=$$
-
     # 查看当前进程的文件描述符指向
     ll /proc/$PID/fd
-
     # 文件描述符1与文件tempfd1进行绑定
     ( [ -e ./tempfd1 ] || touch ./tempfd1 ) && exec 1<>./tempfd1
-
     [ouyangyewei@localhost learn_linux]$ sh learn_redirect.sh 
     total 0
     lrwx------. 1 ouyangyewei ouyangyewei 64 Jan  4 22:17 0 -> /dev/pts/0
@@ -1092,7 +1031,6 @@ Bash
     lrwx------. 1 ouyangyewei ouyangyewei 64 Jan  4 22:17 2 -> /dev/pts/0
     lr-x------. 1 ouyangyewei ouyangyewei 64 Jan  4 22:17 255 -> /home/ouyangyewei/workspace/learn_linux/learn_redirect.sh
     -------------------
-
     [ouyangyewei@localhost learn_linux]$ cat tempfd1 
     total 0
     lrwx------. 1 ouyangyewei ouyangyewei 64 Jan  4 22:17 0 -> /dev/pts/0
@@ -1114,11 +1052,8 @@ Bash
     为了执行上面的指令，Shell创建了两个进程来分别执行cat和less。下图展示了这两个进程是如何使用管道的：
     unix_unnamed_pipe 
     有一点值得注意的是两个进程都连接到了管道上，这样写入进程cat就将其标准输出（文件描述符为fd 1）连接到了管道的写入端，读取进程less就将其标准输入（文件描述符为fd 0）连接到了管道的读入端。实际上，这两个进程并不知道管道的存在，它们只是从标准文件描述符中读取数据和写入数据。shell必须要完成相关的工作。
-
     1.3.2. 命名管道（FIFO，First In First Out）
-
     命名管道也称FIFO，从语义上来讲，FIFO其实与匿名管道类似，但值得注意：
-
     在文件系统中，FIFO拥有名称，并且是以设备特俗文件的形式存在的；
     任何进程都可以通过FIFO共享数据；
     除非FIFO两端同时有读与写的进程，否则FIFO的数据流通将会阻塞；
@@ -1127,9 +1062,25 @@ Bash
     比如，可以利用FIFO实现单服务器、多客户端的应用程序: 
     unix_named_pipe
 
-
 ##/dev/null  ： 空设备，是一个特殊的设备文件，弃一切写入其中的数据（但报告写入操作成功），读取它则会立即得到一个EOF。
     称为位桶(bit bucket)或者黑洞(black hole)。
     通常被用于丢弃不需要的输出流
     提供无限的空字符(NULL, ASCII NUL, 0x00)。
+    
+##ulimit使用的基本格式为：ulimit [options] [limit]
+具体的options参数含义如下表所示：
+-a 显示当前系统所有的limit资源信息。 
+-H 设置硬资源限制，一旦设置不能增加。
+-S 设置软资源限制，设置后可以增加，但是不能超过硬资源设置。
+-c 最大的core文件的大小，以 blocks 为单位。
+-f 进程可以创建文件的最大值，以blocks 为单位.
+-d 进程最大的数据段的大小，以Kbytes 为单位。
+-m 最大内存大小，以Kbytes为单位。
+-n 查看进程可以打开的最大文件描述符的数量。
+-s 线程栈大小，以Kbytes为单位。
+-p 管道缓冲区的大小，以Kbytes 为单位。
+-u 用户最大可用的进程数。
+-v 进程最大可用的虚拟内存，以Kbytes 为单位。
+-t 最大CPU占用时间，以秒为单位。
+-l 最大可加锁内存大小，以Kbytes 为单位。 
 

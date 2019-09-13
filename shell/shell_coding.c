@@ -78,7 +78,12 @@ var=`命令` # 注意此处不是普通的单引号
     echo ${var:7}   #7-》*
     echo ${var:0-7:3} #0-7 表示右边算起第七个字符开始，3 表示字符的个数。
     echo ${var:0-7}     #到结束
-    
+
+//匹配并且替换
+    echo ${string/23/bb}   //abc1bb42341  替换一次    
+    echo ${string//23/bb}  //abc1bb4bb41  双斜杠替换所有匹配    
+    echo ${string/#abc/bb} //bb12342341   #以什么开头来匹配，根php中的^有点像    
+    echo ${string/%41/bb}  //abc123423bb  %以什么结尾来匹配，根php中的$有点像     
 
 //字符串分割
     info='abcd;efgh'
@@ -112,21 +117,19 @@ cmd=$exe' keys '$key" | awk -OFS'\"' '"'{print $1}'"'"
     if [[ "$A" != "$B" ]];then 
     if [[ $A < $B ]];then  
     if [ -n "$A" ];then  #字符串不为空，长度不为0
-    
     if [ -z "$A" ];then   #字符串为空.就是长度为0.
-    # 这里的-d 参数判断$myPath是否存在 是否为目录
-    if [ ! -d "$myPath"]; then
-     mkdir "$myPath"
-    fi 
-    [ ! -d ${var} ] && mkdir -p ${var} #若不存在则创建文件夹
-    [ ! -d ${var##*/} ] && mkdir -p ${var##*/} #若不存在父级则创建文件夹
-    [ ! -f ${var} ] && touch ${var} #若不存在则创建文件夹
-    # 这里的-f参数判断$myFile是否存在 是否为文件
-    if [ ! -f "$myFile" ]; then
+    #单行判断 逻辑运算
+    [ ! -d ${var} ] && mkdir -p ${var}  #若不存在则创建文件夹
+    [ ! -d ${var##*/} ] && mkdir -p ${var##*/}  #若不存在父级则创建父级文件夹
+    [ ! -f ${var} ] && touch ${var}     #若不存在则创建文件夹
+    if [ ! -f "$myFile" ]; then     # 这里的-f参数判断$myFile是否存在 是否为文件
      touch "$myFile"
     fi
+    if [ ! -d "$myPath"]; then      # 这里的-d 参数判断$myPath是否存在 是否为目录
+     mkdir "$myPath"
+    fi 
     
-    [ -x $redis ] || exit 5
+[ -x $redis ] || exit 5
 等于        equal       -eq
 不同等于  not equal     -ne           
 小于      less than     -lt
@@ -185,30 +188,17 @@ read -p "请输入用户名：" name   #录入name变量
 
     done
     
-local arr=( '/mnt/f' '/mnt/e' '/home/walker/e' )
-local arr=( ` ls ` )
-local arr=( ` ls | tr ' ' "\n" ` )
-local arr=( 'date ' 'echo aaa' )
-for ((i=0; i<${#arr[@]}; i++))
-do
-    item=${arr[$i]}
-    call $item
-done   
+
+tt=''; for i in `seq 0 99`; do tt="${tt},msg_entity_${i}"; done ; tt=${tt:1}; str='before '"${tt}"' after '; echo ${str}
     
-}
-//行列分隔符ifs
-IFS_old=$IFS #将原IFS值保存，以便用完后恢复 
-IFS=$’\n’ #更改IFS值为$’\n’ ，注意，以回车做为分隔符，IFS必须为：$’\n’ 
-xxxxxxxxxxxxxxxxxxxx
-IFS=$IFS_old #恢复原IFS值
 
 
-//文件读取 while read line
 1. 迭代文件中的每一行
 while read line;
 do
     echo $line;
 done < file.txt
+
 
 cat file.txt | (while read line;do echo $line;done)
 
@@ -225,6 +215,25 @@ for((i=0;i<${#word};i++))
 do
     echo ${word:i:1);
 done
+
+local arr=( '/mnt/f' '/mnt/e' '/home/walker/e' )
+local arr=( ` ls ` )
+local arr=( ` ls | tr ' ' "\n" ` )
+local arr=( 'date ' 'echo aaa' )
+for ((i=0; i<${#arr[@]}; i++))
+do
+    item=${arr[$i]}
+    call $item
+done   
+
+    
+}
+//行列分隔符ifs
+IFS_old=$IFS #将原IFS值保存，以便用完后恢复 
+IFS=$’\n’ #更改IFS值为$’\n’ ，注意，以回车做为分隔符，IFS必须为：$’\n’ 
+xxxxxxxxxxxxxxxxxxxx
+IFS=$IFS_old #恢复原IFS值
+
 
 //函数
 {
