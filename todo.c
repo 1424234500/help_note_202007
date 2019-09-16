@@ -9,23 +9,15 @@
     //jpa分表插件sharding使用 联合多数源配置
 
 web sb - 用户登录 session token - 角色权限  - f5 ip分配 
-
-service provider 负载 消费者 提供者 dubbo
+service provider 负载 消费者 提供者 dubbo 原始 socket集成
 监控服务化 监控controller
 
 redis注册中心
 Prometheus监控服务器群
 
-web sb - 用户登录 session token - 角色权限  - f5 ip分配 
-
-service provider 负载
-
-redis注册中心
-Prometheus监控服务器群
-
-socket服务器 分布式部署
+socket服务器 分布式部署 实现通信
 app聊天
-spring定时任务失效 
+
 quartze在线管理 集群模式
 
 消息服务器架构

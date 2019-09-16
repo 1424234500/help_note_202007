@@ -16,7 +16,8 @@ function do_start_sftware_start(){
 
     local arr=( 
 #    '/home/walker/software/eclipse/eclipse'
-#    '/home/walker/software/apache-tomcat-8.5.40/bin/startup.sh'
+    '/home/walker/software/zookeeper-3.4.12/bin/zkServer.sh start'  #zookeeper
+    '/home/walker/software/apache-tomcat-8.5.40/bin/startup.sh'    #admin monitor  
 #    'do update'
     'gedit'
     '/home/walker/software/redis-5.0.3/src/redis-server'
