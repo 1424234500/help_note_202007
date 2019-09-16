@@ -1,36 +1,28 @@
-企业级项目?
+实际使用的项目？
 功能 
-主页展示 介绍
-数据库数据通用展示 管理 接口
-权限管理模块
-//便捷接口在线测试swagger
+    主页展示 介绍
+    数据库数据通用展示 管理 接口
+    权限管理模块 角色 权限
+    //便捷接口在线测试swagger
 
-自动化打包部署问题 idea依赖
-//jpa分表插件sharding使用 联合多数源配置
+    自动化打包部署问题 idea依赖
+    //jpa分表插件sharding使用 联合多数源配置
 
 web sb - 用户登录 session token - 角色权限  - f5 ip分配 
 
+service provider 负载 消费者 提供者 dubbo
+监控服务化 监控controller
+
+redis注册中心
+Prometheus监控服务器群
+
+web sb - 用户登录 session token - 角色权限  - f5 ip分配 
 
 service provider 负载
 
 redis注册中心
 Prometheus监控服务器群
 
-<<<<<<< HEAD
-//学习资料 文本采集 搜索图形化工具程序
-自动化打包部署问题 idea依赖
-jpa分表插件使用
-
-web sb - 用户登录 session token - 角色权限  - f5 ip分配 
-
-
-service provider 负载
-
-redis注册中心
-Prometheus监控服务器群
-
-=======
->>>>>>> 8e37a724e1ee351edd9304c35e0119e942012d29
 socket服务器 分布式部署
 app聊天
 spring定时任务失效 
@@ -70,19 +62,9 @@ java UnSafe 类
 /*jstack */
 
 /////////////////////////////////////////////////////
-
-<<<<<<< HEAD
-多数据源 
-//mysql oracle 分表案例
-=======
 //多数据源 
 //mysql oracle 分表案例 分表插件sharding
->>>>>>> 8e37a724e1ee351edd9304c35e0119e942012d29
 ////////////////////////////////////////////////////
-性能
-issa pass f5 
-/*websocket netty 业务处理链 mvc */
-
 ////////////////////////////
 /*java core 导出 分析*/
 
