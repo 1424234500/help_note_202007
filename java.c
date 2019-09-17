@@ -154,12 +154,12 @@ dump agent提供了一些可配置的选项，详细见文档
 
 //注册中心
 zookeeper安装启动 port:2181
-wget http://mirrors.shu.edu.cn/apache/zookeeper/stable/zookeeper-3.4.12.tar.gz
-tar -xvf zookeeper-3.4.12.tar.gz
-cd zookeeper-3.4.12
+wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.14/zookeeper-3.4.14.tar.gz
+tar -xzvf zookeeper-3.4.14.tar.gz
+cd zookeeper-3.4.14
 cp conf/zoo_sample.cfg conf/zoo.cfg
-vi conf/zoo.cfg     #修改 数据路径 
-    dataDir=~/log/zookeeper
+#vi conf/zoo.cfg     #修改 数据路径 
+#    dataDir=~/log/zookeeper
 
 bin/zkServer.sh start #</stop/status>
 bin/zkCli.sh -server 127.0.0.1:2181  #测试
@@ -187,24 +187,21 @@ vim conf/tomcat-users.xml
 
 
 //监控中心
-下载 dubbo-admin-2.5.7.war
 
-放入 tomcat/webapps/
-dubbo-admin-2.5.7/WEB-INF/dubbo.properties 修改地址 默认本机
-    dubbo.registry.address=zookeeper://127.0.0.1:2181
-修改日志存放路径
-vim ~/software/tomcat7/webapps/dubbo-admin-2.5.7/WEB-INF/log4j.xml 
 
+//监控中心 new  https://gitee.com/handu/dubbo-monitor/tree/master
+wget https://codeload.github.com/1424234500/dubbo-monitor/zip/master
+修改pom.xml   dubbo版本 编译报错StringUtil.isEmpty 切换dubbo的工具导入
+配置数据源mysql 建表 修改帐号密码 zookeeper地址
+mvn package 生成war 部署
+
+
+
+#org.springframework.web.context.ConfigurableWebApplicationContext.setId 在工程中spring-2.5.6.SEC03.jar 和 spring-context-3.2.9.RELEASE.jar 中都有。
+问题解决：删掉spring-2.5.6.SEC03.jar后正常，奇怪的是此问题在tomcat7中并没有出现，但是tomcat8下就会出错。
 tomcat/bin/startup.sh 启动tomcat
-http://127.0.0.1:8080/dubbo-admin-2.5.7/
-root/root
-
-
-如果还是连不上 防火墙？ 
-/sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
-service iptables save
-service iptables restar
-
+http://127.0.0.1:8080/dubbo-monitor
+walker/qewr
 
 
 

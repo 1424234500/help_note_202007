@@ -46,6 +46,12 @@ function service(){
     cd release
     ./deploy.sh $@
 }
+function monitor(){
+
+	scp -p /home/walker/e/workspace/dubbo-monitor/target/dubbo-monitor.war  walker@39.106.111.11:/home/walker/apache-tomcat-8.5.42/webapps/
+
+}
+
 
 
 
