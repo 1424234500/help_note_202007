@@ -13,6 +13,7 @@ scp <-r> root@43.224.34.73:/home/lk /root
     -q  不显示传输进度条。  
     -r  递归复制整个目录。  
     -v 详细方式显示输出。
+    
 ####免密码登录sshpass
 apt-get install sshpass
 wget http://sourceforge.net/projects/sshpass/files/sshpass/1.05/sshpass-1.05.tar.gz  
@@ -56,7 +57,12 @@ ssh-copy-id root@127.23.1.2
 ||
 scp ~/.ssh/id_rsa.pub icbcmon@122.1.2.3:/approot/id_rsa.pub.new
 ssh root@127.23.1.2 "cat ~/.ssh/id_rsa.pub.new >> ~/.ssh/authorized_keys"        
-##ssh 远程登录 和 执行命令
+
+
+##ssh 远程登录 和 执行命令 
+#环境变量特殊 java!!!!!!!!
+它不会去执行/etc/profile文件，而会去用户的HOME目录检查.bashrc并加载。
+
 ssh username@127.23.1.2 "ls -lth /home/walker | grep hello "        
 ssh username@127.23.1.2 < fff.sh
 >ssh file download

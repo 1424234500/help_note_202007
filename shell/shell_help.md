@@ -1066,13 +1066,10 @@ Bash
     称为位桶(bit bucket)或者黑洞(black hole)。
     通常被用于丢弃不需要的输出流
     提供无限的空字符(NULL, ASCII NUL, 0x00)。
+    nohup ./start.sh >/dev/null &
     
-<<<<<<< HEAD
-##ulimit使用的基本格式为：ulimit [options] [limit]
-=======
 ##ulimit使用的基本格式为：ulimit -a [options] [limit]
 ##最大设备数限制 too many open files 异常
->>>>>>> 8e37a724e1ee351edd9304c35e0119e942012d29
 具体的options参数含义如下表所示：
 -a 显示当前系统所有的limit资源信息。 
 -H 设置硬资源限制，一旦设置不能增加。
