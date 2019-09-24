@@ -252,6 +252,16 @@ java -jar jd-gui.exe
 
 
 
+//node
+wget http://nodejs.org/dist/latest/node-v10.11.0-linux-x64.tar.gz 
+wget https://cdn.npm.taobao.org/dist/node/v12.10.0/node-v12.10.0-linux-x64.tar.xz
+xz -d node-v12.10.0-linux-x64.tar.xz
+tar -xvf node-v12.10.0-linux-x64.tar
+mv node-v12.10.0-linux-x64/ nodejs
+sudo echo 'export PATH=$PATH:'`pwd -LP`"/nodejs/bin" >> /etc/profile
+source /etc/profile
+npm -v
+
 
 
 
