@@ -899,6 +899,9 @@ rcS.d
     userdel walker 删除用户
     groupadd admin 用户组
     groupdel admin 删除组
+    
+# usermod -s /bin/ksh -d /home/z –g developer sam
+此命令将用户sam的登录Shell修改为ksh，主目录改为/home/z，用户组改为developer。
     usermod -g 用户组 用户名
     强行设置某个用户所在组
     usermod -G 用户组 用户名

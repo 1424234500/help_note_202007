@@ -2,6 +2,11 @@
 my.ini 或 my.cnf
 	default_character=utf8
 	[mysqld]
+	
+    # disable_ssl
+    skip_ssl
+    #总连接数
+    max_connections=512
 	long_query_time=2	//慢查询时间定义s 
 	//5.5如下配置
 	show-query-log=on
@@ -12,17 +17,20 @@ su mysql
 ./mysql/bin/mysqld restart
 service mysqld restart
 
+//修复
+mysqlcheck --auto-repair -A -o -uroot -pyigeorg
 //登录
 mysql -u root -proot
 mysql <-h 127.0.0.1> -u root -ppasswd <-P 3306>
 mysqladmin -u用户名 -p旧密码 password 新密码
 //shell调用sql
-mysql -uuser -ppasswd -e "show databases;"
+mysql -u root -proot -e "show databases;"
 //shell调用sql文件
 use abccs;
 select * from mytable;
 select name,sex from mytable where name=‘abccs‘;
-mysql < mytest.sql | more
+mysql -u root -proot < mytest.sql 
+
 
 //变量设置 查看 mysql当前服务进程有效
 show variables like 'max_connections'
@@ -97,12 +105,10 @@ explain select * from student where id = 12;	//explain sql-select
 system > const > eq_ref > ref > fulltext > ref_or_null > index_merge > unique_subquery > index_subquery > range > index > all
 
 	
-<<<<<<< HEAD
 //显示引擎 
 //innorDB		行锁+表锁	事物  
 //<MY>ISAM		表锁		
 //MERGE         合并逻辑表INSERT_METHOD=LAST/FIRST/0不允许插入 分表
-=======
 --引擎 
 
 show engines;
@@ -139,7 +145,6 @@ MERGE :   类似于视图      合并逻辑表INSERT_METHOD=LAST/FIRST/0不允�
 4  REPLACE在merge表中不会工作
 5  AUTO_INCREMENT 不会按照你所期望的方式工作。
 
->>>>>>> 8e37a724e1ee351edd9304c35e0119e942012d29
 CREATE TABLE  IF NOT EXISTS  W_MSG (ID VARCHAR(40) primary key, TEXT TEXT) ENGINE=MERGE UNION=(W_MSG_0,W_MSG_1) INSERT_METHOD=LAST DEFAULT CHARSET=utf8;
 ALTER TABLE tbl_name  UNION=(...)
 
@@ -185,21 +190,16 @@ slow query 慢查询统计
 索引
 缓存
 
-
-1.要查询表所占的容量，就是把表的数据和索引加起来
-select sum(DATA_LENGTH)+sum(INDEX_LENGTH) from information_schema.tables 
-where table_schema='数据库名';
-select concat(round(sum(DATA_LENGTH/1024/1024),2),'M') from tables; -- 查询所有的数据大小
-
-2.查看mysql库容量大小 
+ 
+查看mysql每个数据库的大小 行数
 select
-table_schema as '数据库',
-sum(table_rows) as '记录数',
-sum(truncate(data_length/1024/1024, 2)) as '数据容量(MB)',
-sum(truncate(index_length/1024/1024, 2)) as '索引容量(MB)'
+table_schema as 'db',
+sum(table_rows) as 'rows',
+sum(truncate(data_length/1024/1024, 2)) as 'dataSize(MB)',
+sum(truncate(index_length/1024/1024, 2)) as 'indexSize(MB)'
 from information_schema.tables
 where table_schema='mysql'
-
+group by table_schema
 
 --ssl 5.7关闭
 show varibles like '%ssl%'
@@ -209,4 +209,28 @@ show varibles like '%ssl%'
 vim /etc/my.cnf
     # disable_ssl
     skip_ssl
+    
+    
+清理数据sh
+
+mysql -u root -proot < mytest.sql 
+
+
+cmd='mysql -u root -proot'
+${cmd} -e "show databases;" | grep $1
+temp_sqls="temp"
+dbs=(`${cmd} -e "show databases;" | grep $1 `)
+for ((i=0; i < ${#dbs[@]}; i++))
+do
+    item=${dbs[$i]}
+    sql="${temp_sqls}/${item}
+    echo "make truncate sql of db: ${sql}"
+    echo "use ${item};" > ${sql}
+    ${cmd} -e "use ${item}; show tables;" | grep -v Table | awk '{print "truncate table "$0";"}' >> ${sql}
+    echo "clean"
+    ${cmd} < ${sql}
+done
+    
+    
+    
 
