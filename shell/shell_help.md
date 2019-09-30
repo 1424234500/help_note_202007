@@ -232,6 +232,7 @@ find test -path "./Documents" -prune -o -path "./Desktop" -prune -o -name '.*.pn
     [-type f 文件]
     [-empty 空文件]
     [-exec rm -rf {} \  文件路径替换操作执行!]
+find ./ -maxdepth 4 -type d    
     
 删除/var/svn/svnbackup目录下创建时间为7天之前，并且文件以new开头的的所有文件或文件夹； 
 find /var/svn/svnbackup -name "new_*" -mtime -7 -exec rm -rf {} \;
