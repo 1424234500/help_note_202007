@@ -5,6 +5,8 @@ scp -p xxx.gz icbcmon@122.1.2.3:/approot/
 scp -p xxx.jar walker@39.106.111.11:/home/walker/
 ####下载 文件<夹>  到/root
 scp <-r> root@43.224.34.73:/home/lk /root
+scp -r walker@39.106.111.11:/home/walker/apache-tomcat-8.5.42/webapps/walker-web/WEB-INF/classes/com/walker/web/controller /home/walker/e/workspace/ssmcopy
+
     -1  强制scp命令使用协议ssh1  
     -2  强制scp命令使用协议ssh2  
     -B  使用批处理模式（传输过程中不询问传输口令或短语）  

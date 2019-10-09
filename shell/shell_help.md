@@ -624,7 +624,7 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
             y priority 内核调度优先级
 
 ####sort
-    ps | sort
+    ps | sort -r    #字符串空排前
     sort 选项与参数：
     -f  ：忽略大小写的差异，例如 A 与 a 视为编码相同；
     -b  ：忽略最前面的空格符部分；

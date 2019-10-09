@@ -70,10 +70,11 @@ var=`命令` # 注意此处不是普通的单引号
     ##*/    删除最多匹配*/
     %/*    倒数 删除最少的/*               */
     %%/*   倒数 删除最多的/*               */
+    var=file.temp.txt
+    echo ${var##*.}     #txt    最后一个.以后 后缀名ext
+    echo ${var%.*}      #file.temp  最后一个.以前 除后缀名
+    echo ${var%%.*}       #file   第一个.以前
     
-    分隔符.  /  取左 取右 取最左 最右
-    echo ${var##*.}     #txt
-    echo ${tmp%.*}      #file
     echo ${var:0:5} #0-》5
     echo ${var:7}   #7-》*
     echo ${var:0-7:3} #0-7 表示右边算起第七个字符开始，3 表示字符的个数。
