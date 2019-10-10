@@ -62,12 +62,13 @@ ssh root@127.23.1.2 "cat ~/.ssh/id_rsa.pub.new >> ~/.ssh/authorized_keys"
 
 
 ##ssh 远程登录 和 执行命令 
-#环境变量特殊 java!!!!!!!!
-它不会去执行/etc/profile文件，而会去用户的HOME目录检查.bashrc并加载。
+#环境变量特殊 java!!!!!!!!自行导入相关软件指令
+它不会去执行/etc/profile文件，而会去用户的HOME目录检查.bashrc并加载
+vim ~/.bashrc       #当前用户
+export JAVA_HOME=/approot/jdk1.8.0_171 && export CLASSPATH=$JAVA_HOME/bin && export PATH=$PATH:$CLASSPATH
 
 ssh username@127.23.1.2 "ls -lth /home/walker | grep hello "        
-ssh username@127.23.1.2 < fff.sh
->ssh file download
+ssh username@127.23.1.2 < fff.sh >ssh file download
 ssh user@host 'tar cz src' | tar xzv
 cd && tar czv src | ssh user@host 'tar xz'
 

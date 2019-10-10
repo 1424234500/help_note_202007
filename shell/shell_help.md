@@ -766,10 +766,11 @@ echo -e ${PATH}
     vim /etc/profile    #所有用户
     vim ~/.bashrc       #当前用户
     export JAVA_HOME=/home/walker/software/jdk1.7.0_79
-    # export CLASSPATH=$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/bin
-    export CLASSPATH=$JAVA_HOME/bin   #jdk11 
-    PATH=$PATH:$CLASSPATH
+    export CLASSPATH=$JAVA_HOME/bin   
+    export PATH=$PATH:$CLASSPATH
     source /etc/profile
+    
+        # export CLASSPATH=$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/bin
     ####eclipse高版本配置 当path无效
     ln -s /home/walker/software/jdk11 jre
 ####防火墙问题

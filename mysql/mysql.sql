@@ -211,25 +211,90 @@ vim /etc/my.cnf
     skip_ssl
     
     
-清理数据sh
-
-mysql -u root -proot < mytest.sql 
-
-
+--查看所有数据库 所有表 
 cmd='mysql -u root -proot'
-${cmd} -e "show databases;" | grep $1
-temp_sqls="temp"
+type="show"
+temp_sqls="temp/${type}"
+[ ! -d ${temp_sqls} ] && mkdir -p ${temp_sqls}
 dbs=(`${cmd} -e "show databases;" | grep $1 `)
 for ((i=0; i < ${#dbs[@]}; i++))
 do
     item=${dbs[$i]}
     sql="${temp_sqls}/${item}
-    echo "make truncate sql of db: ${sql}"
+    echo "make ${type} sql of db-file: ${sql}"
+    echo "use ${item};" > ${sql}
+    tables=(`${cmd} -e "use ${item}; show tables;" | grep -v Table | awk '{print $0}'`)
+    echo "${type} size ${#tables[@]}"
+    echo "${type} size ${#tables[@]}" >> ${sql}
+    ${cmd} -e "use ${item}; show tables;" | grep -v Table | awk '{print $0}' >> ${sql}
+done
+    
+--清理所有数据库 所有表 数据
+cmd='mysql -u root -proot'
+type="truncate"
+temp_sqls="temp/${type}"
+[ ! -d ${temp_sqls} ] && mkdir -p ${temp_sqls}
+dbs=(`${cmd} -e "show databases;" | grep $1 `)
+for ((i=0; i < ${#dbs[@]}; i++))
+do
+    item=${dbs[$i]}
+    sql="${temp_sqls}/${item}
+    echo "make ${type} sql of db-file: ${sql}"
     echo "use ${item};" > ${sql}
     ${cmd} -e "use ${item}; show tables;" | grep -v Table | awk '{print "truncate table "$0";"}' >> ${sql}
-    echo "clean"
+    echo "${type}"
+    cat ${sql}
     ${cmd} < ${sql}
 done
+
+--删除所有数据库 所有表
+cmd='mysql -u root -proot'
+type="drop"
+temp_sqls="temp/${type}"
+[ ! -d ${temp_sqls} ] && mkdir -p ${temp_sqls}
+dbs=(`${cmd} -e "show databases;" | grep $1 `)
+for ((i=0; i < ${#dbs[@]}; i++))
+do
+    item=${dbs[$i]}
+    sql="${temp_sqls}/${item}
+    echo "make ${type} sql of db-file: ${sql}"
+    echo "use ${item};" > ${sql}
+    ${cmd} -e "use ${item}; show tables;" | grep -v Table | awk '{print "drop table "$0";"}' >> ${sql}
+    echo "${type}"
+    cat ${sql}
+    ${cmd} < ${sql}
+done
+
+ 
+--新建数据库 所有表
+cmd='mysql -u root -proot'
+type="create"
+temp_sqls="temp/${type}"
+[ ! -d ${temp_sqls} ] && mkdir -p ${temp_sqls}
+dbs=(`${cmd} -e "show databases;" | grep $1 `)
+for ((i=0; i < ${#dbs[@]}; i++))
+do
+    item=${dbs[$i]}
+    sql="${temp_sqls}/${item}
+    echo "make ${type} sql of db-file: ${sql}"
+    echo "use ${item};" > ${sql}
+    ${cmd} -e "use ${item}; show tables;"  >> ${sql}
+    for j in `seq 0 3`
+    do
+        echo "
+                create table w_test_sh_${j} (
+                    id varchar(40),
+                    name varchar(200),
+                    primray key(id)
+                } ENGINE=MyISAM DEFAULT CHARSET=utf8;
+            " >> ${sql}
+    done
+    
+    echo "${type}"
+    cat ${sql}
+    ${cmd} < ${sql}
+done
+    
     
     
     
