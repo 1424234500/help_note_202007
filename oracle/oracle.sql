@@ -43,7 +43,6 @@ SELECT s.owner, s.segment_name,to_number((s.BYTES)/1024/1024) MB from dba_segmen
 SQL> SET LONG 3000
 SQL> SET PAGESIZE 0
 SQL> SELECT DBMS_METADATA.GET_DDL('TABLE','STUDENT') FROM DUAL;
-<<<<<<< HEAD
 
 --导入导出文件夹
 create directory backup as '/home/backup';  --drop directory backup;
@@ -53,21 +52,6 @@ grant read,write on directory backup to walker;
 expdp user1/password@orcl diretory=backup dumpfile=test.dmp schemas=user1;     
 --导入数据库到某用户
 impdp user2/password@orcl diretory=backup dumpfile=test.dmp remap_schema=user1:user2 remap_tablespace=user1_space:user2_space;
-
-
-=======
-
---导入导出文件夹
-create directory backup as '/home/backup';  --drop directory backup;
-grant read,write on directory backup to walker;
-
---导出数据库
-expdp user1/password@orcl diretory=backup dumpfile=test.dmp schemas=user1;     
---导入数据库到某用户
-impdp user2/password@orcl diretory=backup dumpfile=test.dmp remap_schema=user1:user2 remap_tablespace=user1_space:user2_space;
-
-
->>>>>>> 8e37a724e1ee351edd9304c35e0119e942012d29
 
 --查询表空间中数据文件具体位置和文件名
 Select * FROM DBA_DATA_FILES;
@@ -96,8 +80,6 @@ select * from user_source;
 --查询所有用户：
 select * from all_users;
 --select * from dba_users
---查看当前用户连接：
-select * from v$Session;
 --查看用户角色
 SELECT * FROM USER_ROLE_PRIVS;
 --查看当前用户权限：
@@ -115,40 +97,31 @@ SELECT NAME FROM V$DATABASE;
 ---oracle
 ---
 
---system
 select userenv('language') from dual;
 select * from v$nls_parameters;
 select value from nls_database_parameters where parameter='nls_characterset'
 
-
---session process
-select count(*) from v$process; 
-select * from v$process;
-select count(*) from v$session; 
+---------------------------------------------------------------------------
+--查看oracle 设置 进程 会话 死锁  sql
+select * from v$parameter;
+select * from v$proccess;
 select * from v$session;
-select * from v$session 
-where status='active';  
-
-
---设置进程 会话
---sysdba lock session process  kill 
-select session_id from v$locked_object;
+select * from v$locked_object;
+select * from v$sql;
 select sid, serial#, username, osuser from v$session;-- where sid=783;
-
+--查找死锁并杀掉
 select sid||','||serial# kill, sid, serial#, username, osuser from v$session where sid in (select session_id from v$locked_object)
 alter system kill session '783,18455';
+--查找每个session的上一条执行sql 等待 当前sql 
+select sql.sql_text prev_sql, sql.sql_id psql_id, s.*  from v$session s, v$sql sql where s.prev_sql_id = sql.sql_id;
+--&&并统计每个session的prev_sql的个数 分组 用户 程序等
+select count(1) cc, ssql_id, prev_sql, username, program from (
+    select sql.sql_text prev_sql, sql.sql_id psql_id, s.*  from v$session s, v$sql sql where s.prev_sql_id = sql.sql_id
+) group by ssql_id, prev_sql, username, program
+order by username, cc desc
 
-
-
-select b.owner, b.object_name, a.session_id, a.locked_mode 
-from v$locked_object a, dba_objects b
-where b.object_id = a.object_id;
-
-select value from v$parameter where name = 'processes';  
-show parameter processes; 
-alter system set processes=500 scope=spfile;
-alter system set sessions=500 scope=spfile;
-
+--查找分析每个用户的连接数
+select count(1) cc, username from v$session group by username;
 
 
 ---
