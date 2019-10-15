@@ -66,7 +66,7 @@ df -h   #磁盘
     
 
 
-## vim 
+## vim  less 
     esc :set number 显示行号 
     esc :set nu
     esc /str 查找1 正向 支持 * 通配符号
@@ -234,10 +234,9 @@ find test -path "./Documents" -prune -o -path "./Desktop" -prune -o -name '.*.pn
     [-exec rm -rf {} \  文件路径替换操作执行!]
 find ./ -maxdepth 4 -type d    
     
-删除/var/svn/svnbackup目录下创建时间为7天之前，并且文件以new开头的的所有文件或文件夹； 
-find /var/svn/svnbackup -name "new_*" -mtime -7 -exec rm -rf {} \;
+
+find /var/svn/svnbackup -name "new_*" -mtime -7 -exec rm -rf {} \;  #删除/var/svn/svnbackup目录下创建时间为7天之前，并且文件以new开头的的所有文件或文件夹； 
 find ./ * -mtime 0 
-附注：
       -mtime -7 表示七天之前;
       -mtime +7 表示七天之内;
       -mtime 0  表示1天之内;
@@ -271,108 +270,107 @@ grep [OPTIONS]PATTERN [FILE...]
 grep -rl 7000 ./*   #匹配所有文件子目录文件 输出概要或者文件列表
 grep "7000" file1.txt file2.txt file3.txt   #匹配多个文件 
 grep "7000" `find ./ -name "*conf" -o -name "*conf3" `  #匹配 查找出的文件列表  并过滤一个子列表
-```
 findfiles=`find ./ -name "*conf" -o -name "*conf3" `    #查找文件列表
 echo ${findfiles} | tr ' ' "\n"
 grep -n "7000" ${findfiles}        #命中展示
 grepfiles=`grep -l "7000" ${findfiles} `       #过滤出文件子列表
 echo ${grepfiles} | tr ' ' "\n"
 sed -i.back "s/7000/7800/g" ${grepfiles}        #替换并备份文件
-```
-#多关键词前后10行 分页展示
 grep -C 10 -inoe  '.*MccpMgr.*' obcp-server29.log | less 
 grep -ne  'getUserBean\|device:null' obcp-server29.log | grep -v '.*DEBUG.*'| grep -v '.*INFO.*' | less
 
 wc -l file #### 统计行数
 wc -w file #### 统计单词数
 wc -c file #### 统计字符数
-####系统 文件还原 进程
-lsof(list open files)是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口。因为应用程序打开文件的描述符列表提供了大量关于这个应用程序本身的信息，因此通过lsof工具能够查看这个列表对系统监测以及排错将是很有帮助的。
-/proc/1917  某进程动id下的 内存文件配置 还原文件？
-[1]+  已停止               ./pipe_maker.sh
-1.找到目标文件使用进程pid 7570 该文件动文件描述符 255r
-lsof | grep pipe_maker
-pipe_make 7570                walker  255r      REG                8,6      2522      17692 /home/walker/e/help_note/shell/pipe_maker.sh
-2.查看该进程文件列表
-ll /proc/7570/fd 
-lrwx------ 1 walker walker 64 1月  24 15:36 1000 -> '/home/walker/e/help_note/shell/make.7570.fifo (deleted)'
-lrwx------ 1 walker walker 64 1月  24 15:36 2 -> /dev/pts/0
-lr-x------ 1 walker walker 64 1月  24 15:36 255 -> /home/walker/e/help_note/shell/pipe_maker.sh* (deleted)
-3.读取 转储目标文件 
-cat /proc/7570/fd/255 > pipe_maker.sh
-lsof输出各列信息的意义如下：
-COMMAND：进程的名称 PID：进程标识符
-USER：进程所有者
-FD：文件描述符，应用程序通过文件描述符识别该文件。如cwd、txt等 TYPE：文件类型，如DIR、REG等
-DEVICE：指定磁盘的名称
-SIZE：文件的大小
-NODE：索引节点（文件在磁盘上的标识）
-NAME：打开文件的确切名称
-FD 列中的文件描述符cwd 值表示应用程序的当前工作目录，这是该应用程序启动的目录，除非它本身对这个目录进行更改,txt 类型的文件是程序代码，如应用程序二进制文件本身或共享库，如上列表中显示的 /sbin/init 程序。
-lsof abc.txt #显示开启文件abc.txt的进程 
-lsof -c abc #显示abc进程现在打开的文件 
-lsof -c -p 1234 #列出进程号为1234的进程所打开的文件 
-lsof -g gid #显示归属gid的进程情况 
-lsof +d /usr/local/ #显示目录下被进程开启的文件 
-lsof +D /usr/local/ E同上，但是会搜索目录下的目录，时间较长 
-lsof -d 4 #显示使用fd为4的进程 
-lsof -i #show port tcp
-lsof -i[46] [protocol][@hostname|hostaddr][:service|port]   46 --> IPv4 or IPv6   protocol --> TCP or UDP   hostname --> Internet host name   hostaddr --> IPv4地址   service --> /etc/service中的 service name (可以不止一个)   port --> 端口号 (可以不止一个)
-lsof -i:8091 端口
+#### lsof --help 系统 文件还原 进程
+lsof | awk '{print $1,$2}' | uniq -c | sort -k 1 -r     #查看所有已打开的文件描述符的进程名-pid的分配情况 并排序
+
+    lsof(list open files)是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口。因为应用程序打开文件的描述符列表提供了大量关于这个应用程序本身的信息，因此通过lsof工具能够查看这个列表对系统监测以及排错将是很有帮助的。
+    /proc/1917  某进程动id下的 内存文件配置 还原文件？
+    [1]+  已停止               ./pipe_maker.sh
+    1.找到目标文件使用进程pid 7570 该文件动文件描述符 255r
+    lsof | grep pipe_maker
+    pipe_make 7570                walker  255r      REG                8,6      2522      17692 /home/walker/e/help_note/shell/pipe_maker.sh
+    2.查看该进程文件列表
+    ll /proc/7570/fd 
+    lrwx------ 1 walker walker 64 1月  24 15:36 1000 -> '/home/walker/e/help_note/shell/make.7570.fifo (deleted)'
+    lrwx------ 1 walker walker 64 1月  24 15:36 2 -> /dev/pts/0
+    lr-x------ 1 walker walker 64 1月  24 15:36 255 -> /home/walker/e/help_note/shell/pipe_maker.sh* (deleted)
+    3.读取 转储目标文件 
+    cat /proc/7570/fd/255 > pipe_maker.sh
+    lsof输出各列信息的意义如下：
+    COMMAND：进程的名称 PID：进程标识符
+    USER：进程所有者
+    FD：文件描述符，应用程序通过文件描述符识别该文件。如cwd、txt等 TYPE：文件类型，如DIR、REG等
+    DEVICE：指定磁盘的名称
+    SIZE：文件的大小
+    NODE：索引节点（文件在磁盘上的标识）
+    NAME：打开文件的确切名称
+    FD 列中的文件描述符cwd 值表示应用程序的当前工作目录，这是该应用程序启动的目录，除非它本身对这个目录进行更改,txt 类型的文件是程序代码，如应用程序二进制文件本身或共享库，如上列表中显示的 /sbin/init 程序。
+    lsof abc.txt #显示开启文件abc.txt的进程 
+    lsof -c abc #显示abc进程现在打开的文件 
+    lsof -c -p 1234 #列出进程号为1234的进程所打开的文件 
+    lsof -g gid #显示归属gid的进程情况 
+    lsof +d /usr/local/ #显示目录下被进程开启的文件 
+    lsof +D /usr/local/ E同上，但是会搜索目录下的目录，时间较长 
+    lsof -d 4 #显示使用fd为4的进程 
+    lsof -i #show port tcp
+    lsof -i[46] [protocol][@hostname|hostaddr][:service|port]   46 --> IPv4 or IPv6   protocol --> TCP or UDP   hostname --> Internet host name   hostaddr --> IPv4地址   service --> /etc/service中的 service name (可以不止一个)   port --> 端口号 (可以不止一个)
+    lsof -i:8091 端口
 ####设置时间
-ntpd -s -d  ####自动同步 
-date --s="2014-08-21 12:33:22" ####手动设置
-配置服务
-vim /etc/ntpconf
-# You do need to talk to an NTP server or two (or three).
-# server ntp.your-provider.example
-在下面添加以下内容，是一些亲测可用的ntp服务器。第一行最后的perfer表示优先使用此服务器，也就是复旦大学的ntp服务器。添加之后按Ctrl+X保存退出。
-server ntp.fudan.edu.cn iburst perfer
-server time.asia.apple.com iburst
-server asia.pool.ntp.org iburst
-server ntp.nict.jp iburst
-server time.nist.gov iburst
-/etc/init.d/ntp restart    ####重启
+    ntpd -s -d  ####自动同步 
+    date --s="2014-08-21 12:33:22" ####手动设置
+    配置服务
+    vim /etc/ntpconf
+    # You do need to talk to an NTP server or two (or three).
+    # server ntp.your-provider.example
+    在下面添加以下内容，是一些亲测可用的ntp服务器。第一行最后的perfer表示优先使用此服务器，也就是复旦大学的ntp服务器。添加之后按Ctrl+X保存退出。
+    server ntp.fudan.edu.cn iburst perfer
+    server time.asia.apple.com iburst
+    server asia.pool.ntp.org iburst
+    server ntp.nict.jp iburst
+    server time.nist.gov iburst
+    /etc/init.d/ntp restart    ####重启
 
 ####日期date格式化
-date "+%Y-%m-%d"  
-2013-02-19  
-date "+%H:%M:%S"  
-13:13:59  
-date "+%Y-%m-%d %H:%M:%S"  
-2013-02-19 13:14:19   
-date -d today   
-Tue Feb 19 13:10:38 CST 2013  
-date -d now  
-Tue Feb 19 13:10:43 CST 2013  
-date -d tomorrow  
-Wed Feb 20 13:11:06 CST 2013  
-date -d yesterday  
-Mon Feb 18 13:11:58 CST 2013  
-date -d now +%s #到ms级别
-date -d "2019-02-11 13:14:19" +%s #到s级别
-1549862059
-date -d @1549862059 "+%Y-%m-%d"   #反转
-2019-02-11
+    date "+%Y-%m-%d"  
+    2013-02-19  
+    date "+%H:%M:%S"  
+    13:13:59  
+    date "+%Y-%m-%d %H:%M:%S"  
+    2013-02-19 13:14:19   
+    date -d today   
+    Tue Feb 19 13:10:38 CST 2013  
+    date -d now  
+    Tue Feb 19 13:10:43 CST 2013  
+    date -d tomorrow  
+    Wed Feb 20 13:11:06 CST 2013  
+    date -d yesterday  
+    Mon Feb 18 13:11:58 CST 2013  
+    date -d now +%s #到ms级别
+    date -d "2019-02-11 13:14:19" +%s #到s级别
+    1549862059
+    date -d @1549862059 "+%Y-%m-%d"   #反转
+    2019-02-11
 
 ####源配置
 {
-vim /etc/apt/sources.list                                                 
-####for pi
-deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi 
-####for pc	
-对比原有配置 找到系统版本
-XXXX='bionic'
-deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX} main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-security main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-updates main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-proposed main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted universe multiverse
-#deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX} main restricted universe multiverse
-#deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-security main restricted universe multiverse
-#deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-updates main restricted universe multiverse
-#deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-proposed main restricted universe multiverse
-#deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted universe multiverse 
+    vim /etc/apt/sources.list                                                 
+    ####for pi
+    deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi 
+    ####for pc	
+    对比原有配置 找到系统版本
+    XXXX='bionic'
+    deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX} main restricted universe multiverse
+    deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-security main restricted universe multiverse
+    deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-updates main restricted universe multiverse
+    deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-proposed main restricted universe multiverse
+    deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted universe multiverse
+    #deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX} main restricted universe multiverse
+    #deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-security main restricted universe multiverse
+    #deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-updates main restricted universe multiverse
+    #deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-proposed main restricted universe multiverse
+    #deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted universe multiverse 
  
 }
 ####源配置 suse
@@ -390,7 +388,6 @@ zypper ar http://download.opensuse.org/distribution/11.3/repo/non-oss/suse/ nono
 zypper ar http://download.opensuse.org/update/11.3/suse update
 }
 ####zypper
-{
     安装某个软件包
     zypper install package_name<=version>
     zypper install/remove/update package_name*
@@ -406,8 +403,7 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     dist-upgrade, dup 执行整个系统的升级。
     source-install, si 安装源代码软件包和它们的编译依赖。
 
-}
-####apt-get
+####apt-get --help
     apt autoremove 自动删除无依赖包
     apt-get update  更新源
     apt-get upgrade 更新已安装的包
@@ -646,6 +642,33 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     pgrep 会返回所有匹配这个关键词的进程ID。例如，你可以使用以下命令寻找Firefox的PID: pgrep firefox 
     pkill & killall pkill和killall命令可以根据进程的名字杀死一个进程。使用以下任一方法都可以杀死Firefox进程： pkill firefox  killall firefox 
     renice 用来改变进程的nice值。nice值代表进程的优先级。renice 19 pid    -19的nice值是非常高的优先级，相反，19是非常低的优先级。0是默认的优先级。
+
+#### uniq --help    统计计数
+用法：uniq [选项]... [文件]
+Filter adjacent matching lines from INPUT (or standard input),
+writing to OUTPUT (or standard output).
+
+With no options, matching lines are merged to the first occurrence.
+
+必选参数对长短选项同时适用。
+  -c, --count           prefix lines by the number of occurrences 计数相邻同名
+  -d, --repeated        only print duplicate lines, one for each group
+  -D                    print all duplicate lines
+      --all-repeated[=METHOD]  like -D, but allow separating groups
+                                 with an empty line;
+                                 METHOD={none(default),prepend,separate}
+  -f, --skip-fields=N   avoid comparing the first N fields
+      --group[=METHOD]  show all items, separating groups with an empty line;
+                          METHOD={separate(default),prepend,append,both}
+  -i, --ignore-case     ignore differences in case when comparing
+  -s, --skip-chars=N    avoid comparing the first N characters
+  -u, --unique          only print unique lines
+  -z, --zero-terminated     line delimiter is NUL, not newline
+  -w, --check-chars=N	对每行第N 个字符以后的内容不作对照
+      --help		显示此帮助信息并退出
+      --version		显示版本信息并退出
+
+
 ####linux性能监控 分析工具 监控 cpu mem netstat 
     apt-get install nmon 
     nmon -fT -s 5 -c 20

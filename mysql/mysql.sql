@@ -233,6 +233,7 @@ done
 cmd='mysql -u root -proot'
 type="truncate"
 temp_sqls="temp/${type}"
+
 [ ! -d ${temp_sqls} ] && mkdir -p ${temp_sqls}
 dbs=(`${cmd} -e "show databases;" | grep $1 `)
 for ((i=0; i < ${#dbs[@]}; i++))
