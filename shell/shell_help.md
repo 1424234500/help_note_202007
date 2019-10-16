@@ -1114,3 +1114,30 @@ Bash
 -t 最大CPU占用时间，以秒为单位。
 -l 最大可加锁内存大小，以Kbytes 为单位。 
 
+暂时修改
+ulimit -n 1024000
+永久修改
+vim /etc/security/limits.conf
+# 添加如下的行
+* soft nofile 4100
+* hard nofile 4100
+以下是说明：
+* 代表针对所有用户
+noproc 是代表最大进程数
+nofile 是代表最大文件打开数
+添加格式：
+username|@groupname type resource limit
+username|@groupname：设置需要被限制的用户名，组名前面加@和用户名区别。也可以用通配符*来做所有用户的限制。
+type：有 soft，hard 和 -，soft 指的是当前系统生效的设置值。hard 表明系统中所能设定的最大值。soft 的限制不能比har 限制高。用 - 就表明同时设置了 soft 和 hard 的值。
+resource：
+core - 限制内核文件的大小(kb)
+date - 最大数据大小(kb)
+fsize - 最大文件大小(kb)
+memlock - 最大锁定内存地址空间(kb)
+nofile - 打开文件的最大数目
+rss - 最大持久设置大小(kb)
+stack - 最大栈大小(kb)
+cpu - 以分钟为单位的最多 CPU 时间
+noproc - 进程的最大数目
+as - 地址空间限制
+maxlogins - 此用户允许登录的最大数目
