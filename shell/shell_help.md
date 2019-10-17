@@ -869,6 +869,32 @@ echo -e ${PATH}
 ####挂载ntfs磁盘问题
     apt-get install ntfsprogs
     ntfsfix /dev/sda5 
+    
+####文件夹限额
+dd if=/dev/zero ibs=10M count=512 of=/root/disk.img
+    说明:
+    if=/dev/zero：表示输入文件为/dev/zero，一个虚拟的设备，顾名思义，里边的数据全是0
+    ibs=10M： 表示每次读取的块大小为10M,这个数值的大小跟内存有关，如果你要每次读1G的数据
+    count=512：表示共读取1024块  512 * 10M = 5120M = 5GB
+    of=/dfs2：输出文件
+losetup /dev/loop0 /root/disk.img   #挂载镜像
+mkfs.ext3 /dev/loop0    #格式化
+mkdir /test 
+mount -t ext3 /dev/loop0 /test  #文件夹挂载绑定镜像限额
+umount /test    #卸载文件夹
+losetup -d /dev/loop0   #卸载镜像
+rm -f /root/disk.img    #删除镜像
+
+dirname='test10MB'  #文件名
+loop='/dev/loop20'  #loop id
+imgfile="/${dirname}"   #镜像放置位置
+sudo dd if=/dev/zero ibs=10M count=1 of=${imgfile}  #新建镜像
+sudo losetup ${loop} ${imgfile}  #挂载镜像
+sudo mkfs.ext3 ${loop}    #格式化文件
+mkdir ${dirname}
+sudo mount -t ext3 ${loop} ${dirname}
+
+
 ####挂载磁盘为虚拟路径
     mount /dev/sda6 /home/e
     fdisk -l    #磁盘
