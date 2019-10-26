@@ -1013,7 +1013,8 @@ rcS.d
 ####定时任务
 crontab -e #编辑
 crontab -l  #列表 
-####Cron是Unix系统的一个配置定期任务的工具，用于定期或者以一定的时间间隔执行一些命令或者脚本； 基于每个用户的，每一个用户（包括root用户）都拥有自己的crontab。
+执行日志 tail -f /var/spool/mail/root
+Cron是Unix系统的一个配置定期任务的工具，用于定期或者以一定的时间间隔执行一些命令或者脚本； 基于每个用户的，每一个用户（包括root用户）都拥有自己的crontab。
 */5 * * * * /usr/local/tomcat-6.0.41/tomcat_cardniu_stat/monitor.sh ####每五分钟
 0 0 * * *  /home/pi/backup.sh ####每天
 #### service crond restart
