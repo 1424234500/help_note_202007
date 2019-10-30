@@ -104,6 +104,7 @@ jvisualvm $file_jmap &  #图形化分析工具
 jdk1.6 中 Oracle可视化监控
 $JAVA_HOME/bin/jvisualvm.exe
 
+naming-strategy=cn.studyBoot.dao.strategy.UpperTableStrategy
 
 
 
