@@ -244,6 +244,9 @@ cd /home 进入 '/ home' 目录'
 　　ln file1 lnk1 创建一个指向文件或目录的物理链接 
 　　touch -t 0712250000 file1 修改一个文件或目录的时间戳 - (YYMMDDhhmm)
 文件搜索
+find /?
+    文件目录检索批量 文本关键词
+    find /I /N "keys" *
 
 find / -name file1 从 '/' 开始进入根文件系统搜索文件和目录 
 　　find / -user user1 搜索属于用户 'user1' 的文件和目录 
