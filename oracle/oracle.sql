@@ -35,6 +35,8 @@ create tablespace TEST datafile 'tablespace_name.ora' ;
 select tablespace_name, sum(bytes) / 1024 / 1024 MB  from dba_free_space  group by tablespace_name order by 2 desc;  
 --各个用户表数
 select owner,count(1) cc from dba_tables where 1=1 group by owner order by 2 desc;
+--各个用户表行数
+select t.owner,t.table_name,t.tablespace_name,t.num_rows　from dba_tables t where t.NUM_ROWS is not  null  order by t.NUM_ROWS  desc 
 --查看各个用户表总大小
 SELECT s.owner, to_number(SUM(s.BYTES)/1024/1024) MB from dba_segments s where 1=1 group by s.owner order by 2 desc;
 --某用户每个表大小 清理
@@ -43,6 +45,8 @@ SELECT s.owner, s.segment_name,to_number((s.BYTES)/1024/1024) MB from dba_segmen
 SQL> SET LONG 3000
 SQL> SET PAGESIZE 0
 SQL> SELECT DBMS_METADATA.GET_DDL('TABLE','STUDENT') FROM DUAL;
+
+
 
 --导入导出文件夹
 create directory backup as '/home/backup';  --drop directory backup;
