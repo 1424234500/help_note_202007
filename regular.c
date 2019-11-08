@@ -8,6 +8,22 @@
 匹配空格 /t 特殊空白
 \s
 
+. 是匹配除过\n 之外的全部自符
+用[\d\D] 匹配所有字符。或者是[\s\S] ,
+
+
+/* Location:           C:\Users\admin\Documents\sdf\WEB-INF\lib\sds-server-validcode-1.1.0-SNAPSHOT.jar
+ * Qualified Name:     com.sds.captcha.component.image.textpaster.DecoratedRandomTextPaster
+ * JD-Core Version:    0.6.0
+ */
+匹配上述注解的正则表达式为：/\*(.|\r\n)*\*/
+因为windows的换行是/r/n所以为\r\n
+
+shell注释
+#11111
+#22222222
+匹配替换    :%s/#.*\n//g
+
 
 
 jadf.adf@q.asdf

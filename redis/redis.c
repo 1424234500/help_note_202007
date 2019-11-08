@@ -87,14 +87,16 @@ Usage: redis-cli [OPTIONS] [cmd [arg [arg ...]]]
     #   after 60 sec if at least 10000 keys changed
     save 1800 1
     save 600 100000
-    
+    # 默认如果开启RDB快照(至少一条save指令)并且最新的后台保存失败，Redis将会停止接受写操作
+    # 这将使用户知道数据没有正确的持久化到硬盘，否则可能没人注意到并且造成一些灾难
+    stop-writes-on-bgsave-error yes
     
     
     
     
 //集群模式 哨兵模式（sentinel） （主从复制、读写分离、主从切换）
-1）redis cluster集群方案;
-
+1）redis cluster集群方案----------------------------------------------------------
+#环境搭建
 a.复制redis.conf 修改为 redis_cluster_7000->7005.conf 修改端口  已备份至redis/
     port  7000     #端口7000,7002,7003        
     pidfile  /var/run/redis_7000.pid  #pidfile文件对应7000,7001,7002
@@ -210,8 +212,47 @@ Redis 集群有16384个哈希槽,CRC16校验后对16384取模5461 5461 5462.集�
 ./redis-trib.rb reshard --from e7005711bc55315caaecbac2774f3c7d87a13c7a    --to 6a85d385b2720fd463eccaf720dc12f495a1baa3  --slots 5461 --yes 10.10.10.126:7000
 
 //哨兵主从切换
-2）master/slave主从方案;
+2）master/slave主从方案----------------------------------------------------------
 3）哨兵模式来进行主从替换以及故障恢复;    热切主从 defult 26379
+1. 监控：监控主从是否正常
+2. 通知：出现问题时，可以通知相关人员
+3. 故障迁移：自动主从切换
+4. 统一的配置管理：连接者询问sentinel取得主从的地址
+sentinel自动发现
+    每个Sentinel 都订阅了被它监视的所有主服务器和从服务器的__sentinel__:hello 频道，查找之前未出现过的sentinel（looking for unknown sentinels）。当一个Sentinel 发现一个新的Sentinel 时，它会将新的Sentinel 添加到一个列表中，这个列表保存了Sentinel 已知的，监视同一个主服务器的所有其他Sentinel。
+
+#环境搭建 一主(master)一（N）从(slave)三哨兵(sentinel)的配置目标
+    ./src/redis-server redis_6389.conf
+    ./src/redis-server redis_6399.conf
+    ./src/redis-sentinel sentinel_26389.conf
+    ./src/redis-sentinel sentinel_26399.conf
+    
+    1.每个redis.conf里进行修改,
+      每个sentinel.conf里新增(默认没有)
+        #支持内网/本地访问,比如 bind 192.168.1.100/127.0.0.1
+        bind 127.0.0.1 #或 protected-mode no
+        #支持后台运行,默认值为no
+        daemonize yes
+        #日志文件,比如redis.log、sentinel.log
+        logfile redis.log
+    2.Slave的redis.conf配置文件中新增加指定的master
+        #指定master
+        slaveof 127.0.0.1 6379  # replicaof 127.0.0.1 6389
+
+    每个sentinel.conf的配置增加指定监控的master
+        #指定监控的master,最后一位表示quorum(法人数量),即认定master'客观下线'成立的最低票数
+        sentinel monitor mymaster 127.0.0.1 6379 2
+        sentinel monitor mymaster 127.0.0.2 6379 2
+
+#验证1 主从切换 分别kill单台看是否自动切换
+./src/redis-cli -p 26371
+    127.0.0.1:26371> SENTINEL masters
+redis-cli info | grep role 
+role:slave
+role:master
+#验证2 主从同步 分别主从set get
+
+
 SENTINEL get-master-addr-by-name <master name>获取当前的主服务器IP地址和端口
 SENTINEL slaves <master name>获取所有的Slaves信息
 
@@ -235,9 +276,7 @@ info 展示redis状态 多数据库信息
 save rdb持久化
 flushall 清空 当前数据库redis-cli -n 0-15 
 flushdb 清空所有数据库
-redis-cli info | grep role //查看主从
-role:slave
-role:master
+
 
 关于持久化的几个问题：
 RDB 模式：Redis 在指定的时间间隔上对数据集做快照。RDB 对日常备份和灾备都非常方便，而且对性能没有太大的影响。通常定时，比如每5分钟来做快照，但是使用它还是会丢数据。
