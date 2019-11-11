@@ -1023,6 +1023,7 @@ service cron status
 */4 * * * * /home/pi/project/python/foStart.sh
 0 0 * * * /home/pi/project/python/foRestart.sh
 其中排列意思为：
+http://cron.qqe2.com/
 Bash
     #    m    h    dom    mon    dow    user    command
     #  分    时    日    月      周    用户    命令
@@ -1056,6 +1057,8 @@ Bash
     #每月的4号与每周一到周三的11点重启apache
     0 4 1 jan * /usr/local/etc/rc.d/lighttpd restart
     #一月一号的4点重启apache
+
+
 
 ####管道 多进程 并发
     1.1. linux后台进程 

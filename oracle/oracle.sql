@@ -315,8 +315,8 @@ select * from test t where INSTR('唐飞',T.NAME)>0 or t.name like '%aa%'
 
 --with temp table view? 查询完毕直接清除
 with 
-temptable as (select * from test),
-temptable2 as (select * from test)
+temptable as (select * from test)
+,temptable2 as (select * from test)
 select * from temptable,temptable2 whre a=1;
  
 --exists 
