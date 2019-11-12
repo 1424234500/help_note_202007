@@ -60,7 +60,9 @@ function monitor(){
 }
 
 
-
+function redisali(){
+    /home/walker/software/redis-5.0.3/src/redis-cli -h 39.106.111.11 -p 6379
+}
 function mysqlali(){
     ~/software/mysql-8.0.16-linux-x86_64-minimal/bin/mysql -h 39.106.111.11 -u walker -pqwer
 }

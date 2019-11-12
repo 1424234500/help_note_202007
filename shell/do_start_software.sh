@@ -21,7 +21,7 @@ function do_start_sftware_start(){
 #    'do update'
     'gedit'
     '/home/walker/software/redis-5.0.3/src/redis-server'
-    '/home/walker/software/smartgit/bin/smartgit.sh' 
+#    '/home/walker/software/smartgit/bin/smartgit.sh' 
      )
      
     out 'start linux software '${#arr[@]}
