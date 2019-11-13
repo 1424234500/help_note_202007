@@ -54,6 +54,9 @@ JDK 1.1 = 45
 
 
 性能分析  cpu冲高时
+线程中有无限空循环、无阻塞、正则匹配或者单纯的计算
+发生了频繁的gc
+多线程的上下文切换
 
 1.查看日志，没有发现集中的错误日志，初步排除代码逻辑处理错误。
 2.首先联系了内部下游系统观察了他们的监控，发现一起正常。可以排除下游系统故障对我们的影响。
@@ -61,12 +64,11 @@ JDK 1.1 = 45
 4.查看tcp监控，TCP状态正常，可以排除是http请求第三方超时带来的问题。
 5.查看机器监控，6台机器cpu都在上升，每个机器情况一样。排除机器故障问题。
 
-
 top -Hp $pid    #查看该pid下线程对应的系统占用情况。
 
 #导出操作系统cpu信息
-ps H -eo user,pid,ppid,tid,time,%cpu --sort=%cpu > cpu.log
-ps H -eo user,pid,ppid,tid,time,%cpu,command --sort=%cpu  > cpu_thread
+ps H -eo user,pid,ppid,tid,time,%cpu --sort=%cpu  | awk '{printf "0x%x\t %s\n", $4, $0}'
+ps H -eo user,pid,ppid,tid,time,%cpu,command --sort=%cpu  | awk '{printf "0x%x\t %s\n", $4, $0}'
 
     netstat -natl > netstat.log     #导出网络连接信息
     #获取服务器nmon日志
@@ -100,6 +102,64 @@ jmap -dump:format=b,live,file=$file_jmap $pid       #采集jmap
 jvisualvm $file_jmap &  #图形化分析工具
 
 #########################################################
+
+///////////////////////////////////
+javacore分析常见问题
+//////////////////////////////////////
+jit引起一些cpu飚高
+https://www.ezlippi.com/blog/2018/01/linux-high-load.html
+
+JIT分层编译相关概念
+需要注意的是,jdk1.8默认开启了分层编译,在1.7版本你可以通过-XX:+TieredCompilation开启分层编译,关于分层编译网上介绍的文章不多,主要分为C1和C2编译器,C1又称为客户端编译,C2编译器称为服务端编译器,通过抓取jvm进程线程堆栈也可以发现C1和C2编译线程的足迹,整个JIT的编译级别有以下5种:
+0：解释执行,这是最慢的一种方式
+1：简单C1编译代码
+2：受限的C1编译代码,不做性能分析，根据方法调用次数和方法内部循环次数来启动
+3：完全C1编译代码,编译器收集分析信息之后做的编译
+4：C2编译代码,编译最慢,编译后执行速度最快
+jvm启动参数
+    JIT相关JVM参数简介    -XX:+TieredCompilation
+    选项	默认值	解释
+    CompileThreshold	1000 or 1500/10000	编译阈值,方法执行多少次后进行编译
+    PrintCompilation	false	jit编译时输出日志
+    InitialCodeCacheSize	160K (varies)	初始codecache大小
+    ReservedCodeCacheSize	32M/48M	codecache最大值
+    ExitOnFullCodeCache	false	codecache满了退出jvm
+    UseCodeCacheFlushing	false	codecache满了时清空一半的codecache
+    PrintFlagsFinal	false	打印所有的jvm选项
+    PrintCodeCache	false	jvm退出时打印codecache
+    PrintCodeCacheOnCompilation	false	编译时打印codecache使用情况
+
+0最开始都是解释执行
+1理想情况下应转成level3编译
+2根据C1队列长度和C1编译线程数来调整编译的阈值
+3根据C2队列长度可能转向C2编译
+4根据C2队列长度、C2编译线程数调整level4编译阈值
+如果方法非常小,没什么可以优化的空间，直接转level1编译
+最常见的编译层次转换:0 -> 3 -> 4
+
+解决方案
+1）为了避免CodeCache满导致JIT停止编译或者CodeCacheFlushing 
+获取到当前JIT的CodeCache大小  空间可能不够用，另一方面是CodeCache是不会回收的，所以会累积的越来越多 推荐调大
+jinfo -flag ReservedCodeCacheSize ${pid} //常在64 bit机器上默认是48m，当code cache用满了后，编译优化就被禁掉了，此时会回归到解释执行，RT可想而知不会好到哪去
+    -XX:ReservedCodeCacheSize=251658240
+根据实际情况调整ReservedCodeCacheSize的大小,最后调整之后我们在jvm启动脚本中加上了如下两个参数:
+    -XX:ReservedCodeCacheSize=512m
+    -XX:-UseCodeCacheFlushing   (启用回收)
+2) 编写预热代码
+    编写WarmUpContextListener实现Spring的ApplicationContextAware接口，确保在Web容器启动完成前,调用需要预热的方法；
+    WarmUpContextListener读取预先配置好的参数,包括要调用的目标方法、请求参数、执行次数和超时时间;
+    新建线程池执行目标方法,执行N次触发JIT编译;
+    执行完成,关闭预热线程池;
+    Web容器启动完成,对外发布服务。
+经过以上两个步骤之后,我们的系统就没出现过因jit导致的负载高的场景。
+
+
+
+
+
+
+
+
 
 jdk1.6 中 Oracle可视化监控
 $JAVA_HOME/bin/jvisualvm.exe
