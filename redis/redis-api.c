@@ -72,6 +72,7 @@ expireat 的作用和 expire 类似，都用于为 key 设置过期时间。 不
 16	type key 
 返回 key 所储存的值的类型。
 
+//hash
 
 1	hdel key field1 [field2] 
 删除一个或多个哈希表字段
@@ -101,6 +102,8 @@ expireat 的作用和 expire 类似，都用于为 key 设置过期时间。 不
 获取哈希表中所有值
 14	hscan key cursor [match pattern] [count count] 
 迭代哈希表中的键值对。
+
+//list
 
 1	blpop key1 [key2 ] timeout 
 移出并获取列表的第一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。

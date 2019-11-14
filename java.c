@@ -324,5 +324,15 @@ source /etc/profile
 npm -v
 
 
+//华为推送
+V3
+https://developer.huawei.com/consumer/cn/service/hms/catalog/huaweipush_v3.html?page=hmssdk_huawei_serviceChangeDescription
+V2
+https://developer.huawei.com/consumer/cn/service/hms/catalog/huaweipush_agent.html
+
+
+
+
+
 
 

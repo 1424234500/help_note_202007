@@ -11,6 +11,8 @@
     quartze在线管理 集群模式
     //自动化打包部署问题 idea依赖
     //jpa分表插件sharding使用 联合多数源配置
+    推送提醒服务
+    
 面试刷题 基础算法
 redis注册中心
 kafka 替换redis队列
