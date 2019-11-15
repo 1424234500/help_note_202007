@@ -63,39 +63,9 @@ Select * FROM DBA_DATA_FILES;
 --数据文件路径默认在$ORACLE_HOME/oradata/$SID
 
 --表空间清理
-
-
 1》. connect role(连接角色)
 2》. resource role(资源角色)
 3》. dba role(数据库管理员角色)
-
- 
---查看用户和默认表空间的关系
-select username,default_tablespace from dba_users;
---查看当前用户能访问的表
-select * from user_tables; 
---Oracle查询用户表
-select * from user_all_tables;
-
---Oracle查询用户视图
-select * from user_views;
---查询所有函数和储存过程：
-select * from user_source;
---查询所有用户：
-select * from all_users;
---select * from dba_users
---查看用户角色
-SELECT * FROM USER_ROLE_PRIVS;
---查看当前用户权限：
-select * from session_privs;
---查看所有用户所拥有的角色
-SELECT * FROM DBA_ROLE_PRIVS;
---查看所有角色
-select * from dba_roles;
---查看数据库名
-SELECT NAME FROM V$DATABASE;
-
-
 
 ---
 ---oracle
@@ -176,11 +146,40 @@ alter user scott account unlock;
 
 
 ---
--- table control ddl
+-- table control ddl 数据库建表 索引
 ---
 
---show all table s
-select count(*) from user_tables;
+--查看用户和默认表空间的关系
+select username,default_tablespace from dba_users;
+--查看当前用户能访问的表
+select * from user_tables; 
+--Oracle查询用户表
+select * from user_all_tables;
+
+--Oracle查询用户视图
+select * from user_views;
+--查询所有函数和储存过程：
+select * from user_source;
+--查询所有用户：
+select * from all_users;
+--select * from dba_users
+--查看用户角色
+SELECT * FROM USER_ROLE_PRIVS;
+--查看当前用户权限：
+select * from session_privs;
+--查看所有用户所拥有的角色
+SELECT * FROM DBA_ROLE_PRIVS;
+--查看所有角色
+select * from dba_roles;
+--查看数据库名
+SELECT NAME FROM V$DATABASE;
+
+--show table column 表列信息
+select * from all_tab_columns where table_name = upper('student') order by column_id
+--show index
+select * from user_indexs where table_name = upper('student') order by column_id
+--show table create sql (index column) 查看建表语句
+select dbms_metadata.get_ddl('TABLE', 'STUDENT') from dual;
 
 --create
 create table test(id varchar(20), time date);
@@ -204,6 +203,11 @@ alter table tb_group modify column_name varchar2(340) not null;
 alter table tb_group add unique(user_token);
 Create Index i_deptno_job on emp(deptno,job); —>在emp表的deptno、job列建立索引。
 
+--数据查询缓慢 优化 
+
+--2.数据量大 加索引 f5执行计划 避免 全表扫描 table_access_full
+--1.sql优化
+--3.awr报告分析
 
 1、先执行From ->Where ->Group By->Order By
 2、执行From 字句是从右往左进行执行。因此必须选择记录条数最少的表放在右边。这是为什么呢？　　
@@ -247,12 +251,6 @@ SELECT Col FROM tbl WHERE col > 10 * 10
 低效: SELECT * FROM EMP (基础表) WHERE EMPNO > 0 AND DEPTNO IN(SELECT DEPTNO FROM DEPT WHERE LOC = ‘MELB’)
 
 
---show table column
-select * from all_tab_columns where table_name = upper('student') order by column_id
---show index
-select * from user_indexs where table_name = upper('student') order by column_id
---show table create sql (index column)
-select dbms_metadata.get_ddl('TABLE', 'STUDENT') from dual;
 
 ---
 -- table date control  dml
