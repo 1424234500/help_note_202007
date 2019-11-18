@@ -213,6 +213,13 @@ dump agent提供了一些可配置的选项，详细见文档
 3. Registry: 注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。 zookeeper redis
 4. Monitor : 服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。    
 
+常见问题
+1.dubbo配置xml只会读取resource下面? System属性也无效
+2.dubbo加载xml修改地址无效?用户目录日志缓存zookeeper
+
+
+
+
 //注册中心
 zookeeper安装启动 port:2181
 wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.14/zookeeper-3.4.14.tar.gz
