@@ -101,10 +101,32 @@ jmap -dump:format=b,live,file=$file_jmap $pid       #采集jmap
 #jhat -J-Xmx1024M $jmap_file #等待访问 http://127.0.0.1:7000
 jvisualvm $file_jmap &  #图形化分析工具
 
+
 #########################################################
 
 ///////////////////////////////////
-javacore分析常见问题
+javacore分析  需要获取多次 Javacore 并进行比较，发现哪些是“变”的部分，哪些是“不变”的部分
+除了线程信息外，还能提供关于操作系统，应用程序环境，线程，程序调用栈，锁，监视器和内存使用等相关信息
+TITLE 信息块：描述 Javacore 产生的原因，时间以及文件的路径。常见的 Javacore 产生的原因可以参考文章
+    1TISIGINFO  Dump Event "user"   user：SIGQUIT 信号 gpf：程序一般保护性错误导致系统崩溃 systhrow：JVM 内部抛出的异常 
+GPINFO 信息块：GPF（一般保护性错误）信息
+ENVINFO 信息块：系统运行时的环境和 JVM 参数
+MEMINFO 信息块：内存使用情况和垃圾回收情况
+LOCKS 信息块：用户监视器（monitor）和系统监视器（monitor）情况
+CLASSES 信息块：类加载信息
+THREADS 信息块：所有 java 线程的状态信息和执行堆栈
+    死锁（Deadlock）【重点关注】：一般指多个线程调用间，进入相互资源占用，导致一直等待无法释放的情况。
+    执行中（Runnable）【重点关注】：一般指该线程正在执行状态中，该线程占用了资源，正在处理某个请求，有可能在对某个文件操作，有可能进行数据类型等转换等。  结合ps线程耗cpu使用!!!
+    等待资源（Waiting on condition）【重点关注】：等待资源，如果堆栈信息明确是应用代码，则证明该线程正在等待资源，一般是大量读取某资源、且该资源采用了资源锁的情况下，线程进入等待状态。又或者，正在等待其他线程的执行等。
+    等待监控器检查资源（Waiting on monitor）
+    暂停（Suspended）
+    对象等待中（Object.wait()）
+    阻塞（Blocked）【重点关注】：指当前线程执行过程中，所需要的资源长时间等待却一直未能获取到，被容器的线程管理器标识为阻塞状态，可以理解为等待资源超时的线程。这种情况在应用的日志中，一般可以看到 CPU 饥渴，或者某线程已执行了较长时间的信息。
+    停止（Parked）
+
+分析工具
+TMDA jca457.jar  ha456.jar
+
 //////////////////////////////////////
 jit引起一些cpu飚高
 https://www.ezlippi.com/blog/2018/01/linux-high-load.html
@@ -196,13 +218,14 @@ jmap [option] [server_id@]<remote server IP or hostname>
 1.2 JVM内存不足时，会自动产生Javacore文件
 2. 触发JVM生成JDK
 2.1 （常用）从命令行中发出kill -3 <pid>指令，生成Javacore
+    was生成javacore位置 /IBM/WebSphere/AppServer/profiles/AppSrv01/     !!!!!!!!
 2.2 在应用中调用com.ibm.jvm.Dump.JavaDump()方法，生成Javacore
 2.3 使用WAS wsadmin utility命令生成Javacore, 以Jython语言为例：
 jvm = AdminControl.completeObjectName('type=JVM,process=server1,*')
 AdminControl.invoke(jvm, 'dumpThreads')
 2.4 可以配置dump agent触发生成Javacore
 dump agent提供了一些可配置的选项，详细见文档
-      
+ 
 ///////////////////////////////////////////////////////////////////
 //dubbo zookeeper java 安装环境      
       

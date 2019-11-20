@@ -53,6 +53,7 @@ mvn dependency:list
 mvn dependency:resolve
 打印整个依赖树 :
 mvn dependency:tree
+dependency:tree -Dverbose
 下载源码
 mvn dependency:sources
 

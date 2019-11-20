@@ -8,7 +8,7 @@ sqlplus -S walker/qwer@127.0.0.1@orcl @SQL.sql
 export ORACLE_HOME=/app/oracle/product/11.2.0
 export ORACLE_SID=ora11g            #实例名 orcl 默认!!!!!!!!!!!!!!!!!!!!!
 export PATH=$PATH:$ORACLE_HOME/bin
-lsnrctl status  #监听状态 注意实例名!!!!
+lsnrctl status  #监听状态 注意实例名!!!!和 home路径必须要有
 lsnrctl start   #监听启动stop restart
 sqlplus / as sysdba;
     --immediate shutdown db now;
@@ -111,9 +111,15 @@ grant create public database link to wangyong;
 -- 注意一点，如果密码是数字开头，用“”括起来
 create public database link TESTLINK2 connect to WANGYONG identified by "123456" USING 'ORCL21'
 
-create database link xxx----即将建立的dblink名
-  connect to 数据库用户名 identified by "密码"
-  using 'xxx.xxx.xxx.xx-----数据库IP';
+
+grant CREATE PUBLIC DATABASE LINK，DROP PUBLIC DATABASE LINK to scott;
+create database link DBLINK_NAME connect to USER01 identified by PASSWORD using 'TNS_NAME';
+DBLINK_NAME : DB_LINK的名字
+USER01　　     : 远程数据库的账户
+PASSWORD     : 远程数据库的账户
+TNS_NAME      : 远程数据库服务名 122.2312.13/orcl
+select owner,db_link,username from dba_db_links;
+select * from scott.tb_test@DBLINK_NAME;
 
 select * from tbl_ost_notebook@dblink;
 

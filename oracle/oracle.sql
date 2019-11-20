@@ -125,17 +125,6 @@ TABLE ACCESS FULL   --all table scan
 INDEX SCAN          --index scan
 join types --嵌套循环（NESTED LOOPS）、哈希连接（HASH JOIN）和排序-合并连接（SORT MERGE JOIN）。
 
----
----db link
----
-grant CREATE PUBLIC DATABASE LINK，DROP PUBLIC DATABASE LINK to scott;
-create database link DBLINK_NAME connect to USER01 identified by PASSWORD using 'TNS_NAME';
-DBLINK_NAME : DB_LINK的名字
-USER01　　     : 远程数据库的账户
-PASSWORD     : 远程数据库的账户
-TNS_NAME      : 远程数据库服务名 122.2312.13/orcl
-select owner,db_link,username from dba_db_links;
-select * from scott.tb_test@DBLINK_NAME;
 
 ---
 ---user control
