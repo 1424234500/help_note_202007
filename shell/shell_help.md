@@ -312,7 +312,7 @@ ps -elf | grep java | grep -v grep | awk '{print $4}' | xargs -I {} lsof -p {} |
     SIZE：文件的大小
     NODE：索引节点（文件在磁盘上的标识）
     NAME：打开文件的确切名称
-    FD 列中的文件描述符cwd 值表示应用程序的当前工作目录，这是该应用程序启动的目录，除非它本身对这个目录进行更改,txt 类型的文件是程序代码，如应用程序二进制文件本身或共享库，如上列表中显示的 /sbin/init 程序。
+    FD 列中的文件描述符cwd 值表示应用程序的当前工作目录，这是该应用程序启动的目录，除非它本身对这个目录进行更改,txt 类型的文件是程序代码，如应用程序二文件本身或共享库，如上列表中显示的 /sbin/init 程序。
     lsof abc.txt #显示开启文件abc.txt的进程 
     lsof -c abc #显示abc进程现在打开的文件 
     lsof -p 1234 #列出进程号为1234的进程所打开的文件 
@@ -788,8 +788,21 @@ echo -e ${PATH}
   \r    回车
   \t    水平制表符
   \v    竖直制表符
-  \0NNN   字节数以八进制数 NNN (1至3位)表示
+  \0NNN   字节数以八进制数 NNN (1至3位)表示     echo -e \x888
   \xHH    字节数以十六进制数 HH (1至2位)表示
+   
+进制转换 赋值
+    let i=16#ff
+    let aaa=n#[0 - n-1] #n进制定义
+    let i=0xff  011
+    echo 命令以十进制显示数据
+    ((var=base#number));echo $var
+    printf "%x\n" 65536
+    
+    bc命令格式转换
+    echo "obase=进制;值" | bc
+    echo "obase=16;65536" | bc
+   
    
 ####环境变量
     vim /etc/profile    #所有用户

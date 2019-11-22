@@ -178,6 +178,18 @@ create table table_name_new as select * from table_name_old
 --2.create
 create table table_name_new as select * from table_name_old where 1=2; 
 create table table_name_new like table_name_old 
+--分区分表创建 分区hash键 索引 已有数据的表 新建转移数据后重命名
+create table test(id1 varchar(20), id2 varchar(20), value varchar(200))
+partition by hash(id1)(
+    partition P01,
+    partition P02,
+    partition P03,
+    partition P04
+);
+create index i_test_id1 on test(id1, id2);
+select * from test partition(P01);  --查询分区
+    
+
 
 -- delete the table 
 drop  table test  ;
@@ -191,7 +203,8 @@ alter table tb_group rename column checked to newname;
 alter table tb_group modify column_name varchar2(340) not null;
 alter table tb_group add unique(user_token);
 Create Index i_deptno_job on emp(deptno,job); —>在emp表的deptno、job列建立索引。
-
+--改表名字
+RENAME student TO student_OLD; 
 --数据查询缓慢 优化 
 
 --2.数据量大 加索引 f5执行计划 避免 全表扫描 table_access_full
