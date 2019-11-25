@@ -283,11 +283,30 @@ wc -l file #### 统计行数
 wc -w file #### 统计单词数
 wc -c file #### 统计字符数
 #### lsof --help 系统 文件还原 进程
-lsof | awk '{print $1,$2}' | uniq -c | sort -k 1 -r     #查看所有已打开的文件描述符的进程名-pid的分配情况 并排序
-lsof -p $pid | awk '{print $1,$2}' | uniq -c | sort -k 1 -r   
-#查询所有规则进程的文件占用数
+
+#查询规则进程的文件占用数 分组统计
+#方式a
 ps -elf | grep java | grep -v grep | awk '{print $4}' | xargs -I {} lsof -p {} | awk '{print $1,$2}' | uniq -c | grep -v 'COMMAND PID' 
-    lsof(list open files)是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，
+#方式b
+lsof -n | awk '{print $1,$2}' | uniq -c | sort -k 1 -r   
+#lsof -p不准确？？？ 总数
+
+#系统的fd使用情况 而ulimit的配置是针对单用户？ 分组排序前十
+#方式c    !!
+sudo find /proc -print | grep -P '/proc/\d+/fd/'| wc -l
+sudo find /proc -print | grep -P '/proc/\d+/fd/'| awk -F '/' '{print $3}' | uniq -c | sort -rn | head
+
+     a  exe  pid    b   c    
+    66 java 1903
+    505 java 2147       218
+    168 java 2621       80
+    395 java 3257       204
+    549 java 3361       356
+    216 java 3877       .
+
+    1903                4401
+
+   lsof(list open files)是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，
     通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。
     所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，
     无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口。
