@@ -212,6 +212,9 @@ shutdown -h now 关闭系统(1)
 　　shutdown -r now 重启(1) 
 　　reboot 重启(2) 
 　　logout 注销
+　　
+dir /?
+    dir /N /S /A:-L-S-H-D
 
 
 cd /home 进入 '/ home' 目录' 
@@ -247,17 +250,7 @@ cd /home 进入 '/ home' 目录'
 find /?
     文件目录检索批量 文本关键词
     find /I /N "keys" *
-
-find / -name file1 从 '/' 开始进入根文件系统搜索文件和目录 
-　　find / -user user1 搜索属于用户 'user1' 的文件和目录 
-　　find /home/user1 -name \*.bin 在目录 '/ home/user1' 中搜索带有'.bin' 结尾的文件 
-　　find /usr/bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件 
-　　find /usr/bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件 
-　　find / -name \*.rpm -exec chmod 755 '{}' \; 搜索以 '.rpm' 结尾的文件并定义其权限 
-　　find / -xdev -name \*.rpm 搜索以 '.rpm' 结尾的文件，忽略光驱、捷盘等可移动设备 
-　　locate \*.ps 寻找以 '.ps' 结尾的文件 - 先运行 'updatedb' 命令 
-　　whereis halt 显示一个二进制文件、源码或man的位置 
-　　which halt 显示一个二进制文件或可执行文件的完整路径
+ 
 文件系统
 
 mount /dev/hda2 /mnt/hda2 挂载一个叫做hda2的盘 - 确定目录 '/ mnt/hda2' 已经存在 

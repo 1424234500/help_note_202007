@@ -8,7 +8,7 @@
          
     //便捷接口在线测试swagger
     //文件管理 上传下载
-    quartze在线管理 集群模式
+    //quartze在线管理 集群模式
     //自动化打包部署问题 idea依赖
     //jpa分表插件sharding使用 联合多数源配置
     推送提醒服务
@@ -18,6 +18,10 @@ redis注册中心
 kafka 替换redis队列
 分布式一致性
 锁 乐观 悲观死锁
+
+富文本 wiki功能
+
+在线小工具集合
 
 Prometheus监控服务器群
 
