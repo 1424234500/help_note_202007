@@ -238,7 +238,7 @@ dump agent提供了一些可配置的选项，详细见文档
 
 常见问题
 1.dubbo配置xml只会读取resource下面? System属性也无效
-2.dubbo加载xml修改地址无效?用户目录日志缓存zookeeper
+2.dubbo加载xml修改地址无效?用户目录日志缓存zookeeper    ~/.dubbo/xxx
 
 
 

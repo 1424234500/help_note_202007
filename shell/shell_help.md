@@ -34,6 +34,9 @@ df -h   #磁盘
     ldconfig 通常在系统启动时运行，加载新的动态链接库时，就需要手工运行这个命令。 
     ln -s source     dist     #建立软连接 快捷方式
     ln     source     dist     #建立硬连接 硬链接不能连接两个不同文件系统上的文件 类似拷贝副本
+## 用户 用户组 用户根目录 home
+    cat /etc/passwd #查看用户根目录 命令sh环境
+    usermod -d /home/walker walker     #修改用户目录
     chown -R wasup:wasgrp com 修改文件所属用户及组权限
     
  
@@ -284,16 +287,23 @@ wc -w file #### 统计单词数
 wc -c file #### 统计字符数
 #### lsof --help 系统 文件还原 进程
 
+#系统文件数总数 
+cat /proc/sys/fs/file-nr    #总数1
+1184	0	6815744
+第一列表示已打开的句柄数
+第二列表示已分配但是未使用的句柄数
+第三列表示系统总的句柄数，即 file-max
+
 #查询规则进程的文件占用数 分组统计
 #方式a
 ps -elf | grep java | grep -v grep | awk '{print $4}' | xargs -I {} lsof -p {} | awk '{print $1,$2}' | uniq -c | grep -v 'COMMAND PID' 
 #方式b
 lsof -n | awk '{print $1,$2}' | uniq -c | sort -k 1 -r   
-#lsof -p不准确？？？ 总数
+#lsof -p不准确？？
 
 #系统的fd使用情况 而ulimit的配置是针对单用户？ 分组排序前十
 #方式c    !!
-sudo find /proc -print | grep -P '/proc/\d+/fd/'| wc -l
+sudo find /proc -print | grep -P '/proc/\d+/fd/'| wc -l #总数2
 sudo find /proc -print | grep -P '/proc/\d+/fd/'| awk -F '/' '{print $3}' | uniq -c | sort -rn | head
 
      a  exe  pid    b   c    
