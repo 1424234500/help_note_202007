@@ -12,6 +12,7 @@
     //自动化打包部署问题 idea依赖
     //jpa分表插件sharding使用 联合多数源配置
     推送提醒服务
+    集成dubbo monitor
     
 面试刷题 基础算法 lee code
 redis注册中心

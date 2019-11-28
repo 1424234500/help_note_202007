@@ -238,10 +238,10 @@ find test -path "./Documents" -prune -o -path "./Desktop" -prune -o -name '.*.pn
 find ./ -maxdepth 4 -type d    
     
 
-find /var/svn/svnbackup -name "new_*" -mtime -7 -exec rm -rf {} \;  #删除/var/svn/svnbackup目录下创建时间为7天之前，并且文件以new开头的的所有文件或文件夹； 
+find /var/svn/svnbackup -type f -name "new_*" -mtime +7 -exec rm -rf {} \;  #删除/var/svn/svnbackup目录下创建时间为7天之前，并且文件以new开头的的所有文件或文件夹； 
 find ./ * -mtime 0 
-      -mtime -7 表示七天之前;
-      -mtime +7 表示七天之内;
+      -mtime -7 表示七天之内;
+      -mtime +7 表示七天之前;
       -mtime 0  表示1天之内;
 #### grep  --help
 grep [OPTIONS]PATTERN [FILE...] 

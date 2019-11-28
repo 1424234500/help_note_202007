@@ -78,6 +78,11 @@ Usage: redis-cli [OPTIONS] [cmd [arg [arg ...]]]
     vm_swap_file：设置虚拟内存的交换文件的路径
     vm_max_momery：设置开启虚拟内存后，redis将使用的最大物理内存的大小，默认为0
     vm_page_size：设置虚拟内存页的大小
+    hz  10  :清理策略 定期删除一部分扫描的key 用到才删除 内存超过80%主动清理  gc？
+        每秒执行10次
+            1.随机测试100个需要过期的key
+            2.删除已过期的key
+            3.若删除量>25则重复执行1
     vm_pages：设置交换文件的总的page数量
     vm_max_thrrads：设置vm IO同时使用的线程数量
     自动存储
