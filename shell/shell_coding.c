@@ -52,11 +52,6 @@ var=`命令` # 注意此处不是普通的单引号
     $value2=${value1}"="
     echo $value2 
 
-//字符串包含
-    result=$(echo $strA | grep "${strB}")
-    if [[ "$result" != "" ]] 包含
-    if [[ $strA =~ $strB ]]
-    if [[ $A == *$B* ]]
 
 //字符串截取      # % 保留左右  *key key*
     var=http://www.aaa.com/123.htm.  
@@ -113,6 +108,7 @@ cmd=$exe' keys '$key" | awk -OFS'\"' '"'{print $1}'"'"
     if (( $i < 5 )) 增强括号的用法, 常用于算术运算比较.
     #如果$a等于a*(字符匹配 全值),那么结果为true
     if [[ "$obj" =~ .*Test.*  $regular<'.*Test.*'> ]]     //正则匹配  .*a.*
+    if [[ $A == *$B* ]]
     if [[ "$A" == a* ]];then                              //模式匹配  *a*
     if [[ "$A" == "a*" ]];then                            //字符串全值匹配  
     if [[ "$A" != "$B" ]];then 
@@ -124,7 +120,9 @@ cmd=$exe' keys '$key" | awk -OFS'\"' '"'{print $1}'"'"
     [ ! -d ${var##*/} ] && mkdir -p ${var##*/}  #若不存在父级则创建父级文件夹
     [ ! -f ${var} ] && touch ${var}     #若不存在则创建文件夹
     if [ ! -f "$myFile" ]; then     # 这里的-f参数判断$myFile是否存在 是否为文件
-     touch "$myFile"
+        touch "$myFile"
+    else
+        echo '1'
     fi
     if [ ! -d "$myPath"]; then      # 这里的-d 参数判断$myPath是否存在 是否为目录
      mkdir "$myPath"
@@ -188,10 +186,22 @@ read -p "请输入用户名：" name   #录入name变量
     do
 
     done
+
+    while true; do 
     
+    done    
 
 tt=''; for i in `seq 0 99`; do tt="${tt},msg_entity_${i}"; done ; tt=${tt:1}; str='before '"${tt}"' after '; echo ${str}
-    
+
+//获取指定路径列表中第一个有效路径
+res=""
+for i in "/homed" "/home/walker/ttt.txt" "home/www" ; do
+    if [ -f "${i}" ]; then  
+        res=${i}
+        break
+    fi
+done
+echo ${res}
 
 
 1. 迭代文件中的每一行

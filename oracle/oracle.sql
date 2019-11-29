@@ -94,6 +94,16 @@ select count(1) cc, ssql_id, prev_sql, username, program from (
 ) group by ssql_id, prev_sql, username, program
 order by username, cc desc
 
+--查找某sql的执行记录 上次执行的ip port
+select t.parsing_schema_name,t.sql_text,t.sql_id,t.last_active_time,t.action,t.module
+,h.session_id,h.machine,h.port,h.user_id,h.sql_opname,sample_time 
+from v$sqlarea t,dba_hist_active_sess_story h
+whre 1=1
+and (upper(sql_text) like '%DELETE%XXX%' or upper(sql_text) like '%TRUNCATE %XXX')
+and h.sql_id=t.sql_id
+order by t.last_actie_time desc
+;
+
 --查找分析每个用户的连接数
 select count(1) cc, username from v$session group by username;
 

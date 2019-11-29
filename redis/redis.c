@@ -16,8 +16,11 @@ sudo ./configure
 sudo make  
 sudo make install  
 
-
+//启动
 ./src/redis-server.sh <redis.conf>
+//关闭
+./src/redis-cli shutdown
+kill xxxpid //can't -9
 ./src/redis-cli <-c 集群模式> <-h host/12.0.0.1> <-p port/6379> <-a password> <-n 0数据库编号>  <set key value>
 
 Usage: redis-cli [OPTIONS] [cmd [arg [arg ...]]]

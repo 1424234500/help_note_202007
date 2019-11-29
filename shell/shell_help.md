@@ -10,7 +10,6 @@ df -h   #磁盘
     ls -lht <l>长信息 <h>size转换 <t>时间排序 <s>size排序 <d> 只显示目录 
     type ls 查看命令位置 查看执行结果?
     date --version / -v   --引领一整个英文单词
-    date --set="1999-01-01 08:00:00" # 设置时间
     whatis ls   简述
     man ls 帮助文档
     info ls 更详细的文档
@@ -243,6 +242,7 @@ find ./ * -mtime 0
       -mtime -7 表示七天之内;
       -mtime +7 表示七天之前;
       -mtime 0  表示1天之内;
+      
 #### grep  --help
 grep [OPTIONS]PATTERN [FILE...] 
     PATTERN:是文本字符和正则表达式的元字符组合而成的匹配条件，
@@ -367,20 +367,21 @@ sudo find /proc -print | grep -P '/proc/\d+/fd/'| awk -F '/' '{print $3}' | uniq
     server time.nist.gov iburst
     /etc/init.d/ntp restart    ####重启
 
-####日期date格式化
-    date "+%Y-%m-%d"  
+####date --help
+    date --set="1999-01-01 08:00:00" # 设置时间
+    
+    date +%Y-%m-%d" 
     2013-02-19  
     date "+%H:%M:%S"  
     13:13:59  
     date "+%Y-%m-%d %H:%M:%S"  
     2013-02-19 13:14:19   
     date -d today   
-    Tue Feb 19 13:10:38 CST 2013  
     date -d now  
-    Tue Feb 19 13:10:43 CST 2013  
     date -d tomorrow  
-    Wed Feb 20 13:11:06 CST 2013  
     date -d yesterday  
+    date -d "1 days"    # second | minutes | hours | days | months | years | 
+    date -d "-1 days"
     Mon Feb 18 13:11:58 CST 2013  
     date -d now +%s #到ms级别
     date -d "2019-02-11 13:14:19" +%s #到s级别
@@ -553,12 +554,6 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     ethtool -p 启动一个适配器的指定行为，比如让适配器的LED灯闪烁，以帮助你在多个适配器或接口中标识接口名称
     ethtool -s 显示网络统计信息
     ethtool speed <10|100|设置适配器的连接速度> 1000，单位是Mbps
-    **netstat 网络连接端口
-    netstat -nap | grep port 将会显示使用该端口的应用程序的进程id
-    netstat -a  or netstat –all 将会显示包括TCP和UDP的所有连接
-    netstat --tcp  or netstat –t 将会显示TCP连接
-    netstat --udp or netstat –u 将会显示UDP连接
-    netstat -g 将会显示该主机订阅的所有多播网络。
 
 ####Linux系统的进程间通信的方式
     管道(pipe)：管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用(进程的亲缘关系通常是指父子进程关系)。
@@ -778,8 +773,9 @@ netstat
     　　上表所列命令以外的其他命令都将以字符串的形式发送至 Telnet 服务器。例如，sendabcd 将发送字符串 abcd 至 Telnet 服务器，这样，Telnet 会话窗口中将出现该字符串。
     　　quit
 
-####mv命令既可以重命名
-    for i in `seq -w 10`; do touch stu\_$i\_linux.jpg ; done
+####mv touch --help
+    for i in `seq -w 10`; do touch -d "${i}/11/2011}" stu\_$i\_linux.jpg ; done
+    touch -d "10/11/2011" ttt.txt2  #修改时间
     rename \_linux '' *.jpg
     rename '\_linux' '' *.jpg       
     mv命令既可以重命名，又可以移动文件或文件夹。     
