@@ -525,6 +525,24 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
     2）每行只能有一个IP，也就是说一个域名不能对应多个IP；
     3）如果有多行中出现相同的域名（前面IP不一样），会按最前面出现的记录来解析。
     
+####安装投影仪
+**xrandr
+xrandr 命令行可以很方便地切换双屏，常用方式如下，其他的可以自己探索：
+xrandr --output VGA --same-as LVDS --auto
+         打开外接显示器(最高分辨率)，与笔记本液晶屏幕显示同样内容（克隆）
+xrandr --output VGA --same-as LVDS --mode 1024x768
+         打开外接显示器(分辨率为1024x768)，与笔记本液晶屏幕显示同样内容（克隆）
+xrandr --output VGA --right-of LVDS --auto
+         打开外接显示器(最高分辨率)，设置为右侧扩展屏幕
+xrandr --output VGA --off
+          关闭外接显示器
+xrandr --output VGA --auto --output LVDS --off
+        打开外接显示器，同时关闭笔记本液晶屏幕（只用外接显示器工作）
+xrandr --output VGA --off --output LVDS --auto
+        关闭外接显示器，同时打开笔记本液晶屏幕 (只用笔记本液晶屏)
+分辨率以适应投影仪。
+xrandr -   分辨率以适应投影仪。
+
 ####Linux 网络和监控
 **hostname <–d 显示机器所属域名> <–f 显示完整的主机名和域名> <–i 显示当前机器的ip地址>
 **ping     网络畅通 网络速度

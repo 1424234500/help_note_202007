@@ -48,10 +48,9 @@ SQL> SELECT DBMS_METADATA.GET_DDL('TABLE','STUDENT') FROM DUAL;
 
 
 
---导入导出文件夹
+--导入导出文件夹 创建文件夹 权限 oracle dba?
 create directory backup as '/home/backup';  --drop directory backup;
 grant read,write on directory backup to walker;
-
 --导出数据库
 expdp user1/password@orcl diretory=backup dumpfile=test.dmp schemas=user1;     
 --导入数据库到某用户
