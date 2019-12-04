@@ -54,21 +54,16 @@ var=`命令` # 注意此处不是普通的单引号
 
 
 //字符串截取      # % 保留左右  *key key*
-    var=http://www.aaa.com/123.htm.  
+    var=http://www.aaa.com/123.html 
     echo ${var#*//} # *// 删除匹配到的 *//之前
     即删除 http://
     结果是 ：www.aaa.com/123.htm
     echo ${var##*/} ## */删除 最后面 */ 之前 
     结果是 123.htm 
-    echo ${var#*//} 用法
-    #*/     删除最少匹配的*/
-    ##*/    删除最多匹配*/
-    %/*    倒数 删除最少的/*               */
-    %%/*   倒数 删除最多的/*               */
     var=file.temp.txt
     echo ${var##*.}     #txt    最后一个.以后 后缀名ext
     echo ${var%.*}      #file.temp  最后一个.以前 除后缀名
-    echo ${var%%.*}       #file   第一个.以前
+    echo ${var%%.*}     #file   第一个.以前
     
     echo ${var:0:5} #0-》5
     echo ${var:7}   #7-》*

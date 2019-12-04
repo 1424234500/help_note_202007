@@ -1090,7 +1090,7 @@ Bash
     #    m    h    dom    mon    dow    user    command
     #  分    时    日    月      周    用户    命令
     #
-    #       m:表示分钟1～59 每分钟用*或者 */1表示
+    #       m:表示分钟1～59 每分钟用*或者 */1表示 0表示整点 *表示启动时间开始 每增加/1单位
     #       h:表示小时1～23（0表示0点）
     #     dom:表示日期1～31
     #     mon:表示月份1～12
@@ -1111,8 +1111,8 @@ Bash
     #在每天18 : 00至23 : 00之间每隔30分钟重启apache。
     0 23 * * 6 /usr/local/etc/rc.d/lighttpd restart
     #每星期六的11 : 00 pm重启apache。
-    * */1 * * * /usr/local/etc/rc.d/lighttpd restart
-    #每一小时重启apache
+    * 0/1 * * * /usr/local/etc/rc.d/lighttpd restart
+    #每一小时整点重启apache
     * 23-7/1 * * * /usr/local/etc/rc.d/lighttpd restart
     #晚上11点到早上7点之间，每隔一小时重启apache
     0 11 4 * mon-fri /usr/local/etc/rc.d/lighttpd restart

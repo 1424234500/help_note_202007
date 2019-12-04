@@ -100,7 +100,7 @@ jstack -l $pid > $file_jstack      #采集java线程栈
 jmap -dump:format=b,live,file=$file_jmap $pid       #采集jmap
 #jhat -J-Xmx1024M $jmap_file #等待访问 http://127.0.0.1:7000
 jvisualvm $file_jmap &  #图形化分析工具
-
+jconsole    #图形化java控制台
 
 #########################################################
 
@@ -249,7 +249,7 @@ wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.14/zook
 tar -xzvf zookeeper-3.4.14.tar.gz
 cd zookeeper-3.4.14
 cp conf/zoo_sample.cfg conf/zoo.cfg
-#vi conf/zoo.cfg     #修改 数据路径 
+vi conf/zoo.cfg     #修改 数据路径 
 #    dataDir=~/log/zookeeper
 
 bin/zkServer.sh start #</stop/status>
@@ -258,23 +258,6 @@ bin/zkCli.sh -server 127.0.0.1:2181  #测试
     ls /daily_orderServer_group（节点名称） 5）查看注册了哪些服务，如图2； 
 
 注意防火墙
-
-//tomcat
-wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.42/bin/apache-tomcat-8.5.42.tar.gz
-tar -xvf apache-tomcat-8.5.42.tar.gz
-#配置端口
-vim conf/server.xml
-<Connector port="8090" protocol="HTTP/1.1"
-               connectionTimeout="20000"
-               redirectPort="8443" />
-
-#配置mannager ip控制
-<Valve className="org.apache.catalina.valves.RemoteAddrValve"
-         allow="d+\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
-#配置角色 后台管理权限
-vim conf/tomcat-users.xml
-  <role rolename="tomcat"/>
-  <user username="walker" password="qwer" roles="tomcat"/>
 
 
 //监控中心
@@ -295,6 +278,23 @@ http://127.0.0.1:8080/dubbo-monitor
 walker/qewr
 
 
+
+//tomcat
+wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.42/bin/apache-tomcat-8.5.42.tar.gz
+tar -xvf apache-tomcat-8.5.42.tar.gz
+#配置端口
+vim conf/server.xml
+<Connector port="8090" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+
+#配置mannager ip控制
+<Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="d+\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
+#配置角色 后台管理权限
+vim conf/tomcat-users.xml
+  <role rolename="tomcat"/>
+  <user username="walker" password="qwer" roles="tomcat"/>
 
 //配置tomcat特定jdk jre
 vim tomcat/bin/setclasspath.sh
