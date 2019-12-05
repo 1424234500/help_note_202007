@@ -241,16 +241,6 @@ xxxxxxxxxxxxxxxxxxxx
 IFS=$IFS_old #恢复原IFS值
 
 
-//函数
-{
-./do show pp
-$0<./do>-n取参数,
-$#<2>参数个数,
-$@<".do" "show" "pp"> 数组
-$*<"./do show pp"> 串
-$?<int 0/1>函数返回值 
-$$<PID 59>
-}
 
 #批量创建文件
 { 

@@ -285,73 +285,7 @@ grep -ne  'getUserBean\|device:null' obcp-server29.log | grep -v '.*DEBUG.*'| gr
 wc -l file #### 统计行数
 wc -w file #### 统计单词数
 wc -c file #### 统计字符数
-#### lsof --help 系统 文件还原 进程
 
-#系统文件数总数 
-cat /proc/sys/fs/file-nr    #总数1
-1184	0	6815744
-第一列表示已打开的句柄数
-第二列表示已分配但是未使用的句柄数
-第三列表示系统总的句柄数，即 file-max
-
-#查询规则进程的文件占用数 分组统计
-#方式a
-ps -elf | grep java | grep -v grep | awk '{print $4}' | xargs -I {} lsof -p {} | awk '{print $1,$2}' | uniq -c | grep -v 'COMMAND PID' 
-#方式b
-lsof -n | awk '{print $1,$2}' | uniq -c | sort -k 1 -r   
-#lsof -p不准确？？
-
-#系统的fd使用情况 而ulimit的配置是针对单用户？ 分组排序前十
-#方式c    !!
-sudo find /proc -print | grep -P '/proc/\d+/fd/'| wc -l #总数2
-sudo find /proc -print | grep -P '/proc/\d+/fd/'| awk -F '/' '{print $3}' | uniq -c | sort -rn | head
-
-     a  exe  pid    b   c    
-    66 java 1903
-    505 java 2147       218
-    168 java 2621       80
-    395 java 3257       204
-    549 java 3361       356
-    216 java 3877       .
-
-    1903                4401
-
-   lsof(list open files)是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，
-    通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。
-    所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，
-    无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口。
-    因为应用程序打开文件的描述符列表提供了大量关于这个应用程序本身的信息，因此通过lsof工具能够查看这个列表对系统监测以及排错将是很有帮助的。
-    /proc/1917  某进程动id下的 内存文件配置 还原文件？
-    [1]+  已停止               ./pipe_maker.sh
-    1.找到目标文件使用进程pid 7570 该文件动文件描述符 255r
-    lsof | grep pipe_maker
-    pipe_make 7570                walker  255r      REG                8,6      2522      17692 /home/walker/e/help_note/shell/pipe_maker.sh
-    2.查看该进程文件列表
-    ll /proc/7570/fd 
-    lrwx------ 1 walker walker 64 1月  24 15:36 1000 -> '/home/walker/e/help_note/shell/make.7570.fifo (deleted)'
-    lrwx------ 1 walker walker 64 1月  24 15:36 2 -> /dev/pts/0
-    lr-x------ 1 walker walker 64 1月  24 15:36 255 -> /home/walker/e/help_note/shell/pipe_maker.sh* (deleted)
-    3.读取 转储目标文件 
-    cat /proc/7570/fd/255 > pipe_maker.sh
-    lsof输出各列信息的意义如下：
-    COMMAND：进程的名称 PID：进程标识符
-    USER：进程所有者
-    FD：文件描述符，应用程序通过文件描述符识别该文件。如cwd、txt等 TYPE：文件类型，如DIR、REG等
-    DEVICE：指定磁盘的名称
-    SIZE：文件的大小
-    NODE：索引节点（文件在磁盘上的标识）
-    NAME：打开文件的确切名称
-    FD 列中的文件描述符cwd 值表示应用程序的当前工作目录，这是该应用程序启动的目录，除非它本身对这个目录进行更改,txt 类型的文件是程序代码，如应用程序二文件本身或共享库，如上列表中显示的 /sbin/init 程序。
-    lsof abc.txt #显示开启文件abc.txt的进程 
-    lsof -c abc #显示abc进程现在打开的文件 
-    lsof -p 1234 #列出进程号为1234的进程所打开的文件 
-    lsof -g gid #显示归属gid的进程情况 
-    lsof +d /usr/local/ #显示目录下被进程开启的文件 
-    lsof +D /usr/local/ E同上，但是会搜索目录下的目录，时间较长 
-    lsof -d 4 #显示使用fd为4的进程 
-    lsof -i #show port tcp
-    lsof -i[46] [protocol][@hostname|hostaddr][:service|port]   46 --> IPv4 or IPv6   protocol --> TCP or UDP   hostname --> Internet host name   hostaddr --> IPv4地址   service --> /etc/service中的 service name (可以不止一个)   port --> 端口号 (可以不止一个)
-    lsof -i:8091 端口
 ####设置时间
     ntpd -s -d  ####自动同步 
     date --s="2014-08-21 12:33:22" ####手动设置
@@ -370,7 +304,7 @@ sudo find /proc -print | grep -P '/proc/\d+/fd/'| awk -F '/' '{print $3}' | uniq
 ####date --help
     date --set="1999-01-01 08:00:00" # 设置时间
     
-    date +%Y-%m-%d" 
+    date +%Y-%m-%d
     2013-02-19  
     date "+%H:%M:%S"  
     13:13:59  
@@ -848,16 +782,66 @@ echo -e ${PATH}
    
    
 ####环境变量
-    vim /etc/profile    #所有用户
-    vim ~/.bashrc       #当前用户
+etc/profile, /etc/bashrc, .bash_profile和.bashrc的差别
+调用顺序 
+登陆Linux系统时： 
+首先启动”/etc/profile”； 
+然后启动 用户目录下的”~/.bash_profile” 附：(~/.bash_profile文件先调用~/.bashrc，然后再把PATH加载)； 
+如果”~/.bash_login”和”~/.profile”文件存在的时候也会在执行”~ /.bash_profile”后被依次调用。
+各个文件的作用 
+/etc/profile：此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行，并从/etc/profile.d目录的设置文件中搜集shell的设置； 
+/etc/bashrc：为每一个运行bash shell的用户执行此文件，当bash shell被打开时，该文件被读取； 
+~/.bash_profile：每个用户都可使用该文件输入专用于自己使用的shell信息，当用户登录时，该文件仅仅执行一次！默认情况下，他设置一些环境变量，执行用户的.bashrc文件， 
+~/.bashrc:该文件包含专用于你的bash shell的bash信息,当登录时及每次打开新的shell时,该文件被读取； 
+~/.bash_logout:当每次退出系统(退出bash shell)时,执行该文件；
+区别 
+/etc/profile是全局性的功能，其中设置的变量作用于所有用户，~/.bash_profile中设置的变量能继承/etc/profile中的变量并作用于用户。 
+~/.bash_profile 是交互式、login 方式进入 bash 运行的；~/.bashrc 是交互式 non-login 方式进入 bash 运行的。
+
+sh csh ksh bash dash 
+#!/bin/sh
+#!/bin/bash     #功能全面
+执行命令 
+在新的shell窗口环境执行sh
+    ./test.sh   在当前的工作目录下执行test.sh
+    test.sh     在环境变量中查找test.sh
+    /data/shell/test.sh    在指定路径下查找test.sh
+    bash /data/shell/test.sh    使用bash执行指定sh    不必赋予执行权限 不用文件第一行指定执行环境
+在当前shell窗口环境执行sh
+. test.sh   
+
+
+#!/bin/bash
+DIRNAME=$0
+if [ "${DIRNAME:0:1}" = "/" ];then
+    _NOW_DIR=`dirname $DIRNAME`
+else
+    _NOW_DIR="`pwd`"/"`dirname $DIRNAME`"
+fi
+echo $_NOW_DIR
+
+./do show pp
+$0<./do>-n取参数,  执行路径相对
+$#<2>参数个数,
+$@<".do" "show" "pp"> 数组
+$*<"./do show pp"> 串
+$?<int 0/1>函数返回值 
+$$<PID 59>
+
+   
+
     export JAVA_HOME=/home/walker/software/jdk1.7.0_79
     export CLASSPATH=$JAVA_HOME/bin   
     export PATH=$PATH:$CLASSPATH
     source /etc/profile
     
-        # export CLASSPATH=$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/bin
-    ####eclipse高版本配置 当path无效
+    # export CLASSPATH=$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/bin
+####eclipse高版本配置 当path无效
     ln -s /home/walker/software/jdk11 jre
+    
+    
+    
+    
 ####防火墙问题
     一、Linux下开启/关闭防火墙命令
     1、永久性生效，重启后不会复原。
@@ -1077,13 +1061,18 @@ crontab -e #编辑
 crontab -l  #列表 
 执行日志 tail -f /var/spool/mail/root
 Cron是Unix系统的一个配置定期任务的工具，用于定期或者以一定的时间间隔执行一些命令或者脚本； 基于每个用户的，每一个用户（包括root用户）都拥有自己的crontab。
-*/5 * * * * /usr/local/tomcat-6.0.41/tomcat_cardniu_stat/monitor.sh ####每五分钟
-0 0 * * *  /home/pi/backup.sh ####每天
+*/1 * * * * date >> ~/logs/crontab.log  #定时每m测试crontab状况
+*/5 * * * * /usr/local/tomcat-6.0.41/tomcat_cardniu_stat/monitor.sh ####增量5m
+0 0 * * *  /home/pi/backup.sh ####0h0m
+
+注意!!!!
+%是有特殊含义 表示换行    常用的date +%Y%m%d在crontab里是不会执行的，应该换成date +\%Y\%m\%d
+上下文环境变量不会加载 可手动加载    多条语句时，用分号“；”隔开
+*/1 * * * * . /etc/profile; echo `date "+\%Y-\%m-\%d \%H:\%M:\%S"`" crontab trigger 1m " >> ~/logs/crontab.log  #定时每m测试crontab状况
+
 #### service crond restart
 service cron status
 /etc/init.d/cron {start|stop|status|restart|reload|force-reload} ####重启服务
-*/4 * * * * /home/pi/project/python/foStart.sh
-0 0 * * * /home/pi/project/python/foRestart.sh
 其中排列意思为：
 http://cron.qqe2.com/
 Bash
@@ -1233,3 +1222,76 @@ cpu - 以分钟为单位的最多 CPU 时间
 noproc - 进程的最大数目
 as - 地址空间限制
 maxlogins - 此用户允许登录的最大数目
+
+
+#### lsof --help 系统 文件还原 进程
+
+#系统文件数总数 
+cat /proc/sys/fs/file-nr    #总数1
+1184	0	6815744
+第一列表示已系统打开的句柄数
+第二列表示系统已分配但是未使用的句柄数
+第三列表示系统总的句柄数，即 file-max
+#进程限制数 suse出现进程限制和ulimit不一致问题?
+cat /proc/${pid}/limits
+#查询规则进程的文件占用数 分组统计
+
+#方式a
+ps -elf | grep java | grep -v grep | awk '{print $4}' | xargs -I {} lsof -p {} | awk '{print $1,$2}' | uniq -c | grep -v 'COMMAND PID' 
+#方式b
+lsof -n | awk '{print $1,$2}' | uniq -c | sort -k 1 -r   
+#lsof -p不准确？？
+
+#系统的fd使用情况 而ulimit的配置是针对单用户？ 分组排序前十
+#方式c    !!
+sudo find /proc -print | grep -P '/proc/\d+/fd/'| wc -l #总数2
+sudo find /proc -print | grep -P '/proc/\d+/fd/'| awk -F '/' '{print $3}' | uniq -c | sort -rn | head
+
+     a  exe  pid    b   c    
+    66 java 1903
+    505 java 2147       218
+    168 java 2621       80
+    395 java 3257       204
+    549 java 3361       356
+    216 java 3877       .
+
+    1903                4401
+
+   lsof(list open files)是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，
+    通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。
+    所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，
+    无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口。
+    因为应用程序打开文件的描述符列表提供了大量关于这个应用程序本身的信息，因此通过lsof工具能够查看这个列表对系统监测以及排错将是很有帮助的。
+    /proc/1917  某进程动id下的 内存文件配置 还原文件？
+    [1]+  已停止               ./pipe_maker.sh
+    1.找到目标文件使用进程pid 7570 该文件动文件描述符 255r
+    lsof | grep pipe_maker
+    pipe_make 7570                walker  255r      REG                8,6      2522      17692 /home/walker/e/help_note/shell/pipe_maker.sh
+    2.查看该进程文件列表
+    ll /proc/7570/fd 
+    lrwx------ 1 walker walker 64 1月  24 15:36 1000 -> '/home/walker/e/help_note/shell/make.7570.fifo (deleted)'
+    lrwx------ 1 walker walker 64 1月  24 15:36 2 -> /dev/pts/0
+    lr-x------ 1 walker walker 64 1月  24 15:36 255 -> /home/walker/e/help_note/shell/pipe_maker.sh* (deleted)
+    3.读取 转储目标文件 
+    cat /proc/7570/fd/255 > pipe_maker.sh
+    lsof输出各列信息的意义如下：
+    COMMAND：进程的名称 PID：进程标识符
+    USER：进程所有者
+    FD：文件描述符，应用程序通过文件描述符识别该文件。如cwd、txt等 TYPE：文件类型，如DIR、REG等
+    DEVICE：指定磁盘的名称
+    SIZE：文件的大小
+    NODE：索引节点（文件在磁盘上的标识）
+    NAME：打开文件的确切名称
+    FD 列中的文件描述符cwd 值表示应用程序的当前工作目录，这是该应用程序启动的目录，除非它本身对这个目录进行更改,txt 类型的文件是程序代码，如应用程序二文件本身或共享库，如上列表中显示的 /sbin/init 程序。
+    lsof abc.txt #显示开启文件abc.txt的进程 
+    lsof -c abc #显示abc进程现在打开的文件 
+    lsof -p 1234 #列出进程号为1234的进程所打开的文件 
+    lsof -g gid #显示归属gid的进程情况 
+    lsof +d /usr/local/ #显示目录下被进程开启的文件 
+    lsof +D /usr/local/ E同上，但是会搜索目录下的目录，时间较长 
+    lsof -d 4 #显示使用fd为4的进程 
+    lsof -i #show port tcp
+    lsof -i[46] [protocol][@hostname|hostaddr][:service|port]   46 --> IPv4 or IPv6   protocol --> TCP or UDP   hostname --> Internet host name   hostaddr --> IPv4地址   service --> /etc/service中的 service name (可以不止一个)   port --> 端口号 (可以不止一个)
+    lsof -i:8091 端口
+    
+    

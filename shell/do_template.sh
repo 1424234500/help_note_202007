@@ -33,6 +33,7 @@ function do_init(){
     else
         echo 'eg:'
         echo './do test "params of test"'
+        show
     fi
 }
 
@@ -57,8 +58,6 @@ function show(){
 
 
  
-#start
-
 
 
 # 单独执行文件时操作如下 引入时提示
