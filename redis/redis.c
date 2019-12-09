@@ -162,6 +162,15 @@ CLUSTER ADDSLOTS <slot> [slot ...] 将一个或多个槽（slot）指派（assig
 CLUSTER DELSLOTS <slot> [slot ...] 移除一个或多个槽对当前节点的指派。  
 CLUSTER FLUSHSLOTS 移除指派给当前节点的全部槽，让当前节点变成一个没有指派不论什么槽的节点
 
+//数据制造
+SET Key0 Value0
+SET Key1 Value1
+SET Key2 Value2
+cat redis_commands.txt | redis-cli -h 192.168.127.130 -p 6379 [-a "password"] -n 0 --pipe
+
+//特殊指令 附加
+./redis-cli [--stat 监控, --bigkeys 大键, --csv 导出excel ] [-i 0.1 重复间隔]
+ 
 
 //数据迁移  单对单
 零、aof日志
@@ -267,8 +276,6 @@ SENTINEL slaves <master name>获取所有的Slaves信息
 sentinetl.conf  配置监控节点 sentinel myid xxxx sentinel monitor mymaster xxx 2      自动生成 展示所有从节点  解除哨兵关联!!!  需要关闭所有节点 修改所有配置后 一一重启
 redis.conf  配置slaveof 主节点       自动生成 
 
-
-
 //测试
 ./runtest 
 
@@ -276,11 +283,14 @@ redis.conf  配置slaveof 主节点       自动生成
 
 
 //环境状态监控
-info 展示redis状态 多数据库信息
+info all 展示redis状态 多数据库信息
     # Keyspace
     db0:keys=2,expires=0,avg_ttl=0
     db2:keys=3,expires=0,avg_ttl=0
-
+    #查看多种操作的耗时awr?
+    #查看持久化耗时 fork耗时
+    #查看键值统计数据
+    
 save rdb持久化
 flushall 清空 当前数据库redis-cli -n 0-15 
 flushdb 清空所有数据库

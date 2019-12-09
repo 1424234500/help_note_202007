@@ -31,6 +31,10 @@ create tablespace TEST datafile 'tablespace_name.ora' ;
 
 
 
+
+--查看当前用户的所有序列 
+select SEQUENCE_OWNER,SEQUENCE_NAME,last_number from dba_sequences  ; 
+
 --查看各个表空间占用;
 select tablespace_name, sum(bytes) / 1024 / 1024 MB  from dba_free_space  group by tablespace_name order by 2 desc;  
 --各个用户表数
@@ -93,12 +97,12 @@ select count(1) cc, ssql_id, prev_sql, username, program from (
 ) group by ssql_id, prev_sql, username, program
 order by username, cc desc
 
---查找某sql的执行记录 上次执行的ip port
+--查找某sql的执行记录 上次执行的ip port 历史sql记录分析
 select t.parsing_schema_name,t.sql_text,t.sql_id,t.last_active_time,t.action,t.module
-,h.session_id,h.machine,h.port,h.user_id,h.sql_opname,sample_time 
+,h.session_id,h.machine,h.port,h.user_id,h.sql_opname,h.sample_time 
 from v$sqlarea t,dba_hist_active_sess_story h
 whre 1=1
-and (upper(sql_text) like '%DELETE%XXX%' or upper(sql_text) like '%TRUNCATE %XXX')
+and ( upper(sql_text) like '%DELETE%XXX%' )
 and h.sql_id=t.sql_id
 order by t.last_actie_time desc
 ;
