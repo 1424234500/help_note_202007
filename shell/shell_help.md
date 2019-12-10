@@ -273,22 +273,18 @@ grep [OPTIONS]PATTERN [FILE...]
 grep -rl 7000 ./*   #匹配所有文件子目录文件 输出概要或者文件列表
 grep "7000" file1.txt file2.txt file3.txt   #匹配多个文件 
 grep "7000" `find ./ -name "*conf" -o -name "*conf3" `  #匹配 查找出的文件列表  并过滤一个子列表
-findfiles=`find ./ -name "*conf" -o -name "*conf3" `    #查找文件列表
-echo ${findfiles} | tr ' ' "\n"
-grep -n "7000" ${findfiles}        #命中展示
-grepfiles=`grep -l "7000" ${findfiles} `       #过滤出文件子列表
-echo ${grepfiles} | tr ' ' "\n"
-sed -i.back "s/7000/7800/g" ${grepfiles}        #替换并备份文件
 grep -C 10 -inoe  '.*MccpMgr.*' obcp-server29.log | less 
 grep -ne  'getUserBean\|device:null' obcp-server29.log | grep -v '.*DEBUG.*'| grep -v '.*INFO.*' | less
-
+####常用工具 wc tr base64 less
 wc -l file #### 统计行数
 wc -w file #### 统计单词数
 wc -c file #### 统计字符数
 
+echo '123456' | base64  #编码
+echo "a b c" | tr ' ' "\n"  #行列转换
+
 ####设置时间
     ntpd -s -d  ####自动同步 
-    date --s="2014-08-21 12:33:22" ####手动设置
     配置服务
     vim /etc/ntpconf
     # You do need to talk to an NTP server or two (or three).
@@ -748,7 +744,6 @@ netstat
     输入bash即可
 ####回响
 ####
-echo "aaa bbb\n ccc\tddd" | tr ' ' "\n"     #行列转换echo
 echo -e ${PATH}
     -n 不尾随换行符 文件追加 lf lrlf异常
     -e 启用解释反斜杠的转义功能
