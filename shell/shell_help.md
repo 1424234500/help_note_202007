@@ -1172,8 +1172,65 @@ Bash
     提供无限的空字符(NULL, ASCII NUL, 0x00)。
     nohup ./start.sh >/dev/null &
     
-##ulimit使用的基本格式为：ulimit -a [options] [limit]
+
 ##最大设备数限制 too many open files 异常
+1.查看当前进程设备数 最大限制    查看系统限制最大设备数 每个进程限制
+    #系统文件数总数 
+    cat /proc/sys/fs/file-nr    #总数1
+    cat /etc/security/limits.conf
+    ulimit -a
+    已打开         总限制file-max
+    1184	0	6815744
+    #进程限制数 suse出现进程限制和ulimit不一致问题?
+    cat /proc/${pid}/limits
+    #查询规则进程的文件占用数 分组统计
+
+    #方式a
+    ps -elf | grep java | grep -v grep | awk '{print $4}' | xargs -I {} lsof -p {} | awk '{print $1,$2}' | uniq -c | grep -v 'COMMAND PID' 
+    #方式b
+    lsof -n | awk '{print $1,$2}' | uniq -c | sort -k 1 -r   
+    #lsof -p不准确？？
+    #系统的fd使用情况 而ulimit的配置是针对单用户？ 分组排序前十
+    #方式c  依赖管理员用户  !!
+    sudo find /proc -print | grep -P '/proc/\d+/fd/'| wc -l #总数2
+    sudo find /proc -print | grep -P '/proc/\d+/fd/'| awk -F '/' '{print $3}' | uniq -c | sort -rn | head
+         a  exe  pid    b   c    
+        66 java 1903
+        505 java 2147       218
+        168 java 2621       80
+        395 java 3257       204
+        549 java 3361       356
+        216 java 3877       .
+
+        1903                4401
+
+2.优化代码 修改限制
+    永久修改
+    vim /etc/security/limits.conf
+    # 添加如下的行
+    * soft nofile 4100
+    * hard nofile 4100
+    以下是说明：
+    * 代表针对所有用户
+    noproc 是代表最大进程数
+    nofile 是代表最大文件打开数
+    添加格式：
+    username|@groupname type resource limit
+    username|@groupname：设置需要被限制的用户名，组名前面加@和用户名区别。也可以用通配符*来做所有用户的限制。
+    type：有 soft，hard 和 -，soft 指的是当前系统生效的设置值。hard 表明系统中所能设定的最大值。soft 的限制不能比har 限制高。用 - 就表明同时设置了 soft 和 hard 的值。
+    resource：
+    core - 限制内核文件的大小(kb)
+    date - 最大数据大小(kb)
+    fsize - 最大文件大小(kb)
+    memlock - 最大锁定内存地址空间(kb)
+    nofile - 打开文件的最大数目
+    rss - 最大持久设置大小(kb)
+    stack - 最大栈大小(kb)
+    cpu - 以分钟为单位的最多 CPU 时间
+    noproc - 进程的最大数目
+    as - 地址空间限制
+    maxlogins - 此用户允许登录的最大数目
+##ulimit使用的基本格式为：ulimit -a [options] [limit]
 具体的options参数含义如下表所示：
 -a 显示当前系统所有的limit资源信息。 
 -H 设置硬资源限制，一旦设置不能增加。
@@ -1190,68 +1247,8 @@ Bash
 -t 最大CPU占用时间，以秒为单位。
 -l 最大可加锁内存大小，以Kbytes 为单位。 
 
-暂时修改
-ulimit -n 1024000
-永久修改
-vim /etc/security/limits.conf
-# 添加如下的行
-* soft nofile 4100
-* hard nofile 4100
-以下是说明：
-* 代表针对所有用户
-noproc 是代表最大进程数
-nofile 是代表最大文件打开数
-添加格式：
-username|@groupname type resource limit
-username|@groupname：设置需要被限制的用户名，组名前面加@和用户名区别。也可以用通配符*来做所有用户的限制。
-type：有 soft，hard 和 -，soft 指的是当前系统生效的设置值。hard 表明系统中所能设定的最大值。soft 的限制不能比har 限制高。用 - 就表明同时设置了 soft 和 hard 的值。
-resource：
-core - 限制内核文件的大小(kb)
-date - 最大数据大小(kb)
-fsize - 最大文件大小(kb)
-memlock - 最大锁定内存地址空间(kb)
-nofile - 打开文件的最大数目
-rss - 最大持久设置大小(kb)
-stack - 最大栈大小(kb)
-cpu - 以分钟为单位的最多 CPU 时间
-noproc - 进程的最大数目
-as - 地址空间限制
-maxlogins - 此用户允许登录的最大数目
-
 
 #### lsof --help 系统 文件还原 进程
-
-#系统文件数总数 
-cat /proc/sys/fs/file-nr    #总数1
-1184	0	6815744
-第一列表示已系统打开的句柄数
-第二列表示系统已分配但是未使用的句柄数
-第三列表示系统总的句柄数，即 file-max
-#进程限制数 suse出现进程限制和ulimit不一致问题?
-cat /proc/${pid}/limits
-#查询规则进程的文件占用数 分组统计
-
-#方式a
-ps -elf | grep java | grep -v grep | awk '{print $4}' | xargs -I {} lsof -p {} | awk '{print $1,$2}' | uniq -c | grep -v 'COMMAND PID' 
-#方式b
-lsof -n | awk '{print $1,$2}' | uniq -c | sort -k 1 -r   
-#lsof -p不准确？？
-
-#系统的fd使用情况 而ulimit的配置是针对单用户？ 分组排序前十
-#方式c    !!
-sudo find /proc -print | grep -P '/proc/\d+/fd/'| wc -l #总数2
-sudo find /proc -print | grep -P '/proc/\d+/fd/'| awk -F '/' '{print $3}' | uniq -c | sort -rn | head
-
-     a  exe  pid    b   c    
-    66 java 1903
-    505 java 2147       218
-    168 java 2621       80
-    395 java 3257       204
-    549 java 3361       356
-    216 java 3877       .
-
-    1903                4401
-
    lsof(list open files)是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，
     通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。
     所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，

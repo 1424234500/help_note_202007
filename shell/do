@@ -19,6 +19,7 @@ source do_start_software.sh
 function socket(){
     now=`pwd -LP`
     cd ~/work/walker/walker-socket
+    rm release -r
     mvn clean package -Dmaven.test.skip=true
     cd release
     ./deploy.sh $@
@@ -27,6 +28,7 @@ function socket(){
 function core(){
     now=`pwd -LP`
     cd ~/work/walker/walker-core
+    rm release -r
     mvn clean package -Dmaven.test.skip=true
     cd release
     ./deploy.sh $@
@@ -36,6 +38,7 @@ function core(){
 function service(){
     now=`pwd -LP`
     cd ~/work/walker/walker-service-provider
+    rm release -r
     mvn clean package -Dmaven.test.skip=true
     cd release
     ./deploy.sh $@
@@ -43,6 +46,7 @@ function service(){
 function web(){
     now=`pwd -LP`
     cd ~/work/walker/walker-web
+    rm release -r
     cd vue
     # 构建测试环境
     #npm run build:stage

@@ -60,7 +60,19 @@ Usage: redis-cli [OPTIONS] [cmd [arg [arg ...]]]
 //修改配置 redis.conf
     daemonize：如需要在后台运行，把该项的值改为yes
     pdifile：把pid文件放在/var/run/redis.pid，可以配置到其他地址
-    bind：指定redis只接收来自该IP的请求，如果不设置，那么将处理所有请求，在生产环节中最好设置该项
+    bind：用于指定本机网卡对应的IP地址。指定redis只接收来自该IP的请求，如果不设置，那么将处理所有请求，在生产环节中最好设置该项
+        并非客户端ip,而是redis服务端部署于该本机该ip上 单机多网卡多ip问题
+        bind 127.0.0.1的解释：（为什么只有本机可以连接，而其他不可以连接）
+        回环地址（Local Loopback），也就是只有本地才能访问到这个回环地址
+        想限制只有指定的主机可以连接到redis中，我们只能通过防火墙来控制
+    1.如果你的bind设置为：bind 127.0.0.1，这是非常安全的，因为只有本台主机可以连接到redis，就算不设置密码，也是安全的，除非有人登入到你的服务器上。
+    2.如果你的bind设置为：bind 0.0.0.0，表示所有主机都可以连接到redis。（前提：你的服务器必须开放redis的端口）。这时设置密码，就会多一层保护，只有知道密码的才可以访问。也就是任何知道密码的主机都可以访问到你的redis。
+    protected-mode 是redis本身的一个安全层，这个安全层的作用：就是只有【本机】可以访问redis，其他任何都不可以访问redis。这个安全层开启必须满足三个条件，不然安全层处于关闭状态：
+    （1）protected-mode yes（处于开启）
+    （2）没有bind指令。原文：The server is not binding explicitly to a set of addresses using the "bind" directive.
+    （3）没有设置密码。原文：No password is configured。
+
+        
     port：监听端口，默认为6379
     timeout：设置客户端连接时的超时时间，单位为秒
     loglevel：等级分为4级，debug，revbose，notice和warning。生产环境下一般开启notice
