@@ -86,18 +86,33 @@ Usage: redis-cli [OPTIONS] [cmd [arg [arg ...]]]
     masterauth：当主数据库连接需要密码验证时，在这里设定
     requirepass：设置客户端连接后进行任何其他指定前需要使用的密码
     maxclients：限制同时连接的客户端数量
-    maxmemory：设置redis能够使用的最大内存
+
     appendonly：开启appendonly模式后，redis会把每一次所接收到的写操作都追加到appendonly.aof文件中，当redis重新启动时，会从该文件恢复出之前的状态
     appendfsync：设置appendonly.aof文件进行同步的频率
     vm_enabled：是否开启虚拟内存支持
     vm_swap_file：设置虚拟内存的交换文件的路径
     vm_max_momery：设置开启虚拟内存后，redis将使用的最大物理内存的大小，默认为0
     vm_page_size：设置虚拟内存页的大小
+    
+//内存过期清理策略调优    尽量不要触发maxmemory，最好在mem_used内存占用达到maxmemory的一定比例后，需要考虑调大hz以加快淘汰，或者进行集群扩容
+    maxmemory：设置redis能够使用的最大内存
+        当前已用内存超过maxmemory限定时，触发主动清理策略
+        volatile-lru：只对设置了过期时间的key进行LRU（默认值）
+        allkeys-lru ： 删除lru算法的key
+        volatile-random：随机删除即将过期key
+        allkeys-random：随机删除
+        volatile-ttl ： 删除即将过期的
+        noeviction ： 永不过期，返回错误当mem_used内存已经超过maxmemory的设定，对于所有的读写请求，
+        都会触发redis.c/freeMemoryIfNeeded(void)函数以清理超出的内存。注意这个清理过程是阻塞的，
+        直到清理出足够的内存空间。所以如果在达到maxmemory并且调用方还在不断写入的情况下，可能会反复触发主动清理策略，导致请求会有一定的延迟。 
+
     hz  10  :清理策略 定期删除一部分扫描的key 用到才删除 内存超过80%主动清理  gc？
         每秒执行10次
             1.随机测试100个需要过期的key
             2.删除已过期的key
             3.若删除量>25则重复执行1
+            redis持续清理过期的数据直至将要过期的key的百分比降到了25%以下。
+            这也意味着在任何给定的时刻已经过期但仍占据着内存空间的key的量最多为每秒的写操作量除以4.
     vm_pages：设置交换文件的总的page数量
     vm_max_thrrads：设置vm IO同时使用的线程数量
     自动存储

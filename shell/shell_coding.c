@@ -236,7 +236,7 @@ done
 }
 //行列分隔符ifs
 IFS_old=$IFS #将原IFS值保存，以便用完后恢复 
-IFS=$’\n’ #更改IFS值为$’\n’ ，注意，以回车做为分隔符，IFS必须为：$’\n’ 
+IFS=$'\n' #更改IFS值为$’\n’ ，注意，以回车做为分隔符，IFS必须为：$’\n’ 
 xxxxxxxxxxxxxxxxxxxx
 IFS=$IFS_old #恢复原IFS值
 

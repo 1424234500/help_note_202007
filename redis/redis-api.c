@@ -63,6 +63,7 @@ expireat 的作用和 expire 类似，都用于为 key 设置过期时间。 不
 以毫秒为单位返回 key 的剩余的过期时间。
 12	ttl key 
 以秒为单位，返回给定 key 的剩余生存时间(ttl, time to live)。
+当 key 不存在时，返回 -2 。 当 key 存在但没有设置剩余生存时间时，返回 -1 。 否则，以秒为单位，返回 key 的剩余生存时间。
 13	randomkey 
 从当前数据库中随机返回一个 key 。
 14	rename key newkey 
@@ -71,7 +72,8 @@ expireat 的作用和 expire 类似，都用于为 key 设置过期时间。 不
 仅当 newkey 不存在时，将 key 改名为 newkey 。
 16	type key 
 返回 key 所储存的值的类型。
-
+17 get key  #获取字符串值
+18 STRLEN mykey #获取字符串值长度
 //hash
 
 1	hdel key field1 [field2] 

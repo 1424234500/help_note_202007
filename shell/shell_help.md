@@ -1170,8 +1170,8 @@ Bash
     称为位桶(bit bucket)或者黑洞(black hole)。
     通常被用于丢弃不需要的输出流
     提供无限的空字符(NULL, ASCII NUL, 0x00)。
-    nohup ./start.sh >/dev/null &
-    
+    nohup ./start.sh >/dev/null 2>&1 &      #正常日志丢弃 异常日志标准输出
+ 
 
 ##最大设备数限制 too many open files 异常
 1.查看当前进程设备数 最大限制    查看系统限制最大设备数 每个进程限制
