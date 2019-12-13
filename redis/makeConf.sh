@@ -17,5 +17,6 @@ do
     tofile="redis_cluster_${port}.conf"
     echo ${tofile}
     cat ${fromfile} | sed s/${fromport}/${port}/  > ${tofile}
+#    sed s/7000/7002/ redis_cluster_7000.conf
 done
 

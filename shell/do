@@ -21,6 +21,11 @@ function socket(){
     cd ~/work/walker/walker-socket
     rm release -r
     mvn clean package -Dmaven.test.skip=true
+    res=$?
+    if (( ${res} != 0 )); then
+        echo "mvn package error ${res}"
+        exit ${res}
+    fi
     cd release
     ./deploy.sh $@
     cp /home/walker/e/workspace/walker/walker-socket/release/walker-socket-0.0.1.jar /home/walker/e/workspace/dd/app/libs/
@@ -30,6 +35,11 @@ function core(){
     cd ~/work/walker/walker-core
     rm release -r
     mvn clean package -Dmaven.test.skip=true
+    res=$?
+    if (( ${res} != 0 )); then
+        echo "mvn package error ${res}"
+        exit ${res}
+    fi
     cd release
     ./deploy.sh $@
     cp /home/walker/e/workspace/walker/walker-core/release/walker-core-0.0.1.jar /home/walker/e/workspace/dd/app/libs/
@@ -40,6 +50,11 @@ function service(){
     cd ~/work/walker/walker-service-provider
     rm release -r
     mvn clean package -Dmaven.test.skip=true
+    res=$?
+    if (( ${res} != 0 )); then
+        echo "mvn package error ${res}"
+        exit ${res}
+    fi
     cd release
     ./deploy.sh $@
 }
@@ -52,8 +67,18 @@ function web(){
     #npm run build:stage
     # 构建生产环境
     npm run build:prod 
+    res=$?
+    if (( ${res} != 0 )); then
+        echo "npm run build error ${res}"
+        exit ${res}
+    fi
     cd ..
     mvn clean package -Dmaven.test.skip=true
+    res=$?
+    if (( ${res} != 0 )); then
+        echo "mvn package error ${res}"
+        exit ${res}
+    fi
     cd release
     ./deploy.sh $@
 }

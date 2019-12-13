@@ -18,6 +18,7 @@ function start(){
     #mysql 
     local dirArr=( 
          '/home/walker/software/redis-5.0.3/src'        #redis
+         '/approot/redis-5.0.0/src'        #redis
          '/home/walker/software/zookeeper-3.4.12/bin'   #zookeeper
          '/home/walker/zookeeper-3.4.14/bin'            #zookeeper server
 #        '/home/walker/software/apache-tomcat-8.5.40/bin'    #tomcat admin monitor  
@@ -27,10 +28,12 @@ function start(){
      
      )
     local cmdArr=(
-        'bash redis-server'
+        './redis-server'
+        './redis-server'
         'bash zkServer.sh start'   
         'bash zkServer.sh start'
         #'bash startup.sh'
+        
         'bash server.sh start'
         'bash server.sh start'
         
