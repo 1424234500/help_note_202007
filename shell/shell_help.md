@@ -96,6 +96,11 @@ ps -elf | cut -c 9-15
     killall nginx #删除所有依据名字
     ps -elf | grep <-v反转> 'aaa'
     xargs的默认命令是echo，空格是默认定界符
+    xargs入模式
+        -p 请求输入
+        -d 指定分隔符
+    echo "--help" | cat
+    echo "--help" | xargs cat
     cat test.txt | xargs -n3 ####多行
     cat test.txt | xargs -d'S' ####设定分隔符
     arg.txt : 
@@ -136,6 +141,7 @@ ps -lf | awk -F" " 'NR!=1{print NR,NF,$1,$NF,($3>100 ? "yes":"no")}' OFS="\t" #�
 ps -lf | awk -F" " '
 BEGIN{before=0;after=0;deta=5000}
 {
+    res=system("date")
     if($4>deta){
         after++; 
         print $4,"large",$4">"deta

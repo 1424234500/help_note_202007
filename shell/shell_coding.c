@@ -205,7 +205,7 @@ do
     echo $line;
 done < file.txt
 
-
+管道注入while循环 实现管道自定义模式?###redis
 cat file.txt | (while read line;do echo $line;done)
 
 cat file.txt| awk ‘{print}’
