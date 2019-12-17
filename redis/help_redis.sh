@@ -135,6 +135,68 @@ function delttl(){
     
 }
 
+# ${cursor} 
+function whileCursor(){
+    IFS_old=$IFS #将原IFS值保存，以便用完后恢复 
+        
+    IFS=$'\n' #更改IFS值为$’\n’ ，注意，以回车做为分隔符，IFS必须为：$’\n’   
+
+    cursor=0
+    local flag=0    #do while
+    while [[ ${cursor} != 0 || ${flag} == 0 ]]
+    do
+        flag=1
+        cmd="${exe} scan ${cursor} ${match} COUNT ${cursorSize} "
+        str=`eval ${cmd}`
+        if [[ ${str} == *ERR* ]]; then
+            out "error!!! ${str} break"
+            break
+        fi
+        
+        arr=( ${str} )
+
+        nextCursor=${arr[0]}
+        
+        #arr=(${arr[@]:1})
+
+        arrSize=${#arr[@]}
+        arrSize=$((arrSize-1))
+        out "##${count}\t#dbsize:${dbsize}, next-cursor: ${nextCursor},res-size: ${arrSize} " #cmd: ${cmd}, 
+        for ((i=1; i<${#arr[@]}; i++))
+        do 
+            item=${arr[${i}]}
+            cc=$((count+i-1))
+            $type $cc $item $params
+        done
+        
+        count=$((count+arrSize))
+        cursor=${nextCursor}
+        #break
+    done
+    IFS=$IFS_old #恢复原IFS值 
+    return 0
+}
+function whileKeys(){
+    cmd="${exe} keys ${key} "
+    echo ${cmd}
+    str=`eval ${cmd}`
+    if [[ ${str} == *ERR* ]]; then
+        out "error!!! ${str} break"
+        return 1
+    fi
+    
+    arr=( ${str} )
+    out "##${count}\t#dbsize:${dbsize}, next-cursor: ${nextCursor},res-size: ${arrSize} " #cmd: ${cmd}, 
+    for ((i=0; i<${#arr[@]}; i++))
+    do 
+        item=${arr[${i}]}
+        cc=$((count+i-1))
+        $type $cc $item $params
+    done
+
+    return 0
+}
+
 # $cc $key $others
 function start(){
     
@@ -179,38 +241,10 @@ function start(){
         fi
         
         timeStart=`date -d now +%s `
-        IFS_old=$IFS #将原IFS值保存，以便用完后恢复 
         
-        IFS=$'\n' #更改IFS值为$’\n’ ，注意，以回车做为分隔符，IFS必须为：$’\n’   
         count=0 #total scan res size
-        cursor=0
-        local flag=0    #do while
-        while [[ ${cursor} != 0 || ${flag} == 0 ]]
-        do
-            flag=1
-            cmd="${exe} scan ${cursor} ${match} COUNT ${cursorSize} "
-            
-            arr=( `eval ${cmd}` )
-
-            nextCursor=${arr[0]}
-
-            #arr=(${arr[@]:1})
-
-            arrSize=${#arr[@]}
-            arrSize=$((arrSize-1))
-            out "##${count}\t#dbsize:${dbsize}, next-cursor: ${nextCursor},res-size: ${arrSize} " #cmd: ${cmd}, 
-            for ((i=1; i<${#arr[@]}; i++))
-            do 
-                item=${arr[${i}]}
-                cc=$((count+i-1))
-                $type $cc $item $params
-            done
-            
-            count=$((count+arrSize))
-            cursor=${nextCursor}
-            #break
-        done
-        IFS=$IFS_old #恢复原IFS值 
+       # whileCursor
+        whileKeys
         
         timeStop=`date -d now +%s `
         timeDeta=$((timeStop-timeStart))
