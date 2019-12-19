@@ -559,7 +559,16 @@ xrandr -   分辨率以适应投影仪。
     cat /proc/meminfo  #(free / ps / top)等的组合显示
     vmstat <1 sleep> <5 count> 
     procs -----------memory---------- ---swap-- -----io---- --system-- -----cpu-----
+
+关于was内存持续升高稳定占用80%问题    
+    仅清除页面缓存（PageCache）
+    # sync; echo 1 > /proc/sys/vm/drop_caches       
+    清除目录项和inode
+    # sync; echo 2 > /proc/sys/vm/drop_caches       
+    清除页面缓存，目录项和inode
+    # sync; echo 3 > /proc/sys/vm/drop_caches 
 ####ps
+
     ps H -eo user,pid,ppid,tid,time,%cpu --sort=+%cpu   #cpu使用倒序
     ps是显示瞬间进程的状态，并不动态连续；如果想对进程进行实时监控应该用top命令
     命令	含义 
