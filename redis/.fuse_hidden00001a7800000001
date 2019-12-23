@@ -177,8 +177,8 @@ function whileCursor(){
     return 0
 }
 function whileKeys(){
-    cmd="${exe} keys '${key}' "
-    out ${cmd}
+    cmd="${exe} keys ${key} "
+    echo ${cmd}
     str=`eval ${cmd}`
     if [[ ${str} == *ERR* ]]; then
         out "error!!! ${str} break"
@@ -216,7 +216,7 @@ function start(){
     #eval ${exeInfo}
     role=`eval ${exeRole}`
     
-    key="*"          # *stat*
+    key=""          # *stat*
     type='list'         #del list delttl show 
     valueSize=12     #show size
     cursorSize=100   #scan cursor count
@@ -234,7 +234,7 @@ function start(){
         params=(${rootParams[@]:2}) 
         
         dbsize=`${exe} dbsize `
-        out "{ type:$type, key:$key, cursorSize:$cursorSize, showValueSize:$valueSize, otherArgs:${params[@]}, dbsize:${dbsize}, role:${role} } "
+        out "{type:$type, key:$key, cursorSize:$cursorSize, showValueSize:$valueSize, otherArgs:${params[@]}, dbsize:${dbsize}, role:${role} "
         if [[ ${role} != *master* && ${type} == del* ]]; then
             out "only master can del*"
             exit 0
