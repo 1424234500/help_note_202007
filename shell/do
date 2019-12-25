@@ -43,6 +43,21 @@ function core(){
     cd release
     ./deploy.sh $@
     cp /home/walker/e/workspace/walker/walker-core/release/walker-core-0.0.1.jar /home/walker/e/workspace/dd/app/libs/
+    
+    
+    
+    now=`pwd -LP`
+    cd ~/work/walker/walker-service
+    rm release -r
+    mvn clean package -Dmaven.test.skip=true
+    res=$?
+    if (( ${res} != 0 )); then
+        echo "mvn package error ${res}"
+        exit ${res}
+    fi
+    #./deploy.sh $@
+    cp ~/work/walker/walker-service/target/walker-service-0.0.1.jar /home/walker/e/workspace/dd/app/libs/
+    
 }
 
 function service(){
