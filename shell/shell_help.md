@@ -1218,13 +1218,17 @@ Bash
         216 java 3877       .
 
         1903                4401
-
+3.修改系统最大进程数 最大设备数
+    vim /etc/sysctl.conf 
+        fs.file-max = 1000000
+        net.ipv4.ip_conntrack_max = 1000000
+        net.ipv4.netfilter.ip_conntrack_max = 1000000
 2.优化代码 修改限制
     永久修改
     vim /etc/security/limits.conf
     # 添加如下的行
-    * soft nofile 4100
-    * hard nofile 4100
+    * soft nofile 60000
+    * hard nofile 61000
     以下是说明：
     * 代表针对所有用户
     noproc 是代表最大进程数
