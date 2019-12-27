@@ -1,6 +1,3 @@
-
-
-
 //maven 项目模块拆分
 java 后台 jdk maven springboot/ 
     core 
@@ -19,11 +16,7 @@ java 后台 jdk maven springboot/
         scheduler   定时器         quartz
         
         util        通用工具
-
 vue 前端
-
-
-
 
 
 JAVA_HOME
@@ -41,7 +34,6 @@ eclipse启动程序 jvm 内存不够oom
 Jdk edit 附加参数
 -Xmx1024M
 
-
 J2SE 8 = 52,
 J2SE 7 = 51,
 J2SE 6.0 = 50,
@@ -50,10 +42,8 @@ JDK 1.4 = 48,
 JDK 1.3 = 47,
 JDK 1.2 = 46,
 JDK 1.1 = 45
-
-
-
-性能分析  cpu冲高时
+//////////////////////////////////////////////////////////////////
+//性能分析  cpu冲高时
 线程中有无限空循环、无阻塞、正则匹配或者单纯的计算
 发生了频繁的gc
 多线程的上下文切换

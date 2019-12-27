@@ -1,7 +1,11 @@
-xuname -a  ####查看系统信息
+uname -a
+    Linux walker 4.15.0-45-generic #48-Ubuntu SMP Tue Jan 29 16:28:13 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
 cat /proc/version ####正在运行的内核版本。
+    Linux version 4.15.0-45-generic (buildd@lgw01-amd64-031) (gcc version 7.3.0 (Ubuntu 7.3.0-16ubuntu3)) #48-Ubuntu SMP Tue Jan 29 16:28:13 UTC 2019
 cat /etc/issue ####显示的是发行版本信息
+    Ubuntu 18.04.1 LTS \n \l
 cat /proc/cpuinfo | more ####分页查看
+
 du -sh * #查看文件大小 占用 ls -lth
 df -h   #磁盘
 ## 基本命令
@@ -777,8 +781,11 @@ echo -e ${PATH}
   \v    竖直制表符
   \0NNN   字节数以八进制数 NNN (1至3位)表示     echo -e \x888
   \xHH    字节数以十六进制数 HH (1至2位)表示
-   
-进制转换 赋值
+系统	换行符
+windows	\r\n
+unix	\n
+mac	\r
+###进制转换 赋值
     let i=16#ff
     let aaa=n#[0 - n-1] #n进制定义
     let i=0xff  011
