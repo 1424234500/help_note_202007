@@ -42,8 +42,31 @@ df -h   #磁盘
     usermod -d /home/walker walker     #修改用户目录
     chown -R wasup:wasgrp com 修改文件所属用户及组权限
     
- 
-
+    /bin  二进制可执行命令。该目录下存放着普通用户的命令
+    /dev  系统的设备文件，即设备的驱动程序
+    /home  用户主目录的基点
+    /lost-found 这个目录平时是空的，当系统非正常关机而留下的“无家可归”的文件便会储存在这里
+    /misc  储存着一些特殊的字符的定义
+    /net  存放着和网络相关的一些文件
+    /proc  存放着用户与内核的交互信息
+    /sbin  系统的管理命令，这里存放的是系统管理员使用的程序
+    /srv  系统启动服务时可以访问的数据库目录
+    /tmp  临时文件，重启后自动清空
+    /var  某些大文件的溢出区，比如各种服务的日志文件
+    /boot  启动linux的核心文件
+    /etc  系统所有的配置文件都在这个目录中
+    /lib  存放着和系统运行相关的库文件 
+    /media  存放着可移除的设备，比如软盘，光盘
+    /mnt  挂载目录，是系统管理员临时安装文件的系统安装点
+    /opt  (option : 自由选择)主要给源码安装软件时选择的安装目录位置
+    /root  超级用户的目录
+    /selinux 主要用来加固操作系统，提高系统的安全性
+    /sys  管理设备文件
+    /usr  最大的目录，存放着应用程序和文件
+        find /usr/lib/x86_64-linux-gnu/ -name *perl*so*
+        
+        
+        
 ## 安装ubuntu后操作记录
 	修改apt源
 	
@@ -329,7 +352,7 @@ echo "a b c" | tr ' ' "\n"  #行列转换
     date -d @1549862059 "+%Y-%m-%d"   #反转
     2019-02-11
 
-####源配置
+#### debian  源配置
 {
     vim /etc/apt/sources.list                                                 
     ####for pi
@@ -348,38 +371,6 @@ echo "a b c" | tr ' ' "\n"  #行列转换
     #deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-proposed main restricted universe multiverse
     #deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted universe multiverse 
  
-}
-####源配置 suse
-{
-安装源操作：zypper+ 参数
-    repos, lr 列出所有定义的安装源。
-    addrepo, ar 添加一个新的安装源。
-    removerepo, rr 删除指定的安装源。
-    renamerepo, nr 重命名指定的安装源。
-    modifyrepo, mr 修改指定的安装源。
-    refresh, ref 刷新所有安装源。
-    clean 清除本地缓存。
-zypper ar http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/11.3/repo/oss/suse main
-zypper ar http://download.opensuse.org/distribution/11.3/repo/non-oss/suse/ nonoss
-zypper ar http://download.opensuse.org/update/11.3/suse update
-}
-####zypper
-    安装某个软件包
-    zypper install package_name<=version>
-    zypper install/remove/update package_name*
-    要一次安装和删除多个包，请使用 +/- 或 ~/! 修改键一次性安装和删除包：
-    zypper install emacs -vim
-    zypper remove emacs +vim 可使用此命令来获取所有可用新包的列表：
-    zypper list-updates  类似的，要列出所有所需的包，请使用：
-    zypper list-patches
-    install, in 安装软件包。
-    remove, rm 删除软件包。
-    verify, ve 检验软件包的依赖关系的完整性。
-    update, up 将已经安装的软件包更新到新的版本。
-    dist-upgrade, dup 执行整个系统的升级。
-    source-install, si 安装源代码软件包和它们的编译依赖。
-
-####apt-get --help
     apt autoremove 自动删除无依赖包
     apt-get update  更新源
     apt-get upgrade 更新已安装的包
@@ -406,6 +397,85 @@ zypper ar http://download.opensuse.org/update/11.3/suse update
        vim | 2:7.3.547-1 | http://debian.mirrors.tds.net/debian/ unstable/main Sources
     apt-get install <<package name>>=<<version>>
     apt-get install open-client=1:6.6p1-2ubuntu1
+
+}
+#### suse    zypper
+{
+安装源操作：zypper+ 参数
+    repos, lr 列出所有定义的安装源。
+    addrepo, ar 添加一个新的安装源。
+    removerepo, rr 删除指定的安装源。
+    renamerepo, nr 重命名指定的安装源。
+    modifyrepo, mr 修改指定的安装源。
+    refresh, ref 刷新所有安装源。
+    clean 清除本地缓存。
+
+zypper addrepo -f http://mirrors.aliyun.com/opensuse/distribution/13.1/repo/oss/ openSUSE-13.1-Oss
+zypper addrepo -f http://mirrors.aliyun.com/opensuse/distribution/13.1/repo/non-oss/ openSUSE-13.1-Non-Oss
+zypper addrepo -f http://mirrors.aliyun.com/opensuse/update/13.1/ openSUSE-13.1-Update-Oss
+zypper addrepo -f http://mirrors.aliyun.com/opensuse/update/13.1-non-oss/ openSUSE-13.1-Update-Non-Oss
+
+    安装某个软件包
+    zypper install package_name<=version>
+    zypper install/remove/update package_name*
+    要一次安装和删除多个包，请使用 +/- 或 ~/! 修改键一次性安装和删除包：
+    zypper install emacs -vim
+    zypper remove emacs +vim 可使用此命令来获取所有可用新包的列表：
+    zypper list-updates  类似的，要列出所有所需的包，请使用：
+    zypper list-patches
+    install, in 安装软件包。
+    remove, rm 删除软件包。
+    verify, ve 检验软件包的依赖关系的完整性。
+    update, up 将已经安装的软件包更新到新的版本。
+    dist-upgrade, dup 执行整个系统的升级。
+    source-install, si 安装源代码软件包和它们的编译依赖。
+
+
+#### redhat yum     使用yum解决rpm依赖问题
+    1、yum 安装操作
+    sudo apt-get install yum
+    yum repolist all    #查看您拥有的仓库
+    1) 安装wget
+    yum install -y wget
+    2) 备份/etc/yum.repos.d/CentOS-Base.repo文件
+    cd /etc/yum/repos.d/
+    mv CentOS-Base.repo CentOS-Base.repo.back
+    3) 下载阿里云的Centos-6.repo文件
+    wget -O CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+    wget -O CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+    wget -O CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo
+
+    4) 重新加载yum
+    yum clean all
+    yum makecache
+
+    先在通互联网的机器上配置互联网yum源
+    再安装#yum -y install yum-util* 工具
+    缓存你需要安装的rpm，但是不安装，使用yum主要是自动解决依赖关系，把相关的依赖包一网打尽。
+    使用命令：
+    mkdir -p /tmp/yum
+    yum install <package name> --downloadonly --downloaddir=/tmp/yum
+    将需要的rpm包下载到/tmp/yum中，复制到你的环境中，使用
+    rpm -Uvh *
+    安装即可
+
+##############################################################################
+在 Linux 操作系统下，几乎所有的软件均通过RPM 进行安装、卸载及管理等操作。RPM 的全称为Redhat Package Manager（红帽子包管理器） ，是由Redhat 公司提出的，用于管理Linux 下软件包的软件。Linux 安装时，除了几个核心模块以外，其余几乎所有的模块均通过RPM 完成安装。RPM 有五种操作模式，分别为：安装、卸载、升级、查询和验证。
+1、RPM 安装操作
+rpm -i 需要安装的包文件名
+rpm -i example.rpm 安装 example.rpm 包；
+rpm -iv example.rpm 安装 example.rpm 包并在安装过程中显示正在安装的文件信息；
+rpm -ivh example.rpm 安装 example.rpm 包并在安装过程中显示正在安装的文件信息及安装进度；
+2、RPM 查询操作
+rpm -qa | grep tomcat4 查看 tomcat4 是否被安装；
+rpm -qip example.rpm 查看 example.rpm 安装包的信息；
+rpm -qif /bin/df 查看/bin/df 文件所在安装包的信息；
+rpm -qlf /bin/df 查看/bin/df 文件所在安装包中的各个文件分别被安装到哪个目录下；
+3、RPM 卸载操作
+rpm -e 需要卸载的安装包
+在卸载之前，通常需要使用rpm -q …命令查出需要卸载的安装包名称。
+rpm -e tomcat4 卸载 tomcat4 软件包
+    
 ####apt-get install gcc gcc-c++ ####c++编译需要
 ############################################################################################网站信息抓取####################################################################################################
 ####whatweb

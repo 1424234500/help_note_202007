@@ -32,6 +32,13 @@ rpm -ivh perf-5.3.12-59.3.x86_64.rpm --nodeps
 
 perf: error while loading shared libraries: libperl.so: cannot open shared object file: No such file or directory
     sudo ln -s /usr/lib/perl5/5.30/core_perl/CORE/libperl.so /usr/lib/perf/libperl.so
+    sudo mkdir  /usr/lib/perf 
+    sudo ln -s /usr/lib/x86_64-linux-gnu/libperl.so.5.26.1 /usr/lib/perf/libperl.so
+    sudo ln -s /usr/lib/x86_64-linux-gnu/libperl.so.5.26.1 /lib/libperl.so
+
+
+
+find /usr/lib/x86_64-linux-gnu/ -name *perl*so*
 
 
 

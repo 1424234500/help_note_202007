@@ -108,20 +108,21 @@ SQL>alter system disable restricted session;
 select * from user_sys_privs where privilege like upper('%DATABASE LINK%') AND USERNAME='WANGYONG';
 -- 给wangyong用户授予创建dblink的权限
 grant create public database link to wangyong; 
--- 注意一点，如果密码是数字开头，用“”括起来
-create public database link TESTLINK2 connect to WANGYONG identified by "123456" USING 'ORCL21'
+-- 注意一点，如果密码是数字开头，用''括起来
+create public database link TESTLINK2 connect to WANGYONG identified by '123456' USING '122.23.12.13/orcl'
 
 
 grant CREATE PUBLIC DATABASE LINK，DROP PUBLIC DATABASE LINK to scott;
 create database link DBLINK_NAME connect to USER01 identified by PASSWORD using 'TNS_NAME';
 DBLINK_NAME : DB_LINK的名字
 USER01　　     : 远程数据库的账户
-PASSWORD     : 远程数据库的账户
+PASSWORD      : 远程数据库的账户
 TNS_NAME      : 远程数据库服务名 122.2312.13/orcl
 select owner,db_link,username from dba_db_links;
+
 select * from scott.tb_test@DBLINK_NAME;
 
-select * from tbl_ost_notebook@dblink;
+
 
 
 
