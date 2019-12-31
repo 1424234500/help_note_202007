@@ -101,7 +101,7 @@ function del(){
         out "del## $i\t ##type:${type} what fuck ? '$key' "
     fi
     length=""
-    if [ ! -z ${cmdSize} ] ; then
+    if [ ! -z "${cmdSize}" ] ; then
         length=`eval ${cmdSize} `
     fi
     

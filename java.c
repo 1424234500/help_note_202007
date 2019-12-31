@@ -117,6 +117,30 @@ THREADS 信息块：所有 java 线程的状态信息和执行堆栈
 分析工具
 TMDA jca457.jar  ha456.jar
 
+
+
+
+///////////////////////////////////////
+堆外内存问题  was ehcache
+https://www.jianshu.com/p/17e72bb01bf1
+简单使用方式 nio-bytebuffer unsafe
+ByteBuffer buffer = ByteBuffer.allocateDirect(10 * 1024 * 1024);
+Unsafe unsafe = Unsafe.getUnsafe();
+unsafe.allocateMemory(1024);
+unsafe.reallocateMemory(1024, 1024);
+unsafe.freeMemory(1024);
+
+-XX:MaxDirectMemorySize=40M，将最大堆外内存设置为40M。
+-XX:+DisableExplicitGC，禁止代码中显式调用System.gc()。
+其垃圾回收依赖于代码显式调用System.gc()。
+
+考虑使用缓存时，本地缓存是最快速的，但会给虚拟机带来GC压力。
+使用硬盘或者分布式缓存的响应时间会比较长，这时候「堆外缓存」会是一个比较好的选择。
+
+Ehcache 支持分配堆外内存，又支持KV操作，还无需关心GC    被广泛用于Spring，Hibernate缓存，并且支持堆内缓存，堆外缓存，磁盘缓存，分布式缓存。
+
+堆外内存可以减少GC的压力，从而减少GC对业务的影响。
+
 //////////////////////////////////////
 jit引起一些cpu飚高
 https://www.ezlippi.com/blog/2018/01/linux-high-load.html

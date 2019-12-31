@@ -16,6 +16,16 @@ source do_start_software.sh
 ##-----------------------------------------
 
 #打包 walker-socket项目并 部署上传
+
+function deploy(){
+    cd ~/work/walker
+    mvn clean install -Dmaven.test.skip=true
+    service $@
+    web $@
+    socket $@
+
+}
+
 function socket(){
     now=`pwd -LP`
     cd ~/work/walker/walker-socket
