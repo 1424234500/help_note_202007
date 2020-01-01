@@ -106,6 +106,31 @@ function git_clone(){
 
 
 
+function start_main(){ 
+    echo
+    toolsShow $@
+    ##########################do something yourself
+    do_init $@
+    ##########################
+    toolsLineLong 
+    echo
+}
+
+function do_init(){  
+    method=$1
+    if [[ "$method" != "" ]]
+    then 
+        rootParams=($@)   
+        params=(${rootParams[@]:1}) 
+        toolsShowMethod $method "${params[*]}"
+        #echo ${params[@]}
+        $method ${params[@]}
+    else
+        echo 'eg:'
+        echo './do test "params of test"'
+    fi
+}
+
 
 
 
