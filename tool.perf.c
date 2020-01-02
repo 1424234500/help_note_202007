@@ -42,3 +42,8 @@ find /usr/lib/x86_64-linux-gnu/ -name *perl*so*
 
 
 
+ubuntu
+sudo apt-get install linux-tools-generic    //linux-tools
+
+
+

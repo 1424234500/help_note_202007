@@ -50,9 +50,11 @@ function core(){
         echo "mvn package error ${res}"
         exit ${res}
     fi
+    cp /home/walker/e/workspace/walker/walker-core/release/walker-core-0.0.1.jar /home/walker/e/workspace/dd/app/libs/
+    
     cd release
     ./deploy.sh $@
-    cp /home/walker/e/workspace/walker/walker-core/release/walker-core-0.0.1.jar /home/walker/e/workspace/dd/app/libs/
+
     
     
     
@@ -65,8 +67,9 @@ function core(){
         echo "mvn package error ${res}"
         exit ${res}
     fi
-    #./deploy.sh $@
     cp ~/work/walker/walker-service/target/walker-service-0.0.1.jar /home/walker/e/workspace/dd/app/libs/
+    #./deploy.sh $@
+
     
 }
 
