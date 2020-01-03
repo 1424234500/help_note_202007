@@ -43,7 +43,7 @@ function show(){
         cmdSize="$exe scard '$key' "
     elif [[ $type == "zset" ]]
     then
-        cmdShow="$exe zrange '$key' 0 $valueSize withscores "
+        cmdShow="$exe zrange '$key' -$valueSize -1 withscores "
         cmdSize="$exe zcard '$key' "
     elif [[ $type == "hash" ]]
     then
@@ -51,7 +51,7 @@ function show(){
         cmdSize="$exe hlen '$key' "
     elif [[ $type == "list" ]]
     then
-        cmdShow="$exe lrange '$key' 0 $valueSize "
+        cmdShow="$exe lrange '$key' -$valueSize -1 "
         cmdSize="$exe llen '$key' "
     elif [[ $type == "none" ]]
     then
@@ -84,7 +84,7 @@ function del(){
         cmdSize="$exe scard '$key' "
     elif [[ $type == "zset" ]]
     then
-        cmdShow="$exe zrange '$key' 0 $valueSize withscores "
+        cmdShow="$exe zrange '$key' -$valueSize -1 withscores "
         cmdSize="$exe zcard '$key' "
     elif [[ $type == "hash" ]]
     then
@@ -92,7 +92,7 @@ function del(){
         cmdSize="$exe hlen '$key' "
     elif [[ $type == "list" ]]
     then
-        cmdShow="$exe lrange '$key' 0 $valueSize "
+        cmdShow="$exe lrange '$key' -$valueSize -1 "
         cmdSize="$exe llen '$key' "
     elif [[ $type == "none" ]]
     then

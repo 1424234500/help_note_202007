@@ -25,6 +25,7 @@ function start(){
 
          '/home/walker/walker-service-provider'  
          '/home/walker/walker-web'
+         '/home/walker/walker-socket'  
      
      )
     local cmdArr=(
@@ -34,6 +35,7 @@ function start(){
         'bash zkServer.sh start'
         #'bash startup.sh'
         
+        'bash server.sh start'
         'bash server.sh start'
         'bash server.sh start'
         
