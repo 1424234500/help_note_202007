@@ -12,38 +12,55 @@ Linux性能计数器是一个新的基于内核的子系统，它提供一个性
 使用perf，可以分析程序运行期间发生的硬件事件，比如instructions retired、processor clock cycles等；也可以分析软件时间，比如page fault和进程切换。
 perf是一款综合性分析工具，大到系统全局性性能，再小到进程线程级别，甚至到函数及汇编级别
 
-安装
-sudo apt-get install linux-source
-#打开文件目录：
-cd /usr/src
-#找到linux文件解压 
-#进入到 tools/perf 目录
-cd tools/perf
-#编译
-make && make install
+
+//1.4.1 利用源码安装
+下载一份2.6版本以后的linux源码     # sudo apt-get install linux-source？？？？
+https://www.kernel.org/
+解压
+cd tools/perf ; make && make install
+在usr1/用户名/bin下会有个perf命令。
+
+//1.4.2 利用软件包安装
+//ubuntu
+sudo apt-get install linux-tools-generic    #   linux-tools 
+# perf报错
+WARNING: perf not found for kernel 4.15.0-45
+  You may need to install the following packages for this specific kernel:
+    linux-tools-4.15.0-45-generic
+    linux-cloud-tools-4.15.0-45-generic
+  You may also want to install one of the following packages to keep up to date:
+    linux-tools-generic
+    linux-cloud-tools-generic
+
+#注意源 替换为默认源 之后 
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get --fix-broken install           #修复依赖?
+sudo apt-get install linux-tools-4.15.0-45*     #   依赖内核版本 
 
 
-#suse
-http://rpmfind.net/linux/rpm2html/search.php?query=perf
-http://rpmfind.net/linux/opensuse/tumbleweed/repo/oss/x86_64/perf-5.3.12-59.3.x86_64.rpm
 
-rpm -ivh perf-5.3.12-59.3.x86_64.rpm
-rpm -ivh perf-5.3.12-59.3.x86_64.rpm --nodeps
-
+//依赖缺失 so
 perf: error while loading shared libraries: libperl.so: cannot open shared object file: No such file or directory
     sudo ln -s /usr/lib/perl5/5.30/core_perl/CORE/libperl.so /usr/lib/perf/libperl.so
     sudo mkdir  /usr/lib/perf 
     sudo ln -s /usr/lib/x86_64-linux-gnu/libperl.so.5.26.1 /usr/lib/perf/libperl.so
     sudo ln -s /usr/lib/x86_64-linux-gnu/libperl.so.5.26.1 /lib/libperl.so
 
-
-
 find /usr/lib/x86_64-linux-gnu/ -name *perl*so*
 
 
 
-ubuntu
-sudo apt-get install linux-tools-generic    //linux-tools
+3.2 Perf常用命令
+1、 perf list
+
+2、 perf stat
+
+3、 perf top
+
+4、 perf record/report
+
+
 
 
 

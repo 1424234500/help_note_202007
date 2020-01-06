@@ -140,6 +140,27 @@ ps -elf | cut -c 9-15
 ####文件查找 文本查找 文本格式化 #######################################################################################
 less比more更强大，提供翻页，跳转，查找等命令
 
+##### strings --help    用于分析dump内存 过滤特殊字符
+用法：strings [选项] [文件]
+ 打印 [文件] (默认为标准输入) 中可打印的字符串
+ 选项为：
+  -a - --all                Scan the entire file, not just the data section [default]
+  -d --data                 Only scan the data sections in the file
+  -f --print-file-name      Print the name of the file before each string
+  -n --bytes=[number]       Locate & print any NUL-terminated sequence of at
+  -<number>                   least [number] characters (default 4).
+  -t --radix={o,d,x}        Print the location of the string in base 8, 10 or 16
+  -w --include-all-whitespace Include all whitespace as valid string characters
+  -o                        An alias for --radix=o
+  -T --target=<BFDNAME>     Specify the binary file format
+  -e --encoding={s,S,b,l,B,L} Select character size and endianness:
+                            s = 7-bit, S = 8-bit, {b,l} = 16-bit, {B,L} = 32-bit
+  -s --output-separator=<string> String used to separate strings in output.
+  @<file>                   Read options from <file>
+  -h --help                 Display this information
+  -v -V --version           Print the program's version number
+
+
 #####awk --help
 awk [-F|-f|-v] ‘BEGIN{} ####{command1; command2} END{}’ file
     -F指定分隔符，-f调用脚本，-v定义变量 var=value
@@ -352,7 +373,7 @@ echo "a b c" | tr ' ' "\n"  #行列转换
     date -d @1549862059 "+%Y-%m-%d"   #反转
     2019-02-11
 
-#### debian  源配置
+#### apt-get --help debian  源配置
 {
     vim /etc/apt/sources.list                                                 
     ####for pi
@@ -409,12 +430,13 @@ echo "a b c" | tr ' ' "\n"  #行列转换
     modifyrepo, mr 修改指定的安装源。
     refresh, ref 刷新所有安装源。
     clean 清除本地缓存。
-
+    search, se 查找是否存在包
 zypper addrepo -f http://mirrors.aliyun.com/opensuse/distribution/13.1/repo/oss/ openSUSE-13.1-Oss
 zypper addrepo -f http://mirrors.aliyun.com/opensuse/distribution/13.1/repo/non-oss/ openSUSE-13.1-Non-Oss
 zypper addrepo -f http://mirrors.aliyun.com/opensuse/update/13.1/ openSUSE-13.1-Update-Oss
 zypper addrepo -f http://mirrors.aliyun.com/opensuse/update/13.1-non-oss/ openSUSE-13.1-Update-Non-Oss
 
+    
     安装某个软件包
     zypper install package_name<=version>
     zypper install/remove/update package_name*
@@ -973,7 +995,9 @@ $$<PID 59>
     -f ：使用档名，请留意，在 f 之后要立即接档名喔！不要再加其他参数！
     -p ：使用原文件的原来属性（属性不会依据使用者而变）
     -A
-    xz -d linux-3.12.tar.xz
+    xz -d linux-3.12.tar.xz && tar -xvf linux-3.12.tar
+    tar -xvJf  node-v6.10.1-linux-x64.tar.xz
+    
     tar -tvf  file.gz  #查看tar包文件列表 
     tar -xvf file.tar ####解压 tar包 
     tar -xzvf file.tar.gz ####解压tar.gz 

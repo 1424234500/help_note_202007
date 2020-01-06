@@ -1,24 +1,3 @@
-//maven 项目模块拆分
-java 后台 jdk maven springboot/ 
-    core 
-        annotation
-        cache       缓存           ehcache redis map db
-        database    数据库         mysql oracle redis      c3p0 dbcp
-        
-        file        文件操作上传下载 分布式虚拟存储 网络存储 网盘？？？         
-        http        网络访问
-        service     服务化          rmi dubbo webservice
-        
-        encode      编码解码加密      md5 sha crc pingyin 
-        
-        pipe        生产消费者模式      
-        route       发布订阅者模式      
-        scheduler   定时器         quartz
-        
-        util        通用工具
-vue 前端
-
-
 JAVA_HOME
 C:\Program Files\Java\jdk-9
 PATH
@@ -42,12 +21,13 @@ JDK 1.4 = 48,
 JDK 1.3 = 47,
 JDK 1.2 = 46,
 JDK 1.1 = 45
-//////////////////////////////////////////////////////////////////
-//性能分析  cpu冲高时
+//////////////////////////////////////////////////////////////////cpu冲高
+可能原因：
 线程中有无限空循环、无阻塞、正则匹配或者单纯的计算
 发生了频繁的gc
 多线程的上下文切换
 
+步骤：
 1.查看日志，没有发现集中的错误日志，初步排除代码逻辑处理错误。
 2.首先联系了内部下游系统观察了他们的监控，发现一起正常。可以排除下游系统故障对我们的影响。
 3.查看provider接口的调用量，对比7天没有突增，排除业务方调用量的问题。
@@ -55,46 +35,30 @@ JDK 1.1 = 45
 5.查看机器监控，6台机器cpu都在上升，每个机器情况一样。排除机器故障问题。
 
 top -Hp $pid    #查看该pid下线程对应的系统占用情况。
-
 #导出操作系统cpu信息
 ps H -eo user,pid,ppid,tid,time,%cpu --sort=%cpu  | awk '{printf "0x%x\t %s\n", $4, $0}'
 ps H -eo user,pid,ppid,tid,time,%cpu,command --sort=%cpu  | awk '{printf "0x%x\t %s\n", $4, $0}'
+netstat -natl #网络连接信息
+#获取服务器nmon日志
+#数据库连接池 进程等情况
+#redis信息快照  
 
-    netstat -natl > netstat.log     #导出网络连接信息
-    #获取服务器nmon日志
-    #数据库连接池 进程等情况
-    #redis信息快照  
 
+///////////////////////////////////javacore分析线程栈
+javacore获取
+1. JVM执行异常时，自动生成Javacore
+1.1 发生了引起JVM停止运行的本地错误时，会自动产生Javacore文件
+1.2 JVM内存不足时，会自动产生Javacore文件
+2. 触发JVM生成JDK
+2.1 （常用）从命令行中发出kill -3 <pid>指令，生成Javacore
+    was生成javacore位置 /IBM/WebSphere/AppServer/profiles/AppSrv01/     !!!!!!!!
+2.2 在应用中调用com.ibm.jvm.Dump.JavaDump()方法，生成Javacore
+2.3 使用WAS wsadmin utility命令生成Javacore, 以Jython语言为例：
+jvm = AdminControl.completeObjectName('type=JVM,process=server1,*')
+AdminControl.invoke(jvm, 'dumpThreads')
+2.4 可以配置dump agent触发生成Javacore
+dump agent提供了一些可配置的选项，详细见文档
 
-#JDK才有的jvm分析工具  jre不可用！
-#采集最消耗cpu的线程tid pid ppid command 
-#采集java线程栈 
-#采集jmap
-#################################################
-pid=`ps -elf | grep eclipse/jre | grep -v grep | awk '{print $4}' `   #获取pid
-ti=`date "+%Y%m%d-%H%M%S"`    #时间戳
-key=$pid.$ti        #命名键
-file=~/logs         #存储根路径
-file_cpu_thread=$file/$key.cpu_thread.log
-file_jstack=$file/$key.jstack.log
-file_jmap=$file/$key.jmap_dump.hprof
-
-#采集最消耗cpu的线程tid pid ppid command 可根据tid->16进制查找java线程栈
-#ps H -eo user,pid,ppid,tid,time,%cpu --sort=%cpu  > $file_cpu_thread    
-ps H -eo user,pid,ppid,tid,time,%cpu --sort=%cpu  | awk '{printf "0x%x\t %s\n", $4, $0}'  > $file_cpu_thread  #附带自动转换16进制
-jps  #查看java程序的pid 和 commond <-q>
-
-jstack -l $pid > $file_jstack      #采集java线程栈 
-#kill -3 [pid]   #自动生成java core ?
-
-jmap -dump:format=b,live,file=$file_jmap $pid       #采集jmap
-#jhat -J-Xmx1024M $jmap_file #等待访问 http://127.0.0.1:7000
-jvisualvm $file_jmap &  #图形化分析工具
-jconsole    #图形化java控制台
-
-#########################################################
-
-///////////////////////////////////
 javacore分析  需要获取多次 Javacore 并进行比较，发现哪些是“变”的部分，哪些是“不变”的部分
 除了线程信息外，还能提供关于操作系统，应用程序环境，线程，程序调用栈，锁，监视器和内存使用等相关信息
 TITLE 信息块：描述 Javacore 产生的原因，时间以及文件的路径。常见的 Javacore 产生的原因可以参考文章
@@ -118,10 +82,8 @@ THREADS 信息块：所有 java 线程的状态信息和执行堆栈
 TMDA jca457.jar  ha456.jar
 
 
-
-
-///////////////////////////////////////
-堆外内存问题  was ehcache
+///////////////////////////////////////mem内存冲高  堆外内存问题  
+was ehcache
 https://www.jianshu.com/p/17e72bb01bf1
 简单使用方式 nio-bytebuffer unsafe
 ByteBuffer buffer = ByteBuffer.allocateDirect(10 * 1024 * 1024);
@@ -130,8 +92,10 @@ unsafe.allocateMemory(1024);
 unsafe.reallocateMemory(1024, 1024);
 unsafe.freeMemory(1024);
 
--XX:MaxDirectMemorySize=40M，将最大堆外内存设置为40M。
+-XX:MaxDirectMemorySize=40M，将最大堆外内存设置为40M。  
 -XX:+DisableExplicitGC，禁止代码中显式调用System.gc()。
+-XX:+PrintGCDetails 
+
 其垃圾回收依赖于代码显式调用System.gc()。
 
 考虑使用缓存时，本地缓存是最快速的，但会给虚拟机带来GC压力。
@@ -141,8 +105,94 @@ Ehcache 支持分配堆外内存，又支持KV操作，还无需关心GC    被�
 
 堆外内存可以减少GC的压力，从而减少GC对业务的影响。
 
-//////////////////////////////////////
-jit引起一些cpu飚高
+
+数据采集
+原文链接：https://blog.csdn.net/lycyingO/article/details/80854669
+jmap -dump:format=b,file=75.dump 75 通过分析堆内存找到DirectByteBuffer的引用和大小
+部署一个升级基础软件之前的版本，持续观察
+部署另一个版本，更改EhCache限制其大小到1024M
+考虑到可能由Docker的内存分配机制引起，部署一实例到实体机
+
+
+pmap -x ${pid}  | sort -n -k3 -r
+大量申请64M大内存块的原因是由Glibc
+
+#查看内存！！！会影响服务 注意dump的内存块大小，慎用
+cat maps | sed -e "s/\([0-9a-f]\{8\}\)-\([0-9a-f]\{8\}\)/0x\1 0x\2/" | awk '{printf("\033[0;33m[%8d Page]\033[0m \033[0;35m[%8d KB]\033[0m %s\n", (0+$2 - $1)/4096, (0+$2 - $1)/1024, $0)}'
+
+
+sudo grep rw-p /proc/${pid}/maps | sed -n 's/^\([0-9a-f]*\)-\([0-9a-f]*\) .*$/\1 \2/p' | head | while read start stop; do 
+    sudo gdb --batch --pid ${pid} -ex "dump memory ${pid}-$start-$stop.dump 0x$start 0x$stop"
+done
+
+strings -n 10 *dump # 过滤特殊字符和过短行 查看内存
+
+//常见堆外操作
+unsafe
+ByteBuffer.allocateDirect
+GZIPInputStream使用Inflater申请堆外内存，Deflater释放内存，调用close()方法来主动释放。如果忘记关闭，Inflater对象的生命会延续到下一次GC。在此过程中，堆外内存会一直增长
+
+///////////////////////////////////////mem内存冲高  堆内内存问题  
+//jdk1.6 中 Oracle可视化监控
+$JAVA_HOME/bin/jvisualvm.exe
+naming-strategy=cn.studyBoot.dao.strategy.UpperTableStrategy
+
+jmap [option] $pid
+jmap [option] [server_id@]<remote server IP or hostname>
+    -<none> 这个意思是说，jmap可以不加任何option参数信息，只是指定Java进程的进程号。这种情况下，jmap命令将按照Linux操作系统进程内存分析命令pmap的相关性，输出内存分析结果。
+    -heap 查看整个JVM内存状态   改参数将输出当前指定java进程的堆内存概要信息。  使用CMS GC 情况下，jmap -heap的执行有可能会导致JAVA 进程挂起
+    -clstats 该参数将打印出当前java进程中，存在的每个类加载器，以及通过该类加载器已经完成加载的各类信息，包括但不限于类加载器的活动情况、已经加载的类数量、关联的父类加载器等等（class文件通过类加载器完成的载入、连接、验证初始化等过程可以在这个命令的输出详情中具体体现出来）。
+    finalizerinfo 该参数可打印出等待终结的对象信息，当Java进程在频繁进行Full GC的时候，可以通过该命令获取问题的排查依据。
+    -histo[:live] 查看JVM堆中对象详细占用情况 该参数可以输出每个class的实例数目、内存占用、类全名等信息。如果live子参数加上后,只统计活的对象数量。该命令非常有用，举个例子，你可以使用该名了检查软件系统的某种设计模式是否符合设计预期。
+    -dump:<dump-options> 取得当前指定java进程堆内存中各个class实例的详细信息，并输出到指定文件。dump命令还有三个子参数分别是。
+        live只分析输出目前有活动实例的class信息；
+        format输出格式，默认为“b”，可以使用配套的分析软件进行分析；
+        file子参数可以指定输出的文件，注意，如果输出文件已经存在，则可以使用-F 参数来强制执行命令。
+    案例：
+    jmap -dump:format=b,file=文件名 [pid]
+
+//在远程服务器server_address上执行:
+    1:服务器启动java应用，查询该进程的pid
+    2:rmiregistry -J-Xbootclasspath/p:$JAVA_HOME/lib/sa-jdi.jar &
+    3:执行jsadebugd pid server-id
+在客户端执行:
+    jmap -heap server_id@server_address
+    
+
+
+
+#JDK才有的jvm分析工具  jre不可用！
+#采集最消耗cpu的线程tid pid ppid command 
+#采集java线程栈 
+#采集jmap
+###################################################################################
+pid=`ps -elf | grep eclipse/jre | grep -v grep | awk '{print $4}' `   #获取pid
+ti=`date "+%Y%m%d-%H%M%S"`    #时间戳
+key=$pid.$ti        #命名键
+file=~/logs         #存储根路径
+file_cpu_thread=$file/$key.cpu_thread.log
+file_jstack=$file/$key.jstack.log
+file_jmap=$file/$key.jmap_dump.hprof
+
+#采集最消耗cpu的线程tid pid ppid command 可根据tid->16进制查找java线程栈
+#ps H -eo user,pid,ppid,tid,time,%cpu --sort=%cpu  > $file_cpu_thread    
+ps H -eo user,pid,ppid,tid,time,%cpu --sort=%cpu  | awk '{printf "0x%x\t %s\n", $4, $0}'  > $file_cpu_thread  #附带自动转换16进制
+jps  #查看java程序的pid<-q> 和 commond <-v>
+
+jstack -l $pid > $file_jstack      #采集java线程栈 
+#kill -3 [pid]   #自动生成java core ?
+
+jmap -dump:format=b,live,file=$file_jmap $pid       #采集jmap
+#jhat -J-Xmx1024M $jmap_file #等待访问 http://127.0.0.1:7000
+jvisualvm $file_jmap &  #图形化分析工具
+jconsole    #图形化java控制台
+
+#####################################################################################
+
+
+
+
+//////////////////////////////////////cpu冲高 jit
 https://www.ezlippi.com/blog/2018/01/linux-high-load.html
 
 JIT分层编译相关概念
@@ -196,49 +246,6 @@ jinfo -flag ReservedCodeCacheSize ${pid} //常在64 bit机器上默认是48m，�
 
 
 
-
-jdk1.6 中 Oracle可视化监控
-$JAVA_HOME/bin/jvisualvm.exe
-
-naming-strategy=cn.studyBoot.dao.strategy.UpperTableStrategy
-
-
-
-//jmap jhat jstat jstack  jps     
-jmap [option] $pid
-jmap [option] [server_id@]<remote server IP or hostname>
-    -<none> 这个意思是说，jmap可以不加任何option参数信息，只是指定Java进程的进程号。这种情况下，jmap命令将按照Linux操作系统进程内存分析命令pmap的相关性，输出内存分析结果。
-    -heap 查看整个JVM内存状态   改参数将输出当前指定java进程的堆内存概要信息。  使用CMS GC 情况下，jmap -heap的执行有可能会导致JAVA 进程挂起
-    -clstats 该参数将打印出当前java进程中，存在的每个类加载器，以及通过该类加载器已经完成加载的各类信息，包括但不限于类加载器的活动情况、已经加载的类数量、关联的父类加载器等等（class文件通过类加载器完成的载入、连接、验证初始化等过程可以在这个命令的输出详情中具体体现出来）。
-    finalizerinfo 该参数可打印出等待终结的对象信息，当Java进程在频繁进行Full GC的时候，可以通过该命令获取问题的排查依据。
-    -histo[:live] 查看JVM堆中对象详细占用情况 该参数可以输出每个class的实例数目、内存占用、类全名等信息。如果live子参数加上后,只统计活的对象数量。该命令非常有用，举个例子，你可以使用该名了检查软件系统的某种设计模式是否符合设计预期。
-    -dump:<dump-options> 取得当前指定java进程堆内存中各个class实例的详细信息，并输出到指定文件。dump命令还有三个子参数分别是。
-        live只分析输出目前有活动实例的class信息；
-        format输出格式，默认为“b”，可以使用配套的分析软件进行分析；
-        file子参数可以指定输出的文件，注意，如果输出文件已经存在，则可以使用-F 参数来强制执行命令。
-    案例：
-    jmap -dump:format=b,file=文件名 [pid]
-
-//在远程服务器server_address上执行:
-    1:服务器启动java应用，查询该进程的pid
-    2:rmiregistry -J-Xbootclasspath/p:$JAVA_HOME/lib/sa-jdi.jar &
-    3:执行jsadebugd pid server-id
-在客户端执行:
-    jmap -heap server_id@server_address
-    
-    
-1. JVM执行异常时，自动生成Javacore
-1.1 发生了引起JVM停止运行的本地错误时，会自动产生Javacore文件
-1.2 JVM内存不足时，会自动产生Javacore文件
-2. 触发JVM生成JDK
-2.1 （常用）从命令行中发出kill -3 <pid>指令，生成Javacore
-    was生成javacore位置 /IBM/WebSphere/AppServer/profiles/AppSrv01/     !!!!!!!!
-2.2 在应用中调用com.ibm.jvm.Dump.JavaDump()方法，生成Javacore
-2.3 使用WAS wsadmin utility命令生成Javacore, 以Jython语言为例：
-jvm = AdminControl.completeObjectName('type=JVM,process=server1,*')
-AdminControl.invoke(jvm, 'dumpThreads')
-2.4 可以配置dump agent触发生成Javacore
-dump agent提供了一些可配置的选项，详细见文档
  
 ///////////////////////////////////////////////////////////////////
 //dubbo zookeeper java 安装环境      

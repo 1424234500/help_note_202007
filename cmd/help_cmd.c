@@ -44,6 +44,10 @@ xcopy 复制文件夹
 TIMEOUT /T 2
 
 
+文件搜索grep ?
+find /?
+    文件目录检索批量 文本关键词
+    find /I /N "keys" *
 
 
 
@@ -221,10 +225,6 @@ cd /home 进入 '/ home' 目录'
 　　cd .. 返回上一级目录 
 　　cd ../.. 返回上两级目录 
 　　 
-文件搜索grep ?
-find /?
-    文件目录检索批量 文本关键词
-    find /I /N "keys" *
  
 文件系统
 
