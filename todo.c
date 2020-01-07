@@ -11,10 +11,11 @@
     //quartze在线管理 集群模式
     //自动化打包部署问题 idea依赖
     //jpa分表插件sharding使用 联合多数源配置
+    ali云代理 v2ray
     json格式化jackson解决
     推送提醒服务 在线管理
     集成dubbo monitor ？
-    
+    wiki功能
     12306抢票爬取
     
     

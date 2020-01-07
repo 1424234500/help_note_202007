@@ -14,8 +14,11 @@ my.ini 或 my.cnf
 
 //启动mysql
 su mysql
-./mysql/bin/mysqld restart
-service mysqld restart
+--mkdir data
+./bin/mysqld --initialize-insecure  //这是初始化一个用户名为root的用户，没有密码
+./bin/mysqld &
+
+
 
 //修复
 mysqlcheck --auto-repair -A -o -uroot -pyigeorg
@@ -31,6 +34,10 @@ select * from mytable;
 select name,sex from mytable where name=‘abccs‘;
 mysql -u root -proot < mytest.sql 
 
+//管理员密码初始化
+ALTER USER'root'@'%'IDENTIFIED WITH mysql_native_password BY 'root';
+FLUSH PRIVILEGES;
+
 
 //变量设置 查看 mysql当前服务进程有效
 show variables like 'max_connections'
@@ -41,9 +48,24 @@ show variables like 'character%';
 select USER(), version(),current_date();
 SHOW DATABASES; //创建表 赋予 远程登录权限
 CREATE DATABASE IF NOT EXISTS walker default charset utf8 COLLATE utf8_general_ci;
-GRANT ALL PRIVILEGES ON *.* TO 'walker'@'%' IDENTIFIED BY 'qwer' WITH GRANT OPTION;
+CREATE DATABASE IF NOT EXISTS walker0 default charset utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS walker1 default charset utf8 COLLATE utf8_general_ci;
 
-drop database walker;
+//登录密码权限 用户分配权限
+select host, user, grant_priv,super_priv from mysql.user;
+--初始化管理员root
+UPDATE mysql.user SET Grant_priv='Y', Super_priv='Y' WHERE User='root';
+FLUSH PRIVILEGES;
+GRANT ALL ON *.* TO 'root'@'localhost';
+
+create user 'walker'@'%' identified by 'qwer';
+create user 'walker0'@'%' identified by 'qwer';
+create user 'walker1'@'%' identified by 'qwer';
+GRANT ALL PRIVILEGES ON *.* TO 'walker'@'%' ;
+GRANT ALL PRIVILEGES ON *.* TO 'walker0'@'%' ;
+GRANT ALL PRIVILEGES ON *.* TO 'walker1'@'%' ;
+
+DROP DATABASE walker;
 USE walker;
 
 //建表 查表 描述
