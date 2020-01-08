@@ -185,7 +185,14 @@ read -p "请输入用户名：" name   #录入name变量
     while true; do 
     
     done    
+//延时定时执行
+while true; do echo "`date '+%Y-%m-%d %H:%M:%S' `./do start ` ";sleep 1; done 
 
+
+//日期序列
+date -d "1 days"
+tt=''; for i in `seq 0 365`; do  tt="mkfile-`  date -d \"${i} days\"  '+%Y%m%d%H%M%S'  `.txt"; echo ${tt}; echo ${i} > ${tt}; touch -d "`  date -d \"${i} days\" '+%Y-%m-%d %H:%M:%S'  `"  ${tt} ;  done 
+//分表模板
 tt=''; for i in `seq 0 99`; do tt="${tt},msg_entity_${i}"; done ; tt=${tt:1}; str='before '"${tt}"' after '; echo ${str}
 
 //获取指定路径列表中第一个有效路径

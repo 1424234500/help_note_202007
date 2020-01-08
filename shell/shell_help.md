@@ -362,7 +362,7 @@ echo "a b c" | tr ' ' "\n"  #行列转换
     2013-02-19 13:14:19   
     date -d today   
     date -d now  
-    date -d tomorrow  
+    date -d tomorrow   "+%Y-%m-%d %H:%M:%S" 
     date -d yesterday  
     date -d "1 days"    # second | minutes | hours | days | months | years | 
     date -d "-1 days"
@@ -834,7 +834,8 @@ netstat
 
 ####mv touch --help
     for i in `seq -w 10`; do touch -d "${i}/11/2011}" stu\_$i\_linux.jpg ; done
-    touch -d "10/11/2011" ttt.txt2  #修改时间
+    touch -d "10/11/2011" ttt.txt2  #修改文件时间 文件修改时间
+    touch -d  `  date -d '1 days' '+%Y-%m-%d %H:%M:%S'  ` test.txt 
     rename \_linux '' *.jpg
     rename '\_linux' '' *.jpg       
     mv命令既可以重命名，又可以移动文件或文件夹。     
@@ -1191,7 +1192,7 @@ Bash
     #  分    时    日    月      周    用户    命令
     #
     #       m:表示分钟1～59 每分钟用*或者 */1表示 0表示整点 *表示启动时间开始 每增加/1单位
-    #       h:表示小时1～23（0表示0点）
+    #       h:表示小时1～23（0表示0点）   21-23，23-6
     #     dom:表示日期1～31
     #     mon:表示月份1～12
     #     dow:标识号星期0～6（0表示星期天）
@@ -1215,6 +1216,9 @@ Bash
     #每一小时整点重启apache
     * 23-7/1 * * * /usr/local/etc/rc.d/lighttpd restart
     #晚上11点到早上7点之间，每隔一小时重启apache
+    * 0/10 23-6 * * ?
+    0 21-23,0-8 * * *
+    
     0 11 4 * mon-fri /usr/local/etc/rc.d/lighttpd restart
     #每月的4号与每周一到周三的11点重启apache
     0 4 1 jan * /usr/local/etc/rc.d/lighttpd restart
