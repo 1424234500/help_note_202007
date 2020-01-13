@@ -207,6 +207,7 @@ END{printf "Total before:%-8s after:%-8s\n", before, after}
 
 ####sed --help
 用法: sed [选项]... {脚本(如果没有其他脚本)} [输入文件]...
+  -r    -regexp-extended    扩展正则!!!!!!!
   -n, --quiet, --silent
                  取消自动打印模式空间
   -e 脚本, --expression=脚本
@@ -239,7 +240,7 @@ END{printf "Total before:%-8s after:%-8s\n", before, after}
 如果没有 -e, --expression, -f 或 --file 选项，那么第一个非选项参数被视为
 sed脚本。其他非选项参数被视为输入文件，如果没有输入文件，那么程序将从标准
 输入读取数据。
-
+| sed -r 's/[0-9]{8}.BIN/20200102.BIN/g' 
 #取出5-10行
 sed -n '5,10p' obcp-server29.log
 #文件行管道替换
@@ -1410,4 +1411,15 @@ Bash
     lsof -i[46] [protocol][@hostname|hostaddr][:service|port]   46 --> IPv4 or IPv6   protocol --> TCP or UDP   hostname --> Internet host name   hostaddr --> IPv4地址   service --> /etc/service中的 service name (可以不止一个)   port --> 端口号 (可以不止一个)
     lsof -i:8091 端口
     
+    
+批量操作 重命名
+7、把格式 *_?.jpg 的文件改为 *_0?.jpg：
+for var in `ls *_?.jpg`; do mv "$var" `echo "$var" |awk -F '_' '{print $1 "_0" $2}'`; done
+8、把文件名的前三个字母变为 vzomik：
+for var in `ls`; do mv -f "$var" `echo "$var" |sed 's/^.../vzomik/'`; done
+10. 把.txt变成.txt_bak 的后缀
+ls *.txt|xargs -n1 -i{} mv {} {}_bak
+xargs -n1 –i{} 类似for循环，-n1意思是一个一个对象的去处理，-i{} 把前面的对象使用{}取代，mv {} {}_bak 相当于 mv 1.txt 1.txt_bak
+find ./*.txt -exec mv {} {}_bak \;  
+这个命令中也是把{}作为前面find出来的文件的替代符，后面的”\”为”;”的脱意符，不然shell会把分号作为该行命令的结尾.
     
