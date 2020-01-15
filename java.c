@@ -86,6 +86,9 @@ https://www.ibm.com/support/knowledgecenter/en/SSYKE2/earlier_releases/earlier_r
 -XX:+PrintGCDateStamps ：打印GC日期
 -XX:+PrintHeapAtGC：每次GC时，打印堆信息
 -Xloggc:/usr/local/tomcat/logs/gc.$$.log ：GC日志存放的位置
+-XX:+UseGCLogFileRotation  ： 开启滚动日志记录
+-XX:NumberOfGCLogFiles=5 ：滚动数量，命名为filename.0, filename.1 .....  filename.n-1,  然后再从filename.0 开始，并覆盖已经存在的文件
+-XX:GCLogFileSize=8k  :  每个文件大小，当达到该指定大小时，会写入下一个文件
 
 3.堆快照
 -XX:+HeapDumpOnOutOfMemoryError：出现内存溢出时存储堆信息，配合 -XX:HeapDumpPath 使用
@@ -93,11 +96,7 @@ https://www.ibm.com/support/knowledgecenter/en/SSYKE2/earlier_releases/earlier_r
 -XX:+UseLargePages：使用大页  
 -XX:LargePageSizeInBytes=4m：指定大页的大小（必须为2的幂）
 
-滚动日志记录
--XX:+UseGCLogFileRotation  ： 开启滚动日志记录
--XX:NumberOfGCLogFiles=5 ：滚动数量，命名为filename.0, filename.1 .....  filename.n-1,  然后再从filename.0 开始，并覆盖已经存在的文件
--XX:GCLogFileSize=8k  :  每个文件大小，当达到该指定大小时，会写入下一个文件
--Xloggc:/gc/log   ：日志文件位置
+
 
 
 
@@ -126,20 +125,6 @@ netstat -natl #网络连接信息
 
 
 ///////////////////////////////////javacore分析线程栈
-javacore获取
-1. JVM执行异常时，自动生成Javacore
-1.1 发生了引起JVM停止运行的本地错误时，会自动产生Javacore文件
-1.2 JVM内存不足时，会自动产生Javacore文件
-2. 触发JVM生成JDK
-2.1 （常用）从命令行中发出kill -3 <pid>指令，生成Javacore
-    was生成javacore位置 /IBM/WebSphere/AppServer/profiles/AppSrv01/     !!!!!!!!
-2.2 在应用中调用com.ibm.jvm.Dump.JavaDump()方法，生成Javacore
-2.3 使用WAS wsadmin utility命令生成Javacore, 以Jython语言为例：
-jvm = AdminControl.completeObjectName('type=JVM,process=server1,*')
-AdminControl.invoke(jvm, 'dumpThreads')
-2.4 可以配置dump agent触发生成Javacore
-dump agent提供了一些可配置的选项，详细见文档
-
 javacore分析  需要获取多次 Javacore 并进行比较，发现哪些是“变”的部分，哪些是“不变”的部分
 除了线程信息外，还能提供关于操作系统，应用程序环境，线程，程序调用栈，锁，监视器和内存使用等相关信息
 TITLE 信息块：描述 Javacore 产生的原因，时间以及文件的路径。常见的 Javacore 产生的原因可以参考文章
@@ -238,6 +223,11 @@ jmap [option] [server_id@]<remote server IP or hostname>
     jmap -heap server_id@server_address
     
 
+###########################javacore 获取方式
+#IBM jre
+kill -3
+#ORACLE JDK
+jstack -l $pid #采集java线程栈 
 
 
 #JDK才有的jvm分析工具  jre不可用！
@@ -259,7 +249,6 @@ ps H -eo user,pid,ppid,tid,time,%cpu --sort=%cpu  | awk '{printf "0x%x\t %s\n", 
 jps  #查看java程序的pid<-q> 和 commond <-v>
 
 jstack -l $pid > $file_jstack      #采集java线程栈 
-#kill -3 [pid]   #自动生成java core ?
 
 jmap -dump:format=b,live,file=$file_jmap $pid       #采集jmap
 #jhat -J-Xmx1024M $jmap_file #等待访问 http://127.0.0.1:7000
@@ -453,13 +442,118 @@ sudo echo 'export PATH=$PATH:'`pwd -LP`"/nodejs/bin" >> /etc/profile
 source /etc/profile
 npm -v
 
+/////////////////////////////////////////////////////was
+/washome/IBM/WebSphere/AppServer/bin/startManager.sh
+/washome/IBM/WebSphere/AppServer/profiles/AppSrv02/bin/startNode.sh
+/washome/IBM/WebSphere/AppServer/profiles/AppSrv02/bin/startServer.sh  server1 --servername
 
-//华为推送
-V3
-https://developer.huawei.com/consumer/cn/service/hms/catalog/huaweipush_v3.html?page=hmssdk_huawei_serviceChangeDescription
-V2
-https://developer.huawei.com/consumer/cn/service/hms/catalog/huaweipush_agent.html
+cd /washome/IBM/WebSphere/AppServer/bin
 
+1.列出现有概要文件
+./manageprofiles.sh -listProfiles
+2.刷新概要文件注册表
+./manageprofiles.sh -validateAndUpdateRegistry
+3.删除概要文件
+./manageprofiles.sh -deleteAll
+./manageprofiles.sh -delete -profileName AppSrv01
+若过于慢 则直接删除对于目录 然后 刷新 然后删除
+
+
+第一步 ：
+./manageprofiles.sh -create -profileName  server1 -profilePath /washome/IBM/WebSphere/AppServer/profiles/server1
+
+第三步：启动管理节点
+
+/washome/IBM/WebSphere/AppServer/profiles/Dmgr01/bin/startManager.sh
+1
+第四步：查看SOAP端口
+
+grep SOAP /washome/IBM/WebSphere/AppServer/profiles/Dmgr01/logs/AboutThisProfile.txt
+得到管理 SOAP 连接器端口： 8879
+第五步：增加应用概要
+
+/washome/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/addNode.sh 127.0.0.1 8879
+1
+如果添加时出错，例如：The system cannot create a SOAP connector to connect to host 127.0.0.1 at port 8879
+此时 使用命令 hostname 得到主机名
+切换到“/washome/IBM/WebSphere/AppServer/profiles/AppSrv02/bin/”下：
+执行 ：./syncNode.sh 主机名 8879
+
+第六步：启动
+
+/washome/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/startNode.sh
+1
+此时如果出现端口被占用的情况
+
+这时候
+
+ps -ef | grep java
+ps -ef | grep was
+1
+2
+能结束掉的进程都结束掉
+
+第七步：这个时候就可以通过浏览器访问was控制平台
+
+http://你的ip地址:9060/washome/IBM/console/login.do
+1
+然后开始新建服务server1
+第八步：再命令行开启server1服务
+
+cd /washome/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/
+./startServer.sh server1
+
+1
+2
+3
+此时如果发现网页登录不了，那么你就去查看一下你服务器的防火墙状态
+
+ service iptables status
+ 一般都是开着的，如果开着的话就关闭就好了
+ service iptables stop
+ 当然，你也可以设置filter让特定IP访问
+1
+2
+3
+4
+完毕收工。
+
+2.简单化配置
+不需要创建 _portdef_AppSvr.props以及_portdef_DMgr.props文件
+直接创建两个概要
+
+创建管理概要
+./manageprofiles.sh
+-create
+-profileName  Dmgr01
+-profilePath  /washome/IBM/WebSphere/AppServer/profiles/Dmgr01
+-templatePath  /washome/IBM/WebSphere/AppServer/profileTemplates/dmgr/
+
+创建应用概要
+./manageprofiles.sh
+-create
+-templatePath  /washome/IBM/WebSphere/AppServer/profileTemplates/default 
+-profileName  AppSvr02
+-profilePath   /washome/IBM/WebSphere/AppServer/profiles/AppSvr02 
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+这样也是可以的。
+————————————————
+版权声明：本文为CSDN博主「先定个小目标」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/sinat_30035833/article/details/87965839
 
 
 

@@ -4,9 +4,9 @@ sqlplus / as sysdba;
 sqlplus 
 conn scott/tiger
 
+--导入sql 命令执行sql
+sqlplus -S walker/qwer@127.0.0.1@orcl @/user/home/SQL.sql
 
-sqlplus -S walker/qwer@127.0.0.1@orcl @SQL.sql
- 
 
 --用户角色
 --update user pwd
