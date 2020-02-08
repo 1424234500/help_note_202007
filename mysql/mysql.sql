@@ -1,5 +1,22 @@
-//文件配置 /etc/my.cnf
-my.ini 或 my.cnf
+--mysql安装
+
+初始化参数
+# bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql --datadir=/data/mysql
+
+cd /home/walker/software/mysql/bin
+cd /usr/sbin
+cd /usr/local/mysql/bin
+	mysqld --daemonize --pid-file=/run mysqld/mysqld.pid
+
+--文件配置 	my.ini 或 my.cnf
+配置 加载路径
+mysqld --verbose --help |grep -A 1 'Default options'
+/etc/my.cnf /etc/mysql/my.cnf ~/.my.cnf
+
+/etc/my.cnf
+/etc/mysql/my.cnf
+/etc/mysql/mysql.conf.d/mysqld.cnf    此文件中提供了常用的基本配置，亲测可以在此文件中修改相关配置，重启mysql可以生效。
+
 	default_character=utf8
 	[mysqld]
 	
@@ -12,32 +29,43 @@ my.ini 或 my.cnf
 	show-query-log=on
 	show_uery_log_file="mysql_slow_query.log"
 
-//启动mysql
+--数据data路径
+cd /var/lib/mysql
+
+	
+--启动mysql
 su mysql
 ./mysql/bin/mysqld restart
+./mysqld --user=mysql
 service mysqld restart
 
-//修复
+--启动日志
+vim /var/log/mysql/error.log
+
+	2020-02-08T12:38:57.474328Z 0 [ERROR] Could not create unix socket lock file /var/run/mysqld/mysqld.sock.lock.
+	2020-02-08T12:38:57.474332Z 0 [ERROR] Unable to setup unix socket lock file.
+
+--修复
 mysqlcheck --auto-repair -A -o -uroot -pyigeorg
-//登录
+--登录
 mysql -u root -proot
 mysql <-h 127.0.0.1> -u root -ppasswd <-P 3306>
 mysqladmin -u用户名 -p旧密码 password 新密码
-//shell调用sql
+--shell调用sql
 mysql -u root -proot -e "show databases;"
-//shell调用sql文件
+--shell调用sql文件
 use abccs;
 select * from mytable;
 select name,sex from mytable where name=‘abccs‘;
 mysql -u root -proot < mytest.sql 
 
 
-//变量设置 查看 mysql当前服务进程有效
+--变量设置 查看 mysql当前服务进程有效
 show variables like 'max_connections'
 set global max_connections=1000;
 --查看中文支持
 show variables like 'character%'; 
-//数据库 表 show
+--数据库 表 show
 select USER(), version(),current_date();
 SHOW DATABASES; //创建表 赋予 远程登录权限
 CREATE DATABASE IF NOT EXISTS walker default charset utf8 COLLATE utf8_general_ci;
@@ -46,7 +74,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'walker'@'%' IDENTIFIED BY 'qwer' WITH GRANT OPTI
 drop database walker;
 USE walker;
 
-//建表 查表 描述
+--建表 查表 描述
 CREATE TABLE  IF NOT EXISTS  test (id VARCHAR(20), name CHAR(10));
 drop table test;
 SHOW TABLES;
@@ -57,25 +85,25 @@ show create table student;  //查看表create创建语句
 
 insert into test values('001', 'walker');
 update test set name='walker1';
-//分页查询
+--分页查询
 select * from test;
 select * from test limit 0,1;
-//查看列名
+--查看列名
 select COLUMN_NAME from information_schema.COLUMNS where table_name = 'test';   
 NOT NULL auto_increment,
 
-//常用函数 
+--常用函数 
 ifnull  nvl
 
-//查询
-//行号rownum
+--查询
+--行号rownum
 select rownum from (select  (@i:=@i+1) rownum from  information_schema.COLUMNS t ,(select   @i:=0) it ) t  where rownum < 10 ;       
 select lpad(level, 2, '0') lev from (select  (@i:=@i+1) level from  information_schema.COLUMNS t ,(select   @i:=0) it ) t  where level<=24     ;
-//代码java执行替换
+--代码java执行替换
 select lpad(level, 2, '0') lev from (select  (@i/*'*/:=/*'*/@i+1) level from  information_schema.COLUMNS t ,(select   @i/*'*/:=/*'*/0) it ) t  where level<=24     ;
 用符号:/*'*/:=/*'*/转换:=
 
-//安全模式
+--安全模式
 safemode
 --Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column To disable safe mode, toggle the option in Preferences -> SQL Queries and reconnect.
 --这是因为MySql运行在safe-updates模式下，该模式会导致非主键条件下无法执行update或者delete命令
@@ -88,27 +116,27 @@ SET SQL_SAFE_UPDATES = 0;
 
 mysqldump -uroot -proot student > student.sql;	//导出 导入
 
-//Master/Slave  主备？ 数据库之间的同步 <异步处理>
+--Master/Slave  主备？ 数据库之间的同步 <异步处理>
 grant file on *.* to 'root'@' 1222.122.1.1' identified by 'password';
 grant replication master on *.* ....
 
 
-//mysql定位
+--mysql定位
 /usr/local/Cellar/mysql/5.7.17	//mac
 whereis mysql	//定位
 locate mysql 
-//授权登陆
+--授权登陆
 
 
-//主键自动索引pk > 数字索引index > 字符串索引index > 组合字段索引merge_index
+--主键自动索引pk > 数字索引index > 字符串索引index > 组合字段索引merge_index
 explain select * from student where id = 12;	//explain sql-select
 system > const > eq_ref > ref > fulltext > ref_or_null > index_merge > unique_subquery > index_subquery > range > index > all
 
 	
-//显示引擎 
-//innorDB		行锁+表锁	事物  
-//<MY>ISAM		表锁		
-//MERGE         合并逻辑表INSERT_METHOD=LAST/FIRST/0不允许插入 分表
+--显示引擎 
+--innorDB		行锁+表锁	事物  
+--<MY>ISAM		表锁		
+--MERGE         合并逻辑表INSERT_METHOD=LAST/FIRST/0不允许插入 分表
 --引擎 
 
 show engines;
@@ -153,8 +181,8 @@ ALTER TABLE tbl_name  UNION=(...)
 tt=''; for i in `seq 0 99`; do tt="${tt},msg_entity_${i}"; done ; tt=${tt:1}; str='CREATE TABLE  IF NOT EXISTS  W_MSG (ID VARCHAR(40) primary key, TEXT TEXT) ENGINE=MERGE UNION=( '"${tt}"' ) INSERT_METHOD=LAST DEFAULT CHARSET=utf8 '; echo ${str}
     
 
-//表锁：开销小 加锁快 不会出现死锁
-//行锁：开销大 加锁慢 会出现死锁 锁定力度小 发生锁冲突概率小
+--表锁：开销小 加锁快 不会出现死锁
+--行锁：开销大 加锁慢 会出现死锁 锁定力度小 发生锁冲突概率小
 
 
 
@@ -185,117 +213,11 @@ set names utf8;
 set character set utf8;
 set collation_connection='utf8-general_ci';
 
-//优化
+--优化
 slow query 慢查询统计
 索引
 缓存
-
  
-查看mysql每个数据库的大小 行数
-select
-table_schema as 'db',
-sum(table_rows) as 'rows',
-sum(truncate(data_length/1024/1024, 2)) as 'dataSize(MB)',
-sum(truncate(index_length/1024/1024, 2)) as 'indexSize(MB)'
-from information_schema.tables
-where table_schema='mysql'
-group by table_schema
-
---ssl 5.7关闭
-show varibles like '%ssl%'
-    have_openssl=YES
-    have_ssl=YES
-
-vim /etc/my.cnf
-    # disable_ssl
-    skip_ssl
-    
-    
---查看所有数据库 所有表 
-cmd='mysql -u root -proot'
-type="show"
-temp_sqls="temp/${type}"
-[ ! -d ${temp_sqls} ] && mkdir -p ${temp_sqls}
-dbs=(`${cmd} -e "show databases;" | grep $1 `)
-for ((i=0; i < ${#dbs[@]}; i++))
-do
-    item=${dbs[$i]}
-    sql="${temp_sqls}/${item}
-    echo "make ${type} sql of db-file: ${sql}"
-    echo "use ${item};" > ${sql}
-    tables=(`${cmd} -e "use ${item}; show tables;" | grep -v Table | awk '{print $0}'`)
-    echo "${type} size ${#tables[@]}"
-    echo "${type} size ${#tables[@]}" >> ${sql}
-    ${cmd} -e "use ${item}; show tables;" | grep -v Table | awk '{print $0}' >> ${sql}
-done
-    
---清理所有数据库 所有表 数据
-cmd='mysql -u root -proot'
-type="truncate"
-temp_sqls="temp/${type}"
-
-[ ! -d ${temp_sqls} ] && mkdir -p ${temp_sqls}
-dbs=(`${cmd} -e "show databases;" | grep $1 `)
-for ((i=0; i < ${#dbs[@]}; i++))
-do
-    item=${dbs[$i]}
-    sql="${temp_sqls}/${item}
-    echo "make ${type} sql of db-file: ${sql}"
-    echo "use ${item};" > ${sql}
-    ${cmd} -e "use ${item}; show tables;" | grep -v Table | awk '{print "truncate table "$0";"}' >> ${sql}
-    echo "${type}"
-    cat ${sql}
-    ${cmd} < ${sql}
-done
-
---删除所有数据库 所有表
-cmd='mysql -u root -proot'
-type="drop"
-temp_sqls="temp/${type}"
-[ ! -d ${temp_sqls} ] && mkdir -p ${temp_sqls}
-dbs=(`${cmd} -e "show databases;" | grep $1 `)
-for ((i=0; i < ${#dbs[@]}; i++))
-do
-    item=${dbs[$i]}
-    sql="${temp_sqls}/${item}
-    echo "make ${type} sql of db-file: ${sql}"
-    echo "use ${item};" > ${sql}
-    ${cmd} -e "use ${item}; show tables;" | grep -v Table | awk '{print "drop table "$0";"}' >> ${sql}
-    echo "${type}"
-    cat ${sql}
-    ${cmd} < ${sql}
-done
-
- 
---新建数据库 所有表
-cmd='mysql -u root -proot'
-type="create"
-temp_sqls="temp/${type}"
-[ ! -d ${temp_sqls} ] && mkdir -p ${temp_sqls}
-dbs=(`${cmd} -e "show databases;" | grep $1 `)
-for ((i=0; i < ${#dbs[@]}; i++))
-do
-    item=${dbs[$i]}
-    sql="${temp_sqls}/${item}
-    echo "make ${type} sql of db-file: ${sql}"
-    echo "use ${item};" > ${sql}
-    ${cmd} -e "use ${item}; show tables;"  >> ${sql}
-    for j in `seq 0 3`
-    do
-        echo "
-                create table w_test_sh_${j} (
-                    id varchar(40),
-                    name varchar(200),
-                    primray key(id)
-                } ENGINE=MyISAM DEFAULT CHARSET=utf8;
-            " >> ${sql}
-    done
-    
-    echo "${type}"
-    cat ${sql}
-    ${cmd} < ${sql}
-done
-    
     
     
     

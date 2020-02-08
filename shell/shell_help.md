@@ -593,10 +593,18 @@ xrandr -   分辨率以适应投影仪。
     套接字(socket)：套接字也是一种进程间通信机制，与其他通信机制不同的是，它可用于不同主机间的进程通信。
 ####Linux终端管理进程  memory ps top
     top命令 持续查看cpu 内存 进程 和 线程！
+
     top <-H, 查看线程级别> 
         <-p 2833, 查看指定pid> 
         <-b -n 1, 非交互模式, 只跑一次>  
         <-u walker, 只看某用户>
+		-c 显示完整的命令
+		-I 忽略失效过程
+		-s 保密模式
+		-S累积模式
+		-i<时间> 设置间隔时间
+		-u<用户名> 指定用户名
+		-n<次数>循环显示的次数
     top -b -n 1 -i -c
     top - 16:00:00 up 1 day,  7:20,  1 user,  load average: 1.93, 1.48, 0.90  
     #uptime 运行时间 登录用户数量 平均负载 5/10/15分钟
@@ -628,6 +636,11 @@ xrandr -   分辨率以适应投影仪。
     %MEM 进程使用的可用物理内存百分比。
     TIME+ 任务启动后到现在所使用的全部CPU时间，精确到百分之一秒。
     COMMAND 运行进程所使用的命令。
+	
+	proc/stat节点记录的是系统进程整体的统计信息
+	获取pid父进程关系链
+	cat /proc/5164/stat
+	
 ####show memory
     free -h
     cat /proc/meminfo  #(free / ps / top)等的组合显示
@@ -825,6 +838,7 @@ netstat
     ln -s source     dist     #建立软连接 快捷方式
     ln     source     dist     #建立硬连接 硬链接不能连接两个不同文件系统上的文件 类似拷贝副本
 ####sh ./ bash dash各种语法错误
+	sudo sh -c 'echo aaa > bbb.ccc' 整体命令权限
     原因在于两次执行的不是同一种shell，在用./sample的方式执行的时候，系统会使用脚本首行声明的/bin/bash来解释脚本，而用sh方式执行的时候，系统会调用sh
     ll `which sh`  
     /bin/sh -> dash*  
