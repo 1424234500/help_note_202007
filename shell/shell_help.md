@@ -990,7 +990,7 @@ $$<PID 59>
     xz -d linux-3.12.tar.xz
     tar -tvf  file.gz  #查看tar包文件列表 
     tar -xvf file.tar ####解压 tar包 
-    tar -xzvf file.tar.gz ####解压tar.gz 
+    tar -xzvf file.tar.gz -C file1 ####解压tar.gz  并重命名
     tar -xjvf file.tar.bz2 ####解压 tar.bz2 
     tar -xzvf file.tar.Z ####解压tar.Z 
     --exclude FILE  在压缩的过程中，不要将 FILE 打包！

@@ -3,22 +3,23 @@ port = 3306
 socket = /tmp/mysql.sock
 
 [mysqld]
-
+lc-messages-dir=/home/walker/mysql-5.7/share
 ###############################基础设置#####################################
 
 #Mysql服务的唯一编号 每个mysql服务Id需唯一
 server-id = 1
-
+#ip 同时支持IPv4和IPv6的TCP/IP的连接。
+bind-address = 0.0.0.0
 #服务端口号 默认3306
 port = 3306
 #mysql安装根目录
-basedir = /usr
+basedir = /home/walker/mysql-5.7
 #mysql数据文件所在位置
-datadir = /var/lib/mysql
+datadir = /home/walker/mysql-5.7/data
 #临时目录 比如load data infile会用到
 tmpdir  = /tmp
 #设置socke文件所在目录
-socket  = /tmp/mysql.sock
+socket = /tmp/mysql.sock
 
 #主要用于MyISAM存储引擎,如果多台服务器连接一个数据库则建议注释下面内容
 skip-external-locking
@@ -39,7 +40,7 @@ collation-server = utf8mb4_general_ci
 init_connect=‘SET NAMES utf8mb4‘
 
 #是否对sql语句大小写敏感，1表示不敏感
-lower_case_table_names = 1
+lower_case_table_names = 0
 
 #最大连接数
 max_connections = 400
@@ -96,11 +97,11 @@ back_log = 130
 ############################日志设置##########################################
 
 #数据库错误日志文件
-log_error = /var/log/mysql/error.log
+log_error = /home/walker/mysql-5.7/error.log
 
 #慢查询sql日志设置
 slow_query_log = 1
-slow_query_log_file = /var/log/mysql/slow.log
+slow_query_log_file = /home/walker/mysql-5.7/slow.log
 
 #检查未使用到索引的sql
 log_queries_not_using_indexes = 1
@@ -203,10 +204,10 @@ innodb_lock_wait_timeout = 30
 innodb_buffer_pool_dump_pct = 40
 
 #设置redoLog文件所在目录, redoLog记录事务具体操作内容
-innodb_log_group_home_dir = /var/lib/mysql/redolog/
+innodb_log_group_home_dir = /home/walker/mysql-5.7/logredo/
 
 #设置undoLog文件所在目录, undoLog用于事务回滚操作
-innodb_undo_directory = /var/lib/mysql/undolog/
+innodb_undo_directory = /home/walker/mysql-5.7/logundo/
 
 #在innodb_log_group_home_dir中的redoLog文件数, redoLog文件内容是循环覆盖写入。
 innodb_log_files_in_group = 3

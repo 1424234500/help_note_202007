@@ -24,6 +24,10 @@ C:\Program Files\Java\jdk-9
 PATH
 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin
 
+export JAVA_HOME=/mnt/d/linux/jre1.8.0_202
+export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export PATH=$JAVA_HOME/bin:$PATH
+
 
 //反编译
 javap -v ServiceImpl.class

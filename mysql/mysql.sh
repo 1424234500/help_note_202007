@@ -14,19 +14,24 @@ Ctrl the mysql dbs tables.    \n
 Usage: 
 ./mysql.sh [ create | truncate | show | drop | help ] [ps grep database]   \n
     \t  create   \t  batch create tables   \n
-    \t  truncate    \t  batch truncate tables    \n
-    \t  show \t  show all the database's tables    \n
+    \t  drop   \t  batch drop tables   \n
+    \t  truncate walker    \t  batch truncate tables    \n
+    \t  show walker \t  show all the database's tables    \n
     \t  help    \t  show this   \n
 "
 
 ##------------------------------------------
 
-function show(){
-    echo '查看所有数据库 所有表  mysql: '"${cmd}"
+function show(){ 
+    echo '查看所有数据库 所有表  mysql: '"${cmd} key: ${key}"
     type="show"
     temp_sqls="${temp}/${type}"
     [ ! -d ${temp_sqls} ] && mkdir -p ${temp_sqls}
-    dbs=(`${cmd} -e "show databases;" | grep $1 `)
+	if [ -z $1 ];then
+		dbs=(`${cmd} -e "show databases;" `)
+	else 
+	    dbs=(`${cmd} -e "show databases;" | grep ${key} `)
+	fi
     for ((i=0; i < ${#dbs[@]}; i++))
     do
         item=${dbs[$i]}
@@ -110,6 +115,7 @@ function help(){
     line
     echo -e $about
     line
+	eval ${cmd}
 }
 function line(){
     echo "---------------------------------"
