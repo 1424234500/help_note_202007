@@ -838,9 +838,11 @@ netstat
     ln -s source     dist     #建立软连接 快捷方式
     ln     source     dist     #建立硬连接 硬链接不能连接两个不同文件系统上的文件 类似拷贝副本
 ####sh ./ bash dash各种语法错误
-	sudo sh -c 'echo aaa > bbb.ccc' 整体命令权限
+	sudo sh -c 'echo aaa > bbb.txt' 整体命令权限 管理员sudo重定向问题
+	sudo bash -c ''
     原因在于两次执行的不是同一种shell，在用./sample的方式执行的时候，系统会使用脚本首行声明的/bin/bash来解释脚本，而用sh方式执行的时候，系统会调用sh
-    ll `which sh`  
+    echo xxx  | sudo tee -a bbb.txt
+	ll `which sh`  
     /bin/sh -> dash*  
     ln -s /bin/bash /bin/sh #连接替换sh dash？
     切换bash dash

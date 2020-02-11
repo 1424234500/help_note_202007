@@ -16,10 +16,11 @@ sudo ./configure
 sudo make  
 sudo make install  
 
-//启动
-./src/redis-server.sh <redis.conf>
-//关闭
+#关闭
 ./src/redis-cli shutdown
+#启动 如不指定配置文件 导致代码链接 密码设置无效 ！！！！！！！！
+nohup ./src/redis-server redis.conf &   
+
 kill xxxpid //can't -9
 ./src/redis-cli <-c 集群模式> <-h host/12.0.0.1> <-p port/6379> <-a password> <-n 0数据库编号>  <set key value>
 
@@ -71,7 +72,9 @@ Usage: redis-cli [OPTIONS] [cmd [arg [arg ...]]]
     （1）protected-mode yes（处于开启）
     （2）没有bind指令。原文：The server is not binding explicitly to a set of addresses using the "bind" directive.
     （3）没有设置密码。原文：No password is configured。
-
+	//修改配置无效 在线修改有效 ？ 必须要指定config文件启动才能避免这类问题
+	config get protected-mode 
+	config set protected-mode no
         
     port：监听端口，默认为6379
     timeout：设置客户端连接时的超时时间，单位为秒

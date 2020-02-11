@@ -6,6 +6,7 @@
 	
 	<localRepository>${user.home}/.m2/repository</localRepository>
     
+    
 	<pluginGroups>
 
     </pluginGroups>  

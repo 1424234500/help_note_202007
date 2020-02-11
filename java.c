@@ -266,11 +266,13 @@ zookeeper安装启动 port:2181
 wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.14/zookeeper-3.4.14.tar.gz
 tar -xzvf zookeeper-3.4.14.tar.gz
 cd zookeeper-3.4.14
-cp conf/zoo_sample.cfg conf/zoo.cfg
-vi conf/zoo.cfg     #修改 数据路径 
+#复制并替换端口 配置
+sed s/2181/8096/g conf/zoo_sample.cfg > conf/zoo.cfg	
+#vi conf/zoo.cfg     #修改 数据路径 
 #    dataDir=~/log/zookeeper
-
+bin/zkServer.sh stop
 bin/zkServer.sh start #</stop/status>
+
 bin/zkCli.sh -server 127.0.0.1:2181  #测试
     ls /    4）查看有哪些zookeeper节点； 
     ls /daily_orderServer_group（节点名称） 5）查看注册了哪些服务，如图2； 
@@ -357,17 +359,16 @@ application context : url !!! /walker-web
 
 
 //反编译 jd-gui 依赖jdk1.7异常 无注册表信息
-java -jar jd-gui.exe
+java -jar jd-gui.exe 
 
 
 
-//node
-wget http://nodejs.org/dist/latest/node-v10.11.0-linux-x64.tar.gz 
+//node 
 wget https://cdn.npm.taobao.org/dist/node/v12.10.0/node-v12.10.0-linux-x64.tar.xz
 xz -d node-v12.10.0-linux-x64.tar.xz
 tar -xvf node-v12.10.0-linux-x64.tar
 mv node-v12.10.0-linux-x64/ nodejs
-sudo echo 'export PATH=$PATH:'`pwd -LP`"/nodejs/bin" >> /etc/profile
+echo 'export PATH=$PATH:'`pwd -LP`'/nodejs/bin'  | sudo tee -a /etc/profile
 source /etc/profile
 npm -v
 
