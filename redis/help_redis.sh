@@ -189,9 +189,8 @@ function whileKeys(){
     out "##${count}\t#dbsize:${dbsize}, next-cursor: ${nextCursor},res-size: ${arrSize} " #cmd: ${cmd}, 
     for ((i=0; i<${#arr[@]}; i++))
     do 
-        item=${arr[${i}]}
-        cc=$((count+i-1))
-        $type $cc $item $params
+        item=${arr[${i}]} 
+        $type ${i} $item $params
     done
 
     return 0

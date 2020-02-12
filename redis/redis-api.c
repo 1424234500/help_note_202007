@@ -74,6 +74,7 @@ expireat 的作用和 expire 类似，都用于为 key 设置过期时间。 不
 返回 key 所储存的值的类型。
 17 get key  #获取字符串值
 18 STRLEN mykey #获取字符串值长度
+
 //hash
 
 1	hdel key field1 [field2] 
