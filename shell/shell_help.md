@@ -1092,13 +1092,21 @@ rcS.d
     #chkconfig: 35 20 80 #分别代表运行级别，启动优先权，关闭优先权，此行代码必须
     #description: http server #（ 两行都注释掉！！！，此行代码必须
     chkconfig --add test.sh
+	
 ####用户组问题
-    adduser walker 新建用户
-    useradd -g root -s /home/walker -m walker
-    passwd walker 修改密码
-    userdel walker 删除用户
+	useradd --help
+		-s是指定用户登入后所使用的shell。默认值为/bin/bash。如果不想让用户登录系统可以用 -s /sbin/nologin.此用户就不可以登录系统
+	usermod --help # 修改
+	
     groupadd admin 用户组
     groupdel admin 删除组
+    adduser walker 新建用户
+    useradd -g root -s /home/walker -m walker
+	useradd -r -s /sbin/nologin -g mysql mysql -d /home/walker/mysql     ---新建msyql用户禁止登录shell 主home目录
+	usermod -s /sbin/nologin -g mysql mysql
+
+   passwd walker 修改密码
+    userdel walker 删除用户
     
 # usermod -s /bin/ksh -d /home/z –g developer sam
 此命令将用户sam的登录Shell修改为ksh，主目录改为/home/z，用户组改为developer。
