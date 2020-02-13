@@ -8,7 +8,21 @@ source constant.sh
 source tools.sh 
 
 
+function templet_show(){  
+    echo '$0'">>"$0
+    echo '$*'">>"$*
+    echo '$@'">>"$@    
+    echo '$#'">>"$# 
+    echo '$$'">>"$$ 
+}
 
+
+
+function templet_start(){  
+    templet_show    
+
+    
+}
 
 
 
@@ -18,25 +32,13 @@ function templet_main(){
     echo
     toolsShow $@
     ##########################do something yourself
-    init $@
+    templet_start $@
     ##########################
     toolsLineLong 
     echo
 }
 
-function templet_init(){  
-    templet_show    
 
-    
-}
-
-function templet_show(){  
-    echo '$0'">>"$0
-    echo '$*'">>"$*
-    echo '$@'">>"$@    
-    echo '$#'">>"$# 
-    echo '$$'">>"$$ 
-}
 
 
  

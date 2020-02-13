@@ -16,7 +16,7 @@ sqlplus / as sysdba;
     --start db  force;
     startup;     
 
-启动ora文件tablespace异常
+--启动ora文件tablespace异常
 alter database datafile 29 offline drop
 
 
@@ -67,27 +67,27 @@ D:\oracle\product\11.2.0\dbhome_1\NETWORK\ADMIN\SAMPLE
 E:\Oracle\instantclient_10_2
 E:\oracle\instantclient_10_2\oci.dll 
 localhost:1521/xe
-// 中文编码-环境变量
+--中文编码-环境变量
 NLS_LANG
 SIMPLIFIED CHINESE_CHINA.ZHS16GBK
 
   
-// 端口冲突问题
+-- 端口冲突问题
 begin  
    dbms_xdb.sethttpport('8081');  
    dbms_xdb.setftpport('0');  
 end;  
-/   
+
 
 
 
 dbca  数据库管理
 netca 监听管理
 
-//删除数据库 报错 nt问题
+--删除数据库 报错 nt问题
 权限管理员cmd执行dbca即可
 
-//中文乱码问题2
+--中文乱码问题2
 $ sqlplus / as sysdba;
 select userenv('language') from dual;
 如果是：AMERICAN_AMERICA.WE8MSWIN1252  则需要调整编码格式为：AL32UTF8
@@ -103,24 +103,6 @@ SQL>alter system disable restricted session;
 
 
  
-//dblink 跨数据库数据操作
--- 查看wangyong用户是否具备创建database link 权限
-select * from user_sys_privs where privilege like upper('%DATABASE LINK%') AND USERNAME='WANGYONG';
--- 给wangyong用户授予创建dblink的权限
-grant create public database link to wangyong; 
--- 注意一点，如果密码是数字开头，用''括起来
-create public database link TESTLINK2 connect to WANGYONG identified by '123456' USING '122.23.12.13/orcl'
-
-
-grant CREATE PUBLIC DATABASE LINK，DROP PUBLIC DATABASE LINK to scott;
-create database link DBLINK_NAME connect to USER01 identified by PASSWORD using 'TNS_NAME';
-DBLINK_NAME : DB_LINK的名字
-USER01　　     : 远程数据库的账户
-PASSWORD      : 远程数据库的账户
-TNS_NAME      : 远程数据库服务名 122.2312.13/orcl
-select owner,db_link,username from dba_db_links;
-
-select * from scott.tb_test@DBLINK_NAME;
 
 
 

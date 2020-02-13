@@ -2,8 +2,16 @@
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-        
-    <pluginGroups>
+	
+	
+	
+	
+	<localRepository>${user.home}/.m2/repository</localRepository>
+    
+	
+	
+	
+	<pluginGroups>
 
     </pluginGroups>  
 
@@ -26,50 +34,17 @@
     </mirrors>  
 
     <profiles>
-        <profile>
-            <id>jdk-1.7</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-                <jdk>1.7</jdk>
-            </activation>
-            <properties>
-                <maven.compiler.source>1.7</maven.compiler.source>
-                <maven.compiler.target>1.7</maven.compiler.target>
-                <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
-            </properties>
-
-    <!--Enable snapshots for the built in central repo to direct --> 
-    <!--all requests to nexus via the mirror 
-            <repositories> 
-                <repository> 
-                    <id>central</id> 
-                    <url>http://central</url> 
-                    <releases>
-                        <enabled>true</enabled>
-                        <updatePolicy>always</updatePolicy>
-                    </releases> 
-                    <snapshots>
-                        <enabled>true</enabled>
-                        <updatePolicy>always</updatePolicy>
-                    </snapshots> 
-                </repository> 
-            </repositories> 
-            <pluginRepositories> 
-                <pluginRepository> 
-                    <id>central</id> 
-                    <url>http://central</url> 
-                    <releases>
-                        <enabled>true</enabled>
-                        <updatePolicy>always</updatePolicy>
-                    </releases> 
-                    <snapshots>
-                        <enabled>true</enabled>
-                        <updatePolicy>always</updatePolicy>
-                    </snapshots> 
-                </pluginRepository> 
-            </pluginRepositories>
---> 
-        </profile>
+	<profile>
+		<id>jdk-1.8</id>
+		<activation>
+			<jdk>1.8</jdk>
+		</activation> 
+		<properties>
+			<maven.compiler.source>1.8</maven.compiler.source>
+			<maven.compiler.target>1.8</maven.compiler.target>
+			<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+		</properties>
+	  </profile>
     </profiles> 
 
 </settings>

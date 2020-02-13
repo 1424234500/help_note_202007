@@ -8,25 +8,52 @@
 
 ##-----------------------------------------
 cmd='mysql -u root -proot '
+cmd_stop='mysqladmin -u root -proot shutdown'
+cmd_start='mysqld_safe --defaults-file=/home/walker/mysql-5.7/my.cnf  --user=walker & '
+file_cnf=
 temp='sql'
 about="
 Ctrl the mysql dbs tables.    \n
 Usage: 
 ./mysql.sh [ create | truncate | show | drop | help ] [ps grep database]   \n
+	\t	start	\t	start mysql
+	\t	stop	\t 	stop mysql 
+	\t	restart	\t 	restart mysql 
+	\t	cnf	\t	vim cnf
+	
     \t  create   \t  batch create tables   \n
-    \t  truncate    \t  batch truncate tables    \n
-    \t  show \t  show all the database's tables    \n
+    \t  drop    \t  batch drop tables   \n
+    \t  truncate walker    \t  batch truncate tables    \n
+    \t  show walker \t  show all the database's tables    \n
     \t  help    \t  show this   \n
 "
 
 ##------------------------------------------
-
-function show(){
-    echo '查看所有数据库 所有表  mysql: '"${cmd}"
+function stop(){
+	eval ${cmd_stop}
+}
+function start(){
+	eval ${cmd_start}
+}
+function restart(){
+	stop 
+	sleep 3
+	start 
+}
+function cnf(){
+	mysqld --verbose --help | grep cnf -C 3
+	vim /home/walker/mysql-5.7/my.cnf
+}
+function show(){ 
+    echo '查看所有数据库 所有表  mysql: '"${cmd} key: ${key}"
     type="show"
     temp_sqls="${temp}/${type}"
     [ ! -d ${temp_sqls} ] && mkdir -p ${temp_sqls}
-    dbs=(`${cmd} -e "show databases;" | grep $1 `)
+	if [ -z $1 ];then
+		dbs=(`${cmd} -e "show databases;" `)
+	else 
+	    dbs=(`${cmd} -e "show databases;" | grep ${key} `)
+	fi
     for ((i=0; i < ${#dbs[@]}; i++))
     do
         item=${dbs[$i]}
@@ -110,6 +137,7 @@ function help(){
     line
     echo -e $about
     line
+	eval ${cmd}
 }
 function line(){
     echo "---------------------------------"

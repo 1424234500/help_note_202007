@@ -616,10 +616,18 @@ xrandr -   分辨率以适应投影仪。
     套接字(socket)：套接字也是一种进程间通信机制，与其他通信机制不同的是，它可用于不同主机间的进程通信。
 ####Linux终端管理进程  memory ps top
     top命令 持续查看cpu 内存 进程 和 线程！
+
     top <-H, 查看线程级别> 
         <-p 2833, 查看指定pid> 
         <-b -n 1, 非交互模式, 只跑一次>  
         <-u walker, 只看某用户>
+		-c 显示完整的命令
+		-I 忽略失效过程
+		-s 保密模式
+		-S累积模式
+		-i<时间> 设置间隔时间
+		-u<用户名> 指定用户名
+		-n<次数>循环显示的次数
     top -b -n 1 -i -c
     top - 16:00:00 up 1 day,  7:20,  1 user,  load average: 1.93, 1.48, 0.90  
     #uptime 运行时间 登录用户数量 平均负载 5/10/15分钟
@@ -651,6 +659,11 @@ xrandr -   分辨率以适应投影仪。
     %MEM 进程使用的可用物理内存百分比。
     TIME+ 任务启动后到现在所使用的全部CPU时间，精确到百分之一秒。
     COMMAND 运行进程所使用的命令。
+	
+	proc/stat节点记录的是系统进程整体的统计信息
+	获取pid父进程关系链
+	cat /proc/5164/stat
+	
 ####show memory
     free -h
     cat /proc/meminfo  #(free / ps / top)等的组合显示
@@ -849,8 +862,11 @@ netstat
     ln -s source     dist     #建立软连接 快捷方式
     ln     source     dist     #建立硬连接 硬链接不能连接两个不同文件系统上的文件 类似拷贝副本
 ####sh ./ bash dash各种语法错误
+	sudo sh -c 'echo aaa > bbb.txt' 整体命令权限 管理员sudo重定向问题
+	sudo bash -c ''
     原因在于两次执行的不是同一种shell，在用./sample的方式执行的时候，系统会使用脚本首行声明的/bin/bash来解释脚本，而用sh方式执行的时候，系统会调用sh
-    ll `which sh`  
+    echo xxx  | sudo tee -a bbb.txt
+	ll `which sh`  
     /bin/sh -> dash*  
     ln -s /bin/bash /bin/sh #连接替换sh dash？
     切换bash dash
@@ -1002,7 +1018,7 @@ $$<PID 59>
     
     tar -tvf  file.gz  #查看tar包文件列表 
     tar -xvf file.tar ####解压 tar包 
-    tar -xzvf file.tar.gz ####解压tar.gz 
+    tar -xzvf file.tar.gz -C file1 ####解压tar.gz  并重命名
     tar -xjvf file.tar.bz2 ####解压 tar.bz2 
     tar -xzvf file.tar.Z ####解压tar.Z 
     --exclude FILE  在压缩的过程中，不要将 FILE 打包！
@@ -1102,13 +1118,21 @@ rcS.d
     #chkconfig: 35 20 80 #分别代表运行级别，启动优先权，关闭优先权，此行代码必须
     #description: http server #（ 两行都注释掉！！！，此行代码必须
     chkconfig --add test.sh
+	
 ####用户组问题
-    adduser walker 新建用户
-    useradd -g root -s /home/walker -m walker
-    passwd walker 修改密码
-    userdel walker 删除用户
+	useradd --help
+		-s是指定用户登入后所使用的shell。默认值为/bin/bash。如果不想让用户登录系统可以用 -s /sbin/nologin.此用户就不可以登录系统
+	usermod --help # 修改
+	
     groupadd admin 用户组
     groupdel admin 删除组
+    adduser walker 新建用户
+    useradd -g root -s /home/walker -m walker
+	useradd -r -s /sbin/nologin -g mysql mysql -d /home/walker/mysql     ---新建msyql用户禁止登录shell 主home目录
+	usermod -s /sbin/nologin -g mysql mysql
+
+   passwd walker 修改密码
+    userdel walker 删除用户
     
 # usermod -s /bin/ksh -d /home/z –g developer sam
 此命令将用户sam的登录Shell修改为ksh，主目录改为/home/z，用户组改为developer。
@@ -1371,6 +1395,16 @@ Bash
 -v 进程最大可用的虚拟内存，以Kbytes 为单位。
 -t 最大CPU占用时间，以秒为单位。
 -l 最大可加锁内存大小，以Kbytes 为单位。 
+
+
+#### /etc/hosts 详解
+/etc/hosts 是Linux的本地静态主机名查询表，负责 Linux 系统中IP地址与域名快速解析的文件，以ASCII格式保存在"/etc"目录下，文件名 "hosts" 可能会因为不同的 Linux 发行版本文件名不同,比如Debian的对应文件是 /etc/hostname;
+hosts 文件包含了IP地址和主机名之间的映射，还包括主机名的别名,系统上的所有网络程序都优先查询该文件来解析对应于某个主机名的IP地址，否则就去网络中查找DNS服务来解析；
+hosts 文件的格式为 IP地址 主机名/域名，一个IP地址可以指向多个主机名和域名，比如配置localhost localdomain zhanglei这三个主机名都是可以解析到本地主机的：
+127.0.0.1 localhost localdomain zhanglei
+
+sudo vim /etc/hosts
+sudo /etc/init.d/networking restart
 
 
 #### lsof --help 系统 文件还原 进程

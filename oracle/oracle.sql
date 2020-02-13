@@ -1,21 +1,25 @@
 asdf;a;
 --dml dcl ddl
+
+
+--登录sqlplus
 sqlplus / as sysdba;
 sqlplus 
 conn scott/tiger
 
---导入sql 命令执行sql
-sqlplus -S walker/qwer@127.0.0.1@orcl @/user/home/SQL.sql
+--执行sql文件
+sqlplus -S walker/qwer@127.0.0.1@orcl @SQL.sql
 
 
---用户角色
+
+----------------------------------------------用户角色
 --update user pwd
 create user username identified by password;    --drop user username cascade; --link to all 
 grant dba,connect,resource,EXP_FULL_DATABASE,IMP_FULL_DATABASE to walker;    -- revoke connect, resource from walker;
 --查看所有用户所拥有的角色
 SELECT * FROM DBA_ROLE_PRIVS;
 
---表空间
+-----------------------------------------------表空间
 --创建
 create tablespace 表间名 datafile '数据文件名' size 表空间大小;
 create tablespace tablespace_name datafile 'tablespace_name.ora' size 128M autoextend on next 128M maxsize 10240M;    --unlimited; 
@@ -29,8 +33,9 @@ drop tablespace  tablespace_name  including contents and datafiles cascade const
 --删除表空间却没删除文件的问题 再次复用文件后 级联删除
 create tablespace TEST datafile 'tablespace_name.ora' ;
 
-
-
+---
+---用户相关数据查询
+---
 
 --查看当前用户的所有序列 
 select SEQUENCE_OWNER,SEQUENCE_NAME,last_number from dba_sequences  ; 
@@ -46,11 +51,67 @@ SELECT s.owner, to_number(SUM(s.BYTES)/1024/1024) MB from dba_segments s where 1
 --某用户每个表大小 清理
 SELECT s.owner, s.segment_name,to_number((s.BYTES)/1024/1024) MB from dba_segments s where s.owner='WALKER' order by 3 desc;
 --查看创建表语句表结构
-SQL> SET LONG 3000
-SQL> SET PAGESIZE 0
-SQL> SELECT DBMS_METADATA.GET_DDL('TABLE','STUDENT') FROM DUAL;
+SET LONG 3000
+SET PAGESIZE 0
+SELECT DBMS_METADATA.GET_DDL('TABLE','STUDENT') FROM DUAL;
+
+--查看用户和默认表空间的关系
+select username,default_tablespace from dba_users;
+--查看当前用户能访问的表
+select * from user_tables; 
+--Oracle查询用户表
+select * from user_all_tables;
+--Oracle查询用户视图
+select * from user_views;
+--查询所有函数和储存过程：
+select * from user_source;
+--查询所有用户：
+select * from all_users;
+--select * from dba_users
+--查看用户角色
+SELECT * FROM USER_ROLE_PRIVS;
+--查看当前用户权限：
+select * from session_privs;
+--查看所有用户所拥有的角色
+SELECT * FROM DBA_ROLE_PRIVS;
+--查看所有角色
+select * from dba_roles;
+--查看数据库名
+SELECT NAME FROM V$DATABASE;
+
+--show table column 表列信息
+select * from all_tab_columns where table_name = upper('student') order by column_id
+--show index
+select * from user_indexs where table_name = upper('student') order by column_id
+--show table create sql (index column) 查看建表语句
+select dbms_metadata.get_ddl('TABLE', 'STUDENT') from dual;
+
+---
+---dblink 跨数据库数据操作
+---
+
+-- 查看wangyong用户是否具备创建database link 权限
+select * from user_sys_privs where privilege like upper('%DATABASE LINK%') AND USERNAME='WANGYONG';
+-- 给wangyong用户授予创建dblink的权限
+grant create public database link to wangyong; 
+-- 注意一点，如果密码是数字开头，用''括起来
+create public database link TESTLINK2 connect to WANGYONG identified by '123456' USING '122.23.12.13/orcl'
 
 
+grant CREATE PUBLIC DATABASE LINK，DROP PUBLIC DATABASE LINK to scott;
+create database link DBLINK_NAME connect to USER01 identified by PASSWORD using 'TNS_NAME';
+DBLINK_NAME : DB_LINK的名字
+USER01　　     : 远程数据库的账户
+PASSWORD      : 远程数据库的账户
+TNS_NAME      : 远程数据库服务名 122.2312.13/orcl
+select owner,db_link,username from dba_db_links;
+--查询link
+select * from scott.tb_test@DBLINK_NAME;
+
+
+---
+---导入导出
+---
 
 --导入导出文件夹 创建文件夹 权限 oracle dba?
 create directory backup as '/home/backup';  --drop directory backup;
@@ -65,20 +126,11 @@ Select * FROM DBA_DATA_FILES;
 
 --数据文件路径默认在$ORACLE_HOME/oradata/$SID
 
---表空间清理
-1》. connect role(连接角色)
-2》. resource role(资源角色)
-3》. dba role(数据库管理员角色)
 
 ---
----oracle
+---oracle 用户进程 sql 死锁
 ---
-
-select userenv('language') from dual;
-select * from v$nls_parameters;
-select value from nls_database_parameters where parameter='nls_characterset'
-
----------------------------------------------------------------------------
+ 
 --查看oracle 设置 进程 会话 死锁  sql
 select * from v$parameter;
 select * from v$proccess;
@@ -112,7 +164,7 @@ select count(1) cc, username from v$session group by username;
 
 
 ---
---- sql debug
+--- sql debug sql优化
 ---
 
 --awr setting， STATISTICS_LEVEL: TYPICAL or ALL, open AWR； BASIC，close AWR
@@ -150,38 +202,6 @@ alter user scott account unlock;
 ---
 -- table control ddl 数据库建表 索引
 ---
-
---查看用户和默认表空间的关系
-select username,default_tablespace from dba_users;
---查看当前用户能访问的表
-select * from user_tables; 
---Oracle查询用户表
-select * from user_all_tables;
-
---Oracle查询用户视图
-select * from user_views;
---查询所有函数和储存过程：
-select * from user_source;
---查询所有用户：
-select * from all_users;
---select * from dba_users
---查看用户角色
-SELECT * FROM USER_ROLE_PRIVS;
---查看当前用户权限：
-select * from session_privs;
---查看所有用户所拥有的角色
-SELECT * FROM DBA_ROLE_PRIVS;
---查看所有角色
-select * from dba_roles;
---查看数据库名
-SELECT NAME FROM V$DATABASE;
-
---show table column 表列信息
-select * from all_tab_columns where table_name = upper('student') order by column_id
---show index
-select * from user_indexs where table_name = upper('student') order by column_id
---show table create sql (index column) 查看建表语句
-select dbms_metadata.get_ddl('TABLE', 'STUDENT') from dual;
 
 --create
 create table test(id varchar(20), time date);
