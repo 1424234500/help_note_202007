@@ -523,3 +523,8 @@ select  sysdate,sysdate - 8 *interval '2' hour   from dual
 
 
 
+
+数据结构转换
+to_number()
+to_char()
+
