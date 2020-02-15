@@ -24,9 +24,10 @@ mkdir -p ${basedir}/logundo
 
 --生成my.cnf作为配置文件
 #cp my-default.cnf /etc/my.cnf	 
+#修改my.cnf 配置大小写问题 中文支持 !!!!!!!!!
+lower_case_table_names = 0
 
-mysqld --initialize --user=mysql --pid-file=${basedirmysqld.pid --socket=${basedirmysqld.sock --port=3306 --basedir=${basedir} --datadir=${datadir} --tmpdir=${tmpdir} --lc-messages-dir=${basedir}/share --skip-external-locking --key_buffer_size=16M --max_allowed_packet=16M --thread_stack=192K --thread_cache_size=8 --myisam-recover-options=BACKUP --query_cache_limit=1M --query_cache_size=16M --log_error=${basedir}/error.log --expire_logs_days=10 --max_binlog_size=100M
- 
+#顺序不能变
 mysqld --defaults-file=/home/walker/mysql-5.7/my.cnf --initialize  --user=walker
 
 tail ${basedir}/error.log

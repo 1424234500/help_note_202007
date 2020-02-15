@@ -17,8 +17,8 @@ function start(){
     nowDir=`pwd -LP`
     #mysql 
     local dirArr=( 
-         '/home/walker/software/redis-5.0.3/src'        #redis
-         '/approot/redis-5.0.0/src'        #redis
+         '/home/walker/software/redis-5.0.3'        #redis
+         '/approot/redis-5.0.0'        #redis
          '/home/walker/software/zookeeper-3.4.12/bin'   #zookeeper
          '/home/walker/zookeeper-3.4.14/bin'            #zookeeper server
 #        '/home/walker/software/apache-tomcat-8.5.40/bin'    #tomcat admin monitor  
@@ -30,8 +30,8 @@ function start(){
      
      )
     local cmdArr=(
-        './redis-server'
-        './redis-server'
+        './src/redis-server redis.conf'
+        './src/redis-server redis.conf'
         'bash zkServer.sh start'   
         'bash zkServer.sh start'
         #'bash startup.sh'

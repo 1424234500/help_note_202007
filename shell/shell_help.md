@@ -253,6 +253,10 @@ sed s/7000/7002/ redis_cluster_7000.conf
 #去掉控制台颜色代码##########
 edjfl | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]####g"
 
+
+#### ps --help
+	
+
 ####find --help
     Usage: find [-H] [-L] [-P] [-Olevel] [-D debugopts] [path...] [expression]
     默认路径为当前目录；默认表达式为 -print
@@ -272,24 +276,24 @@ edjfl | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]####g"
           -readable -writable -executable
           -wholename PATTERN -size N[bcwkMG] -true -type [bcdpflsD] -uid N
           -used N -user NAME -xtype [bcdpfls]      -context 文本
-find test</> | grep .png #查找当前路径 下 所有文件 深度优先 的 png图片文件
-find test</> -name '.*.png'
-find test -path "./Documents" -prune -o -path "./Desktop" -prune -o -name '.*.png' -o -name '*xml'      #例外 多个文件夹跳过  匹配文件
-    [-o or  -a and  ! not   逻辑运算]
-    [-path "./Desktop"  路径匹配]
-    [-name "*.xml"  名字匹配] 
-    [-iname "*.xMl" 忽略大小写名字匹配]   
-    [-maxdepth 3    深度递归] 
-    [-perm 777  权限] 
-    [-user walker   用户]
-    [-group sunk    用户组]
-    [-size -10k 文件大小少于10k M G +大于]
-    [-mtime -7  -七天前 +七天内 time天 min分 a访问 m修改 c权限改动]
-    [-prune 不递归子目录]
-    [-type f 文件]
-    [-empty 空文件]
-    [-exec rm -rf {} \  文件路径替换操作执行!]
-find ./ -maxdepth 4 -type d    
+	find test</> | grep .png #查找当前路径 下 所有文件 深度优先 的 png图片文件
+	find test</> -name '.*.png'
+	find test -path "./Documents" -prune -o -path "./Desktop" -prune -o -name '.*.png' -o -name '*xml'      #例外 多个文件夹跳过  匹配文件
+		[-o or  -a and  ! not   逻辑运算]
+		[-path "./Desktop"  路径匹配]
+		[-name "*.xml"  名字匹配] 
+		[-iname "*.xMl" 忽略大小写名字匹配]   
+		[-maxdepth 3    深度递归] 
+		[-perm 777  权限] 
+		[-user walker   用户]
+		[-group sunk    用户组]
+		[-size -10k 文件大小少于10k M G +大于]
+		[-mtime -7  -七天前 +七天内 time天 min分 a访问 m修改 c权限改动]
+		[-prune 不递归子目录]
+		[-type f 文件]
+		[-empty 空文件]
+		[-exec rm -rf {} \  文件路径替换操作执行!]
+	find ./ -maxdepth 4 -type d    
     
 
 find /var/svn/svnbackup -type f -name "new_*" -mtime +7 -exec rm -rf {} \;  #删除/var/svn/svnbackup目录下创建时间为7天之前，并且文件以new开头的的所有文件或文件夹； 
@@ -671,12 +675,12 @@ xrandr -   分辨率以适应投影仪。
     procs -----------memory---------- ---swap-- -----io---- --system-- -----cpu-----
 
 关于was内存持续升高稳定占用80%问题    
-    仅清除页面缓存（PageCache）
-    # sync; echo 1 > /proc/sys/vm/drop_caches       
-    清除目录项和inode
-    # sync; echo 2 > /proc/sys/vm/drop_caches       
-    清除页面缓存，目录项和inode
-    # sync; echo 3 > /proc/sys/vm/drop_caches 
+    #仅清除页面缓存（PageCache）
+    sync; echo 1 > /proc/sys/vm/drop_caches       
+    #清除目录项和inode
+    sync; echo 2 > /proc/sys/vm/drop_caches       
+    #清除页面缓存，目录项和inode
+    sync; echo 3 > /proc/sys/vm/drop_caches 
 ####ps
 
     ps H -eo user,pid,ppid,tid,time,%cpu --sort=+%cpu   #cpu使用倒序
@@ -1193,61 +1197,62 @@ rcS.d
     ...]# openssl version
     OpenSSL 1.0.1f 6 Jan 2014
 
-####定时任务
-crontab -e #编辑
-crontab -l  #列表 
-执行日志 tail -f /var/spool/mail/root
-Cron是Unix系统的一个配置定期任务的工具，用于定期或者以一定的时间间隔执行一些命令或者脚本； 基于每个用户的，每一个用户（包括root用户）都拥有自己的crontab。
-*/1 * * * * date >> ~/logs/crontab.log  #定时每m测试crontab状况
-*/5 * * * * /usr/local/tomcat-6.0.41/tomcat_cardniu_stat/monitor.sh ####增量5m
-0 0 * * *  /home/pi/backup.sh ####0h0m
+#### 定时任务
+	crontab -e #编辑
+	crontab -l  #列表 
+	执行日志 tail -f /var/spool/mail/root
+	Cron是Unix系统的一个配置定期任务的工具，用于定期或者以一定的时间间隔执行一些命令或者脚本； 基于每个用户的，每一个用户（包括root用户）都拥有自己的crontab。
+	*/1 * * * * date >> ~/logs/crontab.log  #定时每m测试crontab状况
+	*/5 * * * * /usr/local/tomcat-6.0.41/tomcat_cardniu_stat/monitor.sh ####增量5m
+	0 0 * * *  /home/pi/backup.sh ####0h0m
+	
+	
+	注意!!!!
+	%是有特殊含义 表示换行    常用的date +%Y%m%d在crontab里是不会执行的，应该换成date +\%Y\%m\%d
+	上下文环境变量不会加载 可手动加载    多条语句时，用分号“；”隔开
+	*/1 * * * * . /etc/profile; echo `date "+\%Y-\%m-\%d \%H:\%M:\%S"`" crontab trigger 1m " >> ~/logs/crontab.log  #定时每m测试crontab状况
 
-注意!!!!
-%是有特殊含义 表示换行    常用的date +%Y%m%d在crontab里是不会执行的，应该换成date +\%Y\%m\%d
-上下文环境变量不会加载 可手动加载    多条语句时，用分号“；”隔开
-*/1 * * * * . /etc/profile; echo `date "+\%Y-\%m-\%d \%H:\%M:\%S"`" crontab trigger 1m " >> ~/logs/crontab.log  #定时每m测试crontab状况
-
-#### service crond restart
-service cron status
-/etc/init.d/cron {start|stop|status|restart|reload|force-reload} ####重启服务
-其中排列意思为：
-http://cron.qqe2.com/
-Bash
-    #    m    h    dom    mon    dow    user    command
-    #  分    时    日    月      周    用户    命令
-    #
-    #       m:表示分钟1～59 每分钟用*或者 */1表示 0表示整点 *表示启动时间开始 每增加/1单位
-    #       h:表示小时1～23（0表示0点）   21-23，23-6
-    #     dom:表示日期1～31
-    #     mon:表示月份1～12
-    #     dow:标识号星期0～6（0表示星期天）
-    #    user:表示执行命令的用户
-    # command:表示要执行的命令
-    #
-    #   * 代表任意数值
-例程如下：
-Bash
-    30 21 * * * /usr/local/etc/rc.d/lighttpd restart
-    #每晚的21:30重启apache。
-    45 4 1,10,22 * * /usr/local/etc/rc.d/lighttpd restart
-    #每月1、10、22日的4 : 45重启apache。
-    10 1 * * 6,0 /usr/local/etc/rc.d/lighttpd restart
-    #每周六、周日的1 : 10重启apache。
-    0,30 18-23 * * * /usr/local/etc/rc.d/lighttpd restart
-    #在每天18 : 00至23 : 00之间每隔30分钟重启apache。
-    0 23 * * 6 /usr/local/etc/rc.d/lighttpd restart
-    #每星期六的11 : 00 pm重启apache。
-    * 0/1 * * * /usr/local/etc/rc.d/lighttpd restart
-    #每一小时整点重启apache
-    * 23-7/1 * * * /usr/local/etc/rc.d/lighttpd restart
-    #晚上11点到早上7点之间，每隔一小时重启apache
-    * 0/10 23-6 * * ?
-    0 21-23,0-8 * * *
-    
-    0 11 4 * mon-fri /usr/local/etc/rc.d/lighttpd restart
-    #每月的4号与每周一到周三的11点重启apache
-    0 4 1 jan * /usr/local/etc/rc.d/lighttpd restart
-    #一月一号的4点重启apache
+	#### service crond restart
+	service cron status
+	/etc/init.d/cron {start|stop|status|restart|reload|force-reload} ####重启服务
+	其中排列意思为：
+	http://cron.qqe2.com/
+	Bash
+		#    m    h    dom    mon    dow    user    command
+		#  分    时    日    月      周    用户    命令
+		#
+		#       m:表示分钟1～59 每分钟用*或者 */1表示 0表示整点 *表示启动时间开始 每增加/1单位
+		#       h:表示小时1～23（0表示0点）   21-23，23-6
+		#     dom:表示日期1～31
+		#     mon:表示月份1～12
+		#     dow:标识号星期0～6（0表示星期天）
+		#    user:表示执行命令的用户
+		# command:表示要执行的命令
+		#
+		#   * 代表任意数值
+	例程如下：
+	Bash
+		30 21 * * * /usr/local/etc/rc.d/lighttpd restart
+		#每晚的21:30重启apache。
+		45 4 1,10,22 * * /usr/local/etc/rc.d/lighttpd restart
+		#每月1、10、22日的4 : 45重启apache。
+		10 1 * * 6,0 /usr/local/etc/rc.d/lighttpd restart
+		#每周六、周日的1 : 10重启apache。
+		0,30 18-23 * * * /usr/local/etc/rc.d/lighttpd restart
+		#在每天18 : 00至23 : 00之间每隔30分钟重启apache。
+		0 23 * * 6 /usr/local/etc/rc.d/lighttpd restart
+		#每星期六的11 : 00 pm重启apache。
+		* 0/1 * * * /usr/local/etc/rc.d/lighttpd restart
+		#每一小时整点重启apache
+		* 23-7/1 * * * /usr/local/etc/rc.d/lighttpd restart
+		#晚上11点到早上7点之间，每隔一小时重启apache
+		* 0/10 23-6 * * ?
+		0 21-23,0-8 * * *
+		
+		0 11 4 * mon-fri /usr/local/etc/rc.d/lighttpd restart
+		#每月的4号与每周一到周三的11点重启apache
+		0 4 1 jan * /usr/local/etc/rc.d/lighttpd restart
+		#一月一号的4点重启apache
 
 
 
