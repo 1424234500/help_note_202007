@@ -131,12 +131,72 @@ Select * FROM DBA_DATA_FILES;
 ---oracle 用户进程 sql 死锁
 ---
  
+--查看sql执行记录 内存数据监控 
+select * from v$sql;
+select * from v$sqlarea;
+select * from v$sqltext;
+共同点：
+    1）都存储了sql内容
+    2) 记录的都是位于内存中的sql内容
+    3) 因为是内存，所以都不保留历史记录
+不同点：
+    1)存储的为止不都是相同。其中v$sql和v$sqlarea存储的sql都是位于shared sql area中的sql,而v$sqltext是位于sga中的sql。但文档没有明确说明这里的sga是否还包含了psa(私有sql区域－－共享服务器模式下）。
+    2)存储sql的方式也不同，v$sql和v$sqlarea都是用一行来存储sql全文，而v$sqltext用一行存储sql的一行。
+    3)v$sql不存储包含group by 的sql语句。通常这个视图，在每个查询执行完成后更新，但对于执行很久的sql,它是每5秒更新一次，这点对于查看sql执行状态是有意义的。
+    4)存储的明细不同－－这是最基本的。
+    V$SQL在子游标级别上列出了在共享sql区域的统计信息，他将原始sql文本展现为一行。V$SQL中的视图信息一般在sql执行的最后进行更新。然而，对于长时间执行的sql，每5秒会更新一次v$sql视图。这使得很容易查看长时间执行的sql在运行过程中带来的影响。
+    v$sql列说明，如没有特别说明，均指子游标，存储的是具体的SQL 和执行计划相关信息，实际上，v$sqlarea 可以看做 v$sql 根据 sqltext 等 做了 group by 之后的信息
+SQL> desc v$sql 
+Name Null? Type 
+
+    SQL_TEXT：SQL文本的前1000个字符
+    SHARABLE_MEM：占用的共享内存大小(单位：byte)
+    PERSISTENT_MEM：生命期内的固定内存大小(单位：byte)
+    RUNTIME_MEM：执行期内的固定内存大小
+    SORTS：完成的排序数
+    LOADED_VERSIONS：显示上下文堆是否载入，1是0否
+    OPEN_VERSIONS：显示子游标是否被锁，1是0否
+    USERS_OPENING：执行语句的用户数
+    FETCHES：SQL语句的fetch数。
+    EXECUTIONS：自它被载入缓存库后的执行次数
+    USERS_EXECUTING：执行语句的用户数
+    LOADS：对象被载入过的次数
+    FIRST_LOAD_TIME：初次载入时间
+    INVALIDATIONS：无效的次数
+    PARSE_CALLS：解析调用次数
+    DISK_READS：读磁盘次数
+    BUFFER_GETS：读缓存区次数
+    ROWS_PROCESSED：解析SQL语句返回的总列数
+    COMMAND_TYPE：命令类型代号
+    OPTIMIZER_MODE：SQL语句的优化器模型
+    OPTIMIZER_COST：优化器给出的本次查询成本
+    PARSING_USER_ID：第一个解析的用户ID
+    PARSING_SCHEMA_ID：第一个解析的计划ID
+    KEPT_VERSIONS：指出是否当前子游标被使用DBMS_SHARED_POOL包标记为常驻内存
+    ADDRESS：当前游标父句柄地址
+    TYPE_CHK_HEAP：当前堆类型检查说明
+    HASH_VALUE：缓存库中父语句的Hash值
+    PLAN_HASH_VALUE：数值表示的执行计划。
+    CHILD_NUMBER：子游标数量
+    MODULE：在第一次解析这条语句是通过调用DBMS_APPLICATION_INFO.SET_MODULE设置的模块名称。
+    ACTION：在第一次解析这条语句是通过调用DBMS_APPLICATION_INFO.SET_ACTION设置的动作名称。
+    SERIALIZABLE_ABORTS：事务未能序列化次数
+    OUTLINE_CATEGORY：如果outline在解释cursor期间被应用，那么本列将显示出outline各类，否则本列为空
+    CPU_TIME：解析/执行/取得等CPU使用时间(单位，毫秒)
+    ELAPSED_TIME：解析/执行/取得等消耗时间(单位，毫秒)
+    OUTLINE_SID：outline session标识
+    CHILD_ADDRESS：子游标地址
+    SQLTYPE：指出当前语句使用的SQL语言版本
+    REMOTE：指出是否游标是一个远程映象(Y/N)
+    OBJECT_STATUS：对象状态(VALID or INVALID)
+    IS_OBSOLETE：当子游标的数量太多的时候，指出游标是否被废弃(Y/N)
+
 --查看oracle 设置 进程 会话 死锁  sql
 select * from v$parameter;
 select * from v$proccess;
 select * from v$session;
 select * from v$locked_object;
-select * from v$sql;
+
 select sid, serial#, username, osuser from v$session;-- where sid=783;
 --查找死锁并杀掉
 select sid||','||serial# kill, sid, serial#, username, osuser from v$session where sid in (select session_id from v$locked_object)
@@ -149,10 +209,10 @@ select count(1) cc, ssql_id, prev_sql, username, program from (
 ) group by ssql_id, prev_sql, username, program
 order by username, cc desc
 
---查找某sql的执行记录 上次执行的ip port 历史sql记录分析
+--查找某sql的执行记录 上次执行的主机ip port 历史sql记录分析
 select t.parsing_schema_name,t.sql_text,t.sql_id,t.last_active_time,t.action,t.module
 ,h.session_id,h.machine,h.port,h.user_id,h.sql_opname,h.sample_time 
-from v$sqlarea t,dba_hist_active_sess_story h
+from v$sql t,dba_hist_active_sess_story h
 whre 1=1
 and ( upper(sql_text) like '%DELETE%XXX%' )
 and h.sql_id=t.sql_id
@@ -162,6 +222,20 @@ order by t.last_actie_time desc
 --查找分析每个用户的连接数
 select count(1) cc, username from v$session group by username;
 
+
+--查询慢查询 sql awr
+SELECT v.SQL_TEXT,m.* FROM (select distinct snap_id,
+                sql_id,
+                EXECUTIONS_DELTA,
+                trunc(max(ELAPSED_TIME_DELTA)
+                      OVER(PARTITION BY snap_id, sql_id) / 1000000,
+                      0) max_elapsed,
+                trunc((max(ELAPSED_TIME_DELTA)
+                       OVER(PARTITION BY snap_id, sql_id)) /
+                      (SUM(ELAPSED_TIME_DELTA) OVER(PARTITION BY snap_id)),
+                      2) * 100 per_total
+  from dba_hist_sqlstat t WHERE T.snap_id IN (SELECT MAX(snap_id) FROM dba_hist_sqlstat) ) M,v$sql v
+  where m.sql_id=v.sql_id and m.max_elapsed>=300
 
 ---
 --- sql debug sql优化
