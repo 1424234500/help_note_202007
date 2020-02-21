@@ -442,16 +442,102 @@ select * from aaa;
 create global temporary table bbb(id number) on commit delete rows;
 insert into bbb values(200);
 
---多行拼接转一列
+--多行拼接转一列 
 wm_concat
 select wm_concat(colname) from student;
 
---行列转换
+--行列转换1 按时间分布查询excel 多列 多线 ?
+create table student (name varchar(40), s_mtime varchar(23), value varchar(20) );
 select name
-,sum(decode(age, '16', num, null)) age16
-,sum(decode(age, '17', num, null)) age17
-,sum(decode(age, '18', num, null)) age18
-from student;
+,sum(decode(name, '16', value, null)) col16
+,sum(decode(name, '17', value, null)) col17
+,sum(decode(name, '18', value, null)) col18
+from student
+group by s_mtime
+order by s_mtime
+--行列转换2 un pivot unpivot
+
+--造数
+--建表
+--drop table SalesList;
+create table SalesList(
+    keHu                varchar2(20),   --客户
+    shangPin            varchar2(20),   --商品名称
+    salesNum            number(8)       --销售数量
+);
+--插入数据
+declare
+  --谈几个客户
+  cursor lr_kh is 
+  select regexp_substr('张三、李四、王五、赵六','[^、]+',1, level) keHu from dual
+   connect by level <= 4;
+  --进点货
+  cursor lr_sp is 
+  select regexp_substr('上衣、裤子、袜子、帽子','[^、]+',1, level) shangPin from dual
+   connect by level <= 4;
+begin
+  --循环插入
+  for v_kh in lr_kh loop
+     for v_sp in lr_sp loop
+        insert into SalesList
+        select v_kh.keHu, v_sp.shangPin, floor(dbms_random.value(10,50)) from dual;
+     end loop;
+  end loop;
+  commit;
+end;
+
+--行转列
+select *
+  from SalesList pivot(
+    max(salesNum) for shangPin in (    --shangPin 即要转成列的字段
+        '上衣' as 上衣,                 --max(salesNum) 此处必须为聚合函数，
+        '裤子' as 裤子,                 --in () 对要转成列的每一个值指定一个列名
+        '袜子' as 袜子,
+        '帽子' as 帽子
+    )
+  )
+ where 1 = 1;                          --这里可以写查询条件，没有可以直接不要where
+
+
+--动态出列(xml的形式)
+select *
+  from SalesList pivot xml(                        --pivot xml 以xml的形式输出
+    max(salesNum) for shangPin in (
+       select distinct shangPin from SalesList     --通过查询查出所有需要转列的值，即所有列名
+    )
+  );
+--动态转列 存储过程实现
+create or replace procedure p_RowsToCols(as_sql       in varchar2 --源数据的查询sql
+                                        ,as_sql_cols  in varchar2 --动态转换列的查询sql,要求转为列的那列，字段名必须为cols，支持排序
+                                        ,as_aggCol    in varchar2 --对应pivot函数的 聚合函数
+                                        ,as_changeCol in varchar2 --源数据中，要转为列的字段名
+                                        ,as_viewName  in varchar2 --结果输出的视图名，执行完后查此视图即可
+                                         ) is
+  ls_sql varchar2(4000);
+  ls_in  varchar2(4000);
+begin
+  --拼接in的内容o
+  ls_sql := 'select listagg(''''''''||cols||'''''' "''||cols||''"'', '','')within group(order by rn) ' || 
+              'from (select rownum rn, cols from (' || as_sql_cols || '))';
+  execute immediate ls_sql
+    into ls_in;
+ 
+  --创建视图
+  ls_sql := 'create or replace view ' || as_viewName ||' as ' ||
+            'select * from (' || as_sql || ') ' ||
+             'pivot (' || as_aggCol || ' for ' || as_changeCol || ' in (' || ls_in || '))';
+  execute immediate ls_sql;
+end p_RowsToCols;
+
+
+--动态行转列
+call p_RowsToCols('select keHu, shangPin, salesNum from salesList',
+                  'select distinct shangPinId, shangPin cols from salesList order by shangPinId',
+                  'max(salesNum)',
+                  'shangPin',
+                  'sales_RowsToCols');
+ 
+select * from sales_RowsToCols;
 
 
 ---
@@ -482,6 +568,7 @@ begin
   end loop;
 
 end p_createroomtest; 
+
 
 
 --do procedure
