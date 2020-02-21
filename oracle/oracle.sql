@@ -572,7 +572,7 @@ CEIL(3.1415927)
 ---------------
               4
 ROUND——按照指定的精度进行四舍五入
-select * from round(100 / 200, 4) * 100 || '%' from dual;
+select * from round(100 / to_number(200), 4) * 100 || '%' from dual;
 ------------------
             3.1416%
 TRUNC——按照指定的精度进行截取一个数
