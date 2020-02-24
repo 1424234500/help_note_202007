@@ -269,9 +269,45 @@ ifnull  nvl
 --查询
 --行号rownum
 select rownum from (select  (@i:=@i+1) rownum from  information_schema.COLUMNS t ,(select   @i:=0) it ) t  where rownum < 10 ;       
+
+--序列
 select lpad(level, 2, '0') lev from (select  (@i:=@i+1) level from  information_schema.COLUMNS t ,(select   @i:=0) it ) t  where level<=24     ;
+--2015-01-01~2018-06-01的连续日期，一种方式，借助笛卡儿积，进行生成，SQL代码如下： -- 生成的日期多少取决于主表
+
+select date_add('2021-01-01',interval @i:=@i+1 day) as date 
+from ( 
+    select 1 from (select  (@i:=@i+1) level from  information_schema.COLUMNS t ,(select   @i:=0) it ) t  where level<=10   
+
+) as tmp,
+(select @i:= -1) t
+
+ 
+ 
 --代码java执行替换
 select lpad(level, 2, '0') lev from (select  (@i/*'*/:=/*'*/@i+1) level from  information_schema.COLUMNS t ,(select   @i/*'*/:=/*'*/0) it ) t  where level<=24     ;
 用符号:/*'*/:=/*'*/转换:=
+
+
+date_format(now(),'%Y-%m-%d %H:%i:%S') -------------->oracle中的to_char();
+str_to_date(date,'%Y-%m-%d') -------------->oracle中的to_date();
+　　%Y：代表4位的年份
+　　%y：代表2为的年份
+　　%m：代表月, 格式为(01……12)
+　　%c：代表月, 格式为(1……12)
+　　%d：代表月份中的天数,格式为(00……31)
+　　%e：代表月份中的天数, 格式为(0……31)
+　　%H：代表小时,格式为(00……23)
+　　%k：代表 小时,格式为(0……23)
+　　%h： 代表小时,格式为(01……12)
+　　%I： 代表小时,格式为(01……12)
+　　%l ：代表小时,格式为(1……12)
+　　%i： 代表分钟, 格式为(00……59)
+　　%r：代表 时间,格式为12 小时(hh:mm:ss [AP]M)
+　　%T：代表 时间,格式为24 小时(hh:mm:ss)
+　　%S：代表 秒,格式为(00……59)
+　　%s：代表 秒,格式为(00……59)
+　　SELECT DATE_FORMAT(20130111191640,'%Y-%m-%d %H:%i:%s')
+　　DATE_FORMAT(20130111191640,'%Y-%m-%d %H:%i:%s')
+
 
 
