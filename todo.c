@@ -13,11 +13,14 @@
     //jpa分表插件sharding使用 联合多数源配置
     ali云代理 v2ray
     //json格式化jackson解决
+    
+    
+    模拟用户访问造数压力监控一体化 构造用户量 模拟用户
     推送提醒服务 在线管理
     集成dubbo monitor ？
     wiki功能
     12306抢票爬取
-    
+    jd抢购预约问题
     
 面试刷题 基础算法 lee code
 //redis注册中心

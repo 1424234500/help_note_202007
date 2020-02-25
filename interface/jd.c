@@ -1,0 +1,71 @@
+
+
+
+主页
+
+https://www.jd.com/
+
+后台自动访问
+https://blackhole.m.jd.com/getinfo
+post
+body: {"appname":"jdwebm_pv","jdkey":""
+    ,"whwswswws":"8162d46d-88ed-c9dd-b5e7-a3bbbdcb52f6-1582623351","businness":"pcHome"
+    ,"body":
+            {"sid":"500f72193ddcec4f3a9f08cf5cc6a487"
+            ,"squence":"3","create_time":"1582623933272"
+            ,"shshshfpa":"8162d46d-88ed-c9dd-b5e7-a3bbbdcb52f6-1582623351"
+            ,"ecflag":"n","whwswswws":"8162d46d-88ed-c9dd-b5e7-a3bbbdcb52f6-1582623351"
+            ,"browser_info":"52155c2f3f4496bdb3812a6252f33daf"
+            ,"page_name":"https://www.jd.com/","page_param":""
+            ,"cookie_pin":"","msdk_version":"2.3.6","wid":""
+            ,"pv_referer":"https://passport.jd.com/new/login.aspx?ReturnUrl=https%3A%2F%2Fwww.jd.com%2F"
+            }
+}
+
+res
+{"code":5,"whwswswws":"8162d46d-88ed-c9dd-b5e7-a3bbbdcb52f6-1582623351","openall":1,"openalltouch":1,"processtype":1}
+
+点击 进入登录界面
+https://passport.jd.com/new/login.aspx?ReturnUrl=https%3A%2F%2Fwww.jd.com%2F
+
+header
+_t	7RtJ8uWzS0uC7LB9E9YYMZikXo2XLRkjV4oS10T2VAo=	
+alc	QSzAZC0l20aFZ+iSTPKH/Q==
+
+输入id切换到密码时自动触发ajax:是否需要验证码
+post
+https://passport.jd.com/uc/showAuthCode?r=0.9667710402258405&version=2015
+loginName: 18408249138
+
+res
+({"verifycode":false})
+
+
+
+点击登录 过验证码 之后
+post
+https://passport.jd.com/uc/loginService?uuid=1f360b05-850e-434c-a930-370ff5624d5e&ReturnUrl=https%3A%2F%2Fwww.jd.com%2F&r=0.24142142236623698&version=2015
+uuid: 1f360b05-850e-434c-a930-370ff5624d5e
+eid: FMXELMW527LWHHKJR5JEYZRROIA2AJSUENI375HIPVM63YYR4K33JN6UE37VL3KGMRXVQ3UTWP75FC26DARSFN5RCA //eid和fp这两个参数是找不到
+fp: c8fb69322426fb1685d6b0b5bceb4dbf    //eid和fp这两个参数是找不到
+_t: _t
+loginType: c
+loginname: 18408249138
+//JSEncrypt加密密码
+nloginpwd: N0RyGdtg2M8Mk2mvQVSk3mx0EUjd06UUP5GTFn4j+7NqU/zwWZ4/XA72oBAqVV+K1rP6hXLk/PeynNBEQmSxd8Gf0iJ6Mx9Kjf5xJibucjMZy4+kCSshL5nLVCJPB9o3uj5vswNbAZV0Tlo98bsjHkqMMgr4KSeSkJhILoBpBJg=
+authcode: b495593fb915414b8c27060fb3e730a1      //验证码图形拖动验证结果
+//利用python的rsa模块，由 PublicKey实现rsa加密
+pubKey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDC7kw8r6tq43pwApYvkJ5laljaN9BZb21TAIfT/vexbobzH7Q8SUdP5uDPXEBKzOjx2L28y7Xs1d9v3tdPfKI2LR7PAzWBmDMn8riHrDDNpUpJnlAGUqJG9ooPn8j7YNpcxCa1iybOlc2kEhmJn5uwoanQq+CA6agNkqly2H4j6wIDAQAB
+sa_token: B68C442BE645754F33277E70120805905E88F11B17C0C5B96C2EE9A9393C192FBC596B9541FCB498516597D597CCBD748CB0C366A5F340FB7FD38B77A239043A9EAC1A051315BF4E3C4D071F5012A9C2C6BB4F7831C190A67E0EFD6941FC5D62FDEBC3C995B8418ABCE557C28B58D955C20ECEA50DD6A8DB07BC0CA1EAB4340A14F69A21BAB849C22680B7E766D5590E80E42F5C0EFB0409B92CDF483C9B0FE4F30D02505A24EA562DB3E8B529EED3CF4F45A82703C011DFB3410A13915BE5401D12DF3F5B975FD58DC967478E8C8AC37B9DA67423CF7176C3C02EBD351E6FC5B2E00C76B92F6A702BA2E7E7614C8377CDE56D25150F45BEFA31D90E9BDB6F693C334F5BDBBB1B8CB649F6878332DCC74548B88CB13630C336C10C2136E390107B0BB8BB5AAB00E0F7B02CFBC456A258453CDADCB68237DAC26DA05A305566C94BC875E09E46F30D7E2EAC0A0EBF18D37C1D490B53577235236E5BFD30186F040CEAD938E1CF6B35E7CDEBFDFF888A6BCA246C70B2D23BD78095F63AEB3AE12587A4CECE3F75B051759E96615CA6060E2450FF8565CC7990580BD0735B4ACF4F222D6460944F59D95617DA2131198874ACF786106CA889C2B9F4CEDE4B2C6223
+seqSid: 123453809313023284
+useSlideAuthCode: 1
+  
+
+res 密码不正确
+({"pwd":"\u8d26\u6237\u540d\u4e0e\u5bc6\u7801\u4e0d\u5339\u914d\uff0c\u8bf7\u91cd\u65b0\u8f93\u5165"})
+
+
+
+
+
+
