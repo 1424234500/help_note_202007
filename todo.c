@@ -10,35 +10,204 @@
     //文件管理 上传下载
     //quartze在线管理 集群模式
     //自动化打包部署问题 idea依赖
-    //jpa分表插件sharding使用 联合多数源配置
-    ali云代理 v2ray
+    //jpa分表插件sharding使用 联合多数源配置 
     //json格式化jackson解决
-    
-    
+     
     模拟用户访问造数压力监控一体化 构造用户量 模拟用户
     推送提醒服务 在线管理
     集成dubbo monitor ？
     wiki功能
     权限 用户 管理员 分级 菜单
-    12306抢票爬取
-    jd抢购预约问题
+    12306抢票爬取 
     
 面试刷题 基础算法 lee code
 //redis注册中心
-kafka 替换redis队列
-分布式一致性
-锁 乐观 悲观死锁
-
-富文本 wiki功能
-
-在线小工具集合
-在线java算法演示中心
+kafka 替换redis队列  
+熔断限流框架sentinel 
+在线小工具集合  
+	在线java算法演示中心
 	在线各语言 shell python编辑器
 
-Prometheus监控服务器群
+Prometheus监控服务器群 
 
-socket服务器 分布式部署 实现通信
-app聊天
+
+面试
+
+ 
+框架实现原理 
+Spring bean创建原理 ioc/aop 
+Springboot 启动 
+	配置 切换profile --spring.profiles.active=prod
+	事务级别 
+SpringMVC 介绍自实现
+mybatis 动态代理proxy 
+
+	
+
+Jvm new对象机制 堆分配 内存回收 
+	class加载机制 双亲委派父类识别优先加载，避免根类加载器jdk被串改？ 缓存机制 	
+
+jdk差异 1.8 hashmap实现差别 红黑树 hash地址 数组链表 以对象为键 有什么问题Java排序 哪些比较器 自定义实现
+	key过多阈值转换红黑树，对于实现了Comparable 接口的键(对象)，插入或删除的操作会更简单  二分红黑树查找键 而非简单hash查找键
+
+
+#Java并发线程协作 volatile  锁 sync和 lock 介绍 差别 公平性  抢占资源 wait sleep   threadpool
+
+修改场景：并发
+	i++  读取 修改 写入问题
+		多线程并发i++可能比预期小 cpu多核多线程脏读写
+	我必须是看到数据才决定的更改，若在保存前变了，得在变了的基础上重新修改
+1.保证原子性 并发 
+#方案： 
+	是否需要先比较再修改 
+	volatile 是否满足要求
+	锁
+	
+#原子性是否保证可见性？
+	原子性不一定保证可见性。比如 CAS 只解决了比较和更新的原子性的问题，要保证可见性，需要加锁或者是用 volatile 修饰变量。 		
+
+2.锁概念 
+#乐观锁 基本没人抢 读多写少
+	查询 若没变则修改 	写多时会导致总是变化 而导致重新查询后 再次尝试修改 低效
+	原子类（CAS Compare And Swap实现） 多线程累加器 
+
+#悲观锁 总会有人抢我的 写多
+	加锁 查询 修改  
+	for update（锁定查询的行）
+	sync
+	
+4.final 作用 初始化 闭包? 生命周期改变 子线程可见域
+5.volatile 并发关键字 不缓存 写时直接写入主存  读时直接读主存  
+	有限的一些情形下使用 volatile 变量替代锁（简单 性能）  1.对变量的写操作不依赖于当前值。  2.该变量没有包含在具有其他变量的不变式中。
+	可见性 : 对一个 volatile 的变量的读，总是能看到任意线程对这个变量最后的写入.
+	原子性 : 对于单个 volatile 变量的读或者写具有原子性，复合操作不具有.(如 i++)
+	互斥性 : 同一时刻只允许一个线程对变量进行操作.(互斥锁的特点)
+	确保通过排他锁单独获得这个变量
+	
+	正确使用 volatile 
+		模式：状态标志	仅仅是使用一个布尔状态标志，用于指示发生了一个重要的一次性事件，例如完成初始化或请求停机。
+		模式：volatile bean  JavaBean 的所有数据成员都是 volatile 类型的，并且 getter 和 setter 方法必须非常普通 —— 除了获取或设置相应的属性外，不能包含任何逻辑。
+6.Synchronized 悲观锁 自动释放 不能被继承 尽量减少锁区间范围   简化代码尽量使用
+	非公平
+	原子性：可重入 下一个CPU时间片还是只能被他自己获取到，直到所有代码执行完
+	可见性：对一个 synchronized 修饰的变量解锁之前，必须先把此变量同步回主存中。
+	可重入性：获得一次锁之后，如果调用其它同步方法，不需要重新获取锁，可以直接使用。
+	不可中断性：一旦这个锁被某线程获得，其他线程只能等待或者阻塞。Lock 锁可以中断或者退出等待（超时机制）。
+	
+	对于普通同步方法，锁是当前实例 this。
+	对于静态同步方法，锁是当前类 XXX.class。
+	对于同步方法块，锁是 synchronized 括号里配置的对象。
+	
+	jse1.6 效率优化 
+	锁升级	主要想要避免其他线程阻塞切换cpu上下文
+	无锁状态、								多线程循环尝试获取（CAS）
+	偏向锁状态、							竞争不大 减少锁操作不释放	单线程？遇到竞争才会释放锁，线程不会主动释放偏向锁		关闭偏向锁：-XX:-UseBiasedLocking=false 默认进入轻量级锁
+	轻量级锁状态、							当锁是偏向锁的时候，被另外的线程所访问，偏向锁就会升级为轻量级锁，其他线程会通过自旋的形式尝试获取锁，不会阻塞，从而提高性能
+	重量级锁状态							等待锁的线程都会进入阻塞状态
+	随着竞争情况逐渐升级。锁可以升级但不能降级 
+ 
+	锁对象不能为空
+	作用域不宜过大
+	避免死锁
+
+7.Lock	必须finally手动释放  AbstractQueuedSynchronizer(AQS)	复杂实现 可(超时)判断 分布式锁  
+代码级别的并发，需要使用锁实现提供的独特机制，例如：读写分离、分段、中断、共享、重入等 synchronized 不支持的机制。
+	问题：多次重入  多次释放
+	重入锁（ReentrantLock）	
+		公平锁（FairSync）
+		非公平锁（NonfairSync）
+	读锁（ReadLock） 支持重进入的共享锁  读锁的存在意味着不允许其他写操作的存在
+	写锁（WriteLock）支持重进入的排它锁 
+
+
+
+8.ThreadPoolExecutor 
+ThreadLocal  数据副本 线程切面耗时
+	线程同步问题
+
+	sleep：定时器唤醒	不释放锁
+	wait： 需要在同步块里 notify随机唤醒/notifyAll唤醒所有
+	park： 需要在同步块里 unpark唤醒指定
+	Condition：signal随机唤醒/signalAll
+	
+	线程池构造 队列选择  队列容量 分工核心数评估
+	拒绝策略
+	线程状态
+
+	ExecutorService工厂制造 fixed固定数量 sing单线 sch单线周期(间隔时间or固定时间)
+		ThreadPoolExecutor(int corePoolSize,		//核心数
+									线程池个数=CPU的数量*CPU的使用率*（1+等待时间/计算时间）
+		
+                              int maximumPoolSize,	//最大数
+                              long keepAliveTime,	//非核心存活时间
+                              TimeUnit unit,		//时间单位
+                              BlockingQueue<Runnable> workQueue,	//队列实现
+									SynchronousQueue  eg:  4, 100 	    直接提交队列：没有容量，每一个插入操作都要等待一个相应的删除操作。通常使用需要将maximumPoolSize的值设置很大，否则很容易触发拒绝策略。
+									ArrayBlockingQueue	有界的任务队列：任务大小通过入参 int capacity决定，当填满队列后才会创建大于corePoolSize的线程。
+									LinkedBlockingQueue	无界(可指定容量有界)的任务队列：线程个数最大为corePoolSize，如果任务过多，则不断扩充队列，知道内存资源耗尽。
+									PriorityBlockingQueue	优先任务队列：是一个无界的特殊队列，可以控制任务执行的先后顺序，而上边几个都是先进先出的策略。 
+							  
+                              ThreadFactory threadFactory,			//工厂覆盖
+                              RejectedExecutionHandler handler) 	//丢弃模式
+																  JDK提供的线程池拒绝策略
+									策略名称	描述
+									AbortPolicy	该策略会直接抛出异常，阻止系统正常 工作。线程池默认为此。
+									CallerRunsPolicy	只要线程池未关闭，该策略直接在调用者线程中，运行当前被丢弃的任务。
+									DiscardOledestPolicy	该策略将丢弃最老的一个请求，也就是即将被执行的一个任务，并尝试重新提交当前任务。
+									DiscardPolicy	该策略默默地丢弃无法处理的任务，不予任务处理。
+									
+									
+		添加任务
+			优先顺序 核心线程corePoolSize、任务队列workQueue、最大线程maximumPoolSize，如果三者都满了，使用handler处理被拒绝的任务。 		
+
+
+9.Redis分布式锁 其他实现的锁 缓存穿透击穿雪崩 一致性
+	缓存穿透
+	缓存没有命中-数据库也没有命中-查询失败-加剧反复查询   数据库反复查询
+		缓存空对象 过期时间		存储null占用空间 取舍	一段时间查询和数据库不一致 
+		
+	缓存击穿
+	热点数据-突然失效-并发查询数据库
+
+	缓存雪崩
+	缓存宕机-大量访问导致数据库宕机
+		避免宕机 redis高可用 集群主备 同城双活
+		限流降级 熔断模式 成功率过低则限流 逐渐阶梯放开
+		数据预热 不同过期时间 避免同时失效
+#kafka
+
+	
+10.Netty IO NIO react模式 哪些插件	cpu稀疏性
+	处理多个连接
+	BIO 多线程阻塞等待网络流写入
+		独立的Acceptor 原生socket 请求一应答模型	来一个长连接，记录句柄到list中，开一个子线程负责死循环监控读取该句柄的写入流	
+		不具备弹性伸缩	线程个数和并发访问数成线性正比	性能急剧下降
+	NIO Selector 机制 线程阻塞的方式监听 IO 事件	
+		IO多路复用	避免由于频繁IO阻塞导致的线程挂起 JDK1.6版本使用epoll替代了传统的select/poll
+		一个IO线程可以并发处理N个句柄读取
+		
+	AIO 真异步
+	Reactor模式
+		没有Queue来做缓冲，每当一个Event输入到Service Handler之后，会立刻分发给对应的Request Handler来处理
+
+	
+	
+11.Sql	
+Sql三种连接 集合关系  
+MySQL调优 哪些索引 多键索引
+	引擎区别   建表 量级分表 
+	联合索引 最左前缀原则  查询优化
+	Innodb ：数据完整性，并发性处理，擅长更新，删除。
+	myisam：高速查询及插入。擅长插入和查询
+	普通索引,index：对关键字没有要求。
+	唯一索引,unique index：要求关键字不能重复。同时增加唯一约束。
+	主键索引,primary key：要求关键字不能重复，也不能为NULL。同时增加主键约束。
+	全文索引,fulltext key：关键字的来源不是所有字段的数据，而是从字段中提取的特别关键词
+	执行计划explan f5 *具体字段 where子查询减少 优先筛选少行 EXISTS  对索引列使用OR无效 
+	awr报告
+	
+
+
 
 
 消息服务器架构
