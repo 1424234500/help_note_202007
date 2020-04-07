@@ -49,7 +49,7 @@ select t.owner,t.table_name,t.tablespace_name,t.num_rows　from dba_tables t whe
 --查看各个用户表总大小
 SELECT s.owner, to_number(SUM(s.BYTES)/1024/1024) MB from dba_segments s where 1=1 group by s.owner order by 2 desc;
 --某用户每个表大小 清理
-SELECT s.owner, s.segment_name,to_number((s.BYTES)/1024/1024) MB from dba_segments s where s.owner='WALKER' order by 3 desc;
+SELECT s.owner, s.segment_name,to_number((s.BYTES)/1024/1024) MB from dba_segments s where 1=1 order by 3 desc;
 --查看创建表语句表结构
 SET LONG 3000
 SET PAGESIZE 0
@@ -196,13 +196,23 @@ select * from v$parameter;
 select * from v$proccess;
 select * from v$session;
 select * from v$locked_object;
-
-select sid, serial#, username, osuser from v$session;-- where sid=783;
+ 
 --查找死锁并杀掉
-select sid||','||serial# kill, sid, serial#, username, osuser from v$session where sid in (select session_id from v$locked_object)
-alter system kill session '783,18455';
 --查找每个session的上一条执行sql 等待 当前sql 
-select sql.sql_text prev_sql, sql.sql_id psql_id, s.*  from v$session s, v$sql sql where s.prev_sql_id = sql.sql_id;
+select s.sid||','||s.serial# kill, s.sid, s.serial#, s.service_name, s.logon_time
+, s.username, s.osuser, s.machine, s.terminal, s.program, s.module
+, s.seconds_in_wait, s.status, s.state
+, s.sql_exec_start, s.sql_id, sql.sql_text
+, s.prev_exec_start, s.prev_sql_id, psql.sql_text 
+from v$session s, v$sqlarea sql, v$sqlarea psql 
+where 1=1
+and s.sid in (select session_id from v$locked_object)  --查找死锁会话的 当前sql 上一条sql
+and s.prev_sql_id = psql.sql_id(+)
+and s.sql_id = sql.sql_id(+)
+
+alter system kill session '783,18455';
+
+
 --&&并统计每个session的prev_sql的个数 分组 用户 程序等
 select count(1) cc, ssql_id, prev_sql, username, program from (
     select sql.sql_text prev_sql, sql.sql_id psql_id, s.*  from v$session s, v$sql sql where s.prev_sql_id = sql.sql_id
@@ -420,11 +430,16 @@ and rn=1;
 --like instr
 select * from test t where INSTR('唐飞',T.NAME)>0 or t.name like '%aa%'
 
---with temp table view? 查询完毕直接清除
+--with temp table view? 查询完毕直接清除 with后必跟select 
 with 
 temptable as (select * from test)
 ,temptable2 as (select * from test)
 select * from temptable,temptable2 whre a=1;
+
+insert into test 
+with as (select * from test)
+select * from temptable t;
+
  
 --exists 
 select * from t1 where exists(select 1 from t2 where t1.a=t2.a) ;

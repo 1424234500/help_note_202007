@@ -23,7 +23,7 @@ tar xvzf sshpass-1.05.tar.gz
 ./configure 
 make  
 make install
-sshpass -p "XXX" ssh user@IP
+ -p "XXX" ssh user@IP
 ####首次需要ssh 直接登录一次 
 ####之后才能使用sshpass登录?
 #ssh密钥配置
@@ -32,14 +32,15 @@ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 -t 加密算法类型，这里是使用rsa算法 
 -P 指定私钥的密码，不需要可以不指定 
 -f 指定生成秘钥对保持的位置 
-#server config  
+#server config   配置允许ssh信任
 sudo vim /etc/ssh/sshd_config
     RSAAuthentication yes 
     PubkeyAuthentication yes 
     AuthorizedKeysFile %h/.ssh/authorized_keys
-    StrictModes no
+	#不配置默认#StrictModes yes 
+	StrictModes no		
 #create pub and private key
-ssh-keygen -t rsa   
+ssh-keygen -t rsa   	
 ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 chmod 644 ~/.ssh/authorized_keys
@@ -138,5 +139,5 @@ GatewayPorts yes
 sevice ssh restart
 restart 包括了stop，start。
 
-
+ 
 

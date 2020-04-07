@@ -6,6 +6,10 @@ cat /etc/issue ####显示的是发行版本信息
     Ubuntu 18.04.1 LTS \n \l
 cat /proc/cpuinfo | more ####分页查看
 
+suse 
+	lsb_release -d 
+	cat /etc/SuSE-release 
+
 du -sh * #查看文件大小 占用 ls -lth
 df -h   #磁盘
 ## 基本命令
@@ -288,7 +292,7 @@ edjfl | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]####g"
 		[-user walker   用户]
 		[-group sunk    用户组]
 		[-size -10k 文件大小少于10k M G +大于]
-		[-mtime -7  -七天前 +七天内 time天 min分 a访问 m修改 c权限改动]
+		[-mtime -7  -七天f前 +七天内 time天 min分 a访问 m修改 c权限改动]
 		[-prune 不递归子目录]
 		[-type f 文件]
 		[-empty 空文件]
@@ -1016,6 +1020,7 @@ $$<PID 59>
     -v ：压缩的过程中显示文件！这个常用
     -f ：使用档名，请留意，在 f 之后要立即接档名喔！不要再加其他参数！
     -p ：使用原文件的原来属性（属性不会依据使用者而变）
+	-P : 避免绝对路径文件提示不合法s
     -A
     xz -d linux-3.12.tar.xz && tar -xvf linux-3.12.tar
     tar -xvJf  node-v6.10.1-linux-x64.tar.xz
@@ -1026,6 +1031,7 @@ $$<PID 59>
     tar -xjvf file.tar.bz2 ####解压 tar.bz2 
     tar -xzvf file.tar.Z ####解压tar.Z 
     --exclude FILE  在压缩的过程中，不要将 FILE 打包！
+	tar -czvf file.tar.gz --exclude=*logs* --exclude=*.jar --exclude=/dir/*
 
     将整个 /etc 目录下的文件全部打包成为 /tmp/etc.tar
     tar -cvf /tmp/etc.tar /etc　　　　<==仅打包，不压缩！

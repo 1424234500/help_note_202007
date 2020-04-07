@@ -13,14 +13,15 @@
     //jpa分表插件sharding使用 联合多数源配置 
     //json格式化jackson解决
      
-    模拟用户访问造数压力监控一体化 构造用户量 模拟用户
+    模拟用户访问造数压力监控一体化 构造用户量 模拟用户  熔断限流
     推送提醒服务 在线管理
     集成dubbo monitor ？
     wiki功能
     权限 用户 管理员 分级 菜单
     12306抢票爬取 
     
-面试刷题 基础算法 lee code
+面试刷题 
+基础算法 lee code
 //redis注册中心
 kafka 替换redis队列  
 熔断限流框架sentinel 
@@ -177,20 +178,40 @@ ThreadLocal  数据副本 线程切面耗时
 #kafka
 
 	
-10.Netty IO NIO react模式 哪些插件	cpu稀疏性
+10.Netty IO NIO react模式 哪些插件	cpu稀疏型
 	处理多个连接
 	BIO 多线程阻塞等待网络流写入
-		独立的Acceptor 原生socket 请求一应答模型	来一个长连接，记录句柄到list中，开一个子线程负责死循环监控读取该句柄的写入流	
+	场景：
+		每次有一个客户端连接进来的时候，都会有一个新的线程去处理，缺点显而易见，如果连接比较多的时候，我们就要建立大量的线程去一一处理
+ 		Socket socket = ServerSocket.accept();
+		来一个长连接，记录句柄到list中，开一个子线程负责死循环监控读取该句柄的写入流	
 		不具备弹性伸缩	线程个数和并发访问数成线性正比	性能急剧下降
-	NIO Selector 机制 线程阻塞的方式监听 IO 事件	
+	NIO 线程阻塞的方式监听 IO 事件	
 		IO多路复用	避免由于频繁IO阻塞导致的线程挂起 JDK1.6版本使用epoll替代了传统的select/poll
+		场景：
+		Channel（通道）、Buffer（缓冲区）、Selector（选择器）
+		serverSocketChannel.configureBlocking(false);
+ 		serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 		一个IO线程可以并发处理N个句柄读取
 		
-	AIO 真异步
+	NIO2.0 AIO 异步非阻塞式IO		在Linux系统上，AIO的底层实现仍使用EPOLL		Netty整体架构是reactor模型, 而AIO是proactor模型
+	server.accept(null, new CompletionHandler<AsynchronousSocketChannel, Object>() {
+
 	Reactor模式
 		没有Queue来做缓冲，每当一个Event输入到Service Handler之后，会立刻分发给对应的Request Handler来处理
 
+最原始的网络编程思路就是服务器用一个while循环，不断监听端口是否有新的套接字连接，如果有，那么就调用一个处理函数(线程)处理
+BIO模式
+
+缺点在于资源要求太高，系统中创建线程是需要比较高的系统资源的，如果连接数太高，系统无法承受，而且，线程的反复创建-销毁也需要代价。
+改进方法是：
+采用基于事件驱动的设计，当有事件触发时，才会调用处理器进行数据处理。使用Reactor模式，对线程的数量进行控制，一个线程处理大量的事件
 	
+Java的NIO模式的Selector网络通讯，其实就是一个简单的Reactor模型。可以说是Reactor模型的朴素原型。
+Reactor模式，是基于Java NIO的，在他的基础上，抽象出来两个组件——Reactor和Handler两个组件：
+（1）Reactor：负责响应IO事件，当检测到一个新的事件，将其发送给相应的Handler去处理；新的事件包含连接建立就绪、读就绪、写就绪等。
+（2）Handler:将自身（handler）与事件绑定，负责事件的处理，完成channel的读入，完成处理业务逻辑后，负责将结果写出channel。
+
 	
 11.Sql	
 Sql三种连接 集合关系  
@@ -206,6 +227,118 @@ MySQL调优 哪些索引 多键索引
 	执行计划explan f5 *具体字段 where子查询减少 优先筛选少行 EXISTS  对索引列使用OR无效 
 	awr报告
 	
+
+
+
+
+准备
+
+dubbo 设计框架 负载均衡 spi机制 zk选举 分布式锁 
+
+redis aof、rdb、rewire 主从 cluster 基本类型 set zset list hash string 
+expire ttl 
+缓存击穿 穿透 雪崩 数据一致性，一致性hash，布隆过滤器
+
+mysql 事务、锁、索引、b+树，主从
+
+mq，rocketmq
+	为什么用
+	重复消费，顺序消息，事务消息，高可用，消息丢失，挤压场景
+	
+netty，零拷贝，bio，nio，aio，架构设计
+
+算法，快速排序，堆排序，二叉树，链表反转，成环，环节点，跳楼梯
+	双指针，dp，递归，手写红黑树？
+
+网络，http,tcp,https,udp,7层网络协议
+
+分布式事务实现，架构，
+	抢红包
+	，高并发下单
+
+
+
+题0
+sync底层实现，锁优化，lock对比
+jvm调优详细，如何设置，好处，gc分析
+redis数据结构，场景，微博场景如何设计用户关系
+线程池设定 为什么
+spring如何循环依赖，为什么三级缓存
+优先级队列原理
+
+项目如何设计 漏洞解决 改进 挂了？ 扩容？
+高并发下单减少库存如何设计
+rocketmq架构方向设计
+dubbo框架原理
+最近读了什么书  如何学习
+
+项目为何这样设计，如何优化，合理更好的方式优化，数据库设计
+公司做啥了，绩效如何，手写算法链表反转
+
+jvm，sms过程，full gc做啥了
+所了解的所有中间件？
+
+为什么来，以前为什么不来，毕业到现在有什么改变
+
+
+
+
+
+题1
+b和b+树
+排序算法 思想 时间复杂度 空间复杂度
+两数之和三数和
+
+tcp三次 四次 区别 为什么 
+tcp udp区别
+tcp粘包拆包
+保持连接
+
+并发 死锁条件 如何避免
+线程状态 如何转换
+linux常用指令
+
+数据库范式 如何应用 取舍
+数据库索引 底层实现mysql
+mysql引擎innodb myisam区别场景
+数据库事务 隔离级别
+sql优化思路
+外键 注意
+设计数据库表 时间空间 冗余
+
+类和对象
+static final区别
+synchronized 底层实现 其他锁 reentrantLock
+	实现单缓冲区的生产消费模型
+
+bio nio aio netty
+接口 抽象类区别
+hashmap hashtable hashset 如何去重 hash规则
+concurrentHashmap 为什么安全
+数字和字符串相互转换
+线程状态 线程方法 join yield
+线程池 如何创建 各个参数
+jvm参数 xms xmx
+设计模式 单例几种写法 策略设计模式  
+
+
+springmvc原理 哪些设计模式
+spring 依赖注入的几种方式 注解 xml配置 
+spring哪些框架组件 分别做什么
+	 动态代理原理
+	 事务实现原理
+spring bean创建过程 生命周期 循环依赖 父子容器
+springboot和springmvc区别联系
+	启动流程 如何实现的自动配置
+
+
+
+
+
+
+
+
+
 
 
 
