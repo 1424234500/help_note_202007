@@ -119,7 +119,17 @@ jdk差异 1.8 hashmap实现差别 红黑树 hash地址 数组链表 以对象为
 		非公平锁（NonfairSync）
 	读锁（ReadLock） 支持重进入的共享锁  读锁的存在意味着不允许其他写操作的存在
 	写锁（WriteLock）支持重进入的排它锁 
+	
+0死锁
+互斥条件：进程要求对所分配的资源进行排它性控制，即在一段时间内某资源仅为一进程所占用。
+请求和保持条件：当进程因请求资源而阻塞时，对已获得的资源保持不放。
+不剥夺条件：进程已获得的资源在未使用完之前，不能剥夺，只能在使用完时由自己释放。
+环路等待条件：在发生死锁时，必然存在一个进程--资源的环形链。
 
+预防死锁：
+一次性分配所有资源12（资源编码组合状态）（破坏请求条件）
+拿不到资源2就释放已有资源1（破坏请保持条件）
+资源12有序分配法 释放则相反（破坏环路等待条件） 
 
 
 8.ThreadPoolExecutor 
@@ -144,13 +154,13 @@ ThreadLocal  数据副本 线程切面耗时
                               TimeUnit unit,		//时间单位
                               BlockingQueue<Runnable> workQueue,	//队列实现
 									SynchronousQueue  eg:  4, 100 	    直接提交队列：没有容量，每一个插入操作都要等待一个相应的删除操作。通常使用需要将maximumPoolSize的值设置很大，否则很容易触发拒绝策略。
-									ArrayBlockingQueue	有界的任务队列：任务大小通过入参 int capacity决定，当填满队列后才会创建大于corePoolSize的线程。
+									ArrayBlockingQueue	有界的任务队列 
 									LinkedBlockingQueue	无界(可指定容量有界)的任务队列：线程个数最大为corePoolSize，如果任务过多，则不断扩充队列，知道内存资源耗尽。
 									PriorityBlockingQueue	优先任务队列：是一个无界的特殊队列，可以控制任务执行的先后顺序，而上边几个都是先进先出的策略。 
-							  
+									DelayQueue 是 Delayed 元素的一个无界阻塞队列，只有在延迟期满时才能从中提取元素。该队列的头部 是延迟期满后保存时间最长的 Delayed 元素。如果延迟都还没有期满，则队列没有头部，并且 poll 将返回 null。
                               ThreadFactory threadFactory,			//工厂覆盖
                               RejectedExecutionHandler handler) 	//丢弃模式
-																  JDK提供的线程池拒绝策略
+									JDK提供的线程池拒绝策略
 									策略名称	描述
 									AbortPolicy	该策略会直接抛出异常，阻止系统正常 工作。线程池默认为此。
 									CallerRunsPolicy	只要线程池未关闭，该策略直接在调用者线程中，运行当前被丢弃的任务。
@@ -168,6 +178,7 @@ ThreadLocal  数据副本 线程切面耗时
 		缓存空对象 过期时间		存储null占用空间 取舍	一段时间查询和数据库不一致 
 		
 	缓存击穿
+	
 	热点数据-突然失效-并发查询数据库
 
 	缓存雪崩
@@ -226,7 +237,7 @@ MySQL调优 哪些索引 多键索引
 	全文索引,fulltext key：关键字的来源不是所有字段的数据，而是从字段中提取的特别关键词
 	执行计划explan f5 *具体字段 where子查询减少 优先筛选少行 EXISTS  对索引列使用OR无效 
 	awr报告
-	
+			
 
 
 

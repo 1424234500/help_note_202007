@@ -113,15 +113,21 @@ select * from scott.tb_test@DBLINK_NAME;
 ---导入导出
 ---
 
---导入导出文件夹 创建文件夹 权限 oracle dba?
-create directory backup as '/home/backup';  --drop directory backup;
-grant read,write on directory backup to walker;
---导出数据库
-expdp user1/password@orcl diretory=backup dumpfile=test.dmp schemas=user1;     
---导入数据库到某用户
-impdp user2/password@orcl diretory=backup dumpfile=test.dmp remap_schema=user1:user2 remap_tablespace=user1_space:user2_space;
+--机器1机器2 导入导出文件夹 创建文件夹 权限  Grant create  any directory to walker
+mkdir -p '/home/backup'
+chown -R oracle:dba '/home/backup'
+su oracle 
+sqlplus / as sysdba 
+	create or replace directory backup as '/home/backup';  --drop directory backup;
+	grant read,write on directory backup to user1;
+--机器1 导出数据库 
+expdp user1/password@127.0.0.1/orcl directory=backup dumpfile=test.dmp logfile=test.log schemas=user1;     
+--传输
+scp -p 
+--机器2 导入数据库到某用户
+impdp user2/password@orcl directory=backup dumpfile=test.dmp remap_schema=user1:user2 remap_tablespace=user1_space:user2_space;
 
---查询表空间中数据文件具体位置和文件名
+--查询表空间中数据文件具体位置和文件名、
 Select * FROM DBA_DATA_FILES;
 
 --数据文件路径默认在$ORACLE_HOME/oradata/$SID
