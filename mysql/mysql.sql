@@ -311,3 +311,19 @@ str_to_date(date,'%Y-%m-%d') -------------->oracle中的to_date();
 
 
 
+
+--行数大表容量
+ select table_schema,table_name,table_type,data_length+index_length size, table_rows from information_schema.tables 
+ where table_schema='rule_ceshi' and table_name='operation_log'
+ order by table_rows desc 
+ limit 10
+ 
+
+
+
+
+
+
+
+
+

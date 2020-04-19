@@ -13,6 +13,21 @@ source do_clean.sh
 
 source do_start_software.sh
 
+
+function cleanJava(){
+	rm ~/work/walker/walker-core/release -r 
+	rm ~/work/walker/walker-core/target -r 
+	
+	rm ~/work/walker/walker-web/release -r 
+	rm ~/work/walker/walker-web/target -r 
+	
+	rm ~/work/walker/walker-service-provider/release -r 
+	rm ~/work/walker/walker-service-provider/target -r 
+	 
+	
+	
+}
+
 ##-----------------------------------------
 
 #打包 walker-socket项目并 部署上传

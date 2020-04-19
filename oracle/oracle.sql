@@ -40,20 +40,41 @@ create tablespace TEST datafile 'tablespace_name.ora' ;
 --查看当前用户的所有序列 
 select SEQUENCE_OWNER,SEQUENCE_NAME,last_number from dba_sequences  ; 
 
---查看各个表空间占用;
-select tablespace_name, sum(bytes) / 1024 / 1024 MB  from dba_free_space  group by tablespace_name order by 2 desc;  
---各个用户表数
-select owner,count(1) cc from dba_tables where 1=1 group by owner order by 2 desc;
---各个用户表行数
-select t.owner,t.table_name,t.tablespace_name,t.num_rows　from dba_tables t where t.NUM_ROWS is not  null  order by t.NUM_ROWS  desc 
---查看各个用户表总大小
-SELECT s.owner, to_number(SUM(s.BYTES)/1024/1024) MB from dba_segments s where 1=1 group by s.owner order by 2 desc;
---某用户每个表大小 清理
-SELECT s.owner, s.segment_name,to_number((s.BYTES)/1024/1024) MB from dba_segments s where 1=1 order by 3 desc;
---查看创建表语句表结构
-SET LONG 3000
-SET PAGESIZE 0
-SELECT DBMS_METADATA.GET_DDL('TABLE','STUDENT') FROM DUAL;
+
+--各个用户表行数 及其 表容量占用
+select t.owner,t.table_name,t.tablespace_name,t.num_rows
+, s.MB 
+from dba_tables t 
+left join (
+	SELECT s.owner, s.segment_name,to_number((s.BYTES)/1024/1024) MB from dba_segments s where 1=1 order by 3 desc;
+) s 
+on t.table_name=s.segment_name and t.owner=s.owner 
+where 1=1
+order by t.NUM_ROWS  desc 
+
+
+--查看每个用户 表容量占用 所在表空间情况 
+SELECT du.username, a.tablespace_name 
+, total / (1024 * 1024) "AllMB"
+, free / (1024 * 1024) "FreeMB"
+, (total - free) / (1024 * 1024 ) "UsedMB",    
+, round((total - free) / total, 4) * 100 || '%' "Percent" 
+FROM (
+	SELECT tablespace_name, SUM(bytes) free 
+	FROM dba_free_space 
+	GROUP BY tablespace_name
+) a
+, (
+	SELECT tablespace_name, SUM(bytes) total 
+	FROM dba_data_files 
+	GROUP BY tablespace_name
+) b
+, dba_users du 
+WHERE a.tablespace_name = b.tablespace_name
+and a.tablespace_name = du.default_tablespace
+order by 6 desc 
+
+
 
 --查看用户和默认表空间的关系
 select username,default_tablespace from dba_users;

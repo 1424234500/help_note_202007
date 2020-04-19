@@ -74,6 +74,15 @@ ssh user@host 'tar cz src' | tar xzv
 cd && tar czv src | ssh user@host 'tar xz'
 
 
+配置了秘钥登陆，免去输入密码，但是第一次登陆时会有一个提示动作
+The authenticity of host ‘192.168.10.14 (192.168.10.14)’ can’t be established.
+ECDSA key fingerprint is SHA256:zCrwLrWV8zc9FMtIt0C+bV+CR3yfEcXsgpSSD4/x2yk.
+ECDSA key fingerprint is MD5:6b:a0:a2:ab:08:c0:33:b1:df:2f:63:f0:9d:ba:9c:1f.
+Are you sure you want to continue connecting (yes/no)?
+
+通过ssh指定参数 StrictHostKeyChecking no 可以跳过检查，或者改ssh配置文件。
+这里选择跳过：
+ssh -o “StrictHostKeyChecking no” root@192.168.10.14
 
 
 # -A 开启认证代理连接转发功能

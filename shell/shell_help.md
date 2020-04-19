@@ -117,6 +117,7 @@ df -h   #磁盘
     st="ls | more"
     `$st`   ####将 | 和 more 看成了参数，而不是将文件按页显示
     eval $st      ####双次解析 一次解析变量 二次 放置执行？ 同js php shell
+	timeout 3 sleep 10	#超时机制 所有指令
 #杀死指定规则进程pid获取
 #字符分离数组
 #截取
@@ -1210,7 +1211,7 @@ rcS.d
 	Cron是Unix系统的一个配置定期任务的工具，用于定期或者以一定的时间间隔执行一些命令或者脚本； 基于每个用户的，每一个用户（包括root用户）都拥有自己的crontab。
 	*/1 * * * * date >> ~/logs/crontab.log  #定时每m测试crontab状况
 	*/5 * * * * /usr/local/tomcat-6.0.41/tomcat_cardniu_stat/monitor.sh ####增量5m
-	0 0 * * *  /home/pi/backup.sh ####0h0m
+	  0 0 * * *  /home/pi/backup.sh ####0h0m
 	
 	
 	注意!!!!
