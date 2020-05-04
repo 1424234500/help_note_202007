@@ -240,8 +240,15 @@ slow query 慢查询统计
 --切换数据库
 USE walker;
 
+
+--数据结构
+主键 索引 最大长度1000, 不能达到500？
+建立索引时，数据库计算key的长度是累加所有Index用到的字段的char长度后再按下面比例乘起来不能超过限定的key长度1000： 
+latin1 = 1 byte = 1 character uft8 = 3 byte = 1 character gbk = 2 byte = 1 character 
+上步骤语句中索引总长度（100+255+255） * 2 = 1220 > 1000
+
 --建表 查表 描述
-CREATE TABLE  IF NOT EXISTS  test (id VARCHAR(20), name CHAR(10));
+CREATE TABLE  IF NOT EXISTS  test (id VARCHAR(20) primary key, name CHAR(10));
 drop table test;
 SHOW TABLES;
 DESCRIBE test; 

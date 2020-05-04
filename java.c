@@ -349,8 +349,32 @@ bin/zkServer.sh stop
 bin/zkServer.sh start #</stop/status>
 
 bin/zkCli.sh -server 127.0.0.1:2181  #测试
-    ls /    4）查看有哪些zookeeper节点； 
-    ls /daily_orderServer_group（节点名称） 5）查看注册了哪些服务，如图2； 
+1.创建节点  
+create [-s]   [-e]  path  data  acl
+-s表示顺序节点，
+-e表示临时节点。默认情况下，创建的是持久节点。
+path是节点路径，data是节点数据，acl是用来进行权限控制的。  
+	create /zk-test 123		叫做/zk-test的节点，内容是"123"
+	create /zk-test/book	创建/zk-test的子节点book，内容是"233"
+2.查看节点内容 
+	get /zk-test
+3.查看子节点
+	ls /
+	ls /zk-test
+4.更新节点内容
+	set   path  data 
+	set /zk-test 456
+	dataVersion的值由原来的0 变成了 1，这是因为刚才的更新操作导致该节点的数据版本也发生变更。
+6.删除节点
+	delete /zk-test 	一个节点存在子节点时，无法删除该节点。
+	delete /zk-test/book 
+	
+WatchedEvent state:SyncConnected type:NodeDeleted path:/zk-test/book
+zookeeper中的watcher会监控节点，当子节点发生变化时会发出通知。此时提示子节点 /zk-test/book删除成功。
+ 
+
+
+
 
 注意防火墙
 
