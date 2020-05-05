@@ -1,5 +1,6 @@
 JAVA_HOME
-C:\Program Files\Java\jdk-9
+D:\workspace\jdk\jdk1.8.0_131
+
 PATH
 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin
 
