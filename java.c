@@ -463,7 +463,7 @@ java -jar jd-gui.exe
 
 
 
-//node 
+//node  vue
 wget https://cdn.npm.taobao.org/dist/node/v12.10.0/node-v12.10.0-linux-x64.tar.xz
 xz -d node-v12.10.0-linux-x64.tar.xz
 tar -xvf node-v12.10.0-linux-x64.tar
@@ -471,6 +471,19 @@ mv node-v12.10.0-linux-x64/ nodejs
 echo 'export PATH=$PATH:'`pwd -LP`'/nodejs/bin'  | sudo tee -a /etc/profile
 source /etc/profile
 npm -v
+npm install vue
+
+
+//
+
+
+
+
+
+
+
+
+
 
 /////////////////////////////////////////////////////was
 /washome/IBM/WebSphere/AppServer/bin/startManager.sh
@@ -564,27 +577,9 @@ cd /washome/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/
 -create
 -templatePath  /washome/IBM/WebSphere/AppServer/profileTemplates/default 
 -profileName  AppSvr02
--profilePath   /washome/IBM/WebSphere/AppServer/profiles/AppSvr02 
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
+-profilePath   /washome/IBM/WebSphere/AppServer/profiles/AppSvr02  
 这样也是可以的。
-————————————————
-版权声明：本文为CSDN博主「先定个小目标」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/sinat_30035833/article/details/87965839
-
+ 
 
 
 

@@ -23,10 +23,11 @@
 面试刷题 
 基础算法 lee code
 //redis注册中心
-配置中心 
+//配置中心 临时 
 guava 限流 布隆过滤器
-kafka 替换redis队列  
 熔断限流框架sentinel 
+
+kafka 替换redis队列   消息队列使用设计模式
 
 在线小工具集合  
 	在线java算法演示中心

@@ -19,7 +19,7 @@ function start(){
     local dirArr=( 
          '/home/walker/software/redis-5.0.3'        #redis
          '/approot/redis-5.0.0'        #redis
-         '/home/walker/software/zookeeper-3.4.12/bin'   #zookeeper
+         '/home/walker/home/zookeeper-3.4.14/bin'   #zookeeper local
          '/home/walker/zookeeper-3.4.14/bin'            #zookeeper server
 #        '/home/walker/software/apache-tomcat-8.5.40/bin'    #tomcat admin monitor  
          '/home/walker/software/mysql-8.0.16-linux-x86_64-minimal/bin'  #mysql
