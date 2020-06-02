@@ -23,6 +23,7 @@ function start(){
          '/home/walker/zookeeper-3.4.14/bin'            #zookeeper server
 #        '/home/walker/software/apache-tomcat-8.5.40/bin'    #tomcat admin monitor  
          '/home/walker/software/mysql-8.0.16-linux-x86_64-minimal/bin'  #mysql
+         '/mnt/d/home/walker/mysql-5.7/bin'  #mysql
 
          '/home/walker/walker-service-provider'  
          '/home/walker/walker-web'
@@ -35,6 +36,7 @@ function start(){
         'bash zkServer.sh start'   
         'bash zkServer.sh start'
         #'bash startup.sh'
+        './mysqld'
         './mysqld'
         
         'bash server.sh start'
