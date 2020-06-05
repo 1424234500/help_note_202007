@@ -5,7 +5,7 @@ cat /proc/version ####正在运行的内核版本。
 cat /etc/issue ####显示的是发行版本信息
     Ubuntu 18.04.1 LTS \n \l
 cat /proc/cpuinfo | more ####分页查看
-
+getconf LONG_BIT	#系统64 32位
 suse 
 	lsb_release -d 
 	cat /etc/SuSE-release 
@@ -251,7 +251,7 @@ sed -n '5,10p' obcp-server29.log
 #文件行管道替换
 cat redis_cluster_7000.conf | sed s/7000/7001/g
 #文件整体替换
-sed -i.back "s/oldstring/newstring/g" `grep oldstring -rl yourdir`
+sed -i.back "s/oldstring/newstring/g"    `grep oldstring -rl yourdir`
 #替换输出
 sed s/7000/7002/ redis_cluster_7000.conf
 
@@ -385,12 +385,14 @@ echo "a b c" | tr ' ' "\n"  #行列转换
 
 #### apt-get --help debian  源配置
 {
-    vim /etc/apt/sources.list                                                 
+	cat /proc/version
+    
+	vim /etc/apt/sources.list                                                 
     ####for pi
     deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi 
     ####for pc	
     对比原有配置 找到系统版本
-    XXXX='bionic'
+    XXXX='focal'
     deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX} main restricted universe multiverse
     deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-security main restricted universe multiverse
     deb http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-updates main restricted universe multiverse
@@ -402,9 +404,9 @@ echo "a b c" | tr ' ' "\n"  #行列转换
     #deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-proposed main restricted universe multiverse
     #deb-src http://mirrors.aliyun.com/ubuntu/ ${XXXXX}-backports main restricted universe multiverse 
  
-    apt autoremove 自动删除无依赖包
-    apt-get update  更新源
-    apt-get upgrade 更新已安装的包
+    apt autoremove #自动删除无依赖包
+    apt-get update  #更新源
+    apt-get upgrade #更新已安装的包
     apt-get dist-upgrade 更新已安装的包 and auto dependcy
     apt-get install python<=2.7> <--reinstall> 安装包
     apt-get remove package 删除包
@@ -509,6 +511,7 @@ rpm -e 需要卸载的安装包
 rpm -e tomcat4 卸载 tomcat4 软件包
     
 ####apt-get install gcc gcc-c++ ####c++编译需要
+sudo apt-get install cpp binutils glibc* gcc make tcl 
 ############################################################################################网站信息抓取####################################################################################################
 ####whatweb
     apt-get install whatweb
@@ -1139,6 +1142,7 @@ rcS.d
     groupdel admin 删除组
     adduser walker 新建用户
     useradd -g root -s /home/walker -m walker
+	groupadd mysql
 	useradd -r -s /sbin/nologin -g mysql mysql -d /home/walker/mysql     ---新建msyql用户禁止登录shell 主home目录
 	usermod -s /sbin/nologin -g mysql mysql
 

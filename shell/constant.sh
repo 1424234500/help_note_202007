@@ -6,7 +6,7 @@
 source tools.sh
 
 _root=''
-_roots=( '/mnt/f' '/mnt/e' '/home/walker/e' )
+_roots=( '/mnt/d' '/mnt/e' '/home/walker' )
 for ((i=0; i<${#_roots[@]}; i++))
 do
     ddir=${_roots[$i]}

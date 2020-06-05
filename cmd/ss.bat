@@ -5,7 +5,7 @@ echo ""
 
 tasklist|find /i "notepad" || start "notepad" "D:\software\Notepad++\notepad++.exe" 
 tasklist|find /i "bash" || start bash
-tasklist|find /i "zookpeer" || start "zookpeer" "D:\home\walker\zookeeper-3.4.14\bin\zkServer.cmd"
+tasklist|find /i "zookpeer" || start "zookpeer" "D:\home\walker\software\zookeeper-3.4.14\bin\zkServer.cmd"
 ::tasklist|find /i "sublime_text" || start "sublime" "D:\Program Files\Sublime Text 3\sublime_text.exe" 
 
 

@@ -1,12 +1,14 @@
 //redis 数据库
-//安装 
+//安装  依赖make gcc
 sudo apt-get update
 sudo apt-get install make
 sudo apt-get install gcc
 wget http://download.redis.io/releases/redis-5.0.3.tar.gz
 tar -xzvf redis-5.0.3.tar.gz
 cd redis-5.0.3
-make    #make MALLOC=libc
+#make
+#CC异常则使用 
+make MALLOC=libc
 make install PREFIX=.  #选定目录安装生成bin目录  默认/usr/local/bin/
 //测试 依赖tcl
 wget http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz  

@@ -9,20 +9,34 @@ source tools.sh
 source do_git.sh
 source do_renames.sh
 source do_dirfile.sh
-source do_clean.sh
-
+source do_clean.sh 
 source do_start_software.sh
+
+#确保常用目录~问题
+#help_note
+#shell
+#workspace
+#software
+#logs
+#files
+function link(){
+	cd ~
+	ln -s workspace/walker/walker-web/vue/ vue
+	
+	
+}
+
 
 
 function cleanJava(){
-	rm ~/work/walker/walker-core/release -r 
-	rm ~/work/walker/walker-core/target -r 
+	rm ~/workspace/walker/walker-core/release -r 
+	rm ~/workspace/walker/walker-core/target -r 
 	
-	rm ~/work/walker/walker-web/release -r 
-	rm ~/work/walker/walker-web/target -r 
+	rm ~/workspace/walker/walker-web/release -r 
+	rm ~/workspace/walker/walker-web/target -r 
 	
-	rm ~/work/walker/walker-service-provider/release -r 
-	rm ~/work/walker/walker-service-provider/target -r 
+	rm ~/workspace/walker/walker-service-provider/release -r 
+	rm ~/workspace/walker/walker-service-provider/target -r 
 	 
 	
 	
@@ -33,7 +47,7 @@ function cleanJava(){
 #打包 walker-socket项目并 部署上传
 
 function deploy(){
-    cd ~/work/walker
+    cd ~/workspace/walker
     mvn clean install -Dmaven.test.skip=true
     service $@
     web $@
@@ -43,7 +57,7 @@ function deploy(){
 
 function socket(){
     now=`pwd -LP`
-    cd ~/work/walker/walker-socket
+    cd ~/workspace/walker/walker-socket
     rm release -r
     mvn clean package -Dmaven.test.skip=true
     res=$?
@@ -57,7 +71,7 @@ function socket(){
 }
 function core(){
     now=`pwd -LP`
-    cd ~/work/walker/walker-core
+    cd ~/workspace/walker/walker-core
     rm release -r
     mvn clean package -Dmaven.test.skip=true
     res=$?
@@ -74,7 +88,7 @@ function core(){
     
     
     now=`pwd -LP`
-    cd ~/work/walker/walker-service
+    cd ~/workspace/walker/walker-service
     rm release -r
     mvn clean package -Dmaven.test.skip=true
     res=$?
@@ -82,7 +96,7 @@ function core(){
         echo "mvn package error ${res}"
         exit ${res}
     fi
-    cp ~/work/walker/walker-service/target/walker-service-0.0.1.jar /home/walker/e/workspace/dd/app/libs/
+    cp ~/workspace/walker/walker-service/target/walker-service-0.0.1.jar /home/walker/e/workspace/dd/app/libs/
     #./deploy.sh $@
 
     
@@ -90,7 +104,7 @@ function core(){
 
 function service(){
     now=`pwd -LP`
-    cd ~/work/walker/walker-service-provider
+    cd ~/workspace/walker/walker-service-provider
     rm release -r
     mvn clean package -Dmaven.test.skip=true
     res=$?
@@ -103,7 +117,7 @@ function service(){
 }
 function web(){
     now=`pwd -LP`
-    cd ~/work/walker/walker-web
+    cd ~/workspace/walker/walker-web
     rm release -r
     cd vue
     # 构建测试环境
@@ -136,10 +150,10 @@ function redisali(){
     /home/walker/software/redis-5.0.3/src/redis-cli -h 39.106.111.11 -p 6379
 }
 function mysqlali(){
-    ~/software/mysql-8.0.16-linux-x86_64-minimal/bin/mysql -h 39.106.111.11 -u walker -pqwer
+   /home/walker/software/mysql-5.7/bin/mysql -h 39.106.111.11 -u walker -pqwer
 }
 function ali(){
-    ~/help/ssh/ali39
+   bash /home/walker/help_note/ssh/ali39
 }
 function android(){
     nohup /home/walker/software/android-studio/bin/studio.sh >/dev/null &

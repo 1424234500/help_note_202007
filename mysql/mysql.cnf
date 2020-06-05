@@ -1,9 +1,14 @@
+#show variables like '%sql_mode' 实时查询配置
+
 [client]
-port = 3306
+port = 8098
 socket = /tmp/mysql.sock
 
 [mysqld]
-lc-messages-dir=/home/walker/mysql-5.7/share
+lc-messages-dir=/home/walker/software/mysql-5.7/share
+#MySQL5.7.5后，默认开启了ONLY_FULL_GROUP_BY，所以导致了之前的一些SQL无法正常执行，其实，是我们的SQL不规范造成的，因为group by 之后，返回的一些数据是不确定的，所以才会出现这个错误
+sql-mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+
 ###############################基础设置#####################################
 
 #Mysql服务的唯一编号 每个mysql服务Id需唯一
@@ -11,11 +16,11 @@ server-id = 1
 #ip 同时支持IPv4和IPv6的TCP/IP的连接。
 bind-address = 0.0.0.0
 #服务端口号 默认3306
-port = 3306
+port = 8098
 #mysql安装根目录
-basedir = /home/walker/mysql-5.7
+basedir = /home/walker/software/mysql-5.7
 #mysql数据文件所在位置
-datadir = /home/walker/mysql-5.7/data
+datadir = /home/walker/software/mysql-5.7/data
 #临时目录 比如load data infile会用到
 tmpdir  = /tmp
 #设置socke文件所在目录
@@ -43,10 +48,10 @@ init_connect=‘SET NAMES utf8mb4‘
 lower_case_table_names = 0
 
 #最大连接数
-max_connections = 400
+max_connections = 50
 
 #最大错误连接数
-max_connect_errors = 1000
+max_connect_errors = 100
 
 #TIMESTAMP如果没有显示声明NOT NULL，允许NULL值
 explicit_defaults_for_timestamp = true
@@ -71,18 +76,27 @@ max_heap_table_size = 134217728
 query_cache_size = 0
 query_cache_type = 0
 
-#####################用户进程分配到的内存设置BEGIN#############################
+#####################用户线程分配到的内存爆炸的问题 BEGIN#############################
+performance_schema_max_table_instances=200         
+table_definition_cache=200         
+# The number of open tables for all threads. Increasing this value
+# increases the number of file descriptors that mysqld requires.
+# Therefore you have to make sure to set the amount of open files
+# allowed to at least 4096 in the variable "open-files-limit" in
+# section [mysqld_safe]                
+table_open_cache=128 
+
 
 ##每个session将会分配参数设置的内存大小
-#用于表的顺序扫描，读出的数据暂存于read_buffer_size中，当buff满时或读完，将数据返回上层调用者
+# 顺序读rows 用于表的顺序扫描，读出的数据暂存于read_buffer_size中，当buff满时或读完，将数据返回上层调用者
 #一般在128kb ~ 256kb,用于MyISAM
 #read_buffer_size = 131072
-#用于表的随机读取，当按照一个非索引字段排序读取时会用到，
+#随机读rows where条件多的 用于表的随机读取，当按照一个非索引字段排序读取时会用到，
 #一般在128kb ~ 256kb,用于MyISAM
-#read_rnd_buffer_size = 262144
+#read_rnd_buffer_size = 262144 
 #order by或group by时用到
 
-#建议先调整为2M，后期观察调整
+# 对表排序 sort by 建议先调整为2M，后期观察调整
 sort_buffer_size = 2097152
 
 #一般数据库中没什么大的事务，设成1~2M，默认32kb
@@ -97,11 +111,11 @@ back_log = 130
 ############################日志设置##########################################
 
 #数据库错误日志文件
-log_error = /home/walker/mysql-5.7/error.log
+log_error = /home/walker/software/mysql-5.7/error.log
 
 #慢查询sql日志设置
 slow_query_log = 1
-slow_query_log_file = /home/walker/mysql-5.7/slow.log
+slow_query_log_file = /home/walker/software/mysql-5.7/slow.log
 
 #检查未使用到索引的sql
 log_queries_not_using_indexes = 1
@@ -173,8 +187,8 @@ sync_binlog = 1
 #innodb_page_size的参数值也影响最大索引长度，8k比16k的最大索引长度小
 #innodb_page_size = 8192
 
-#一般设置物理存储的60% ~ 70%
-innodb_buffer_pool_size = 1G
+#全局内存 一般设置物理存储的60% ~ 70%  SELECT @@innodb_buffer_pool_size;
+innodb_buffer_pool_size = 300M
 
 #5.7.6之后默认16M
 #innodb_log_buffer_size = 16777216
@@ -204,10 +218,10 @@ innodb_lock_wait_timeout = 30
 innodb_buffer_pool_dump_pct = 40
 
 #设置redoLog文件所在目录, redoLog记录事务具体操作内容
-innodb_log_group_home_dir = /home/walker/mysql-5.7/logredo/
+innodb_log_group_home_dir = /home/walker/software/mysql-5.7/logredo/
 
 #设置undoLog文件所在目录, undoLog用于事务回滚操作
-innodb_undo_directory = /home/walker/mysql-5.7/logundo/
+innodb_undo_directory = /home/walker/software/mysql-5.7/logundo/
 
 #在innodb_log_group_home_dir中的redoLog文件数, redoLog文件内容是循环覆盖写入。
 innodb_log_files_in_group = 3

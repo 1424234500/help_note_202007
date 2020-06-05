@@ -7,13 +7,16 @@
 #./do start <help><stop><show><log><restart>
 
 ##-----------------------------------------
+root=/home/walker/software/mysql-5.7
+file_cnf=${root}/my.cnf
 cmd='mysql -u root -proot '
 cmd_stop='mysqladmin -u root -proot shutdown'
-cmd_start='mysqld_safe --defaults-file=/home/walker/mysql-5.7/my.cnf  --user=walker & '
+cmd_start="mysqld_safe --defaults-file=${file_cnf}  --user=walker & "
 file_cnf=
 temp='sql'
 about="
 Ctrl the mysql dbs tables.    \n
+file_cnf: ${file_cnf} 	\n
 Usage: 
 ./mysql.sh [ create | truncate | show | drop | help ] [ps grep database]   \n
 	\t	start	\t	start mysql
@@ -29,6 +32,13 @@ Usage:
 "
 
 ##------------------------------------------
+function cnf(){
+	mysqld --verbose --help | grep cnf -C 3
+	vim ${file_cnf} 
+}
+function log(){
+	tail -n 20 ${root}/error.log
+}
 function stop(){
 	eval ${cmd_stop}
 }
@@ -40,10 +50,7 @@ function restart(){
 	sleep 3
 	start 
 }
-function cnf(){
-	mysqld --verbose --help | grep cnf -C 3
-	vim /home/walker/mysql-5.7/my.cnf
-}
+
 function show(){ 
     echo '查看所有数据库 所有表  mysql: '"${cmd} key: ${key}"
     type="show"

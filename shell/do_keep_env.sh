@@ -17,42 +17,27 @@ function start(){
     nowDir=`pwd -LP`
     #mysql 
     local dirArr=( 
-         '/home/walker/software/redis-5.0.3'        #redis
-         '/approot/redis-5.0.0'        #redis
-         '/home/walker/home/zookeeper-3.4.14/bin'   #zookeeper local
-         '/home/walker/zookeeper-3.4.14/bin'            #zookeeper server
-#        '/home/walker/software/apache-tomcat-8.5.40/bin'    #tomcat admin monitor  
-         '/home/walker/software/mysql-8.0.16-linux-x86_64-minimal/bin'  #mysql
-         '/mnt/d/home/walker/mysql-5.7/bin'  #mysql
+         '/home/walker/software/redis-5.0.3'					'./src/redis-server redis.conf'			#redis 
+         '/home/walker/software/zookeeper-3.4.14/bin'			'bash zkServer.sh start'				#zookeeper local 
+#        '/home/walker/software/apache-tomcat-8.5.40/bin'		'bash startup.sh'						#tomcat admin monitor  
+         '/home/walker/software/mysql-8.0.16-linux-x86_64-minimal/bin'		'./mysqld'
+         '/home/walker/software/mysql-5.7/bin'								'./mysqld'
 
-         '/home/walker/walker-service-provider'  
-         '/home/walker/walker-web'
-         '/home/walker/walker-socket'  
+         '/home/walker/project/walker-service-provider'				'bash server.sh start'  
+         '/home/walker/project/walker-web'								'bash server.sh start'
+         '/home/walker/project/walker-socket'							'bash server.sh start'  
      
      )
-    local cmdArr=(
-        './src/redis-server redis.conf'
-        './src/redis-server redis.conf'
-        'bash zkServer.sh start'   
-        'bash zkServer.sh start'
-        #'bash startup.sh'
-        './mysqld'
-        './mysqld'
-        
-        'bash server.sh start'
-        'bash server.sh start'
-        'bash server.sh start'
-        
-    )
+     
     toolsLineLong
     out 'start linux software '${#arr[@]}
     toolsLineLong
-    for ((i=0; i<${#dirArr[@]}; i++))
+    for ((i=0; i<${#dirArr[@]}; i=i+2))
     do
         local myPath=${dirArr[$i]}     
-        local she=${cmdArr[$i]}
+        local she=${dirArr[${i+1}]}
         if [ ! -d "$myPath" ]; then      # 这里的-d 参数判断$myPath是否存在 是否为目录   不存在 跳过启动
-            out "#${i}## Skip no exists the path $myPath && $she"
+            out "#${i}## Skip no exists the path cd $myPath && $she"
             continue
         else
             cd ${myPath}

@@ -1,3 +1,7 @@
+------------
+简易安装临时使用
+sudo apt-get install mysql-server
+
 ---------------------------------------------
 mysqld --verbose --help			#帮助文档
 mysqld --print-default			#默认参数
@@ -8,13 +12,19 @@ mysqld_safe --print-default
 
 -------------------------------------------
 
---mysql安装
-wget wget https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.29-linux-glibc2.12-i686.tar.gz
-tar -xzvf mysql-5.7.29-linux-glibc2.12-i686.tar.gz -C mysql-5.7
-cd mysql-5.7/bin
-useradd -r -s /sbin/nologin -g mysql mysql -d /home/walker/mysql     ---新建msyql用户禁止登录shell 主home目录
+--mysql安装 注意位数 避免 -bash: ./mysqld: cannot execute binary file: Exec format error
+wget https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.29-linux-glibc2.12-i686.tar.gz
+wget https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.29-linux-glibc2.12-x86_64.tar.gz
 
-basedir=/home/walker/mysql-5.7
+#mkdir mysql-5.7
+tar -xzvf mysql-5.7.29-linux-glibc2.12-x86_64.tar.gz
+mv mysql-5.7.29-linux-glibc2.12-x86_64 mysql-5.7
+cd mysql-5.7
+
+sudo groupadd mysql
+sudo useradd -r -s /sbin/nologin -g mysql mysql -d /home/walker/mysql     #新建msyql用户禁止登录shell 主home目录
+
+basedir=/home/walker/software/mysql-5.7
 datadir=${basedir}/data
 tmpdir=${basedir}
 mkdir -p ${datadir}
@@ -24,41 +34,62 @@ mkdir -p ${basedir}/logundo
 
 --生成my.cnf作为配置文件
 #cp my-default.cnf /etc/my.cnf	 
-#修改my.cnf 配置大小写问题 中文支持 !!!!!!!!!
+cp ~/help_note/mysql/mysql.cnf ./my.cnf
+#mysql的安装目录share下就有各种不同需求的my.cnf配置，直接copy过来改名my.cnf就可以使用了
+my-huge.cnf
+This is for a large system with memory of 1G-2G where the system runs mainly.
+my-innodb-heavy-4G.cnf
+#DESCR: 4GB RAM, InnoDB only, ACID, few connections, heavy queries.
+my-large.cnf
+This is for a large system with memory = 512M where the system runs mainly.
+my-medium.cnf
+# This is for a system with little memory (32M - 64M) where MySQL plays
+# an important part, or systems up to 128M where MySQL is used together with
+# other programs (such as a web server)
+my-small.cnf
+# This is for a system with little memory (<= 64M) where MySQL is only used
+# from time to time and it's important that the mysqld daemon
+# doesn't use much resources.
+
+
+#问题 大小写 中文支持 !!!!!!!!! 但在一些不区分大小写目录的系统报错 需修改
 lower_case_table_names = 0
+#问题 内存过载？
+SHOW VARIABLES LIKE '%table_open_cache%'
+#问题 权限全局警告不可用 临时修改644?依然不行 mysqld: [Warning] World-writable config file '/home/walker/software/mysql-5.7/my.cnf' is ignored.
+chmod 444 ./my.cnf
 
 #顺序不能变
-mysqld --defaults-file=/home/walker/mysql-5.7/my.cnf --initialize  --user=walker
+./bin/mysqld --defaults-file=./my.cnf --initialize  --user=walker
 
 tail ${basedir}/error.log
 出现:
 2020-02-09T08:54:12.610175Z 1 [Note] A temporary password is generated for root@localhost: V2hDolDsce*+
 记录生成的临时密码，上文结尾处
 
-mysql_ssl_rsa_setup  --datadir=/data/mysql	#????
+#初始化rsa？密钥
+./bin/mysql_ssl_rsa_setup  --datadir=/home/walker/software/mysql-5.7/data 
 
 --修改启动工具
-vim /home/walker/mysql-5.7/support-files/mysql.server
-	basedir=/home/walker/mysql-5.7
-	datadir=/home/walker/mysql-5.7/data
+vim /home/walker/software/mysql-5.7/support-files/mysql.server
+	basedir=/home/walker/software/mysql-5.7
+	datadir=/home/walker/software/mysql-5.7/data
 
 
 --关闭
-mysqladmin -u root -proot shutdown
+./bin/mysqladmin -u root -proot shutdown
 
 --启动mysql 具体是否使用mysql用户？  			
-#读取[safe_mysqld]中的配置 守护进程模式
-mysqld_safe --defaults-file=/home/walker/mysql-5.7/my.cnf  --user=walker &
-
-
-#读取配置文件中的[mysqld]的部分
-mysqld --defaults-file=/home/walker/mysql-5.7/my.cnf --user=walker  &	
-#须先把启动工具复制到启动菜单中 cp support-files/mysql.server /etc/init.d/mysql
+#启动1， 读取[safe_mysqld]中的配置 守护进程模式
+./bin/mysqld_safe --defaults-file=./my.cnf  --user=walker &
+#启动2， 读取配置文件中的[mysqld]的部分
+./bin/mysqld --defaults-file=./my.cnf --user=walker  &	
+#启动3， 须先把启动工具复制到启动菜单中 cp support-files/mysql.server /etc/init.d/mysql
 service mysql start		
 
 
 --启动日志
-tail /home/walker/mysql-5.7//error.log
+tail ./error.log
 	2020-02-09T09:00:56.260506Z 0 [Note] mysqld: ready for connections.
 	Version: '5.7.29-log'  socket: '/home/walker/mysql-5.7/mysql.sock'  port: 3306  MySQL Community Server (GPL)
 	
@@ -321,10 +352,10 @@ str_to_date(date,'%Y-%m-%d') -------------->oracle中的to_date();
 
 --行数大表容量
  select table_schema,table_name,table_type,data_length+index_length size, table_rows from information_schema.tables 
- where table_schema='rule_ceshi' and table_name='operation_log'
+ where 1=1
+ and table_schema not in ('performance_schema', 'mysql')
  order by table_rows desc 
- limit 10
- 
+ limit 40
 
 
 
