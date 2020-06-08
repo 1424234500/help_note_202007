@@ -138,7 +138,8 @@ P.S.
 //dns树 本机-hosts  ->  ip配置 dns -> other dns
 //域名-ip转换表 
 C:\Windows\System32\drivers\etc\hosts
-
+C:\Windows\SysWOW64\drivers\etc\hosts
+/etc/hosts
 ipconfig /flushdns  //fulush refresh
 //ip-mac转换表(!rarp) 该命令显示和修改“地址解析协议 (ARP)”缓存中的项目。ARP 缓存中包含一个或多个表，它们用于存储 IP 地址及其经过解析的以太网或令牌环物理地址。 
 arp -a 

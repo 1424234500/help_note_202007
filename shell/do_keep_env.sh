@@ -17,15 +17,21 @@ function start(){
     nowDir=`pwd -LP`
     #mysql 
     local dirArr=( 
-         '/home/walker/software/redis-5.0.3'					'./src/redis-server redis.conf'			#redis 
-         '/home/walker/software/zookeeper-3.4.14/bin'			'bash zkServer.sh start'				#zookeeper local 
-#        '/home/walker/software/apache-tomcat-8.5.40/bin'		'bash startup.sh'						#tomcat admin monitor  
-         '/home/walker/software/mysql-8.0.16-linux-x86_64-minimal/bin'		'./mysqld'
-         '/home/walker/software/mysql-5.7/bin'								'./mysqld'
+		 '/home/walker/software/redis-5.0.3'				'./src/redis-server redis.conf'			#redis 反复启动问题
+    
+        
+
+         '/home/walker/software/zookeeper-3.4.14'			'./bin/zkServer.sh start'				#zookeeper local 
+		 '/home/walker/software/kafka_2.12-2.5.0'			'./bin/kafka-server-start.sh config/server.properties'	#强依赖zookeeper 
+
+#        '/home/walker/software/apache-tomcat-8.5.40'		'./bin/startup.sh'						#tomcat admin monitor  
+
+         '/home/walker/software/mysql-8.0.16-linux-x86_64-minimal'		'./bin/mysqld_safe --defaults-file=my.cnf  --user=walker'
+         '/home/walker/software/mysql-5.7'								'./bin/mysqld_safe --defaults-file=my.cnf  --user=walker'
 
          '/home/walker/project/walker-service-provider'				'bash server.sh start'  
-         '/home/walker/project/walker-web'								'bash server.sh start'
-         '/home/walker/project/walker-socket'							'bash server.sh start'  
+         '/home/walker/project/walker-web'							'bash server.sh start'
+         '/home/walker/project/walker-socket'						'bash server.sh start'  
      
      )
      
@@ -35,15 +41,16 @@ function start(){
     for ((i=0; i<${#dirArr[@]}; i=i+2))
     do
         local myPath=${dirArr[$i]}     
-        local she=${dirArr[${i+1}]}
+        local she=${dirArr[${i} + 1]}
         if [ ! -d "$myPath" ]; then      # 这里的-d 参数判断$myPath是否存在 是否为目录   不存在 跳过启动
             out "#${i}## Skip no exists the path cd $myPath && $she"
             continue
         else
             cd ${myPath}
-            local tools_out='nohup '$she' >/dev/null & '   #日志输出?
+            local tools_out='nohup '$she' >/dev/null 2>&1 & '   #日志输出?
             out "=${i}== Start cd $myPath && $tools_out"
             eval $tools_out
+			sleep 1
         fi 
     done    
     toolsLineLong

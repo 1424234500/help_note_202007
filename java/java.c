@@ -468,21 +468,13 @@ http://你的ip地址:9060/washome/IBM/console/login.do
 第八步：再命令行开启server1服务
 
 cd /washome/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/
-./startServer.sh server1
-
-1
-2
-3
+./startServer.sh server1 
 此时如果发现网页登录不了，那么你就去查看一下你服务器的防火墙状态
 
  service iptables status
  一般都是开着的，如果开着的话就关闭就好了
  service iptables stop
- 当然，你也可以设置filter让特定IP访问
-1
-2
-3
-4
+ 当然，你也可以设置filter让特定IP访问 
 完毕收工。
 
 2.简单化配置

@@ -11,7 +11,7 @@ root=/home/walker/software/mysql-5.7
 file_cnf=${root}/my.cnf
 cmd='mysql -u root -proot '
 cmd_stop='mysqladmin -u root -proot shutdown'
-cmd_start="mysqld_safe --defaults-file=${file_cnf}  --user=walker & "
+cmd_start="nohup mysqld_safe --defaults-file=${file_cnf}  --user=walker > /dev/null 2>&1 & "
 file_cnf=
 temp='sql'
 about="
