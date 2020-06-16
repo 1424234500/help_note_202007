@@ -14,6 +14,11 @@ source tools.sh
 
 
 function start(){
+	
+	rm /tmp/zookeeper -r
+	rm /tmp/kafka-logs/ -r
+ 
+ 
     nowDir=`pwd -LP`
     #mysql 
     local dirArr=( 

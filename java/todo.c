@@ -27,6 +27,7 @@ guava 限流 布隆过滤器   熔断限流框架sentinel
 kafka 替换redis队列   消息队列使用设计模式
 消息队列使用思想
 zookeeper的锁用法 其他用法
+elasticsearch
 
 集成dubbo monitor ？监控
 wiki功能
@@ -43,7 +44,7 @@ Springboot 启动
 //SpringMVC 介绍自实现
 // 动态代理proxy 
 
-	
+研究kafka源码社区
 
 
 消息服务器架构
