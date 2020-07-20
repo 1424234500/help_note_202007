@@ -38,6 +38,9 @@ function cleanJava(){
 	rm ~/workspace/walker/walker-service-provider/release -r 
 	rm ~/workspace/walker/walker-service-provider/target -r 
 	 
+	 
+    rm '/home/walker/e/workspace/walker/${sys:LOG_PATH}' -r    
+    rm '/home/walker/workspace/walker/${sys:LOG_PATH}' -r
 	
 	
 }

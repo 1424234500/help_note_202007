@@ -33,7 +33,8 @@ function push(){
     # clean python 
 #    clean_clean 
     toolsLineLong
-    rm '/home/walker/e/workspace/walker/${sys:LOG_PATH}' -r
+    rm '/home/walker/e/workspace/walker/${sys:LOG_PATH}' -r    
+    rm '/home/walker/workspace/walker/${sys:LOG_PATH}' -r
     
 #    git_exefun 'git_add_commit_push' $1
     do_project_exefun 'git_add_commit_push' $1
