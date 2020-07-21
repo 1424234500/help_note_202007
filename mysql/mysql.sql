@@ -232,6 +232,12 @@ ALTER TABLE tbl_name  UNION=(...)
 --行锁：开销大 加锁慢 会出现死锁 锁定力度小 发生锁冲突概率小
 
 
+1、查看最大连bai接数的代码：
+show variables like '%max_connections%';
+2、修du改最大连接数的代码zhi：
+set GLOBAL max_connections = 128;
+
+
 
 desc 表名;       -- 表信息 
 show columns from 表名;       -- 表字段 
@@ -304,11 +310,19 @@ NOT NULL auto_increment,
 --常用函数 
 ifnull  nvl
 
+--整数转换
+select concat(8,'0')  from dual;
+
+select * from (
+select cast(NET_COST as signed) NET_COST from W_LOG_SOCKET_MODEL
+) where NET_COST > 100;
+select NET_COST from W_LOG_SOCKET_MODEL where NET_COST > 100;
+
 --查询
 --行号rownum
 select rownum from (select  (@i:=@i+1) rownum from  information_schema.COLUMNS t ,(select   @i:=0) it ) t  where rownum < 10 ;       
 
---序列
+--序列 位数补齐
 select lpad(level, 2, '0') lev from (select  (@i:=@i+1) level from  information_schema.COLUMNS t ,(select   @i:=0) it ) t  where level<=24     ;
 --2015-01-01~2018-06-01的连续日期，一种方式，借助笛卡儿积，进行生成，SQL代码如下： -- 生成的日期多少取决于主表
 
