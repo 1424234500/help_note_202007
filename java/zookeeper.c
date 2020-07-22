@@ -59,7 +59,7 @@ zookeeper中的watcher会监控节点，当子节点发生变化时会发出通�
 注意防火墙
 
 
-//zookeeper监控中心 https://gitee.com/handu/dubbo-monitor/tree/master
+//监控中心 dubbo-monitor https://gitee.com/handu/dubbo-monitor/tree/master
 wget https://codeload.github.com/1424234500/dubbo-monitor/zip/master
 修改pom.xml   dubbo版本 编译报错StringUtil.isEmpty 切换dubbo的工具导入
 配置数据源mysql 建表 修改帐号密码 zookeeper地址
