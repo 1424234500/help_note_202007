@@ -45,6 +45,7 @@ df -h   #磁盘
     cat /etc/passwd #查看用户根目录 命令sh环境
     usermod -d /home/walker walker     #修改用户目录
     chown -R wasup:wasgrp com 修改文件所属用户及组权限
+    chmod  755  rw-的值为4+2=6 wxr-xr-x的值为755
     
     /bin  二进制可执行命令。该目录下存放着普通用户的命令
     /dev  系统的设备文件，即设备的驱动程序

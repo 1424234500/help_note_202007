@@ -13,6 +13,10 @@
 1.dubbo配置xml只会读取resource下面? System属性也无效
 2.dubbo加载xml修改地址无效?用户目录日志缓存zookeeper    ~/.dubbo/xxx
 
+配置优先
+java -Ddubbo.protocol.port=2880
+dubbo.xml
+dubbo.properties
 
 
 
