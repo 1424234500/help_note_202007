@@ -32,7 +32,7 @@ kafka 替换redis队列   消息队列使用设计模式
 zookeeper的锁用法 其他用法
 elasticsearch
 
-集成dubbo monitor ？监控
+//集成 监控dubbo monitor  服务治理dubbo-admin 前后端分离，需部署三个服务...
 Apollo配置中心?
 
 wiki功能
