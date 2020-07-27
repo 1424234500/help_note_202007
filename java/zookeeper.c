@@ -42,11 +42,13 @@ create [-s]   [-e]  path  data  acl
 path是节点路径，data是节点数据，acl是用来进行权限控制的。  
 	create /zk-test 123		叫做/zk-test的节点，内容是"123"
 	create /zk-test/book	创建/zk-test的子节点book，内容是"233"
-2.查看节点内容 
+2.查看节点内容 权限
 	get /zk-test
+	getAcl /zk-test
 3.查看子节点
 	ls /
 	ls /zk-test
+
 4.更新节点内容
 	set   path  data 
 	set /zk-test 456
