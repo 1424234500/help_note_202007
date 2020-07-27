@@ -406,7 +406,18 @@ npm install vue
 
 
 
+//was httpserver
+日志中记录如下信息：
+[Wed Jul 11 14:07:32 2012] [notice] mpmstats: rdy 74 bsy 1 rd 0 wr 0 ka 1 log 0 dns 0 cls 0 
 
+rdy代表ready的线程数目。
+bsy代表busy的线程数目，即在线的客户访问数目。
+rd代表reading读取请求的线程数目。
+wr代表等待was或者客户端浏览器响应。
+ka代表IHS已完成访问请求keepalive连接。
+log是在写access log的线程。
+dns是代表在做DNS查询的线程。
+cls是完成处理正在正在close的线程。
 
 
 /////////////////////////////////////////////////////was
@@ -496,6 +507,15 @@ cd /washome/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/
 -profilePath   /washome/IBM/WebSphere/AppServer/profiles/AppSvr02  
 这样也是可以的。
  
+
+
+Netty为了提升报文的读写性能，默认会采用“零拷贝”模式，即消息读取时使用堆外的DirectBuffer来减少ByteBuffer的内存拷贝，如下图所示：
+Heap堆内存创建ByteBuf NioByteUnsafe
+-Dio.netty.noUnsafe=true
+
+
+
+
 
 
 
