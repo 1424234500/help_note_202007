@@ -340,8 +340,15 @@ select lpad(level, 2, '0') lev from (select  (@i/*'*/:=/*'*/@i+1) level from  in
 用符号:/*'*/:=/*'*/转换:=
 
 
-date_format(now(),'%Y-%m-%d %H:%i:%S') -------------->oracle中的to_char();
-str_to_date(date,'%Y-%m-%d') -------------->oracle中的to_date();
+
+select date_format(FROM_UNIXTIME(1595901121739 / 1000),'%Y-%m-%d %H:%i:%S');    //时间戳格式化字符串
+
+select FROM_UNIXTIME(1595901121.739);   //2020-07-28 09:52:01.739   UNIX时间戳转换为日期
+Select UNIX_TIMESTAMP('2018-09-05 17：01：34');    //1536138000   日期转换为UNIX时间戳
+select date_format(now(),'%Y-%m-%d %H:%i:%S')   //2020-07-28 10:35:39   oracle中的to_char();
+SELECT DATE_FORMAT(20130111191640,'%Y-%m-%d %H:%i:%s')    //2013-01-11 19:16:40 
+select str_to_date(1595901121739, '%Y-%m-%d') -------------->oracle中的to_date();
+
 　　%Y：代表4位的年份
 　　%y：代表2为的年份
 　　%m：代表月, 格式为(01……12)
@@ -358,8 +365,6 @@ str_to_date(date,'%Y-%m-%d') -------------->oracle中的to_date();
 　　%T：代表 时间,格式为24 小时(hh:mm:ss)
 　　%S：代表 秒,格式为(00……59)
 　　%s：代表 秒,格式为(00……59)
-　　SELECT DATE_FORMAT(20130111191640,'%Y-%m-%d %H:%i:%s')
-　　DATE_FORMAT(20130111191640,'%Y-%m-%d %H:%i:%s')
 
 
 
